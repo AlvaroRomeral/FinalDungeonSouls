@@ -1,0 +1,191 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://SpritesAnimados.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Jugador/InterfazJugador.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Interfaz.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Nivel.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.501961, 0.501961, 0 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.666667, 0.0196078, 0.0196078, 1 )
+border_width_left = 1
+border_width_right = 1
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.278431, 0.278431, 0.278431, 1 )
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.364706, 0.364706, 0.364706, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.223529, 0.411765, 0.509804, 1 )
+border_width_left = 1
+border_width_right = 1
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.129412, 0.521569, 0.12549, 1 )
+border_width_left = 1
+border_width_right = 1
+border_blend = true
+
+[node name="InterfazJugador" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Panel_Dinero" type="Panel" parent="."]
+margin_left = 208.0
+margin_top = 137.0
+margin_right = 243.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="AnimatedSprite" parent="Panel_Dinero"]
+position = Vector2( 4, 3 )
+scale = Vector2( 0.5, 0.5 )
+frames = ExtResource( 2 )
+animation = "Moneda"
+
+[node name="Monedas" type="Label" parent="Panel_Dinero"]
+margin_left = 8.0
+margin_top = -2.0
+margin_right = 34.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarraVida" type="ProgressBar" parent="."]
+margin_left = 32.0
+margin_top = 11.0
+margin_right = 87.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 4 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarraMana" type="ProgressBar" parent="."]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 87.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarraEstamina" type="ProgressBar" parent="."]
+margin_left = 32.0
+margin_top = 21.0
+margin_right = 87.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 4 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_Nivel" type="Panel" parent="."]
+margin_left = 3.0
+margin_top = 18.0
+margin_right = 22.0
+margin_bottom = 37.0
+rect_rotation = -44.9999
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nivel" type="Label" parent="Panel_Nivel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = -9.0
+margin_right = 17.0
+margin_bottom = -2.0
+rect_rotation = 44.9999
+custom_fonts/font = ExtResource( 5 )
+text = "00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 4.0
+margin_top = 111.0
+margin_right = 22.0
+margin_bottom = 134.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 24.0
+margin_top = 124.0
+margin_right = 42.0
+margin_bottom = 147.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 44.0
+margin_top = 111.0
+margin_right = 62.0
+margin_bottom = 134.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel4" type="Panel" parent="."]
+margin_left = 24.0
+margin_top = 99.0
+margin_right = 42.0
+margin_bottom = 122.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

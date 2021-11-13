@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Enemigos/skeleton_v2_1-sheet.png" type="Texture" id=1]
+[ext_resource path="res://Enemigos/Enemigo.gd" type="Script" id=2]
+[ext_resource path="res://Jugador/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Jugador/Hurtbox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+void fragment(){
+	vec4 previousColor = texture(TEXTURE, UV);
+	vec4 whiteColor = vec4 (1.0, 1.0, 1.0, previousColor.a);
+	vec4 newColor = previousColor;
+	if(active == true){
+		newColor = whiteColor;
+	}
+	COLOR = newColor;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/active = false
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.3259
+height = 1.3482
+
+[sub_resource type="Animation" id=7]
+resource_name = "Damaged"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material:shader_param/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="Enemigo" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 6 )
+position = Vector2( 0, -7 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damaged = SubResource( 7 )
+anims/Idle = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -4 )
+
+[node name="DistVision" type="RayCast2D" parent="Position2D"]
+position = Vector2( 7, 0 )
+enabled = true
+cast_to = Vector2( 60, 0 )
+collision_mask = 3
+
+[node name="Hitbox" parent="Position2D" instance=ExtResource( 3 )]
+rotation = -0.785398
+
+[node name="CollisionShape2D" parent="Position2D/Hitbox" index="0"]
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Position2D"]
+enabled = true
+cast_to = Vector2( 10, 0 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 64
+
+[connection signal="damageRecivido" from="Hurtbox" to="." method="_on_Hurtbox_damageRecivido"]
+
+[editable path="Position2D/Hitbox"]

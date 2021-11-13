@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Pantallas/botonTex.png" type="Texture" id=2]
+[ext_resource path="res://Pantallas/Menu.png" type="Texture" id=3]
+[ext_resource path="res://Pantallas/MenuPrincipal.gd" type="Script" id=4]
+[ext_resource path="res://Pantallas/tile_0122.png" type="Texture" id=5]
+[ext_resource path="res://Pantallas/tile_0086.png" type="Texture" id=6]
+[ext_resource path="res://Pantallas/tile_0120.png" type="Texture" id=7]
+[ext_resource path="res://Pantallas/tile_0121.png" type="Texture" id=8]
+[ext_resource path="res://Pantallas/tile_0236.png" type="Texture" id=9]
+[ext_resource path="res://Pantallas/tile_0235.png" type="Texture" id=10]
+[ext_resource path="res://Pantallas/tile_0237.png" type="Texture" id=11]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="MenuPrincipal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fondo" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 72.0
+margin_right = 80.0
+margin_bottom = 128.0
+
+[node name="btnJugar" type="TextureButton" parent="VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+group = SubResource( 1 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/btnJugar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Jugar"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnCargar" type="TextureButton" parent="VBoxContainer"]
+margin_top = 20.0
+margin_right = 64.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 16, 16 )
+group = SubResource( 1 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/btnCargar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Cargar"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnSalir" type="TextureButton" parent="VBoxContainer"]
+margin_top = 40.0
+margin_right = 64.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 16, 16 )
+group = SubResource( 1 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/btnSalir"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Salir"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 184.0
+margin_top = 88.0
+margin_right = 239.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 1 )
+text = "Movimiento"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tile0120" type="Sprite" parent="Label"]
+position = Vector2( -48, 16 )
+texture = ExtResource( 7 )
+
+[node name="Tile0121" type="Sprite" parent="Label"]
+position = Vector2( -32, 16 )
+texture = ExtResource( 8 )
+
+[node name="Tile0122" type="Sprite" parent="Label"]
+position = Vector2( -16, 16 )
+texture = ExtResource( 5 )
+
+[node name="Tile0086" type="Sprite" parent="Label"]
+position = Vector2( -32, 0 )
+texture = ExtResource( 6 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 184.0
+margin_top = 120.0
+margin_right = 239.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 1 )
+text = "Atacar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tile0235" type="Sprite" parent="Label2"]
+position = Vector2( -48, 8 )
+texture = ExtResource( 10 )
+
+[node name="Tile0236" type="Sprite" parent="Label2"]
+position = Vector2( -32, 8 )
+texture = ExtResource( 9 )
+
+[node name="Tile0237" type="Sprite" parent="Label2"]
+position = Vector2( -16, 8 )
+texture = ExtResource( 11 )
+
+[connection signal="button_up" from="VBoxContainer/btnJugar" to="." method="_on_btnJugar_button_up"]
+[connection signal="button_up" from="VBoxContainer/btnSalir" to="." method="_on_btnSalir_button_up"]
