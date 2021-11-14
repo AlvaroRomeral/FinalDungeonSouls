@@ -38,26 +38,29 @@ margin_right = 80.0
 margin_bottom = 128.0
 
 [node name="btnJugar" parent="VBoxContainer" instance=ExtResource( 12 )]
+margin_right = 64.0
 group = SubResource( 2 )
 texto = "Play"
 
 [node name="btnCargar" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 20.0
+margin_right = 64.0
 margin_bottom = 36.0
 group = SubResource( 2 )
 texto = "Load"
 
 [node name="btnSalir" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 40.0
+margin_right = 64.0
 margin_bottom = 56.0
 group = SubResource( 2 )
 texto = "Exits"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 184.0
-margin_top = 88.0
-margin_right = 239.0
-margin_bottom = 100.0
+margin_left = 161.0
+margin_top = 72.0
+margin_right = 216.0
+margin_bottom = 84.0
 custom_fonts/font = ExtResource( 1 )
 text = "Movimiento"
 __meta__ = {
@@ -65,42 +68,44 @@ __meta__ = {
 }
 
 [node name="Tile0120" type="Sprite" parent="Label"]
-position = Vector2( -48, 16 )
+position = Vector2( 11, 37 )
 texture = ExtResource( 7 )
 
 [node name="Tile0121" type="Sprite" parent="Label"]
-position = Vector2( -32, 16 )
+position = Vector2( 27, 37 )
 texture = ExtResource( 8 )
 
 [node name="Tile0122" type="Sprite" parent="Label"]
-position = Vector2( -16, 16 )
+position = Vector2( 43, 37 )
 texture = ExtResource( 5 )
 
 [node name="Tile0086" type="Sprite" parent="Label"]
-position = Vector2( -32, 0 )
+position = Vector2( 27, 21 )
 texture = ExtResource( 6 )
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 184.0
-margin_top = 120.0
-margin_right = 239.0
-margin_bottom = 132.0
+margin_left = 160.0
+margin_top = 119.0
+margin_right = 215.0
+margin_bottom = 131.0
 custom_fonts/font = ExtResource( 1 )
 text = "Atacar"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tile0235" type="Sprite" parent="Label2"]
-position = Vector2( -48, 8 )
+position = Vector2( 12, 21 )
 texture = ExtResource( 10 )
 
 [node name="Tile0236" type="Sprite" parent="Label2"]
-position = Vector2( -32, 8 )
+position = Vector2( 28, 21 )
 texture = ExtResource( 9 )
 
 [node name="Tile0237" type="Sprite" parent="Label2"]
-position = Vector2( -16, 8 )
+position = Vector2( 44, 21 )
 texture = ExtResource( 11 )
 
 [connection signal="botonPresionado" from="VBoxContainer/btnJugar" to="." method="_on_btnJugar_botonPresionado"]

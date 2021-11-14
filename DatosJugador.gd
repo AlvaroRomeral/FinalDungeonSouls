@@ -15,6 +15,7 @@ var ataque = 1 setget setAtaque
 
 func setMonedas(cantidad):
 	monedas += cantidad
+	emit_signal("datosActualizados")
 
 func setVida(cantidad):
 	vida += cantidad

@@ -5,7 +5,7 @@ onready var distAtaque
 
 const VELOCIDAD = 45
 
-export var vida = 10
+export var vida = 5
 export var drop = preload("res://Items/Moneda.tscn")
 export var cantidadDrop = 1
 
@@ -64,6 +64,7 @@ func revisarVida():
 		var moneda = drop.instance()
 		get_parent().call_deferred("add_child",moneda)
 		moneda.global_position = global_position
+		$Sound_Muerte.play()
 		queue_free()
 
 
