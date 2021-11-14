@@ -1,7 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Pantallas/botonTex.png" type="Texture" id=2]
 [ext_resource path="res://Pantallas/Menu.png" type="Texture" id=3]
 [ext_resource path="res://Pantallas/MenuPrincipal.gd" type="Script" id=4]
 [ext_resource path="res://Pantallas/tile_0122.png" type="Texture" id=5]
@@ -11,8 +10,9 @@
 [ext_resource path="res://Pantallas/tile_0236.png" type="Texture" id=9]
 [ext_resource path="res://Pantallas/tile_0235.png" type="Texture" id=10]
 [ext_resource path="res://Pantallas/tile_0237.png" type="Texture" id=11]
+[ext_resource path="res://Pantallas/Boton.tscn" type="PackedScene" id=12]
 
-[sub_resource type="ButtonGroup" id=1]
+[sub_resource type="ButtonGroup" id=2]
 
 [node name="MenuPrincipal" type="Control"]
 anchor_right = 1.0
@@ -37,64 +37,21 @@ margin_top = 72.0
 margin_right = 80.0
 margin_bottom = 128.0
 
-[node name="btnJugar" type="TextureButton" parent="VBoxContainer"]
-margin_right = 64.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 16, 16 )
-group = SubResource( 1 )
-texture_normal = ExtResource( 2 )
-expand = true
+[node name="btnJugar" parent="VBoxContainer" instance=ExtResource( 12 )]
+group = SubResource( 2 )
+texto = "Play"
 
-[node name="Label" type="Label" parent="VBoxContainer/btnJugar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 1 )
-text = "Jugar"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btnCargar" type="TextureButton" parent="VBoxContainer"]
+[node name="btnCargar" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 20.0
-margin_right = 64.0
 margin_bottom = 36.0
-rect_min_size = Vector2( 16, 16 )
-group = SubResource( 1 )
-texture_normal = ExtResource( 2 )
-expand = true
+group = SubResource( 2 )
+texto = "Load"
 
-[node name="Label" type="Label" parent="VBoxContainer/btnCargar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 1 )
-text = "Cargar"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btnSalir" type="TextureButton" parent="VBoxContainer"]
+[node name="btnSalir" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 40.0
-margin_right = 64.0
 margin_bottom = 56.0
-rect_min_size = Vector2( 16, 16 )
-group = SubResource( 1 )
-texture_normal = ExtResource( 2 )
-expand = true
-
-[node name="Label" type="Label" parent="VBoxContainer/btnSalir"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 1 )
-text = "Salir"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+group = SubResource( 2 )
+texto = "Exits"
 
 [node name="Label" type="Label" parent="."]
 margin_left = 184.0
@@ -146,5 +103,6 @@ texture = ExtResource( 9 )
 position = Vector2( -16, 8 )
 texture = ExtResource( 11 )
 
-[connection signal="button_up" from="VBoxContainer/btnJugar" to="." method="_on_btnJugar_button_up"]
-[connection signal="button_up" from="VBoxContainer/btnSalir" to="." method="_on_btnSalir_button_up"]
+[connection signal="botonPresionado" from="VBoxContainer/btnJugar" to="." method="_on_btnJugar_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/btnCargar" to="." method="_on_btnCargar_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/btnSalir" to="." method="_on_btnSalir_botonPresionado"]

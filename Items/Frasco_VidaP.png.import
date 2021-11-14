@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weapon_regular_sword.png-1749f07d4ed5f70c31033ae59091068b.stex"
+path="res://.import/Frasco_VidaP.png-df470ed834b781e2af741d6c41b89e76.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/weapon_regular_sword.png"
-dest_files=[ "res://.import/weapon_regular_sword.png-1749f07d4ed5f70c31033ae59091068b.stex" ]
+source_file="res://Items/Frasco_VidaP.png"
+dest_files=[ "res://.import/Frasco_VidaP.png-df470ed834b781e2af741d6c41b89e76.stex" ]
 
 [params]
 

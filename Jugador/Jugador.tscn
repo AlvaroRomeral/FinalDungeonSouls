@@ -3,7 +3,7 @@
 [ext_resource path="res://Jugador/Jugador.gd" type="Script" id=1]
 [ext_resource path="res://Jugador/priest1_v1_1-sheet.png" type="Texture" id=2]
 [ext_resource path="res://Jugador/InterfazJugador.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Items/weapon_regular_sword.png" type="Texture" id=5]
+[ext_resource path="res://Items/EspadaRegular.png" type="Texture" id=5]
 [ext_resource path="res://Jugador/Hurtbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Jugador/Hitbox.tscn" type="PackedScene" id=7]
 
@@ -103,9 +103,7 @@ length = 0.001
 radius = 3.2897
 height = 6.44229
 
-[node name="Jugador" type="KinematicBody2D" groups=[
-"jugador",
-]]
+[node name="Jugador" type="KinematicBody2D" groups=["jugador"]]
 collision_mask = 9
 script = ExtResource( 1 )
 

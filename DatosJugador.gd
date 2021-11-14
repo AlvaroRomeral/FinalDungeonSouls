@@ -33,11 +33,11 @@ func setMana(cantidad):
 	emit_signal("datosActualizados")
 
 func setEstamina(cantidad):
-	mana += cantidad
-	if mana > manaMax:
-		mana = manaMax
-	elif mana < 0:
-		mana = 0
+	estamina += cantidad
+	if estamina > estaminaMax:
+		estamina = estaminaMax
+	elif estamina < 0:
+		estamina = 0
 	emit_signal("datosActualizados")
 
 
