@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
+onready var animSprite = $Sprite/AnimationSprite
+onready var animAtaque = $AnimationEquipo
 onready var distVision = $Position2D/DistVision
-onready var distAtaque
+onready var distAtaque = $Position2D/DistAtaque
 
-const VELOCIDAD = 45
+const VELOCIDAD = 35
 
 export var vida = 5
 export var drop = preload("res://Items/Moneda.tscn")
@@ -11,53 +13,70 @@ export var cantidadDrop = 1
 
 var path = []
 var movimiento = Vector2.ZERO
-var empuje = Vector2.ZERO
 var jugador : KinematicBody2D
-var vistoJugador = false
-var levelNavigation: Navigation2D = null
+var distancia = 1
+var nav: Navigation2D = null
+
 var invencible = false
+var atacando = false
 
 
 func _ready():
-	$AnimationPlayer.play("Idle")
-	jugador = get_tree().get_nodes_in_group("jugador")[0]
+	if get_tree().has_group("jugador"):
+		jugador = get_tree().get_nodes_in_group("jugador")[0]
 	if get_tree().has_group("navegacion"):
-		levelNavigation = get_tree().get_nodes_in_group("navegacion")[0]
+		nav = get_tree().get_nodes_in_group("navegacion")[0]
+
 
 func _physics_process(delta):
-	if jugador:
-		$Position2D.look_at(jugador.global_position)
-		check_player_in_detection()
-		if vistoJugador:
-			generate_path()
-	navigate()
-		
-	mover()
+	$Position2D.look_at(jugador.global_position)
+#	navigate()
+#	verJugador()
+	if alcanzaJugador():
+		atacando=true
+		animAtaque.play("Ataque")
+		$Position2D/TimerAtaque.start()
+	
+	if verJugador():
+		var dir = global_position.direction_to(jugador.global_position)
+		animSprite.play("Andar")
+		movimiento = dir * VELOCIDAD
+		movimiento = move_and_slide(movimiento)
+	
+	if movimiento == Vector2.ZERO:
+		animSprite.play("Idle")
+		pass
 
-func check_player_in_detection() -> bool:
+
+func verJugador() -> bool:
 	var collider = distVision.get_collider()
 	if collider and collider.is_in_group("jugador"):
-		vistoJugador = true
+		generarPath(jugador)
 		return true
-	else:
-		vistoJugador = false
 	return false
+
+
+func alcanzaJugador() -> bool:
+	var collider = distAtaque.get_collider()
+	if collider and collider.is_in_group("jugador"):
+		generarPath(jugador)
+		return true
+	return false
+
 
 func navigate():	# Define the next position to go to
 	if path.size() > 0:
-		movimiento = global_position.direction_to(path[1]) * VELOCIDAD
-		# If reached the destination, remove this point from path array
-		if global_position == path[0]:
-			path.pop_front()
-	else:
-		movimiento = Vector2.ZERO
+		if global_position.distance_to(path[0]) < distancia:
+			path.remove(0)
+		else:
+			var dir = global_position.direction_to(path[0])
+			movimiento = dir * VELOCIDAD
+			movimiento = move_and_slide(movimiento)
 
-func generate_path():	# It's obvious
-	if levelNavigation != null and jugador != null:
-		path = levelNavigation.get_simple_path(global_position, jugador.global_position, false)
 
-func mover():
-	movimiento = move_and_slide(movimiento)
+func generarPath(objetivo):
+	path = nav.get_simple_path(global_position, jugador.global_position, false)
+
 
 func revisarVida():
 	if vida <= 0:
@@ -69,6 +88,10 @@ func revisarVida():
 
 
 func _on_Hurtbox_damageRecivido(cantidad):
-	$AnimationPlayer.play("Damaged")
+	animSprite.play("Damaged")
 	vida -= 1
 	revisarVida()
+
+
+func _on_TimerAtaque_timeout():
+	atacando=false

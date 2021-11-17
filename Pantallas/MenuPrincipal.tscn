@@ -39,20 +39,21 @@ margin_bottom = 128.0
 
 [node name="btnJugar" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_right = 64.0
+margin_bottom = 18.0
 group = SubResource( 2 )
 texto = "Play"
 
 [node name="btnCargar" parent="VBoxContainer" instance=ExtResource( 12 )]
-margin_top = 20.0
+margin_top = 22.0
 margin_right = 64.0
-margin_bottom = 36.0
+margin_bottom = 40.0
 group = SubResource( 2 )
 texto = "Load"
 
 [node name="btnSalir" parent="VBoxContainer" instance=ExtResource( 12 )]
-margin_top = 40.0
+margin_top = 44.0
 margin_right = 64.0
-margin_bottom = 56.0
+margin_bottom = 62.0
 group = SubResource( 2 )
 texto = "Exits"
 

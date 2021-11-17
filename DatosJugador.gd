@@ -3,7 +3,7 @@ extends Node
 signal datosActualizados
 
 var monedas = 0 setget setMonedas
-var vida = 10 setget setVida
+var vida = 3 setget setVida
 var vidaMax = 10 setget setVidaMax
 var mana = 10 setget setMana
 var manaMax = 10

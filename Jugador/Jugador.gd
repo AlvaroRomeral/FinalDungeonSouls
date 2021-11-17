@@ -39,11 +39,19 @@ func _physics_process(delta):
 #	movimiento = movimiento.move_toward(direccion * VELOCIDAD, 50 * delta)
 	movimiento = move_and_slide(direccion * VELOCIDAD)
 
+
 func _input(event):
 	if event.is_action_pressed("ATACAR"):
 		animEquipo.play("Ataque")
 
 
+func checkVida():
+	if DatosJugador.vida <= 0:
+		var hasMuerto = load("res://Pantallas/HasMuerto.tscn")
+		$InterfazJugador.call_deferred("add_child",hasMuerto)
+		hide()
+
 
 func _on_Hurtbox_damageRecivido(cantidad):
 	DatosJugador.setVida(-cantidad)
+	checkVida()
