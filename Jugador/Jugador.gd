@@ -47,8 +47,9 @@ func _input(event):
 
 func checkVida():
 	if DatosJugador.vida <= 0:
-		$HasMuerto.show()
+		$InterfazJugador/HasMuerto.show()
 		$Sprite.hide()
+		get_tree().paused = true
 
 
 func _on_Hurtbox_damageRecivido(cantidad):

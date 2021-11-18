@@ -37,7 +37,7 @@ func _physics_process(delta):
 		animAtaque.play("Ataque")
 		$Position2D/TimerAtaque.start()
 	
-	if verJugador():
+	if verJugador() and not animAtaque.is_playing():
 		var dir = global_position.direction_to(jugador.global_position)
 		animSprite.play("Andar")
 		movimiento = dir * VELOCIDAD

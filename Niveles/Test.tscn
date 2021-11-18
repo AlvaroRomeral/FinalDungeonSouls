@@ -17,9 +17,6 @@ tile_data = PoolIntArray( -1769472, 4, 0, -1769471, 4, 1, -1769470, 4, 1, -17694
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="KinematicBody2D" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 224, 24 )
-
 [node name="Moneda" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 176, 40 )
 tipo = "vida"
@@ -56,3 +53,6 @@ position = Vector2( 192, 200 )
 
 [node name="Enemigo2" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 256, 200 )
+
+[node name="KinematicBody2D" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 224, 24 )

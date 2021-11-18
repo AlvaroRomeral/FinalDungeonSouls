@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://SpritesAnimados.tres" type="SpriteFrames" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Items/EspadaRegular.png" type="Texture" id=6]
 [ext_resource path="res://Items/Frasco_VidaP.png" type="Texture" id=7]
 [ext_resource path="res://Pantallas/PanelSlot_Normal.tres" type="StyleBox" id=8]
+[ext_resource path="res://Pantallas/HasMuerto.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.666667, 0.0196078, 0.0196078, 1 )
@@ -36,6 +37,7 @@ border_width_right = 1
 border_blend = true
 
 [node name="InterfazJugador" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Panel_Dinero" type="Panel" parent="."]
@@ -221,3 +223,6 @@ anchor_bottom = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HasMuerto" parent="." instance=ExtResource( 9 )]
+visible = false
