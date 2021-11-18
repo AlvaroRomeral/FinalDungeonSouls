@@ -15,7 +15,6 @@ position = Vector2( 0, -4 )
 shape = SubResource( 4 )
 
 [node name="NoDamageTimer" type="Timer" parent="."]
-wait_time = 0.4
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_AreaDamage_area_entered"]

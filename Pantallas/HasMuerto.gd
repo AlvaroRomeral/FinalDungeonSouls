@@ -1,5 +1,6 @@
 extends Control
 
 
-func _ready():
+
+func _on_Control_draw():
 	$AnimationPlayer.play("Aparece")

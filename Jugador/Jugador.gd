@@ -47,9 +47,8 @@ func _input(event):
 
 func checkVida():
 	if DatosJugador.vida <= 0:
-		var hasMuerto = load("res://Pantallas/HasMuerto.tscn")
-		$InterfazJugador.call_deferred("add_child",hasMuerto)
-		hide()
+		$HasMuerto.show()
+		$Sprite.hide()
 
 
 func _on_Hurtbox_damageRecivido(cantidad):
