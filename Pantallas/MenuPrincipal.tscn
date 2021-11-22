@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Pantallas/Menu.png" type="Texture" id=3]
+[ext_resource path="res://Pantallas/MenuRemaster.png" type="Texture" id=2]
 [ext_resource path="res://Pantallas/MenuPrincipal.gd" type="Script" id=4]
 [ext_resource path="res://Pantallas/tile_0122.png" type="Texture" id=5]
 [ext_resource path="res://Pantallas/tile_0086.png" type="Texture" id=6]
@@ -13,6 +13,51 @@
 [ext_resource path="res://Pantallas/Boton.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ButtonGroup" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Obscurecer"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cargarNivel"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="MenuPrincipal" type="Control"]
 pause_mode = 2
@@ -26,43 +71,45 @@ __meta__ = {
 [node name="Fondo" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 16.0
-margin_top = 72.0
-margin_right = 80.0
-margin_bottom = 128.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 88.0
+margin_bottom = 136.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnJugar" parent="VBoxContainer" instance=ExtResource( 12 )]
-margin_right = 64.0
-margin_bottom = 18.0
+margin_right = 80.0
 group = SubResource( 2 )
 texto = "Play"
 
 [node name="btnCargar" parent="VBoxContainer" instance=ExtResource( 12 )]
-margin_top = 22.0
-margin_right = 64.0
-margin_bottom = 40.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 36.0
 group = SubResource( 2 )
 texto = "Load"
 
 [node name="btnSalir" parent="VBoxContainer" instance=ExtResource( 12 )]
-margin_top = 44.0
-margin_right = 64.0
-margin_bottom = 62.0
+margin_top = 40.0
+margin_right = 80.0
+margin_bottom = 56.0
 group = SubResource( 2 )
-texto = "Exits"
+texto = "Exit"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 161.0
-margin_top = 72.0
-margin_right = 216.0
-margin_bottom = 84.0
+margin_left = 186.0
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 17.0
 custom_fonts/font = ExtResource( 1 )
 text = "Movimiento"
 __meta__ = {
@@ -70,26 +117,26 @@ __meta__ = {
 }
 
 [node name="Tile0120" type="Sprite" parent="Label"]
-position = Vector2( 11, 37 )
+position = Vector2( 19, 37 )
 texture = ExtResource( 7 )
 
 [node name="Tile0121" type="Sprite" parent="Label"]
-position = Vector2( 27, 37 )
+position = Vector2( 35, 37 )
 texture = ExtResource( 8 )
 
 [node name="Tile0122" type="Sprite" parent="Label"]
-position = Vector2( 43, 37 )
+position = Vector2( 51, 37 )
 texture = ExtResource( 5 )
 
 [node name="Tile0086" type="Sprite" parent="Label"]
-position = Vector2( 27, 21 )
+position = Vector2( 35, 21 )
 texture = ExtResource( 6 )
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 160.0
-margin_top = 119.0
-margin_right = 215.0
-margin_bottom = 131.0
+margin_left = 202.0
+margin_top = 50.0
+margin_right = 243.0
+margin_bottom = 64.0
 custom_fonts/font = ExtResource( 1 )
 text = "Atacar"
 align = 1
@@ -99,16 +146,20 @@ __meta__ = {
 }
 
 [node name="Tile0235" type="Sprite" parent="Label2"]
-position = Vector2( 12, 21 )
+position = Vector2( 5, 21 )
 texture = ExtResource( 10 )
 
 [node name="Tile0236" type="Sprite" parent="Label2"]
-position = Vector2( 28, 21 )
+position = Vector2( 21, 21 )
 texture = ExtResource( 9 )
 
 [node name="Tile0237" type="Sprite" parent="Label2"]
-position = Vector2( 44, 21 )
+position = Vector2( 37, 21 )
 texture = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Obscurecer = SubResource( 3 )
+anims/RESET = SubResource( 4 )
 
 [connection signal="botonPresionado" from="VBoxContainer/btnJugar" to="." method="_on_btnJugar_botonPresionado"]
 [connection signal="botonPresionado" from="VBoxContainer/btnCargar" to="." method="_on_btnCargar_botonPresionado"]

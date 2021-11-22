@@ -7,9 +7,9 @@ func _ready():
 
 
 func itemRecogido():
-	DatosJugador.setMonedas(cantidad)
+	DatosJugador.setVida(cantidad)
 	queue_free()
 
 
-func _on_Moneda_body_entered(body):
+func _on_FrascoVida_body_entered(body):
 	itemRecogido()

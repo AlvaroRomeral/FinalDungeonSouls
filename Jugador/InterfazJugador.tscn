@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://SpritesAnimados.tres" type="SpriteFrames" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Items/Frasco_VidaP.png" type="Texture" id=7]
 [ext_resource path="res://Pantallas/PanelSlot_Normal.tres" type="StyleBox" id=8]
 [ext_resource path="res://Pantallas/HasMuerto.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Pantallas/PanelItem.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.666667, 0.0196078, 0.0196078, 1 )
@@ -40,27 +41,27 @@ border_blend = true
 pause_mode = 2
 script = ExtResource( 3 )
 
-[node name="Panel_Dinero" type="Panel" parent="."]
-margin_left = 208.0
-margin_top = 137.0
-margin_right = 243.0
-margin_bottom = 143.0
-custom_styles/panel = ExtResource( 8 )
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = 3.0
+margin_right = 256.0
+margin_bottom = 147.0
+texture = ExtResource( 10 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="ImagenMoneda" type="AnimatedSprite" parent="Panel_Dinero"]
-position = Vector2( 4, 3 )
-scale = Vector2( 0.5, 0.5 )
+[node name="ImagenMoneda" type="AnimatedSprite" parent="."]
+position = Vector2( 222.5, 138.5 )
+scale = Vector2( 0.4375, 0.4375 )
 frames = ExtResource( 2 )
 animation = "Moneda"
 
-[node name="Monedas" type="Label" parent="Panel_Dinero"]
-margin_left = 8.0
-margin_top = -2.0
-margin_right = 34.0
-margin_bottom = 6.0
+[node name="Monedas" type="Label" parent="."]
+margin_left = 225.0
+margin_top = 134.0
+margin_right = 251.0
+margin_bottom = 142.0
 custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 2
