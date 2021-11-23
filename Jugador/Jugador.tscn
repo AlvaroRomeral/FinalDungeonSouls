@@ -192,9 +192,8 @@ texture = ExtResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 0, -3 )
-scale = Vector2( 0.286621, 0.286621 )
 texture = ExtResource( 4 )
-color = Color( 0.509804, 0.509804, 0.509804, 1 )
+texture_scale = 0.2
 shadow_enabled = true
 
 [connection signal="damageRecivido" from="Hurtbox" to="." method="_on_Hurtbox_damageRecivido"]

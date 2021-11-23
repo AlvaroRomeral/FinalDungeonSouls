@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var monedasUI = $Monedas
-onready var nivelUI = $Panel_Nivel/Nivel
+onready var nivelUI = $Nivel
 onready var vidaUI = $BarraVida
 onready var manaUI = $BarraMana
 onready var estaminaUI = $BarraEstamina

@@ -59,3 +59,6 @@ position = Vector2( 256, 200 )
 
 [node name="KinematicBody2D" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 224, 24 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.380392, 0.380392, 0.380392, 1 )
