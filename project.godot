@@ -143,6 +143,7 @@ MOVER_DER={
 2d_physics/layer_5="Hitbox"
 2d_physics/layer_6="PlayerHurtBox"
 2d_physics/layer_7="EnemyHurtBox"
+2d_physics/layer_8="Interactuable"
 
 [physics]
 

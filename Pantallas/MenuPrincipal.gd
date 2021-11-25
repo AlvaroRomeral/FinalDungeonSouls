@@ -4,7 +4,7 @@ func _ready():
 	pass
 
 func cargarNivel():
-	get_tree().change_scene("res://Niveles/Test.tscn")
+	get_tree().change_scene(Global.Nivel)
 
 
 func _on_btnJugar_botonPresionado():
@@ -17,3 +17,8 @@ func _on_btnCargar_botonPresionado():
 
 func _on_btnSalir_botonPresionado():
 	get_tree().quit()
+
+
+func _on_btnJugarTest_botonPresionado():
+	Global.Nivel = "res://Niveles/Test.tscn"
+	$AnimationPlayer.play("Obscurecer")

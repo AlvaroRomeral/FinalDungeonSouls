@@ -21,7 +21,8 @@ var nav: Navigation2D = null
 enum{
 	IDLE,
 	PERSIGUIENDO,
-	ATACANDO
+	ATACANDO,
+	MUERTO
 }
 var estado
 
@@ -37,23 +38,24 @@ func _ready():
 
 
 func _physics_process(delta):
-	$Position2D.look_at(jugador.global_position)
-	if enShock:
-		animSprite.play("Damaged")
-	else:
-		estado = calcularEstado()
-		match estado:
-			IDLE:
-				animSprite.play("Idle")
-			PERSIGUIENDO:
-				var dir = global_position.direction_to(jugador.global_position)
-				animSprite.play("Andar")
-				movimiento = dir * VELOCIDAD * delta
-				movimiento = move_and_slide(movimiento)
-			ATACANDO:
-				atacando=true
-				animAtaque.play("Ataque")
-				$Position2D/TimerAtaque.start()
+	if estado!=MUERTO:
+		$Position2D.look_at(jugador.global_position)
+		if enShock:
+			animSprite.play("Damaged")
+		else:
+			estado = calcularEstado()
+			match estado:
+				IDLE:
+					animSprite.play("Idle")
+				PERSIGUIENDO:
+					var dir = global_position.direction_to(jugador.global_position)
+					animSprite.play("Andar")
+					movimiento = dir * VELOCIDAD * delta
+					movimiento = move_and_slide(movimiento)
+				ATACANDO:
+					atacando=true
+					animAtaque.play("Ataque")
+					$Position2D/TimerAtaque.start()
 
 
 func calcularEstado():
@@ -100,14 +102,15 @@ func revisarVida():
 		var moneda = drop.instance()
 		get_parent().call_deferred("add_child",moneda)
 		moneda.global_position = global_position
-		$Sound_Muerte.play()
-		queue_free()
+		animSprite.play("Muerte")
+		estado=MUERTO
 
 
 func _on_Hurtbox_damageRecivido(cantidad):
-	enShock = true
-	vida -= 1
-	revisarVida()
+	if estado!=MUERTO:
+		enShock = true
+		vida -= 1
+		revisarVida()
 
 
 func _on_TimerAtaque_timeout():

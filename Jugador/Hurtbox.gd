@@ -6,9 +6,11 @@ signal damageRecivido(cantidad)
 
 var invencible = false
 
+
 func _on_AreaDamage_area_entered(area):
 	if !invencible:
 		emit_signal("damageRecivido",area.damage)
+		$AudioStreamPlayer2D.play()
 		invencible = true
 		tiempoInvencible.start()
 

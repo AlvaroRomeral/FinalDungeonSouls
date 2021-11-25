@@ -4,7 +4,7 @@ onready var animPersonaje = $Sprite/AnimacionPersonaje
 onready var animEquipo = $AnimacionEquipo
 
 const VELOCIDAD = 50
-
+var interactuable: Area2D
 var movimiento = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
@@ -42,7 +42,10 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ATACAR"):
-		animEquipo.play("Ataque")
+		if interactuable:
+			interactuable.interactuado()
+		else:
+			animEquipo.play("Ataque")
 
 
 func checkVida():
@@ -55,3 +58,12 @@ func checkVida():
 func _on_Hurtbox_damageRecivido(cantidad):
 	DatosJugador.setVida(-cantidad)
 	checkVida()
+
+
+func _on_AreaInteractuar_area_entered(area):
+	interactuable = area
+
+
+func _on_AreaInteractuar_area_exited(area):
+	if interactuable == area:
+		interactuable = null
