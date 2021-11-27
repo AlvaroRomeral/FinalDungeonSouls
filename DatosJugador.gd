@@ -11,6 +11,7 @@ var estamina = 10 setget setEstamina
 var estaminaMax = 10
 var ataque = 1 setget setAtaque
 
+var inventario = {}
 # VALORES ======================================================================
 
 func setMonedas(cantidad):

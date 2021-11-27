@@ -20,5 +20,4 @@ func _on_btnSalir_botonPresionado():
 
 
 func _on_btnJugarTest_botonPresionado():
-	Global.Nivel = "res://Niveles/Test.tscn"
-	$AnimationPlayer.play("Obscurecer")
+	get_tree().change_scene(Global.Nivel)

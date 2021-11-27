@@ -6,6 +6,8 @@ var encendido = false
 func _ready():
 	if encendido:
 		encender()
+	else:
+		$AnimatedSprite.frame = 0
 
 
 func interactuar():
@@ -13,8 +15,6 @@ func interactuar():
 
 
 func encender():
-	print(name)
-	$Encendio.show()
 	$Light2D.show()
 	$AnimationPlayer.play("Encendido")
 

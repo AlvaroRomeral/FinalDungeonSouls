@@ -1,31 +1,40 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sonido/CURSOL_OK.wav.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Pantallas/Boton.gd" type="Script" id=3]
 [ext_resource path="res://Sonido/CURSOL_MOVE.wav.mp3" type="AudioStream" id=4]
-[ext_resource path="res://Pantallas/PanelBoton_Normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://Pantallas/Interfaz.png" type="Texture" id=6]
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
-border_width_left = 5
-border_width_right = 5
-border_color = Color( 0.776471, 0.623529, 0.0117647, 1 )
-border_blend = true
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 6 )
+region_rect = Rect2( 160, 0, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 112, 16, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 6 )
+region_rect = Rect2( 160, 16, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 6 )
+region_rect = Rect2( 112, 0, 48, 16 )
 
 [sub_resource type="ButtonGroup" id=1]
 
 [node name="Boton" type="Button"]
-margin_right = 62.0
+margin_right = 46.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 16, 16 )
 custom_colors/font_color_hover = Color( 0.698039, 0.658824, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = ExtResource( 5 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 5 )
-custom_styles/normal = ExtResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 group = SubResource( 1 )
 text = "Texto"
 script = ExtResource( 3 )

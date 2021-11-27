@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SpritesAnimados.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Pantallas/Boton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Frasco_VidaP.png" type="Texture" id=3]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="PantallaCarga" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 16, 136 )
+frames = ExtResource( 1 )
+animation = "Hogera"
+playing = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_right = 50.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+margin_top = 65.0
+margin_right = 100.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 100, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 20.0
+texture = ExtResource( 3 )
+
+[node name="BotonCargar" parent="VBoxContainer/Panel/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_right = 53.0
+margin_bottom = 20.0
+group = SubResource( 1 )
+texto = "Load"
+
+[node name="BotonBorrar" parent="VBoxContainer/Panel/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 57.0
+margin_right = 90.0
+margin_bottom = 20.0
+group = SubResource( 1 )
+texto = "Delete"
