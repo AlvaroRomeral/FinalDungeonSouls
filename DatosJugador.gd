@@ -1,6 +1,7 @@
 extends Node
 
 signal datosActualizados
+signal inventarioActualizado
 
 var monedas = 0 setget setMonedas
 var vida = 3 setget setVida
@@ -11,7 +12,8 @@ var estamina = 10 setget setEstamina
 var estaminaMax = 10
 var ataque = 1 setget setAtaque
 
-var inventario = {}
+var inventario = []
+
 # VALORES ======================================================================
 
 func setMonedas(cantidad):
@@ -53,3 +55,22 @@ func setVidaMax(cantidad):
 
 func setAtaque(cantidad):
 	ataque += cantidad
+
+# INVENTARIO ===================================================================
+
+func anadirItem(itemData):
+	for i in inventario:
+		if i["id"] == itemData["id"]:
+			i["cantidad"] = i["cantidad"] + itemData["cantidad"]
+			emit_signal("inventarioActualizado")
+			return
+	inventario.append(itemData)
+	emit_signal("inventarioActualizado")
+
+func quitarItem():
+	pass
+
+func chekearItem(item) -> bool:
+	if item in inventario:
+		return true
+	return false

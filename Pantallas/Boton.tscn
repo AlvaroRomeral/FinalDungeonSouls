@@ -4,7 +4,7 @@
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Pantallas/Boton.gd" type="Script" id=3]
 [ext_resource path="res://Sonido/CURSOL_MOVE.wav.mp3" type="AudioStream" id=4]
-[ext_resource path="res://Pantallas/Interfaz.png" type="Texture" id=6]
+[ext_resource path="res://Images/Interfaz.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 6 )

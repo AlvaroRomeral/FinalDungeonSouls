@@ -2,7 +2,7 @@
 
 [ext_resource path="res://SpritesAnimados.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Pantallas/Boton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Items/Frasco_VidaP.png" type="Texture" id=3]
+[ext_resource path="res://Images/Iconos/Frasco_VidaP.png" type="Texture" id=3]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -25,6 +25,7 @@ __meta__ = {
 position = Vector2( 16, 136 )
 frames = ExtResource( 1 )
 animation = "Hogera"
+frame = 3
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

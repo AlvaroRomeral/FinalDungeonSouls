@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Enemigos/skeleton_v2_1-sheet.png" type="Texture" id=1]
+[ext_resource path="res://Images/Sprites/skeleton_v2_1-sheet.png" type="Texture" id=1]
 [ext_resource path="res://Enemigos/Enemigo.gd" type="Script" id=2]
 [ext_resource path="res://Jugador/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Jugador/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Jugador/kill2.wav.mp3" type="AudioStream" id=5]
-[ext_resource path="res://Items/EspadaRegular.png" type="Texture" id=6]
+[ext_resource path="res://Images/Sprites/EspadaRegular.png" type="Texture" id=6]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;

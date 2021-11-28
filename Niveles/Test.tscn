@@ -58,6 +58,22 @@ position = Vector2( 304, 72 )
 [node name="FrascoVida3" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 328, 72 )
 
+[node name="FrascoVida4" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 352, 72 )
+itemData = {
+"cantidad": 1,
+"icono": "Frasco_VidaP.png",
+"id": 0
+}
+
+[node name="FrascoVida5" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 360, 88 )
+itemData = {
+"cantidad": 1,
+"icono": "Frasco_VidaP.png",
+"id": 0
+}
+
 [node name="Enemigo" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 192, 200 )
 
