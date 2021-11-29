@@ -11,6 +11,7 @@ region_rect = Rect2( 6, 35, 20, 25 )
 [node name="PanelSlot" type="Panel"]
 margin_right = 20.0
 margin_bottom = 25.0
+rect_min_size = Vector2( 20, 25 )
 custom_styles/panel = SubResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {

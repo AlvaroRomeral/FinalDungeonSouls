@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Pantallas/Inventario.gd" type="Script" id=2]
+
+[node name="Inventario" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -97.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="draw" from="." to="." method="_on_Inventario_draw"]

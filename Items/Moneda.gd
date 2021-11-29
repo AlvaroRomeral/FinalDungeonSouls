@@ -3,7 +3,7 @@ extends Area2D
 export var cantidad = 1
 
 func _ready():
-	pass
+	$AnimationPlayer.play("Idle")
 
 
 func itemRecogido():
