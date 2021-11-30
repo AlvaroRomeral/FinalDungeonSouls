@@ -64,7 +64,11 @@ func _input(event):
 			if DatosJugador.estamina >= 1:
 				DatosJugador.setEstamina(-1)
 				animEquipo.play("Ataque")
-
+	if event.is_action_released("LINTERNA"):
+		if $Light2D.visible:
+			$Light2D.hide()
+		else:
+			$Light2D.show()
 
 func checkVida():
 	if DatosJugador.vida <= 0:

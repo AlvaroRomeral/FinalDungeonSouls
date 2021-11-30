@@ -103,6 +103,8 @@ func revisarVida():
 		get_parent().call_deferred("add_child",moneda)
 		moneda.global_position = global_position
 		animSprite.play("Muerte")
+		$CollisionShape2D.disabled = true
+		$Hurtbox/CollisionShape2D.disabled = true
 		estado=MUERTO
 
 
