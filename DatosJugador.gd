@@ -58,13 +58,13 @@ func setAtaque(cantidad):
 
 # INVENTARIO ===================================================================
 
-func anadirItem(itemData):
+func anadirItem(item):
 	for i in inventario:
-		if i["id"] == itemData["id"]:
-			i["cantidad"] = i["cantidad"] + itemData["cantidad"]
+		if i["id"] == item["id"]:
+			i["cantidad"] = i["cantidad"] + item["cantidad"]
 			emit_signal("inventarioActualizado")
 			return
-	inventario.append(itemData)
+	inventario.append(item)
 	emit_signal("inventarioActualizado")
 
 func quitarItem():

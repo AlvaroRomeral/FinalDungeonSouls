@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Fonts/Interfaz.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Inventario.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 
 [node name="Inventario" type="Control"]
 anchor_right = 1.0
@@ -17,21 +27,66 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="Panel"]
-anchor_left = 1.0
+[node name="PanelInventario" type="Panel" parent="Panel"]
+margin_left = 144.0
+margin_top = 8.0
+margin_right = 230.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Panel/PanelInventario"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -97.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_right = -2.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
 columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PanelNombre" type="Panel" parent="Panel"]
+margin_left = 72.0
+margin_top = 8.0
+margin_right = 136.0
+margin_bottom = 24.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="TextoNombre" type="Label" parent="Panel/PanelNombre"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+align = 1
+valign = 1
+
+[node name="PanelDescripcion" type="Panel" parent="Panel"]
+margin_left = 72.0
+margin_top = 32.0
+margin_right = 136.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextoDescripcion" type="RichTextLabel" parent="Panel/PanelDescripcion"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 1 )
 
 [connection signal="draw" from="." to="." method="_on_Inventario_draw"]

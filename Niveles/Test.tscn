@@ -10,9 +10,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Navigation2D" type="Navigation2D" parent="." groups=[
-"navegacion",
-]]
+[node name="Navigation2D" type="Navigation2D" parent="." groups=["navegacion"]]
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 1 )
@@ -57,29 +55,26 @@ position = Vector2( 280, 72 )
 
 [node name="FrascoVida2" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 304, 72 )
+item = {
+"cantidad": 1,
+"id": "1002"
+}
 
 [node name="FrascoVida3" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 208, 80 )
-itemData = {
-"cantidad": 2,
-"icono": "Frasco_VidaP.png",
-"id": 0
-}
 
 [node name="FrascoVida4" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 352, 72 )
-itemData = {
-"cantidad": 1,
-"icono": "Frasco_ManaP.png",
-"id": 1
+item = {
+"cantidad": 4,
+"id": "1003"
 }
 
 [node name="FrascoVida5" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 360, 88 )
-itemData = {
+item = {
 "cantidad": 1,
-"icono": "Frasco_VidaG.png",
-"id": 2
+"id": "1004"
 }
 
 [node name="Enemigo" parent="YSort" instance=ExtResource( 4 )]
@@ -89,7 +84,7 @@ position = Vector2( 192, 200 )
 position = Vector2( 256, 200 )
 
 [node name="KinematicBody2D" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 224, 24 )
+position = Vector2( 224, -48 )
 
 [node name="Bonfire" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 224, 64 )

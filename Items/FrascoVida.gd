@@ -1,19 +1,16 @@
 extends Area2D
 
-export var cantidad = 1
-export var itemData = {
-	"id": 0000,
-	"icono": "Frasco_VidaP.png",
+export var item = {
+	"id": "1001",
 	"cantidad": 1
-}
+	}
 
 func _ready():
 	pass
 
 
 func itemRecogido():
-	DatosJugador.anadirItem(itemData)
-	DatosJugador.setVida(cantidad)
+	DatosJugador.anadirItem(item)
 	queue_free()
 
 

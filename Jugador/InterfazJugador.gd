@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var monedasUI = $Monedas
+onready var monedasUI = $PanelMonedas/Monedas
 onready var nivelUI = $Panel/Nivel
 # Barras
 onready var vidaUI = $BarraVida
@@ -38,7 +38,7 @@ func actualizarInventario():
 	if DatosJugador.inventario.size() > 0:
 		var item = DatosJugador.inventario[0]
 		slotItem1.setCantidad(item["cantidad"])
-		slotItem1.setIcono(item["icono"])
+		slotItem1.setIcono(Global.itemData[item["id"]]["icono"])
 
 
 func _input(event):

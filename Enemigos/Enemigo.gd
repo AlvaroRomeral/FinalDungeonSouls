@@ -99,13 +99,13 @@ func generarPath(objetivo):
 
 func revisarVida():
 	if vida <= 0:
+		estado=MUERTO
 		var moneda = drop.instance()
 		get_parent().call_deferred("add_child",moneda)
 		moneda.global_position = global_position
 		animSprite.play("Muerte")
-		$CollisionShape2D.disabled = true
-		$Hurtbox/CollisionShape2D.disabled = true
-		estado=MUERTO
+		$CollisionShape2D.set_deferred("disabled",true)
+		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
 
 
 func _on_Hurtbox_damageRecivido(cantidad):
