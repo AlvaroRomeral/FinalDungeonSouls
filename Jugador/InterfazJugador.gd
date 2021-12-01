@@ -37,8 +37,20 @@ func actualizarUI():
 func actualizarInventario():
 	if DatosJugador.inventario.size() > 0:
 		var item = DatosJugador.inventario[0]
+		slotArma1.setCantidad(item["cantidad"])
+		slotArma1.setIcono(Global.itemData[item["id"]]["icono"])
+	if DatosJugador.inventario.size() > 1:
+		var item = DatosJugador.inventario[1]
 		slotItem1.setCantidad(item["cantidad"])
 		slotItem1.setIcono(Global.itemData[item["id"]]["icono"])
+	if DatosJugador.inventario.size() > 2:
+		var item = DatosJugador.inventario[2]
+		slotArma2.setCantidad(item["cantidad"])
+		slotArma2.setIcono(Global.itemData[item["id"]]["icono"])
+	if DatosJugador.inventario.size() > 3:
+		var item = DatosJugador.inventario[3]
+		slotItem2.setCantidad(item["cantidad"])
+		slotItem2.setIcono(Global.itemData[item["id"]]["icono"])
 
 
 func _input(event):

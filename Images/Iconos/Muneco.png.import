@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pp.jpg-fa31d8a7a7bb20ace65e4f6c3e167930.stex"
+path="res://.import/Muneco.png-d711a80f7c4b6cdaac2e76512067841b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Iconos/pp.jpg"
-dest_files=[ "res://.import/pp.jpg-fa31d8a7a7bb20ace65e4f6c3e167930.stex" ]
+source_file="res://Images/Iconos/Muneco.png"
+dest_files=[ "res://.import/Muneco.png-d711a80f7c4b6cdaac2e76512067841b.stex" ]
 
 [params]
 

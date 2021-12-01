@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Frasco_VidaG.png-7461797320a036520de65d16cd4cd0ca.stex"
+path="res://.import/PocionMana.png-a5f5fb5f4648090c9137b91cce777aa9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Iconos/Frasco_VidaG.png"
-dest_files=[ "res://.import/Frasco_VidaG.png-7461797320a036520de65d16cd4cd0ca.stex" ]
+source_file="res://Images/Iconos/PocionMana.png"
+dest_files=[ "res://.import/PocionMana.png-a5f5fb5f4648090c9137b91cce777aa9.stex" ]
 
 [params]
 

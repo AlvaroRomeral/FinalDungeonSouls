@@ -1,6 +1,6 @@
 extends Control
 
-onready var slot = preload("res://Pantallas/PanelSlot.tscn")
+onready var slot = preload("res://Pantallas/PanelInventario.tscn")
 onready var gridInventario = $Panel/PanelInventario/GridContainer
 onready var txtNombre = $Panel/PanelNombre/TextoNombre
 onready var txtDescripcion = $Panel/PanelDescripcion/TextoDescripcion
@@ -11,6 +11,7 @@ func _ready():
 
 
 func _on_Inventario_draw():
+	get_tree().paused = true
 	generarSlots()
 
 
@@ -30,3 +31,7 @@ func generarSlots():
 func cargarInfo(id):
 	txtNombre.text = Global.itemData[id]["nombre"]
 	txtDescripcion.text = Global.itemData[id]["descripcion"]
+
+
+func _on_Inventario_hide():
+	get_tree().paused = false

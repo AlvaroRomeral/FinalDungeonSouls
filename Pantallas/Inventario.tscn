@@ -13,6 +13,7 @@ border_width_right = 1
 border_width_bottom = 1
 
 [node name="Inventario" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -36,9 +37,9 @@ __meta__ = {
 }
 
 [node name="PanelInventario" type="Panel" parent="Panel"]
-margin_left = 144.0
+margin_left = 152.0
 margin_top = 8.0
-margin_right = 230.0
+margin_right = 232.0
 margin_bottom = 128.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
@@ -46,9 +47,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="Panel/PanelInventario"]
-anchor_right = 1.0
+anchor_left = 0.0625
+anchor_right = 0.9375
 anchor_bottom = 1.0
-margin_right = -2.0
+rect_min_size = Vector2( 70, 120 )
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 4
@@ -57,9 +59,9 @@ __meta__ = {
 }
 
 [node name="PanelNombre" type="Panel" parent="Panel"]
-margin_left = 72.0
+margin_left = 80.0
 margin_top = 8.0
-margin_right = 136.0
+margin_right = 144.0
 margin_bottom = 24.0
 custom_styles/panel = SubResource( 2 )
 
@@ -71,9 +73,9 @@ align = 1
 valign = 1
 
 [node name="PanelDescripcion" type="Panel" parent="Panel"]
-margin_left = 72.0
+margin_left = 80.0
 margin_top = 32.0
-margin_right = 136.0
+margin_right = 144.0
 margin_bottom = 128.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
@@ -90,3 +92,4 @@ margin_bottom = -2.0
 custom_fonts/normal_font = ExtResource( 1 )
 
 [connection signal="draw" from="." to="." method="_on_Inventario_draw"]
+[connection signal="hide" from="." to="." method="_on_Inventario_hide"]

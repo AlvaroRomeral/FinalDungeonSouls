@@ -1,11 +1,10 @@
 extends Panel
 
 signal devolverInfo(id)
+
+onready var popupMenu = $PopupMenu
 var itemId
 
-
-func _ready():
-	pass
 
 
 func setId(id):
@@ -13,7 +12,7 @@ func setId(id):
 
 
 func setIcono(icono):
-	$Icono.texture = load(Global.pathIconos+icono)
+	$Icono.texture = load(Global.PATH_ICONOS+icono)
 
 
 func setCantidad(cantidad):
@@ -23,3 +22,8 @@ func setCantidad(cantidad):
 
 func _on_PanelSlot_mouse_entered():
 	emit_signal("devolverInfo",itemId)
+
+
+func _on_PanelInventario_gui_input(event):
+	if event is InputEventMouseButton:
+		pass

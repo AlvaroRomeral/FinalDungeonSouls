@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://SpritesAnimados.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Pantallas/Boton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Images/Iconos/Frasco_VidaP.png" type="Texture" id=3]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -25,7 +24,7 @@ __meta__ = {
 position = Vector2( 16, 136 )
 frames = ExtResource( 1 )
 animation = "Hogera"
-frame = 3
+frame = 1
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -55,7 +54,6 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/HBoxContainer"]
 margin_right = 16.0
 margin_bottom = 20.0
-texture = ExtResource( 3 )
 
 [node name="BotonCargar" parent="VBoxContainer/Panel/HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 20.0
