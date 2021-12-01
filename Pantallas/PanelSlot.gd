@@ -3,6 +3,7 @@ extends Panel
 signal devolverInfo(id)
 var itemId
 
+
 func _ready():
 	pass
 

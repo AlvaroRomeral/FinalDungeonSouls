@@ -10,7 +10,9 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Navigation2D" type="Navigation2D" parent="." groups=["navegacion"]]
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"navegacion",
+]]
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 1 )
@@ -71,10 +73,10 @@ item = {
 }
 
 [node name="FrascoVida5" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 360, 88 )
+position = Vector2( 200, 40 )
 item = {
 "cantidad": 1,
-"id": "1004"
+"id": "1005"
 }
 
 [node name="Enemigo" parent="YSort" instance=ExtResource( 4 )]
