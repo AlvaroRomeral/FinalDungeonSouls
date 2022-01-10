@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var Enemy = preload("res://Enemigos/Enemigo.tscn")
+onready var Enemy = preload("res://PERSONAJES/Enemigos/Enemigo.tscn")
 var Entidad
 
 

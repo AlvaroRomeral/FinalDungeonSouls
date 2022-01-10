@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Jugador/APfkB6p.png" type="Texture" id=2]
+[ext_resource path="res://PERSONAJES/Jugador/APfkB6p.png" type="Texture" id=2]
 [ext_resource path="res://Zonas/Bonfire.gd" type="Script" id=3]
 [ext_resource path="res://Zonas/AreaInteraccion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Zonas/Hogera.png" type="Texture" id=5]

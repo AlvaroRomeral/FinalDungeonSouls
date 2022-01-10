@@ -1,29 +1,67 @@
 extends Panel
 
 signal devolverInfo(id)
+signal actualizado()
 
-onready var popupMenu = $PopupMenu
 var itemId
+var itemCantidad
+var datos
 
+func _ready():
+	$PopupMenu.get_popup().connect("id_pressed",self,"opcionSeleccionada")
 
+# ==============================================================================
+# ================================ VALORES =====================================
+# ==============================================================================
 
-func setId(id):
+func setValores(id: String, cantidad: int):
 	itemId = id
+	itemCantidad = cantidad
+	generarDatos()
+	setAspecto()
+
+# ==============================================================================
+# ================================ ASPECTO =====================================
+# ==============================================================================
+
+func setAspecto():
+	$Icono.texture = load(Global.PATH_ICONOS+Global.itemData[itemId]["icono"])
+	if itemCantidad == 1:
+		$Cantidad.hide()
+	else:
+		$Cantidad.show()
+		$Cantidad.text = String(itemCantidad)
 
 
-func setIcono(icono):
-	$Icono.texture = load(Global.PATH_ICONOS+icono)
+func limpiar():
+	$Icono.texture = null
+	$Cantidad.hide()
+	itemId = null
+	itemCantidad = null
+	generarDatos()
+
+# ==============================================================================
+# =============================== FUNCIONES ====================================
+# ==============================================================================
+
+func generarDatos():
+	datos = {
+		"id": itemId,
+		"cantidad": itemCantidad
+	}
 
 
-func setCantidad(cantidad):
-	$Cantidad.text = String(cantidad)
-
-
-
-func _on_PanelSlot_mouse_entered():
-	emit_signal("devolverInfo",itemId)
+func opcionSeleccionada(id):
+	match id:
+		0:
+			DatosJugador.usarItem(datos)
+			emit_signal("actualizado")
 
 
 func _on_PanelInventario_gui_input(event):
 	if event is InputEventMouseButton:
 		pass
+
+
+func _on_PopupMenu_mouse_entered():
+	emit_signal("devolverInfo",itemId)

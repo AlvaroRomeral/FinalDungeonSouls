@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/damage1.wav.mp3-7766368897ed76d0f25d7bb4b5295445.mp3str"
+
+[deps]
+
+source_file="res://PERSONAJES/Jugador/damage1.wav.mp3"
+dest_files=[ "res://.import/damage1.wav.mp3-7766368897ed76d0f25d7bb4b5295445.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

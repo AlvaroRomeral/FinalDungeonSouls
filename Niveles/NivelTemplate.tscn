@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Dungeon_TileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://Jugador/Jugador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PERSONAJES/Jugador/Jugador.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Navigation2D" type="Navigation2D" parent="." groups=["navegacion"]]
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"navegacion",
+]]
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 1 )

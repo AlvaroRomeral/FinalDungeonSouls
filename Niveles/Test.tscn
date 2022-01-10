@@ -1,16 +1,18 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Dungeon_TileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://Jugador/Jugador.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Items/Moneda.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemigos/Enemigo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Items/FrascoVida.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PERSONAJES/Jugador/Jugador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PERSONAJES/Enemigos/Enemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Zonas/Bonfire.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Zonas/EnemySpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Images/16bitSpriteSheet.png" type="Texture" id=8]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Navigation2D" type="Navigation2D" parent="." groups=["navegacion"]]
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"navegacion",
+]]
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 1 )
@@ -20,65 +22,8 @@ tile_data = PoolIntArray( -1769472, 4, 0, -1769471, 4, 1, -1769470, 4, 1, -17694
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Moneda" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 176, 40 )
-
-[node name="Moneda2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 176, 56 )
-
-[node name="Moneda3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 176, 72 )
-
-[node name="Moneda4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 176, 88 )
-
-[node name="Moneda5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 176, 104 )
-
-[node name="Moneda6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 256, 40 )
-
-[node name="Moneda7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 256, 56 )
-
-[node name="Moneda8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 256, 72 )
-
-[node name="Moneda9" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 256, 88 )
-
-[node name="Moneda10" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 256, 104 )
-
-[node name="FrascoVida" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 280, 72 )
-
-[node name="FrascoVida2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 304, 72 )
-item = {
-"cantidad": 1,
-"id": "1002"
-}
-
-[node name="FrascoVida3" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 208, 80 )
-
-[node name="FrascoVida4" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 352, 72 )
-item = {
-"cantidad": 4,
-"id": "1003"
-}
-
-[node name="FrascoVida5" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 200, 40 )
-item = {
-"cantidad": 1,
-"id": "1005"
-}
-
 [node name="Enemigo" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 192, 200 )
+position = Vector2( 368, 168 )
 
 [node name="Enemigo2" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 256, 200 )
@@ -95,6 +40,39 @@ position = Vector2( 80, 192 )
 [node name="EnemySpawner" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 80, 72 )
 
+[node name="16BitSpriteSheet" type="Sprite" parent="YSort"]
+position = Vector2( 112, -240 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 96, 80, 96 )
+
+[node name="Item" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 184, 56 )
+itemId = "1003"
+
+[node name="Item2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 184, 88 )
+itemId = "1005"
+itemCantidad = 15
+
+[node name="Item3" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 248, 56 )
+itemId = "1004"
+
+[node name="Item4" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 216, 40 )
+
+[node name="Item5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 216, 8 )
+itemId = "1002"
+
+[node name="Item6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 216, 88 )
+itemId = "1006"
+
+[node name="Item7" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 232, 88 )
+itemId = "1007"
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color( 0.380392, 0.380392, 0.380392, 1 )
+color = Color( 0.133333, 0.133333, 0.133333, 1 )

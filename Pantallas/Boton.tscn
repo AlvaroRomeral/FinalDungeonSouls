@@ -1,10 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Sonido/CURSOL_OK.wav.mp3" type="AudioStream" id=1]
+[ext_resource path="res://AUDIO/CURSOL_OK.wav.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Pantallas/Boton.gd" type="Script" id=3]
-[ext_resource path="res://Sonido/CURSOL_MOVE.wav.mp3" type="AudioStream" id=4]
+[ext_resource path="res://AUDIO/CURSOL_MOVE.wav.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Images/Interfaz.png" type="Texture" id=6]
+
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 6 )

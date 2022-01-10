@@ -1,0 +1,187 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Fonts/Normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Nivel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/Interfaz.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Pantallas/PanelInventario.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Pantallas/HasMuerto.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Pantallas/Notificaion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Pantallas/Inventario.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PERSONAJES/Jugador/InterfazJugador.gd" type="Script" id=8]
+[ext_resource path="res://Images/Interfaz.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 9 )
+region_rect = Rect2( 32, 11, 80, 5 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 9 )
+region_rect = Rect2( 36, 5, 76, 5 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 9 )
+region_rect = Rect2( 36, 17, 76, 5 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 9 )
+region_rect = Rect2( 36, 23, 76, 5 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 9 )
+region_rect = Rect2( 208, 0, 48, 16 )
+
+[sub_resource type="StreamTexture" id=7]
+load_path = "res://.import/Moneda.png-336abaa82975b37c2943e9f4f8789579.stex"
+
+[node name="InterfazJugador" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 8 )
+
+[node name="BarraVida" type="ProgressBar" parent="."]
+margin_left = 35.0
+margin_top = 14.0
+margin_right = 90.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+step = 1.0
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarraMana" type="ProgressBar" parent="."]
+margin_left = 35.0
+margin_top = 19.0
+margin_right = 90.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarraEstamina" type="ProgressBar" parent="."]
+margin_left = 35.0
+margin_top = 24.0
+margin_right = 90.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 34.0
+margin_bottom = 37.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nivel" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 6.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 2 )
+text = "00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HasMuerto" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="PanelSlotItem1" parent="." instance=ExtResource( 4 )]
+margin_left = 24.0
+margin_top = 93.0
+margin_right = 40.0
+margin_bottom = 109.0
+
+[node name="PanelSlotArma1" parent="." instance=ExtResource( 4 )]
+margin_left = 3.0
+margin_top = 106.0
+margin_right = 19.0
+margin_bottom = 122.0
+
+[node name="PanelSlotItem2" parent="." instance=ExtResource( 4 )]
+margin_left = 24.0
+margin_top = 119.0
+margin_right = 40.0
+margin_bottom = 135.0
+
+[node name="PanelSlotArma2" parent="." instance=ExtResource( 4 )]
+margin_left = 45.0
+margin_top = 106.0
+margin_right = 61.0
+margin_bottom = 122.0
+
+[node name="PanelMonedas" type="Panel" parent="."]
+margin_left = 208.0
+margin_top = 110.0
+margin_right = 256.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 48, 16 )
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Monedas" type="Label" parent="PanelMonedas"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -4.0
+margin_right = 13.0
+margin_bottom = 4.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="PanelMonedas"]
+position = Vector2( 9.99999, 8 )
+scale = Vector2( 0.703123, 0.703123 )
+texture = SubResource( 7 )
+
+[node name="Inventario" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="Notificaiones" type="VBoxContainer" parent="."]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notificaion" parent="Notificaiones" instance=ExtResource( 6 )]
+text = "Juego Empezado"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CURSOL_CANCEL.wav.mp3-b9181880ebd9e78390cb9d2d389c5816.mp3str"
+
+[deps]
+
+source_file="res://AUDIO/CURSOL_CANCEL.wav.mp3"
+dest_files=[ "res://.import/CURSOL_CANCEL.wav.mp3-b9181880ebd9e78390cb9d2d389c5816.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
