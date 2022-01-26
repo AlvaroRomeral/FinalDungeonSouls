@@ -61,7 +61,10 @@ func actualizarInventario():
 
 func _input(event):
 	if event.is_action_released("ui_cancel"):
-		get_tree().change_scene("res://Pantallas/MenuPrincipal.tscn")
+		if $MenuPausa.visible:
+			$MenuPausa.hide()
+		else:
+			$MenuPausa.show()
 	if event.is_action_released("INVENTARIO"):
 		if inventario.visible:
 			inventario.hide()
@@ -84,3 +87,20 @@ func addNotificacion(text):
 	var nuevaNoti = notificacion.instance()
 	$Notificaiones.call_deferred("add_child",nuevaNoti)
 	nuevaNoti.text = text
+
+
+func _on_Salir_botonPresionado():
+	get_tree().change_scene("res://Pantallas/MenuPrincipal.tscn")
+
+
+func _on_Continuar_botonPresionado():
+	$MenuPausa.hide()
+
+
+func _on_Guardar_botonPresionado():
+	Global.guardarDatos()
+	Global.guardarPartida()
+
+
+func _on_Cargar_botonPresionado():
+	pass # Replace with function body.

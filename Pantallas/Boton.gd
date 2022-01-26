@@ -2,13 +2,13 @@ extends Button
 
 signal botonPresionado
 
-export var texto = "texto"
+#export var texto = "texto"
 
 
 func _ready():
 	if disabled:
 		focus_mode = Control.FOCUS_NONE
-	text = texto
+#	text = texto
 
 
 func _on_Boton_mouse_entered():

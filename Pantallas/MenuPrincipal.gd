@@ -1,18 +1,19 @@
 extends Control
 
 func _ready():
-	pass
+	Global.nuevosDatos()
 
 func cargarNivel():
 	get_tree().change_scene(Global.Nivel)
 
 
 func _on_btnJugar_botonPresionado():
+	Global.nuevosDatos()
 	$AnimationPlayer.play("Obscurecer")
 
 
 func _on_btnCargar_botonPresionado():
-	pass # Replace with function body.
+	Global.cargarNivel(Global.Nivel)
 
 
 func _on_btnSalir_botonPresionado():
@@ -20,4 +21,5 @@ func _on_btnSalir_botonPresionado():
 
 
 func _on_btnJugarTest_botonPresionado():
+	Global.nuevosDatos()
 	get_tree().change_scene(Global.Nivel)

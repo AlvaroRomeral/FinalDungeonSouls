@@ -34,10 +34,10 @@ VScrollBar/styles/scroll_focus = SubResource( 4 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = -12.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,10 +46,8 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -2.0
-margin_top = -2.0
-margin_right = 2.0
-margin_bottom = 4.0
+margin_right = 4.0
+margin_bottom = 6.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,6 +60,7 @@ margin_right = 232.0
 margin_bottom = 128.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -83,6 +82,9 @@ margin_top = 8.0
 margin_right = 144.0
 margin_bottom = 24.0
 custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="TextoNombre" type="Label" parent="Panel/PanelNombre"]
 anchor_right = 1.0
@@ -98,6 +100,7 @@ margin_right = 144.0
 margin_bottom = 80.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -142,6 +145,7 @@ margin_right = 32.0
 margin_bottom = 32.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -169,6 +173,7 @@ margin_right = 32.0
 margin_bottom = 64.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -196,6 +201,7 @@ margin_right = 32.0
 margin_bottom = 96.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -223,6 +229,7 @@ margin_right = 32.0
 margin_bottom = 128.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -250,6 +257,7 @@ margin_right = 72.0
 margin_bottom = 32.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -280,6 +288,7 @@ margin_right = 72.0
 margin_bottom = 64.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -310,6 +319,7 @@ margin_right = 72.0
 margin_bottom = 96.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -337,6 +347,7 @@ margin_right = 72.0
 margin_bottom = 128.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 

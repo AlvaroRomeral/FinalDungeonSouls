@@ -11,6 +11,10 @@ var manaMax = 10
 var estamina = 10 setget setEstamina
 var estaminaMax = 10
 # ESTADISTICAS =================================================================
+var datosPersonales = {
+	"nombre": "Alvaro",
+	"edad": 45
+}
 var ataque = 1
 var def = 0
 var res_magia = 0
@@ -19,17 +23,16 @@ var res_veneno = 0
 var monedas = 0 setget setMonedas
 var inventario = []
 ## EQUIPAMIENTO =================================================================
-#var cabeza
-#var pecho
-#var manos
-#var piernas
-#var pies
-#var dedo_der
-#var dedo_izq
-#var espalda
 var arma
 var arrayEquipo = []
-#var arrayEquipo = [cabeza, pecho, piernas, pies, espalda, manos, dedo_der, dedo_izq]
+# [0] cabeza
+# [1] pecho
+# [2] piernas
+# [3] pies
+# [4] espalda
+# [5] manos
+# [6] dedo_der
+# [7] dedo_izq
 
 
 func _ready():
@@ -224,3 +227,10 @@ func chekearItem(item) -> bool:
 
 func getValor(id, campo):
 	return Global.itemData[id][campo]
+
+# ==============================================================================
+# ================================= FUNCIONES ==================================
+# ==============================================================================
+
+func getJugador():
+	return get_tree().get_nodes_in_group("jugador")[0]
