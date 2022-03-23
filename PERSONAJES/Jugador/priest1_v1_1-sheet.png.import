@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/priest1_v1_1-sheet.png-8e6a96e83c6ea2538b7ae20b37bd23f6.stex"
+path="res://.import/priest1_v1_1-sheet.png-8154dcb381cb6e259139ca01094c33ad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PERSONAJES/Jugador/priest1_v1_1-sheet.png"
-dest_files=[ "res://.import/priest1_v1_1-sheet.png-8e6a96e83c6ea2538b7ae20b37bd23f6.stex" ]
+source_file="res://Personajes/Jugador/priest1_v1_1-sheet.png"
+dest_files=[ "res://.import/priest1_v1_1-sheet.png-8154dcb381cb6e259139ca01094c33ad.stex" ]
 
 [params]
 

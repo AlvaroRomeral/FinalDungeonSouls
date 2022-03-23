@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kill2.wav.mp3-f80daca1dd2370d412bd2a9a3ee87368.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Audio/kill2.wav.mp3"
+dest_files=[ "res://.import/kill2.wav.mp3-f80daca1dd2370d412bd2a9a3ee87368.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

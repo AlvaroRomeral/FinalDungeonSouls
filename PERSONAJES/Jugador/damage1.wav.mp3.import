@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/damage1.wav.mp3-7766368897ed76d0f25d7bb4b5295445.mp3str"
+path="res://.import/damage1.wav.mp3-f855be45559db71a97f2e51e81c4e2d2.mp3str"
 
 [deps]
 
-source_file="res://PERSONAJES/Jugador/damage1.wav.mp3"
-dest_files=[ "res://.import/damage1.wav.mp3-7766368897ed76d0f25d7bb4b5295445.mp3str" ]
+source_file="res://Personajes/Jugador/damage1.wav.mp3"
+dest_files=[ "res://.import/damage1.wav.mp3-f855be45559db71a97f2e51e81c4e2d2.mp3str" ]
 
 [params]
 

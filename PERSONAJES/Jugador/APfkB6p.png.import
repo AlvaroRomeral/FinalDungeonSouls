@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/APfkB6p.png-7386ae50acbcef138958d8f070add221.stex"
+path="res://.import/APfkB6p.png-0a059781d694e4c5bbb7f43a695a8080.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PERSONAJES/Jugador/APfkB6p.png"
-dest_files=[ "res://.import/APfkB6p.png-7386ae50acbcef138958d8f070add221.stex" ]
+source_file="res://Personajes/Jugador/APfkB6p.png"
+dest_files=[ "res://.import/APfkB6p.png-0a059781d694e4c5bbb7f43a695a8080.stex" ]
 
 [params]
 

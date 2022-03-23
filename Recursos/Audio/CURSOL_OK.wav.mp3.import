@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CURSOL_OK.wav.mp3-ea2ca6906813e7b6ef7635137114f5fa.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Audio/CURSOL_OK.wav.mp3"
+dest_files=[ "res://.import/CURSOL_OK.wav.mp3-ea2ca6906813e7b6ef7635137114f5fa.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

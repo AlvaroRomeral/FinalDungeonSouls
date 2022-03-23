@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "Item",
 "language": "GDScript",
 "path": "res://Clases/Item.gd"
+}, {
+"base": "Resource",
+"class": "ResGuardado",
+"language": "GDScript",
+"path": "res://ResGuardado.gd"
+}, {
+"base": "Resource",
+"class": "ResPersistencia",
+"language": "GDScript",
+"path": "res://ResPersistencia.gd"
 } ]
 _global_script_class_icons={
-"Item": ""
+"Item": "",
+"ResGuardado": "",
+"ResPersistencia": ""
 }
 
 [application]
@@ -30,7 +42,8 @@ config/windows_native_icon="res://Icon.ico"
 [autoload]
 
 Global="*res://#Global.gd"
-DatosJugador="*res://#DatosJugador.gd"
+Jugador="*res://#Jugador.gd"
+Datos="*res://#Datos.gd"
 
 [display]
 

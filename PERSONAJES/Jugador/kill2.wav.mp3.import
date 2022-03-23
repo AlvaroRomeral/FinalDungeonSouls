@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/kill2.wav.mp3-225dbc202215fbb371dad90bed00288e.mp3str"
+path="res://.import/kill2.wav.mp3-9f9620e4e3889f02eb92b5b8128e5d3c.mp3str"
 
 [deps]
 
-source_file="res://PERSONAJES/Jugador/kill2.wav.mp3"
-dest_files=[ "res://.import/kill2.wav.mp3-225dbc202215fbb371dad90bed00288e.mp3str" ]
+source_file="res://Personajes/Jugador/kill2.wav.mp3"
+dest_files=[ "res://.import/kill2.wav.mp3-9f9620e4e3889f02eb92b5b8128e5d3c.mp3str" ]
 
 [params]
 

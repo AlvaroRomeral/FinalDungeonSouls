@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/c4100_damage1.wav.mp3-a60e99b843b8c7d20fcfe442ed8e9c52.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Audio/c4100_damage1.wav.mp3"
+dest_files=[ "res://.import/c4100_damage1.wav.mp3-a60e99b843b8c7d20fcfe442ed8e9c52.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

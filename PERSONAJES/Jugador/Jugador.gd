@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-onready var animPersonaje = $Aspecto/AnimAspecto
-onready var animEquipo = $AnimEquipo
+onready var anim_personaje = $Aspecto/AnimAspecto
+onready var anim_equipo = $AnimEquipo
 
 const ACELERACION = 200
 const VEL_NORMAL = 35
@@ -13,17 +13,13 @@ var velocidad = Vector2.ZERO
 var angulo_controlador = Vector2.ZERO
 var controlador = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	animPersonaje.play("Idle")
+	anim_personaje.play("Idle")
 
-# ==============================================================================
-# ============================== MOVIMIENTO ====================================
-# ==============================================================================
+# MOVIMIENTO
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if !animEquipo.is_playing():
+	if !anim_equipo.is_playing():
 		if controlador:
 			angulo_controlador.y = Input.get_joy_axis(0,JOY_AXIS_3)
 			angulo_controlador.x = Input.get_joy_axis(0,JOY_AXIS_2)
@@ -39,7 +35,7 @@ func _physics_process(delta):
 				$Aspecto.scale.x = -1
 			elif get_global_mouse_position().x > global_position.x:
 				$Aspecto.scale.x = 1
-	
+				
 	var direccion = Vector2.ZERO
 	if Input.is_action_pressed("MOVER_ARRIBA"):
 		direccion.y -= 1
@@ -52,21 +48,21 @@ func _physics_process(delta):
 	
 	var rapidez = VEL_NORMAL
 	if Input.is_action_pressed("ESPRINTAR"):
-		if DatosJugador.estamina > 0:
+		if Jugador.estamina > 0:
 			rapidez = VEL_CORRER
 			if direccion != Vector2.ZERO:
-				DatosJugador.setEstamina(-2 * delta)
+				Jugador.setEstamina(-2 * delta)
 	else:
-		DatosJugador.setEstamina(1 * delta)
+		Jugador.setEstamina(1 * delta)
 	
 	if direccion != Vector2.ZERO:
 		if rapidez == VEL_NORMAL:
-			animPersonaje.play("Andar")
+			anim_personaje.play("Andar")
 		else:
-			animPersonaje.play("Correr")
+			anim_personaje.play("Correr")
 		velocidad = velocidad.move_toward(direccion * rapidez, ACELERACION * delta)
 	else:
-		animPersonaje.play("Idle")
+		anim_personaje.play("Idle")
 		velocidad = velocidad.move_toward(Vector2.ZERO, FRICCION * delta)
 	direccion = direccion.normalized()
 	
@@ -80,9 +76,9 @@ func _input(event):
 		if interactuable:
 			interactuable.interactuado()
 		else:
-			if DatosJugador.estamina >= 1:
-				DatosJugador.setEstamina(-1)
-				animEquipo.play("Ataque")
+			if Jugador.estamina >= 1:
+				Jugador.setEstamina(-1)
+				anim_equipo.play("Ataque")
 	if event.is_action_released("LINTERNA"):
 		if $Light2D.visible:
 			$Light2D.hide()
@@ -100,12 +96,10 @@ func detectarControlador(evento):
 			controlador = true
 			Global.Notificacion("Modo Mando")
 
-# ==============================================================================
-# ================================ COMBATE =====================================
-# ==============================================================================
+# COMBATE
 
 func checkVida():
-	if DatosJugador.vida <= 0:
+	if Jugador.vida <= 0:
 		$InterfazJugador/HasMuerto.show()
 		$Aspecto.hide()
 		get_tree().paused = true
@@ -113,9 +107,9 @@ func checkVida():
 
 func _on_Hurtbox_damageRecivido(cantidad):
 	var cantidadFinal = cantidad
-	cantidadFinal = cantidadFinal - DatosJugador.def
+	cantidadFinal = cantidadFinal - Jugador.def
 	if cantidadFinal > 0:
-		DatosJugador.setVida(-cantidadFinal)
+		Jugador.setVida(-cantidadFinal)
 		checkVida()
 
 
