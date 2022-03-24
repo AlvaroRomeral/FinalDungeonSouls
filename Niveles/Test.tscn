@@ -1,18 +1,16 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Dungeon_TileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://PERSONAJES/Jugador/Jugador.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=3]
-[ext_resource path="res://PERSONAJES/Enemigos/Enemigo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Zonas/Bonfire.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Zonas/EnemySpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Images/16bitSpriteSheet.png" type="Texture" id=8]
+[ext_resource path="res://Entidades/Jugador/Jugador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entidades/Interact/Items/Item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entidades/Enemigos/Enemigo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entidades/Interact/Bonfire.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Componentes/EnemySpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=8]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Navigation2D" type="Navigation2D" parent="." groups=[
-"navegacion",
-]]
+[node name="Navigation2D" type="Navigation2D" parent="." groups=["navegacion"]]
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 1 )

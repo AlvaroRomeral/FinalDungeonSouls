@@ -10,6 +10,7 @@ var mana = 5 setget setMana
 var mana_max = 10
 var estamina = 10 setget setEstamina
 var estamina_max = 10
+var defensa = 0
 # ESTADISTICAS
 var stats = {
 	"vigor" : 1,
@@ -24,7 +25,6 @@ var stats = {
 var monedas = 0 setget setMonedas
 var inventario = []
 ## EQUIPAMIENTO
-var arma
 var array_equipo = []
 # [0] cabeza
 # [1] pecho
@@ -82,7 +82,7 @@ func setEstamina(cantidad):
 func setEstasEquipo():
 	for i in array_equipo:
 		if i["id"] != null:
-			def = def + Global.itemData[i["id"]]["cant_defensa"]
+			defensa = defensa + Datos.items_db[i["id"]]["defensa"]
 
 # ==============================================================================
 # ================================ MAXIMOS =====================================
@@ -108,9 +108,7 @@ func setestamina_max(cantidad):
 		estamina = estamina_max
 	emit_signal("datosActualizados")
 
-# ==============================================================================
-# ================================ INVENTARIO ==================================
-# ==============================================================================
+# INVENTARIO
 
 func anadirItem(item):
 	for i in inventario:
@@ -160,7 +158,7 @@ func usarItem(item):
 	if item != null:
 		for i in inventario:
 			if item["id"] == i["id"]:
-				var datos = Global.itemData[i["id"]]
+				var datos = Datos.items_db[i["id"]]
 				match datos["tipo"]:
 					"consumible":
 						setVida(datos["vida"])
@@ -197,7 +195,7 @@ func usarItem(item):
 #	var indexUsar = inventario.find(itemUsado)
 #	if indexUsar != -1:
 #		for x in range(veces):
-#			var datosItem = Global.itemData[inventario[indexUsar]["id"]]
+#			var datosItem = Datos.items_db[inventario[indexUsar]["id"]]
 #			match datosItem["tipo"]:
 #				"consumible":
 #					setVida(datosItem["vida"])
@@ -227,11 +225,9 @@ func chekearItem(item) -> bool:
 
 
 func getValor(id, campo):
-	return Global.itemData[id][campo]
+	return Datos.items_db[id][campo]
 
-# ==============================================================================
-# ================================= FUNCIONES ==================================
-# ==============================================================================
+# FUNCIONES
 
 func getJugador():
 	return get_tree().get_nodes_in_group("jugador")[0]

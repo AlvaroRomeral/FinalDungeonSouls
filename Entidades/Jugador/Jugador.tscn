@@ -1,0 +1,310 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Pantallas/Interfaces/InterfazJugador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Componentes/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Componentes/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Recursos/Imagenes/Sprites/falchion1.png" type="Texture" id=4]
+[ext_resource path="res://Entidades/Jugador/APfkB6p.png" type="Texture" id=5]
+[ext_resource path="res://Recursos/Imagenes/Sprites/robe_black_hood.png" type="Texture" id=6]
+[ext_resource path="res://Entidades/Jugador/Jugador.gd" type="Script" id=7]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Humanoide/draconian_green_m.png" type="Texture" id=8]
+[ext_resource path="res://Recursos/Imagenes/Sprites/arwen.png" type="Texture" id=9]
+[ext_resource path="res://Recursos/Imagenes/Sprites/leg_armor04.png" type="Texture" id=10]
+[ext_resource path="res://Recursos/Imagenes/Sprites/hood_gray.png" type="Texture" id=11]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.99998
+height = 9.4206
+
+[sub_resource type="Animation" id=10]
+resource_name = "Andar"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Correr"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -7.3, -4.76837e-07, 7.3 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Ataque"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Hitbox/Arma:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Hitbox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -45.0, 45.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Hitbox/Arma:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Hitbox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 7.5, 4.5 )
+
+[node name="Jugador" type="KinematicBody2D" groups=["jugador"]]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Aspecto" type="Node2D" parent="."]
+
+[node name="Base" type="Sprite" parent="Aspecto"]
+light_mask = 2
+position = Vector2( 0, -13 )
+texture = ExtResource( 8 )
+
+[node name="Arma" type="Sprite" parent="Aspecto"]
+light_mask = 2
+position = Vector2( 0, -13 )
+texture = ExtResource( 9 )
+
+[node name="Pecho" type="Sprite" parent="Aspecto"]
+visible = false
+light_mask = 2
+position = Vector2( 0, -13 )
+texture = ExtResource( 6 )
+
+[node name="Piernas" type="Sprite" parent="Aspecto"]
+light_mask = 2
+position = Vector2( 0, -13 )
+texture = ExtResource( 10 )
+
+[node name="Cabeza" type="Sprite" parent="Aspecto"]
+light_mask = 2
+position = Vector2( 0, -13 )
+texture = ExtResource( 11 )
+
+[node name="AnimAspecto" type="AnimationPlayer" parent="Aspecto"]
+anims/Andar = SubResource( 10 )
+anims/Correr = SubResource( 11 )
+anims/Idle = SubResource( 13 )
+anims/RESET = SubResource( 12 )
+
+[node name="AnimEquipo" type="AnimationPlayer" parent="."]
+anims/Ataque = SubResource( 5 )
+anims/RESET = SubResource( 8 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -12 )
+
+[node name="Hitbox" parent="Position2D" instance=ExtResource( 2 )]
+position = Vector2( 3, -3 )
+rotation = -0.785398
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="Position2D/Hitbox" index="0"]
+position = Vector2( 12, 0 )
+disabled = true
+
+[node name="Arma" type="Sprite" parent="Position2D/Hitbox"]
+visible = false
+position = Vector2( 12.0208, -0.707107 )
+rotation = 0.785398
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="AreaInteractuar" type="Area2D" parent="Position2D"]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/AreaInteractuar"]
+position = Vector2( 13.5, 0 )
+shape = SubResource( 9 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 4 )
+collision_layer = 32
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+texture = ExtResource( 5 )
+texture_scale = 0.2
+range_item_cull_mask = 3
+shadow_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="InterfazJugador" parent="." instance=ExtResource( 1 )]
+
+[connection signal="area_entered" from="Position2D/AreaInteractuar" to="." method="_on_AreaInteractuar_area_entered"]
+[connection signal="area_exited" from="Position2D/AreaInteractuar" to="." method="_on_AreaInteractuar_area_exited"]
+
+[editable path="Position2D/Hitbox"]

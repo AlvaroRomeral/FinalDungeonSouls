@@ -18,7 +18,7 @@ func _ready():
 	
 	ar_guardado = res_guardado.new()
 	var itemDataFile = File.new()
-	itemDataFile.open(Global.PATH_JSONS+"DataItems.json",File.READ)
+	itemDataFile.open(Global.PATH_JSONS + "DataItems.json", File.READ)
 	var itemDataJson = JSON.parse(itemDataFile.get_as_text())
 	itemDataFile.close()
 	items_db = itemDataJson.result
@@ -27,24 +27,23 @@ func _ready():
 
 func guardarPartida():
 	guardarDatos()
-	ResourceSaver.save(Global.PATH_SAVES + nombreSave + ".save", archivoGuardado)
+	ResourceSaver.save(Global.PATH_SAVES + nombre_guardado + ".save", ar_guardado)
 
 
 func cargarPartida():
-	archivoGuardado = ResourceLoader.load(PATH_SAVES + nombreSave + ".save")
-		
-		
-func nuevosDatos():
-	archivoGuardado = scriptGuardado.new()
+	ar_guardado = ResourceLoader.load(Global.PATH_SAVES + nombre_guardado + ".save")
 
 # DATOS GUARDADO
 
+func nuevosDatos():
+	ar_guardado = res_guardado.new()
+
+
 func guardarDatos():
-	archivoGuardado.posicionJ = DatosJugador.getJugador().global_position
-			
-			
+	pass
+
+
 func cargarDatos():
-	if ar_guardado.posicionJ != null:
-		DatosJugador.getJugador().global_position = archivoGuardado.posicionJ
+	pass
 
 # PERSISTENCIA

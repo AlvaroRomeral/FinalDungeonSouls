@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Componentes/Boton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pantallas/Menus/MenuPausa.gd" type="Script" id=2]
+[ext_resource path="res://Recursos/Imagenes/Interfaz.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 160, 0, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 112, 16, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
+region_rect = Rect2( 160, 16, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 112, 0, 48, 16 )
+
+[sub_resource type="ButtonGroup" id=8]
+
+[node name="MenuPausa" type="Panel"]
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 160.0
+margin_bottom = 136.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continuar" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 60.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+group = SubResource( 8 )
+text = "Continuar"
+
+[node name="Guardar" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 18.0
+margin_right = 60.0
+margin_bottom = 34.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+group = SubResource( 8 )
+text = "Guardar"
+
+[node name="Cargar" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 36.0
+margin_right = 60.0
+margin_bottom = 52.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+group = SubResource( 8 )
+text = "Cargar"
+
+[node name="Salir" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 54.0
+margin_right = 60.0
+margin_bottom = 70.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+group = SubResource( 8 )
+text = "Salir"
+
+[connection signal="botonPresionado" from="VBoxContainer/Continuar" to="." method="_on_Continuar_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/Guardar" to="." method="_on_Guardar_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/Cargar" to="." method="_on_Cargar_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/Salir" to="." method="_on_Salir_botonPresionado"]

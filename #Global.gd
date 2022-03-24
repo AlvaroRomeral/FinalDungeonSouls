@@ -1,6 +1,6 @@
 extends Node
 
-const PATH_ICONOS = "res://Images/Iconos/"
+const PATH_ICONOS = "res://Recursos/Imagenes/Iconos/"
 const PATH_DATOS = "user://data/"
 const PATH_SAVES = "user://saves/"
 const PATH_JSONS = "res://Json/"
@@ -9,7 +9,7 @@ const EXTE_PERSISTENCIA = ".dat"
 
 signal notificacion_recibida(texto)
 
-var nivel: String = "res://NIVELES/Test.tscn"
+var nivel: String = "res://Niveles/Test.tscn"
 
 func _ready():
 	pass
