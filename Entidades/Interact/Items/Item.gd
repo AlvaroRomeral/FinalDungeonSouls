@@ -1,21 +1,15 @@
 extends Area2D
 
-export var itemId: String = "1001"
-export var itemCantidad: int = 1
-
-var datos
+export var item_id: int = 0
+export var cantidad: int = 1
 
 func _ready():
-	datos = {
-		"id": itemId,
-		"cantidad": itemCantidad
-	}
-	$Sprite.texture = load(Global.PATH_ICONOS + Datos.items_db[itemId]["icono"])
+	$Sprite.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"])
 
 
 func itemRecogido():
-	Jugador.anadirItem(datos)
-	Global.Notificacion(String(datos))
+	Jugador.anadirItem(item_id, cantidad)
+	Global.Notificacion(String(item_id))
 	queue_free()
 
 

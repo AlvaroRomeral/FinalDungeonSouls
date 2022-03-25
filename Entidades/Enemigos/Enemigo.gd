@@ -110,6 +110,7 @@ func revisarVida():
 		animSprite.play("Muerte")
 		$CollisionShape2D.set_deferred("disabled",true)
 		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
+		$Position2D/Hitbox/CollisionShape2D.set_deferred("disabled",true)
 
 
 func _on_Hurtbox_damageRecivido(cantidad):

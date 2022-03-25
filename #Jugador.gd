@@ -24,6 +24,7 @@ var stats = {
 # INVENTARIO
 var monedas = 0 setget setMonedas
 var inventario = []
+var inventario_cap = 20
 ## EQUIPAMIENTO
 var array_equipo = []
 # [0] cabeza
@@ -43,9 +44,7 @@ func _ready():
 			"cantidad": null
 		})
 
-# ==============================================================================
-# ================================ VALORES =====================================
-# ==============================================================================
+# SETTERS
 
 func setMonedas(cantidad):
 	monedas += cantidad
@@ -84,9 +83,6 @@ func setEstasEquipo():
 		if i["id"] != null:
 			defensa = defensa + Datos.items_db[i["id"]]["defensa"]
 
-# ==============================================================================
-# ================================ MAXIMOS =====================================
-# ==============================================================================
 
 func setvida_max(cantidad):
 	vida_max = cantidad
@@ -110,31 +106,35 @@ func setestamina_max(cantidad):
 
 # INVENTARIO
 
-func anadirItem(item):
+func anadirItem(item_id: int, cantidad: int):
+	var nuevo_item = {
+		"id" : item_id,
+		"cantidad" : cantidad
+	}
 	for i in inventario:
-		if i["id"] == item["id"]:
-			i["cantidad"] = i["cantidad"] + item["cantidad"]
+		if i["id"] == nuevo_item["id"]:
+			i["cantidad"] = i["cantidad"] + nuevo_item["cantidad"]
 			emit_signal("inventarioActualizado")
 			return
-	inventario.append(item)
+	inventario.append(nuevo_item)
 	emit_signal("inventarioActualizado")
 
 
-func quitarItem(itemQuitado, cantidad: int):
+func quitarItem(item_id: int, cantidad: int):
 	for i in inventario:
-		if itemQuitado["id"] == i["id"]:
+		if item_id == i["id"]:
 			var cantidadActual = i["cantidad"]
 			cantidadActual = cantidadActual - cantidad
 			if cantidadActual < 1:
 				inventario.remove(inventario.find(i))
 				return {
-					"id": itemQuitado["id"],
+					"id": item_id,
 					"cantidad": cantidad
 				}
 			else:
 				i["cantidad"] = cantidadActual
 				return {
-					"id": itemQuitado["id"],
+					"id": item_id,
 					"cantidad": cantidad
 				}
 			return null
@@ -154,35 +154,35 @@ func quitarItem(itemQuitado, cantidad: int):
 	return null
 
 
-func usarItem(item):
-	if item != null:
+func usarItem(item_id: int):
+	if item_id != null:
 		for i in inventario:
-			if item["id"] == i["id"]:
-				var datos = Datos.items_db[i["id"]]
+			if item_id == i["id"]:
+				var datos = Datos.item_ids_db[i["id"]]
 				match datos["tipo"]:
 					"consumible":
 						setVida(datos["vida"])
 						setMana(datos["mana"])
-						quitarItem(item,1)
+						quitarItem(item_id,1)
 						return
 					"equipable":
 						match datos["tipo_equipo"]:
 							"cabeza":
-								equipar(item,0)
+								equipar(item_id,0)
 							"pecho":
-								equipar(item,1)
+								equipar(item_id,1)
 							"piernas":
-								equipar(item,2)
+								equipar(item_id,2)
 							"pies":
-								equipar(item,3)
+								equipar(item_id,3)
 							"espalda":
-								equipar(item,4)
+								equipar(item_id,4)
 							"manos":
-								equipar(item,5)
+								equipar(item_id,5)
 							"dedo_der":
-								equipar(item,6)
+								equipar(item_id,6)
 							"dedo_izq":
-								equipar(item,7)
+								equipar(item_id,7)
 						emit_signal("inventarioActualizado")
 						return
 					"llave":
@@ -213,7 +213,7 @@ func equipar(item, posicion):
 	if array_equipo[posicion]["id"] == null:
 		array_equipo[posicion] = quitarItem(item, 1)
 	else:
-		anadirItem(array_equipo[posicion])
+		anadirItem(item, 1)
 		array_equipo[posicion] = quitarItem(item, 1)
 	setEstasEquipo()
 
@@ -223,11 +223,11 @@ func chekearItem(item) -> bool:
 		return true
 	return false
 
-
-func getValor(id, campo):
-	return Datos.items_db[id][campo]
-
-# FUNCIONES
+# GETTERS
 
 func getJugador():
 	return get_tree().get_nodes_in_group("jugador")[0]
+
+
+func getValor(id, campo):
+	return Datos.items_db[id][campo]

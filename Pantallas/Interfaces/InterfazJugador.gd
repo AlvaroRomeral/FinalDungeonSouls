@@ -39,22 +39,22 @@ func actualizarUI():
 func actualizarInventario():
 	if Jugador.inventario.size() > 0:
 		var item = Jugador.inventario[0]
-		slotArma1.setValores(item["id"],item["cantidad"])
+		slotArma1.setValores(item["id"],item["cantidad"],0)
 	else:
 		slotArma1.limpiar()
 	if Jugador.inventario.size() > 1:
 		var item = Jugador.inventario[1]
-		slotItem1.setValores(item["id"],item["cantidad"])
+		slotItem1.setValores(item["id"],item["cantidad"],1)
 	else:
 		slotItem1.limpiar()
 	if Jugador.inventario.size() > 2:
 		var item = Jugador.inventario[2]
-		slotArma2.setValores(item["id"],item["cantidad"])
+		slotArma2.setValores(item["id"],item["cantidad"],2)
 	else:
 		slotArma2.limpiar()
 	if Jugador.inventario.size() > 3:
 		var item = Jugador.inventario[3]
-		slotItem2.setValores(item["id"],item["cantidad"])
+		slotItem2.setValores(item["id"],item["cantidad"],3)
 	else:
 		slotItem2.limpiar()
 

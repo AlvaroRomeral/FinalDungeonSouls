@@ -3,58 +3,46 @@ extends Panel
 signal devolverInfo(id)
 signal actualizado()
 
-var itemId
-var itemCantidad
-var datos
+var item_id
+var item_cantidad
+var item_posicion
 
 func _ready():
 	$PopupMenu.get_popup().connect("id_pressed",self,"opcionSeleccionada")
 
-# ==============================================================================
-# ================================ VALORES =====================================
-# ==============================================================================
+# INICIALIZACION
 
-func setValores(id: String, cantidad: int):
-	itemId = id
-	itemCantidad = cantidad
-	generarDatos()
+func setValores(id: int, cantidad: int, posicion: int):
+	item_id = id
+	item_cantidad = cantidad
+	item_posicion = posicion
 	setAspecto()
 
-# ==============================================================================
-# ================================ ASPECTO =====================================
-# ==============================================================================
 
 func setAspecto():
-	$Icono.texture = load(Global.PATH_ICONOS + Datos.items_db[itemId]["icono"])
-	if itemCantidad == 1:
+	var datos_item = Datos.getItemInfo(item_id)
+	$Icono.texture = load(Global.PATH_ICONOS + datos_item["icono"])
+	if item_cantidad == 1:
 		$Cantidad.hide()
 	else:
 		$Cantidad.show()
-		$Cantidad.text = String(itemCantidad)
+		$Cantidad.text = String(item_cantidad)
 
 
 func limpiar():
 	$Icono.texture = null
 	$Cantidad.hide()
-	itemId = null
-	itemCantidad = null
-	generarDatos()
+	item_id = null
+	item_cantidad = null
 
 # ==============================================================================
 # =============================== FUNCIONES ====================================
 # ==============================================================================
 
-func generarDatos():
-	datos = {
-		"id": itemId,
-		"cantidad": itemCantidad
-	}
-
-
 func opcionSeleccionada(id):
 	match id:
 		0:
-			Jugador.usarItem(datos)
+			Jugador.usarItem(item_id)
 			emit_signal("actualizado")
 
 
@@ -64,4 +52,4 @@ func _on_PanelInventario_gui_input(event):
 
 
 func _on_PopupMenu_mouse_entered():
-	emit_signal("devolverInfo",itemId)
+	emit_signal("devolverInfo",item_id)
