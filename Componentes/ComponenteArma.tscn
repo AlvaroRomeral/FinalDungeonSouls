@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Componentes/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Componentes/ComponenteArma.gd" type="Script" id=2]
+[ext_resource path="res://Recursos/Imagenes/efecto_ataque.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Ataque"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Efecto:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Efecto:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox:activo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Efecto:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Efecto:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox:activo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="ComponenteArma" type="Node2D"]
+position = Vector2( 1.90735e-06, 0 )
+script = ExtResource( 2 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.90735e-06, 0 )
+collision_mask = 64
+activo = false
+
+[node name="AnimArma" type="AnimationPlayer" parent="."]
+anims/Ataque = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Efecto" type="Sprite" parent="."]
+visible = false
+position = Vector2( 8, 0 )
+texture = ExtResource( 3 )
+hframes = 4

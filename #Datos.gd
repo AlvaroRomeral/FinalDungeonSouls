@@ -8,7 +8,7 @@ var ar_guardado : ResGuardado
 var ar_persistencia : ResPersistencia
 var nombre_guardado = "auto_save"
 var items_db: Dictionary
-var fdsdb
+var fdsdb: sqlite
 
 func _ready():
 	#Comprobacion de directorios
@@ -71,3 +71,27 @@ func getItemInfo(id_item):
 		fdsdb.query("SELECT * FROM items WHERE id_item = 0;")
 		var resultado = fdsdb.query_result
 		return resultado[0]
+
+
+func getItemTipo(id_item):
+	if fdsdb.query("SELECT id_item FROM items WHERE id_item =" + String(id_item) + ";"):
+		var resultado = fdsdb.query_result
+		return resultado[0]
+
+
+func getConsumibleInfo(id_item):
+	fdsdb.query("SELECT consumibles.vida, consumibles.mana FROM items INNER JOIN consumibles ON items.id_item=consumibles.id_item")
+	var resultado = fdsdb.query_result
+	return resultado
+
+
+func getEquipoInfo(id_item):
+	fdsdb.query("SELECT equipos.def_num, equipos.def_por FROM items INNER JOIN equipos ON items.id_item=equipos.id_item")
+	var resultado = fdsdb.query_result
+	return resultado
+
+
+func getArmaInfo(id_item):
+	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item")
+	var resultado = fdsdb.query_result
+	return resultado

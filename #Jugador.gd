@@ -22,9 +22,9 @@ var stats = {
 }
 
 # INVENTARIO
-var monedas = 0 setget setMonedas
-var inventario = []
-var inventario_cap = 20
+var monedas: int = 0 setget setMonedas
+var inventario: Array = []
+var inventario_cap: int = 20
 ## EQUIPAMIENTO
 var array_equipo = []
 # [0] cabeza
@@ -155,42 +155,42 @@ func quitarItem(item_id: int, cantidad: int):
 
 
 func usarItem(item_id: int):
-	if item_id != null:
-		for i in inventario:
-			if item_id == i["id"]:
-				var datos = Datos.item_ids_db[i["id"]]
-				match datos["tipo"]:
-					"consumible":
-						setVida(datos["vida"])
-						setMana(datos["mana"])
-						quitarItem(item_id,1)
-						return
-					"equipable":
-						match datos["tipo_equipo"]:
-							"cabeza":
-								equipar(item_id,0)
-							"pecho":
-								equipar(item_id,1)
-							"piernas":
-								equipar(item_id,2)
-							"pies":
-								equipar(item_id,3)
-							"espalda":
-								equipar(item_id,4)
-							"manos":
-								equipar(item_id,5)
-							"dedo_der":
-								equipar(item_id,6)
-							"dedo_izq":
-								equipar(item_id,7)
-						emit_signal("inventarioActualizado")
-						return
-					"llave":
-						pass # al usar una puerta se le abre el inventario
-						return
-					"otro":
-						pass
-						return
+#	if item_id != null:
+#		for i in inventario:
+#			if item_id == i["id"]:
+#				var datos = Datos.item_ids_db[i["id"]]
+	match Datos.getItemTipo(item_id)[0]:
+		1: #Equipo
+			Datos.getEquipoInfo(item_id)
+#			match datos["tipo_equipo"]:
+#				"cabeza":
+#					equipar(item_id,0)
+#				"pecho":
+#					equipar(item_id,1)
+#				"piernas":
+#					equipar(item_id,2)
+#				"pies":
+#					equipar(item_id,3)
+#				"espalda":
+#					equipar(item_id,4)
+#				"manos":
+#					equipar(item_id,5)
+#				"dedo_der":
+#					equipar(item_id,6)
+#				"dedo_izq":
+#					equipar(item_id,7)
+			return
+		2: #Arma
+			Datos.getArmaInfo(item_id)
+#			emit_signal("inventarioActualizado")
+			return
+		3: #Consumible
+			Datos.getConsumibleInfo(item_id)
+			pass # al usar una puerta se le abre el inventario
+			return
+		0:
+			pass
+			return
 	#=========================================
 #	var indexUsar = inventario.find(itemUsado)
 #	if indexUsar != -1:

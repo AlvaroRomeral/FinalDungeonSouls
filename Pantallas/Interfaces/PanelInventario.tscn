@@ -32,9 +32,6 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 16, 16 )
 custom_styles/panel = SubResource( 5 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icono" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -62,16 +59,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PopupMenu" type="MenuButton" parent="."]
+[node name="MenuAcciones" type="MenuButton" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 7 )
 align = 2
-items = [ "Usar", null, 0, false, false, 0, 0, null, "", false, "Soltar", null, 0, false, false, 1, 0, null, "", false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="gui_input" from="." to="." method="_on_PanelInventario_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_PanelSlot_mouse_entered"]
-[connection signal="mouse_entered" from="PopupMenu" to="." method="_on_PopupMenu_mouse_entered"]
+[connection signal="mouse_entered" from="MenuAcciones" to="." method="_on_PopupMenu_mouse_entered"]

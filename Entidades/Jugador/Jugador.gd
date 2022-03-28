@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var anim_personaje = $Aspecto/AnimAspecto
-onready var anim_equipo = $AnimEquipo
+onready var anim_equipo = $Position2D/ComponenteArma/AnimArma
 
 const ACELERACION = 200
 const VEL_NORMAL = 35
@@ -73,12 +73,9 @@ func _physics_process(delta):
 func _input(event):
 	detectarControlador(event)
 	if event.is_action_pressed("ATACAR"):
-		if interactuable:
-			interactuable.interactuado()
-		else:
-			if Jugador.estamina >= 1:
-				Jugador.setEstamina(-1)
-				anim_equipo.play("Ataque")
+		if Jugador.estamina >= 1:
+			Jugador.setEstamina(-1)
+			$Position2D/ComponenteArma.usar()
 	if event.is_action_released("LINTERNA"):
 		if $Light2D.visible:
 			$Light2D.hide()
@@ -107,7 +104,7 @@ func checkVida():
 
 func _on_Hurtbox_damageRecivido(cantidad):
 	var cantidadFinal = cantidad
-	cantidadFinal = cantidadFinal - Jugador.def
+	cantidadFinal = cantidadFinal - Jugador.defensa
 	if cantidadFinal > 0:
 		Jugador.setVida(-cantidadFinal)
 		checkVida()

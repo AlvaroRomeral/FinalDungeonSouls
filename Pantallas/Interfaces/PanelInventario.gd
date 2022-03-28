@@ -3,12 +3,17 @@ extends Panel
 signal devolverInfo(id)
 signal actualizado()
 
+onready var com_popup = $MenuAcciones
+onready var com_cantidad = $Cantidad
+onready var com_icono = $Icono
+
 var item_id
 var item_cantidad
 var item_posicion
 
 func _ready():
-	$PopupMenu.get_popup().connect("id_pressed",self,"opcionSeleccionada")
+	com_popup.get_popup().connect("id_pressed",self,"opcionSeleccionada")
+	com_popup.get_popup().add_item("Test ready")
 
 # INICIALIZACION
 
@@ -16,6 +21,11 @@ func setValores(id: int, cantidad: int, posicion: int):
 	item_id = id
 	item_cantidad = cantidad
 	item_posicion = posicion
+	var popup_real = com_popup.get_popup()
+	popup_real.clear()
+	popup_real.add_item("Test",0)
+	popup_real.add_item("Test2",1)
+	popup_real.set_item_disabled(1,true)
 	setAspecto()
 
 
@@ -35,9 +45,6 @@ func limpiar():
 	item_id = null
 	item_cantidad = null
 
-# ==============================================================================
-# =============================== FUNCIONES ====================================
-# ==============================================================================
 
 func opcionSeleccionada(id):
 	match id:
