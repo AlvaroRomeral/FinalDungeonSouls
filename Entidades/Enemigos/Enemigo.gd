@@ -1,15 +1,14 @@
 extends KinematicBody2D
 
-onready var animSprite:AnimationPlayer = $Aspecto/AnimAspecto
-onready var animAtaque:AnimationPlayer = $AnimEquipo
-onready var distVision = $Position2D/DistVision
-onready var distAtaque = $Position2D/DistAtaque
+onready var anim_cuerpo:AnimationPlayer = $Aspecto/AnimAspecto
+onready var dist_vision = $Position2D/DistVision
+onready var dist_ataque = $Position2D/DistAtaque
 
 const VELOCIDAD = 1000
 
 export var vida = 2
 export var drop = preload("res://Entidades/Interact/Items/Item.tscn")
-export var cantidadDrop = 1
+export var cantidad_dropeo = 1
 export var enShock = false
 
 var path = []
@@ -38,27 +37,27 @@ func _ready():
 
 
 func _physics_process(delta):
-	if estado!=MUERTO:
+	if estado != MUERTO:
 		$Position2D.look_at(jugador.global_position)
 		if enShock:
-			animSprite.play("Damaged")
+			anim_cuerpo.play("Damaged")
 		else:
 			estado = calcularEstado()
 			match estado:
 				IDLE:
-					animSprite.play("Idle")
+					anim_cuerpo.play("Idle")
 				PERSIGUIENDO:
 					var dir = global_position.direction_to(jugador.global_position)
 					if jugador.global_position.x > global_position.x:
 						$Aspecto.scale.x = -1
 					else:
 						$Aspecto.scale.x = 1
-					animSprite.play("Andar")
+					anim_cuerpo.play("Andar")
 					movimiento = dir * VELOCIDAD * delta
 					movimiento = move_and_slide(movimiento)
 				ATACANDO:
 					atacando=true
-					animAtaque.play("Ataque")
+					$Position2D/ComponenteArma.usar()
 					$Position2D/TimerAtaque.start()
 
 
@@ -71,7 +70,7 @@ func calcularEstado():
 
 
 func isJugadorVisto() -> bool:
-	var collider = distVision.get_collider()
+	var collider = dist_vision.get_collider()
 	if collider and collider.is_in_group("jugador"):
 		generarPath(jugador)
 		return true
@@ -79,7 +78,7 @@ func isJugadorVisto() -> bool:
 
 
 func isJugadorAlcanzable() -> bool:
-	var collider = distAtaque.get_collider()
+	var collider = dist_ataque.get_collider()
 	if collider and collider.is_in_group("jugador"):
 		generarPath(jugador)
 		return true
@@ -105,12 +104,11 @@ func revisarVida():
 	if vida <= 0:
 		$CollisionShape2D.set_deferred("disabled",true)
 		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
-		$Position2D/Hitbox/CollisionShape2D.set_deferred("disabled",true)
 		estado=MUERTO
 		var moneda = drop.instance()
 		get_parent().call_deferred("add_child",moneda)
 		moneda.global_position = global_position
-		animSprite.play("Muerte")
+		anim_cuerpo.play("Muerte")
 
 
 func _on_Hurtbox_damageRecivido(cantidad):

@@ -1,6 +1,7 @@
 extends Control
 
-onready var slot = preload("res://Pantallas/Interfaces/PanelInventario.gd")
+const slot = preload("res://Pantallas/Interfaces/PanelInventario.tscn")
+
 onready var gridInventario = $Panel/PanelInventario/GridContainer
 onready var txtNombre = $Panel/PanelNombre/TextoNombre
 onready var txtDescripcion = $Panel/PanelDescripcion/ScrollContainer/VBoxContainer/TextoDescripcion
@@ -20,7 +21,7 @@ func _ready():
 
 
 func _on_Inventario_draw():
-#	get_tree().paused = true
+	get_tree().paused = true
 	generarSlots()
 
 
@@ -28,9 +29,8 @@ func generarSlots():
 	for i in gridInventario.get_children():
 		i.queue_free()
 	for x in Jugador.inventario.size():
-		var item_nuevo = slot.new()
-		gridInventario.add_child(item_nuevo)
-#			gridInventario.call_deferred("add_child",item_nuevo)
+		var item_nuevo = slot.instance()
+		gridInventario.call_deferred("add_child",item_nuevo)
 		item_nuevo.setValores(Jugador.inventario[x]["id"],Jugador.inventario[x]["cantidad"],x)
 		item_nuevo.connect("devolverInfo",self,"cargarInfo")
 		item_nuevo.connect("actualizado",self,"generarSlots")
@@ -53,18 +53,22 @@ func generarSlots():
 
 func cargarInfo(id_item):
 	var datos_item = Datos.getItemInfo(id_item)
+	txtNombre.text = ""
 	txtNombre.text = datos_item["nombre"]
+	txtDescripcion.text = ""
 	txtDescripcion.text = datos_item["descripcion"]
-	match Datos.getItemTipo(id_item)[0]:
+	
+	txtEstadisticas.text = ""
+	match Datos.getItemTipo(id_item)["id_tipo"]:
 		1:
 			var equipo_info = Datos.getEquipoInfo(id_item)
-			txtEstadisticas.text = "Defensa: " + equipo_info["def_num"] + equipo_info["def_por"] + "%"
+			txtEstadisticas.text = "Defensa: " + String(equipo_info["def_num"]) + String(equipo_info["def_por"]) + "%"
 		2:
 			var arma_info = Datos.getArmaInfo(id_item)
-			txtEstadisticas.text = "Ataque: " + arma_info["atc_num"] + arma_info["atc_por"] + "%"
+			txtEstadisticas.text = "Ataque: " + String(arma_info["atc_num"]) + String(arma_info["atc_por"]) + "%"
 		3:
 			var consumible_info = Datos.getConsumibleInfo(id_item)
-			txtEstadisticas.text = "Vida: " + consumible_info["vida"] + " Mana: " + consumible_info["mana"]
+			txtEstadisticas.text = "Vida: " + String(consumible_info["vida"]) + " Mana: " + String(consumible_info["mana"])
 
 
 func _on_Inventario_hide():

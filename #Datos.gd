@@ -74,24 +74,24 @@ func getItemInfo(id_item):
 
 
 func getItemTipo(id_item):
-	if fdsdb.query("SELECT id_item FROM items WHERE id_item =" + String(id_item) + ";"):
+	if fdsdb.query("SELECT id_tipo FROM items WHERE id_item =" + String(id_item) + ";"):
 		var resultado = fdsdb.query_result
-		return resultado[0]
+		return resultado[0] # devuelve "id_tipo"
 
 
 func getConsumibleInfo(id_item):
 	fdsdb.query("SELECT consumibles.vida, consumibles.mana FROM items INNER JOIN consumibles ON items.id_item=consumibles.id_item")
 	var resultado = fdsdb.query_result
-	return resultado
+	return resultado[0] # devuelve "vida" y "mana"
 
 
 func getEquipoInfo(id_item):
 	fdsdb.query("SELECT equipos.def_num, equipos.def_por FROM items INNER JOIN equipos ON items.id_item=equipos.id_item")
 	var resultado = fdsdb.query_result
-	return resultado
+	return resultado[0] # devuelve "def_num" y "def_por"
 
 
 func getArmaInfo(id_item):
 	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item")
 	var resultado = fdsdb.query_result
-	return resultado
+	return resultado[0] # devuelve "atc_num" y "atc_por"
