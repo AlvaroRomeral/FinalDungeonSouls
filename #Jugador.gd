@@ -24,7 +24,8 @@ var stats = {
 # INVENTARIO
 var monedas: int = 0 setget setMonedas
 var inventario: Array = []
-var inventario_cap: int = 20
+var inventario_cap: int = 7
+var item_cap_max = 999
 ## EQUIPAMIENTO
 var array_equipo = []
 # [0] cabeza
@@ -38,6 +39,11 @@ var array_equipo = []
 
 
 func _ready():
+	for i in inventario_cap:
+		inventario.append({
+			"id": null,
+			"cantidad": null
+		})
 	for i in range(8):
 		array_equipo.append({
 			"id": null,
@@ -107,17 +113,25 @@ func setestamina_max(cantidad):
 # INVENTARIO
 
 func anadirItem(item_id: int, cantidad: int):
-	var nuevo_item = {
-		"id" : item_id,
-		"cantidad" : cantidad
-	}
-	for i in inventario:
-		if i["id"] == nuevo_item["id"]:
-			i["cantidad"] = i["cantidad"] + nuevo_item["cantidad"]
-			emit_signal("inventarioActualizado")
-			return
-	inventario.append(nuevo_item)
-	emit_signal("inventarioActualizado")
+	if haySimilaresConCap(item_id):
+		for x in inventario_cap:
+			if hayEspacioSuficiente(x, cantidad):
+				inventario[x]["cantidad"] = inventario[x]["cantidad"] + cantidad
+				return 0
+			else:
+				var sobra = (inventario[x]["cantidad"] + cantidad) - item_cap_max
+				print("Este contenido le sobra "+String(sobra)+" unidades")
+				inventario[x]["cantidad"] = item_cap_max
+				anadirItem(item_id, sobra)
+	else:
+		if hayEspacioVacio():
+			for x in inventario_cap:
+				if inventario[x]["id"] == null:
+					inventario[x]["id"] = item_id
+					inventario[x]["cantidad"] = cantidad
+					return 0
+		else:
+			return cantidad
 
 
 func quitarItem(item_id: int, cantidad: int):
@@ -205,19 +219,35 @@ func usarItem(item_id: int):
 	Global.Notificacion("No hay ningun objeto")
 
 
-func equipar(item, posicion):
+func equipar(item_id: int, posicion: int):
 	if array_equipo[posicion]["id"] == null:
-		array_equipo[posicion] = quitarItem(item, 1)
+		array_equipo[posicion] = quitarItem(item_id, 1)
 	else:
-		anadirItem(item, 1)
-		array_equipo[posicion] = quitarItem(item, 1)
+		anadirItem(item_id, 1)
+		array_equipo[posicion] = quitarItem(item_id, 1)
 	setEstasEquipo()
 
 
-func chekearItem(item) -> bool:
-	if item in inventario:
-		return true
+func haySimilaresConCap(item_id: int):
+	for i in inventario:
+		if i["id"] == item_id and i["cantidad"] < item_cap_max:
+			return true
 	return false
+
+
+func hayEspacioVacio():
+	for i in inventario:
+		if i["id"] == null:
+			return true
+	return false
+
+
+func hayEspacioSuficiente(index: int, cantidad: int):
+	var valor_total = inventario[index]["cantidad"] + cantidad
+	if valor_total <= item_cap_max:
+		return true
+	return false 
+
 
 # GETTERS
 

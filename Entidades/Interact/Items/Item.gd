@@ -1,17 +1,32 @@
 extends Area2D
+class_name ResItem
 
 export var item_id: int = 0
-export var cantidad: int = 1
+export(int, 1, 999) var cantidad: = 1
+
+var interactuable = false
 
 func _ready():
 	$Sprite.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"])
 
 
+func _input(event):
+	if event.is_action_released("INTERACTUAR") and interactuable:
+		itemRecogido()
+
+
 func itemRecogido():
-	Jugador.anadirItem(item_id, cantidad)
-	Global.Notificacion(String(item_id))
-	queue_free()
+	var sobra = Jugador.anadirItem(item_id, cantidad)
+	if sobra == 0:
+		Global.Notificacion(String(item_id))
+		queue_free()
+	else:
+		cantidad = sobra
 
 
 func _on_FrascoVida_body_entered(body):
-	itemRecogido()
+	interactuable = true
+
+
+func _on_Item_body_exited(body):
+	interactuable = false

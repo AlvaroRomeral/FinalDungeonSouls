@@ -1,6 +1,10 @@
 extends Control
 
 func _on_btnJugar_botonPresionado():
+	$btnJugarTest.disabled = true
+	$VBoxContainer/btnCargar.disabled = true
+	$VBoxContainer/btnJugar.disabled = true
+	$VBoxContainer/btnSalir.disabled = true
 	Datos.nuevosDatos()
 	$AnimationPlayer.play("Obscurecer")
 

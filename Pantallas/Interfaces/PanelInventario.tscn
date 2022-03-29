@@ -25,9 +25,6 @@ margin_right = -2.0
 margin_bottom = -1.0
 rect_min_size = Vector2( 12, 12 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Cantidad" type="Label" parent="."]
 anchor_right = 1.0

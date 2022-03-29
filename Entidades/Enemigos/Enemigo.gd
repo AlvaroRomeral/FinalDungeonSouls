@@ -5,10 +5,11 @@ onready var dist_vision = $Position2D/DistVision
 onready var dist_ataque = $Position2D/DistAtaque
 
 const VELOCIDAD = 1000
+const res_item = preload("res://Entidades/Interact/Items/Item.tscn")
 
 export var vida = 2
-export var drop = preload("res://Entidades/Interact/Items/Item.tscn")
-export var cantidad_dropeo = 1
+export var id_drop = 1
+export var cantidad_drop = 1
 export var enShock = false
 
 var path = []
@@ -105,9 +106,11 @@ func revisarVida():
 		$CollisionShape2D.set_deferred("disabled",true)
 		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
 		estado=MUERTO
-		var moneda = drop.instance()
-		get_parent().call_deferred("add_child",moneda)
-		moneda.global_position = global_position
+		var drop: ResItem = res_item.instance()
+		get_parent().call_deferred("add_child",drop)
+		drop.item_id = id_drop
+		drop.cantidad = cantidad_drop
+		drop.global_position = global_position
 		anim_cuerpo.play("Muerte")
 
 

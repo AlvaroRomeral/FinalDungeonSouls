@@ -51,6 +51,7 @@ item_id = 5
 [node name="Item2" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 184, 88 )
 item_id = 2
+cantidad = 32
 
 [node name="Item3" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 248, 56 )
@@ -69,8 +70,9 @@ position = Vector2( 216, 88 )
 item_id = 4
 
 [node name="Item7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 232, 88 )
+position = Vector2( 240, 88 )
 item_id = 2
+cantidad = 900
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

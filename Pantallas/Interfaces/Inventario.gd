@@ -28,12 +28,13 @@ func _on_Inventario_draw():
 func generarSlots():
 	for i in gridInventario.get_children():
 		i.queue_free()
-	for x in Jugador.inventario.size():
+	for x in Jugador.inventario_cap:
 		var item_nuevo = slot.instance()
 		gridInventario.call_deferred("add_child",item_nuevo)
-		item_nuevo.setValores(Jugador.inventario[x]["id"],Jugador.inventario[x]["cantidad"],x)
-		item_nuevo.connect("devolverInfo",self,"mostrarInfo")
-		item_nuevo.connect("actualizado",self,"generarSlots")
+		if Jugador.inventario[x]["id"] != null:
+			item_nuevo.setValores(Jugador.inventario[x]["id"],Jugador.inventario[x]["cantidad"],x)
+			item_nuevo.connect("devolverInfo",self,"mostrarInfo")
+			item_nuevo.connect("actualizado",self,"generarSlots")
 	if Jugador.array_equipo[0]["id"] != null:
 		slotCabeza.setValores	(Jugador.array_equipo[0]["id"], Jugador.array_equipo[0]["cantidad"])
 	if Jugador.array_equipo[1]["id"] != null:

@@ -12,10 +12,8 @@ var item_cantidad
 var item_posicion
 
 func _ready():
-	com_popup = $MenuAcciones
-	com_cantidad = $Cantidad
-	com_icono = $Icono
 	com_popup.get_popup().connect("id_pressed",self,"opcionSeleccionada")
+	com_popup.disabled = true
 
 # INICIALIZACION
 
@@ -24,6 +22,7 @@ func setValores(id: int, cantidad: int, posicion: int):
 	item_cantidad = cantidad
 	item_posicion = posicion
 #	var popup_real = com_popup.get_popup()
+	$MenuAcciones.disabled = false
 	$MenuAcciones.get_popup().clear()
 	$MenuAcciones.get_popup().add_item("Test",3)
 	$MenuAcciones.get_popup().add_item("Test2",1)
