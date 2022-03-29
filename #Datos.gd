@@ -63,7 +63,7 @@ func cargarDatos():
 
 # BASE DE DATOS
 
-func getItemInfo(id_item):
+func getItemInfo(id_item): #devuelve "id_item", "nombre", "descripcion", "icono"
 	if fdsdb.query("SELECT * FROM items WHERE id_item =" + String(id_item) + ";"):
 		var resultado = fdsdb.query_result
 		return resultado[0]
@@ -73,25 +73,26 @@ func getItemInfo(id_item):
 		return resultado[0]
 
 
-func getItemTipo(id_item):
+func getItemTipo(id_item): #devuelve el int de "id_tipo"
 	if fdsdb.query("SELECT id_tipo FROM items WHERE id_item =" + String(id_item) + ";"):
 		var resultado = fdsdb.query_result
-		return resultado[0] # devuelve "id_tipo"
+		var valor = resultado[0]["id_tipo"]
+		return valor
 
 
-func getConsumibleInfo(id_item):
-	fdsdb.query("SELECT consumibles.vida, consumibles.mana FROM items INNER JOIN consumibles ON items.id_item=consumibles.id_item")
+func getConsumibleInfo(id_item): #devuelve "vida" y "mana"
+	fdsdb.query("SELECT consumibles.vida, consumibles.mana FROM items INNER JOIN consumibles ON items.id_item=consumibles.id_item WHERE items.id_item ="+String(id_item) + ";")
 	var resultado = fdsdb.query_result
-	return resultado[0] # devuelve "vida" y "mana"
+	return resultado[0]
 
 
-func getEquipoInfo(id_item):
-	fdsdb.query("SELECT equipos.def_num, equipos.def_por FROM items INNER JOIN equipos ON items.id_item=equipos.id_item")
+func getEquipoInfo(id_item): #devuelve "def_num" y "def_por"
+	fdsdb.query("SELECT equipos.def_num, equipos.def_por FROM items INNER JOIN equipos ON items.id_item=equipos.id_item WHERE items.id_item ="+String(id_item) + ";")
 	var resultado = fdsdb.query_result
-	return resultado[0] # devuelve "def_num" y "def_por"
+	return resultado[0]
 
 
-func getArmaInfo(id_item):
-	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item")
+func getArmaInfo(id_item): #devuelve "atc_num" y "atc_por"
+	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item WHERE items.id_item ="+String(id_item) + ";")
 	var resultado = fdsdb.query_result
-	return resultado[0] # devuelve "atc_num" y "atc_por"
+	return resultado[0]

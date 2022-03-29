@@ -155,11 +155,7 @@ func quitarItem(item_id: int, cantidad: int):
 
 
 func usarItem(item_id: int):
-#	if item_id != null:
-#		for i in inventario:
-#			if item_id == i["id"]:
-#				var datos = Datos.item_ids_db[i["id"]]
-	match Datos.getItemTipo(item_id)[0]:
+	match Datos.getItemTipo(item_id):
 		1: #Equipo
 			Datos.getEquipoInfo(item_id)
 #			match datos["tipo_equipo"]:
@@ -188,7 +184,7 @@ func usarItem(item_id: int):
 			Datos.getConsumibleInfo(item_id)
 			pass # al usar una puerta se le abre el inventario
 			return
-		0:
+		0: #Nada
 			pass
 			return
 	#=========================================

@@ -46,6 +46,7 @@ region_rect = Rect2( 0, 96, 80, 96 )
 
 [node name="Item" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 184, 56 )
+item_id = 5
 
 [node name="Item2" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 184, 88 )
@@ -53,6 +54,7 @@ item_id = 2
 
 [node name="Item3" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 248, 56 )
+item_id = 3
 
 [node name="Item4" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 216, 40 )
@@ -60,13 +62,16 @@ item_id = 1
 
 [node name="Item5" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 192, 40 )
+item_id = 2
 
 [node name="Item6" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 216, 88 )
+item_id = 4
 
 [node name="Item7" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 232, 88 )
 item_id = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.133333, 0.133333, 0.133333, 1 )

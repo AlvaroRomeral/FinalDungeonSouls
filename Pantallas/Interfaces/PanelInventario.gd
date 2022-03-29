@@ -16,7 +16,6 @@ func _ready():
 	com_cantidad = $Cantidad
 	com_icono = $Icono
 	com_popup.get_popup().connect("id_pressed",self,"opcionSeleccionada")
-	com_popup.get_popup().add_item("Test ready")
 
 # INICIALIZACION
 
@@ -26,7 +25,7 @@ func setValores(id: int, cantidad: int, posicion: int):
 	item_posicion = posicion
 #	var popup_real = com_popup.get_popup()
 	$MenuAcciones.get_popup().clear()
-	$MenuAcciones.get_popup().add_item("Test",0)
+	$MenuAcciones.get_popup().add_item("Test",3)
 	$MenuAcciones.get_popup().add_item("Test2",1)
 	$MenuAcciones.get_popup().set_item_disabled(1,true)
 	setAspecto()

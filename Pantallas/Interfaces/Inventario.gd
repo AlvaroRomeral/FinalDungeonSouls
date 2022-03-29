@@ -32,43 +32,43 @@ func generarSlots():
 		var item_nuevo = slot.instance()
 		gridInventario.call_deferred("add_child",item_nuevo)
 		item_nuevo.setValores(Jugador.inventario[x]["id"],Jugador.inventario[x]["cantidad"],x)
-		item_nuevo.connect("devolverInfo",self,"cargarInfo")
+		item_nuevo.connect("devolverInfo",self,"mostrarInfo")
 		item_nuevo.connect("actualizado",self,"generarSlots")
-#	if Jugador.array_equipo[0]["id"] != null:
-#		slotCabeza.setValores	(Jugador.array_equipo[0]["id"], Jugador.array_equipo[0]["cantidad"])
-#	if Jugador.array_equipo[1]["id"] != null:
-#		slotPecho.setValores	(Jugador.array_equipo[1]["id"], Jugador.array_equipo[1]["cantidad"])
-#	if Jugador.array_equipo[2]["id"] != null:
-#		slotPiernas.setValores	(Jugador.array_equipo[2]["id"], Jugador.array_equipo[2]["cantidad"])
-#	if Jugador.array_equipo[3]["id"] != null:
-#		slotPies.setValores		(Jugador.array_equipo[3]["id"], Jugador.array_equipo[3]["cantidad"])
-#	if Jugador.array_equipo[4]["id"] != null:
-#		slotEspalda.setValores	(Jugador.array_equipo[4]["id"], Jugador.array_equipo[4]["cantidad"])
-#	if Jugador.array_equipo[5]["id"] != null:
-#		slotManos.setValores	(Jugador.array_equipo[5]["id"], Jugador.array_equipo[5]["cantidad"])
-#	if Jugador.array_equipo[6]["id"] != null:
-#		slotDedoDer.setValores	(Jugador.array_equipo[7]["id"], Jugador.array_equipo[7]["cantidad"])
-#	if Jugador.array_equipo[7]["id"] != null:
-#		slotDedoIzq.setValores	(Jugador.array_equipo[6]["id"], Jugador.array_equipo[6]["cantidad"])
+	if Jugador.array_equipo[0]["id"] != null:
+		slotCabeza.setValores	(Jugador.array_equipo[0]["id"], Jugador.array_equipo[0]["cantidad"])
+	if Jugador.array_equipo[1]["id"] != null:
+		slotPecho.setValores	(Jugador.array_equipo[1]["id"], Jugador.array_equipo[1]["cantidad"])
+	if Jugador.array_equipo[2]["id"] != null:
+		slotPiernas.setValores	(Jugador.array_equipo[2]["id"], Jugador.array_equipo[2]["cantidad"])
+	if Jugador.array_equipo[3]["id"] != null:
+		slotPies.setValores		(Jugador.array_equipo[3]["id"], Jugador.array_equipo[3]["cantidad"])
+	if Jugador.array_equipo[4]["id"] != null:
+		slotEspalda.setValores	(Jugador.array_equipo[4]["id"], Jugador.array_equipo[4]["cantidad"])
+	if Jugador.array_equipo[5]["id"] != null:
+		slotManos.setValores	(Jugador.array_equipo[5]["id"], Jugador.array_equipo[5]["cantidad"])
+	if Jugador.array_equipo[6]["id"] != null:
+		slotDedoDer.setValores	(Jugador.array_equipo[7]["id"], Jugador.array_equipo[7]["cantidad"])
+	if Jugador.array_equipo[7]["id"] != null:
+		slotDedoIzq.setValores	(Jugador.array_equipo[6]["id"], Jugador.array_equipo[6]["cantidad"])
 
-func cargarInfo(id_item):
+func mostrarInfo(id_item):
 	var datos_item = Datos.getItemInfo(id_item)
 	txtNombre.text = ""
 	txtNombre.text = datos_item["nombre"]
 	txtDescripcion.text = ""
 	txtDescripcion.text = datos_item["descripcion"]
 	
-	txtEstadisticas.text = ""
-	match Datos.getItemTipo(id_item)["id_tipo"]:
+	txtEstadisticas.bbcode_text = ""
+	match Datos.getItemTipo(id_item):
 		1:
 			var equipo_info = Datos.getEquipoInfo(id_item)
-			txtEstadisticas.text = "Defensa: " + String(equipo_info["def_num"]) + String(equipo_info["def_por"]) + "%"
+			txtEstadisticas.bbcode_text = "[center]Defensa: " + String(equipo_info["def_num"]) + "/ Porcentaje: " + String(equipo_info["def_por"]) + "%"
 		2:
 			var arma_info = Datos.getArmaInfo(id_item)
-			txtEstadisticas.text = "Ataque: " + String(arma_info["atc_num"]) + String(arma_info["atc_por"]) + "%"
+			txtEstadisticas.bbcode_text = "[center]Ataque: " + String(arma_info["atc_num"]) + "/ Porcentaje: " + String(arma_info["atc_por"]) + "%"
 		3:
 			var consumible_info = Datos.getConsumibleInfo(id_item)
-			txtEstadisticas.text = "Vida: " + String(consumible_info["vida"]) + " Mana: " + String(consumible_info["mana"])
+			txtEstadisticas.bbcode_text = "[center]Vida: [color=red]" + String(consumible_info["vida"]) + "[/color] Mana: [color=blue]" + String(consumible_info["mana"])
 
 
 func _on_Inventario_hide():

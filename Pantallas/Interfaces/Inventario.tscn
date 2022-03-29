@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Interfaz.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Interfaces/Inventario.gd" type="Script" id=2]
 [ext_resource path="res://Pantallas/Interfaces/PanelInventario.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=4]
-
+[ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=5]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.588235, 0.411765, 0.211765, 1 )
@@ -101,8 +101,7 @@ margin_right = 144.0
 margin_bottom = 80.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/PanelDescripcion"]
@@ -126,18 +125,19 @@ size_flags_vertical = 3
 
 [node name="TextoDescripcion" type="Label" parent="Panel/PanelDescripcion/ScrollContainer/VBoxContainer"]
 margin_right = 60.0
-margin_bottom = 33.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 autowrap = true
 
-[node name="TextoEstadisticas" type="Label" parent="Panel/PanelDescripcion/ScrollContainer/VBoxContainer"]
-margin_top = 37.0
+[node name="TextoEstadisticas" type="RichTextLabel" parent="Panel/PanelDescripcion/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
 margin_right = 60.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 1 )
-align = 1
+theme = ExtResource( 5 )
+bbcode_enabled = true
+fit_content_height = true
 
 [node name="PanelCabeza" type="Panel" parent="Panel"]
 margin_left = 8.0
