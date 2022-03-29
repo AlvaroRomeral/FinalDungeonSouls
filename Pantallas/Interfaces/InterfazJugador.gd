@@ -38,6 +38,6 @@ func _input(event):
 
 
 func addNotificacion(text):
-	var nuevaNoti = notificacion.instance()
-	$Notificaiones.call_deferred("add_child",nuevaNoti)
-	nuevaNoti.text = text
+	var noti_nueva = notificacion.instance()
+	$Notificaiones.call_deferred("add_child",noti_nueva)
+	noti_nueva.texto = text

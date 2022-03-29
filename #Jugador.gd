@@ -113,18 +113,21 @@ func setestamina_max(cantidad):
 # INVENTARIO
 
 func anadirItem(item_id: int, cantidad: int):
-	if haySimilaresConCap(item_id):
+	if getSimilaresConEspacio(item_id, cantidad):
 		for x in inventario_cap:
-			if hayEspacioSuficiente(x, cantidad):
-				inventario[x]["cantidad"] = inventario[x]["cantidad"] + cantidad
+			if inventario[x]["cantidad"] < item_cap_max and inventario[x]["id"] == item_id:
+				var restante = inventario[x]["cantidad"] - item_cap_max
+				if restante < cantidad:
+					inventario[x]["cantidad"] = item_cap_max
+					cantidad - restante
 				return 0
-			else:
+			elif inventario[x]["id"] == item_id:
 				var sobra = (inventario[x]["cantidad"] + cantidad) - item_cap_max
 				print("Este contenido le sobra "+String(sobra)+" unidades")
 				inventario[x]["cantidad"] = item_cap_max
 				anadirItem(item_id, sobra)
 	else:
-		if hayEspacioVacio():
+		if getEspaciosVacios() > 0:
 			for x in inventario_cap:
 				if inventario[x]["id"] == null:
 					inventario[x]["id"] = item_id
@@ -228,25 +231,20 @@ func equipar(item_id: int, posicion: int):
 	setEstasEquipo()
 
 
-func haySimilaresConCap(item_id: int):
+func getSimilaresConEspacio(item_id: int, capacidad: int):
+	var cap_necesaria = capacidad
 	for i in inventario:
-		if i["id"] == item_id and i["cantidad"] < item_cap_max:
+		if i["id"] == item_id and (i["cantidad"] < item_cap_max):
 			return true
 	return false
 
 
-func hayEspacioVacio():
+func getEspaciosVacios():
+	var espacios_vacios = 0
 	for i in inventario:
 		if i["id"] == null:
-			return true
-	return false
-
-
-func hayEspacioSuficiente(index: int, cantidad: int):
-	var valor_total = inventario[index]["cantidad"] + cantidad
-	if valor_total <= item_cap_max:
-		return true
-	return false 
+			espacios_vacios =+ 1
+	return espacios_vacios
 
 
 # GETTERS

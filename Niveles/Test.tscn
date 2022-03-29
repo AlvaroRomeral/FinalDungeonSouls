@@ -74,6 +74,31 @@ position = Vector2( 240, 88 )
 item_id = 2
 cantidad = 900
 
+[node name="Item8" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 224, 128 )
+item_id = 2
+cantidad = 999
+
+[node name="Item9" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 230, 96 )
+item_id = 2
+cantidad = 999
+
+[node name="Item10" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 200, 96 )
+item_id = 2
+cantidad = 999
+
+[node name="Item11" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 200, 72 )
+item_id = 2
+cantidad = 999
+
+[node name="Item12" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 176, 72 )
+item_id = 2
+cantidad = 999
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0.133333, 0.133333, 0.133333, 1 )

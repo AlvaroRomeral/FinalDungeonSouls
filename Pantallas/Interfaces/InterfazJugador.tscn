@@ -154,7 +154,9 @@ margin_bottom = 64.0
 mouse_filter = 2
 
 [node name="Notificaion" parent="Notificaiones" instance=ExtResource( 6 )]
-margin_bottom = 8.0
-text = "Juego Empezado"
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 0.0
 
 [node name="MenuPausa" parent="." instance=ExtResource( 10 )]
