@@ -113,28 +113,27 @@ func setestamina_max(cantidad):
 # INVENTARIO
 
 func anadirItem(item_id: int, cantidad: int):
-	if getSimilaresConEspacio(item_id, cantidad):
-		for x in inventario_cap:
-			if inventario[x]["cantidad"] < item_cap_max and inventario[x]["id"] == item_id:
-				var restante = inventario[x]["cantidad"] - item_cap_max
-				if restante < cantidad:
-					inventario[x]["cantidad"] = item_cap_max
-					cantidad - restante
+	var sobra = cantidad
+	while sobra != 0:
+		var index_con_espacio = getSimilaresConEspacio(item_id)
+		if index_con_espacio != -1:
+			var restante = item_cap_max - inventario[index_con_espacio]["cantidad"]
+			if restante > sobra:
+				inventario[index_con_espacio]["cantidad"] += sobra
 				return 0
-			elif inventario[x]["id"] == item_id:
-				var sobra = (inventario[x]["cantidad"] + cantidad) - item_cap_max
+			else:
+				sobra = sobra - restante
 				print("Este contenido le sobra "+String(sobra)+" unidades")
-				inventario[x]["cantidad"] = item_cap_max
-				anadirItem(item_id, sobra)
-	else:
-		if getEspaciosVacios() > 0:
-			for x in inventario_cap:
-				if inventario[x]["id"] == null:
-					inventario[x]["id"] = item_id
-					inventario[x]["cantidad"] = cantidad
-					return 0
+				inventario[index_con_espacio]["cantidad"] = item_cap_max
 		else:
-			return cantidad
+			if getEspaciosVacios() > 0: #Si recogo un item que contiene mas de la capacidad maxima no funcionaria
+				for x in inventario_cap:
+					if inventario[x]["id"] == null:
+						inventario[x]["id"] = item_id
+						inventario[x]["cantidad"] = sobra
+						return 0
+			else:
+				return sobra
 
 
 func quitarItem(item_id: int, cantidad: int):
@@ -231,12 +230,11 @@ func equipar(item_id: int, posicion: int):
 	setEstasEquipo()
 
 
-func getSimilaresConEspacio(item_id: int, capacidad: int):
-	var cap_necesaria = capacidad
-	for i in inventario:
-		if i["id"] == item_id and (i["cantidad"] < item_cap_max):
-			return true
-	return false
+func getSimilaresConEspacio(item_id: int):
+	for x in inventario_cap:
+		if inventario[x]["id"] == item_id and (inventario[x]["cantidad"] < item_cap_max):
+			return x
+	return -1
 
 
 func getEspaciosVacios():

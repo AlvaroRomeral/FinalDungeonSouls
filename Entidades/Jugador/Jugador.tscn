@@ -13,7 +13,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.99998
-height = 6.00004
+height = 4.00543e-05
 
 [sub_resource type="Animation" id=10]
 resource_name = "Andar"

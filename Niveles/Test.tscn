@@ -45,57 +45,53 @@ region_enabled = true
 region_rect = Rect2( 0, 96, 80, 96 )
 
 [node name="Item" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 184, 56 )
+position = Vector2( 168, 40 )
 item_id = 5
 
 [node name="Item2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 184, 88 )
+position = Vector2( 168, 104 )
 item_id = 2
 cantidad = 32
 
 [node name="Item3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 248, 56 )
+position = Vector2( 248, 40 )
 item_id = 3
 
-[node name="Item4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 216, 40 )
-item_id = 1
-
 [node name="Item5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 192, 40 )
+position = Vector2( 200, 40 )
 item_id = 2
 
 [node name="Item6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 216, 88 )
+position = Vector2( 184, 40 )
 item_id = 4
 
 [node name="Item7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 240, 88 )
+position = Vector2( 264, 104 )
 item_id = 2
 cantidad = 900
 
 [node name="Item8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 224, 128 )
+position = Vector2( 216, 104 )
 item_id = 2
 cantidad = 999
 
 [node name="Item9" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 230, 96 )
+position = Vector2( 248, 104 )
 item_id = 2
 cantidad = 999
 
 [node name="Item10" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 200, 96 )
+position = Vector2( 200, 104 )
 item_id = 2
 cantidad = 999
 
 [node name="Item11" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 200, 72 )
+position = Vector2( 232, 104 )
 item_id = 2
 cantidad = 999
 
 [node name="Item12" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 176, 72 )
+position = Vector2( 184, 104 )
 item_id = 2
 cantidad = 999
 
