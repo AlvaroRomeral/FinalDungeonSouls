@@ -24,7 +24,7 @@ var stats = {
 # INVENTARIO
 var monedas: int = 0 setget setMonedas
 var inventario: Array = []
-var inventario_cap: int = 7
+var inventario_cap: int = 20
 var item_cap_max = 999
 ## EQUIPAMIENTO
 var array_equipo = []
@@ -123,7 +123,6 @@ func anadirItem(item_id: int, cantidad: int):
 				return 0
 			else:
 				sobra = sobra - restante
-				print("Este contenido le sobra "+String(sobra)+" unidades")
 				inventario[index_con_espacio]["cantidad"] = item_cap_max
 		else:
 			if getEspaciosVacios() > 0: #Si recogo un item que contiene mas de la capacidad maxima no funcionaria
@@ -137,37 +136,20 @@ func anadirItem(item_id: int, cantidad: int):
 
 
 func quitarItem(item_id: int, cantidad: int):
-	for i in inventario:
-		if item_id == i["id"]:
-			var cantidadActual = i["cantidad"]
-			cantidadActual = cantidadActual - cantidad
-			if cantidadActual < 1:
-				inventario.remove(inventario.find(i))
-				return {
-					"id": item_id,
-					"cantidad": cantidad
-				}
-			else:
-				i["cantidad"] = cantidadActual
-				return {
-					"id": item_id,
-					"cantidad": cantidad
-				}
-			return null
-		#==========================================
-#	var indexQuitar = inventario.find(itemQuitado)
-#	if indexQuitar != -1:
-#		var cantidadActual = inventario[indexQuitar]["cantidad"]
-#		cantidadActual = cantidadActual - cantidad
-#		if cantidadActual < 2:
-#			inventario.remove(indexQuitar)
-#			emit_signal("inventarioActualizado")
-#		else:
-#			inventario[indexQuitar]["cantidad"] = cantidadActual
-#			emit_signal("inventarioActualizado")
-#	else:
-	Global.Notificacion("No hay ningun objeto")
-	return null
+	var cant_faltante = cantidad
+	while cant_faltante != 0:
+		for x in inventario_cap:
+			if inventario[x]["id"] == item_id:
+				var cant_item = inventario[x]["cantidad"]
+				if cant_item < cant_faltante:
+					cant_item = cant_item - cant_faltante
+				else:
+					cant_faltante = cant_faltante - cant_item
+					inventario[x]["id"] = null
+					inventario[x]["cantidad"] = null
+		Global.Notificacion("No se encontro " + Datos.getItemInfo(item_id)["nombre"])
+		return
+	Global.Notificacion(Datos.getItemInfo(item_id)["nombre"] + " eliminado de la mochila")
 
 
 func usarItem(item_id: int):

@@ -96,3 +96,23 @@ func getArmaInfo(id_item): #devuelve "atc_num" y "atc_por"
 	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item WHERE items.id_item ="+String(id_item) + ";")
 	var resultado = fdsdb.query_result
 	return resultado[0]
+
+
+# ARCHIVOS
+
+func getArchivosDePath(path):
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin(true)
+
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif !file.ends_with(".import"):
+			files.append(file)
+
+	dir.list_dir_end()
+
+	return files

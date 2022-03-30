@@ -21,8 +21,6 @@ func setValores(id: int, cantidad: int, posicion: int):
 	item_id = id
 	item_cantidad = cantidad
 	item_posicion = posicion
-#	var popup_real = com_popup.get_popup()
-	$MenuAcciones.disabled = false
 	$MenuAcciones.get_popup().clear()
 	match Datos.getItemTipo(id):
 		0:
@@ -61,6 +59,10 @@ func opcionSeleccionada(id):
 		0:
 			Jugador.usarItem(item_id)
 			emit_signal("actualizado")
+		1:
+			pass
+		2:
+			Jugador.quitarItem(item_id, 1)
 
 
 func _on_PanelInventario_gui_input(event):
@@ -69,4 +71,5 @@ func _on_PanelInventario_gui_input(event):
 
 
 func _on_PopupMenu_mouse_entered():
+	$MenuAcciones.disabled = false
 	emit_signal("devolverInfo",item_id)
