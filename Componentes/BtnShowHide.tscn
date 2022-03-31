@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_17.png" type="Texture" id=1]
+[ext_resource path="res://Componentes/BtnShowHide.gd" type="Script" id=2]
+
+[node name="BtnShowHide" type="TextureButton"]
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
+texture_normal = ExtResource( 1 )
+expand = true
+script = ExtResource( 2 )
+
+[connection signal="button_up" from="." to="." method="_on_BtnShowHide_button_up"]
