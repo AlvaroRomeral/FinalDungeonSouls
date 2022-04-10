@@ -8,7 +8,7 @@
 [ext_resource path="res://Componentes/EnemySpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=8]
 
-[node name="Node2D" type="Node2D"]
+[node name="Nivel" type="Node2D" groups=["nivel"]]
 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=["navegacion"]]
 

@@ -4,9 +4,12 @@ const PATH_ICONOS = "res://Recursos/Imagenes/Iconos/"
 const PATH_DATOS = "user://data/"
 const PATH_SAVES = "user://saves/"
 const PATH_DB = "res://Datos/"
-const EXTE_SAVES = ".save"
-const EXTE_PERSISTENCIA = ".data"
 const PATH_FSDDB = "res://Datos/fds"
+
+const EXTE_SAVES = ".res"
+const EXTE_PERSISTENCIA = ".res"
+
+const RES_ALERTA = preload("res://Componentes/Alerta.tscn")
 
 signal notificacion_recibida(texto)
 
@@ -31,3 +34,8 @@ func cambiarNivel(nivel):
 
 func Notificacion(texto: String):
 	emit_signal("notificacion_recibida",texto)
+
+
+func mostrarAlerta(texto: String):
+	Jugador.getInterfaz().addAlerta(texto)
+	

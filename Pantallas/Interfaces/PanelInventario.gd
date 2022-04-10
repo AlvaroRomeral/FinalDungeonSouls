@@ -10,10 +10,16 @@ onready var com_icono = $Icono
 var item_id
 var item_cantidad
 var item_posicion
+var clickeado
 
 func _ready():
 	com_popup.get_popup().connect("id_pressed",self,"opcionSeleccionada")
 	com_popup.disabled = true
+
+
+func _physics_process(delta):
+	if clickeado:
+		$Icono.rect_position = lerp($Icono.rect_position, get_global_mouse_position(),25 * delta)
 
 # INICIALIZACION
 
@@ -61,8 +67,10 @@ func opcionSeleccionada(id):
 			emit_signal("actualizado")
 		1:
 			pass
+			emit_signal("actualizado")
 		2:
 			Jugador.quitarItem(item_id, 1)
+			emit_signal("actualizado")
 
 
 func _on_PanelInventario_gui_input(event):
@@ -73,3 +81,8 @@ func _on_PanelInventario_gui_input(event):
 func _on_PopupMenu_mouse_entered():
 	$MenuAcciones.disabled = false
 	emit_signal("devolverInfo",item_id)
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if Input.is_action_pressed("ATACAR"):
+		clickeado = true

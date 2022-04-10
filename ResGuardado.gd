@@ -10,3 +10,5 @@ export(int)     var ju_mana_max
 export(int)     var ju_estamina_max
 # ESTADISTICAS
 export(int)     var ju_stats
+# INVENTARIO
+export(Array)	var inventario

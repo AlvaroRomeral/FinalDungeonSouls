@@ -37,7 +37,7 @@ region_rect = Rect2( 208, 0, 48, 16 )
 [sub_resource type="StreamTexture" id=7]
 load_path = "res://.import/Moneda.png-336abaa82975b37c2943e9f4f8789579.stex"
 
-[node name="InterfazJugador" type="CanvasLayer"]
+[node name="InterfazJugador" type="CanvasLayer" groups=["interfaz"]]
 pause_mode = 2
 script = ExtResource( 8 )
 

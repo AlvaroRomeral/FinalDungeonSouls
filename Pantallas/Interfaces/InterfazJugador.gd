@@ -9,6 +9,7 @@ onready var estaminaUI = $BarraEstamina
 # Pantallas
 onready var inventario = $Inventario
 onready var notificacion = preload("res://Componentes/Notificaion.tscn")
+onready var alerta = preload("res://Componentes/Alerta.tscn")
 
 
 func _ready():
@@ -41,3 +42,9 @@ func addNotificacion(text):
 	var noti_nueva = notificacion.instance()
 	$Notificaiones.call_deferred("add_child",noti_nueva)
 	noti_nueva.texto = text
+
+
+func addAlerta(texto):
+	var nueva_alerta: Alerta = alerta.instance()
+	nueva_alerta.texto = texto
+	call_deferred("add_child",nueva_alerta)

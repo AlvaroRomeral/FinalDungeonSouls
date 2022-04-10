@@ -7,7 +7,7 @@ const sqlite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var ar_guardado : ResGuardado
 var ar_persistencia : ResPersistencia
 var nombre_guardado = "auto_save"
-var items_db: Dictionary
+#var items_db: Dictionary
 var fdsdb: sqlite
 
 func _ready():
@@ -21,16 +21,18 @@ func _ready():
 	ar_guardado = res_guardado.new()
 	#Cargar persistencia
 	if not directorio.file_exists(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA):
+		print(directorio.file_exists("Existencia de archivo persistente: " + Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA))
 		ar_persistencia = res_persistencia.new()
-		ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia)
+		guardarPersistencia()
 	else:
-		ar_persistencia = load(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA)
+		cargarPersistencia()
+	cargarDatosPersistencia()
 	#Cargar Json
-	var itemDataFile = File.new()
-	itemDataFile.open(Global.PATH_DB + "DataItems.json", File.READ)
-	var itemDataJson = JSON.parse(itemDataFile.get_as_text())
-	itemDataFile.close()
-	items_db = itemDataJson.result
+#	var itemDataFile = File.new()
+#	itemDataFile.open(Global.PATH_DB + "DataItems.json", File.READ)
+#	var itemDataJson = JSON.parse(itemDataFile.get_as_text())
+#	itemDataFile.close()
+#	items_db = itemDataJson.result
 	#Cargar base de datos
 	fdsdb = sqlite.new()
 	fdsdb.path = Global.PATH_FSDDB
@@ -40,11 +42,11 @@ func _ready():
 
 func guardarPartida():
 	guardarDatos()
-	ResourceSaver.save(Global.PATH_SAVES + nombre_guardado + ".save", ar_guardado)
+	ResourceSaver.save(Global.PATH_SAVES + nombre_guardado + Global.EXTE_SAVES, ar_guardado)
 
 
 func cargarPartida():
-	ar_guardado = ResourceLoader.load(Global.PATH_SAVES + nombre_guardado + ".save")
+	ar_guardado = load(Global.PATH_SAVES + nombre_guardado + Global.EXTE_SAVES)
 
 # DATOS GUARDADO
 
@@ -53,13 +55,39 @@ func nuevosDatos():
 
 
 func guardarDatos():
-	pass
+	ar_guardado.ju_vida = Jugador.vida
+	ar_guardado.inventario = Jugador.inventario
 
 
 func cargarDatos():
-	pass
+	Jugador.vida = ar_guardado.ju_vida
+	Jugador.inventario = ar_guardado.inventario
+
+
+func guardarNivel():
+	var nivel_pack = PackedScene.new()
+	nivel_pack.pack(get_tree().get_nodes_in_group("nivel")[0])
+	ResourceSaver.save(Global.PATH_SAVES + "nivelGuardado.tscn", nivel_pack)
+
+
+func cargarNivel():
+	var nivel = load(Global.PATH_SAVES + "nivelGuardado.tscn")
+	get_tree().change_scene(Global.PATH_SAVES + "nivelGuardado.tscn")
 
 # PERSISTENCIA
+
+func guardarPersistencia():
+	print(ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia))
+	print(ResourceSaver.save("user://data.per", ResPersistencia.new()))
+
+
+func cargarPersistencia():
+	ar_persistencia = load(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA)
+
+
+func cargarDatosPersistencia():
+	OS.window_fullscreen = ar_persistencia.pantalla_completa
+	OS.window_size = ar_persistencia.resolucion
 
 # BASE DE DATOS
 

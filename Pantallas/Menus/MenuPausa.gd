@@ -18,11 +18,15 @@ func _on_Continuar_botonPresionado():
 
 
 func _on_Guardar_botonPresionado():
-	pass # Replace with function body.
+	Datos.guardarDatos()
+	Datos.guardarPartida()
+	Datos.guardarNivel()
 
 
 func _on_Cargar_botonPresionado():
-	pass # Replace with function body.
+	Datos.cargarPartida()
+	Datos.cargarDatos()
+	Datos.cargarNivel()
 
 
 func _on_Salir_botonPresionado():

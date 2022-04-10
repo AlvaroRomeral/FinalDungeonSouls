@@ -137,19 +137,27 @@ func anadirItem(item_id: int, cantidad: int):
 
 func quitarItem(item_id: int, cantidad: int):
 	var cant_faltante = cantidad
-	while cant_faltante != 0:
-		for x in inventario_cap:
-			if inventario[x]["id"] == item_id:
-				var cant_item = inventario[x]["cantidad"]
-				if cant_item < cant_faltante:
-					cant_item = cant_item - cant_faltante
-				else:
-					cant_faltante = cant_faltante - cant_item
-					inventario[x]["id"] = null
-					inventario[x]["cantidad"] = null
+	if getSimilares(item_id) != -1:
+		if getCantidad(item_id) >= cant_faltante:
+			while cant_faltante > 0:
+				for x in inventario_cap:
+					if inventario[x]["id"] == item_id:
+						var cant_item = inventario[x]["cantidad"]
+						if cant_item <= cant_faltante:
+							cant_faltante = cant_faltante - cant_item
+							inventario[x]["id"] = null
+							inventario[x]["cantidad"] = null
+						else:
+							cant_item = cant_item - cant_faltante
+							inventario[x]["cantidad"] = cant_item
+							return
+			Global.mostrarAlerta("[color=#902323]" + Datos.getItemInfo(item_id)["nombre"] + " eliminado de la mochila")
+			return
+		else:
+			Global.Notificacion("Se pide mas " + Datos.getItemInfo(item_id)["nombre"] + " de lo que hay")
+			return
+	else:
 		Global.Notificacion("No se encontro " + Datos.getItemInfo(item_id)["nombre"])
-		return
-	Global.Notificacion(Datos.getItemInfo(item_id)["nombre"] + " eliminado de la mochila")
 
 
 func usarItem(item_id: int):
@@ -185,21 +193,6 @@ func usarItem(item_id: int):
 		0: #Nada
 			pass
 			return
-	#=========================================
-#	var indexUsar = inventario.find(itemUsado)
-#	if indexUsar != -1:
-#		for x in range(veces):
-#			var datosItem = Datos.items_db[inventario[indexUsar]["id"]]
-#			match datosItem["tipo"]:
-#				"consumible":
-#					setVida(datosItem["vida"])
-#					setMana(datosItem["mana"])
-#					quitarItem(itemUsado,1)
-#				"equipo":
-#					pass # se se le coloca en el slot de equipo y borra del inventario
-#				"llave":
-#					pass # al usar una puerta se le abre el inventario
-#	else:
 	Global.Notificacion("No hay ningun objeto")
 
 
@@ -219,6 +212,21 @@ func getSimilaresConEspacio(item_id: int):
 	return -1
 
 
+func getSimilares(item_id: int):
+	for x in inventario_cap:
+		if inventario[x]["id"] == item_id:
+			return x
+	return -1
+
+
+func getCantidad(item_id: int):
+	var cantidad_total = 0
+	for x in inventario_cap:
+		if inventario[x]["id"] == item_id:
+			cantidad_total = inventario[x]["cantidad"] + cantidad_total
+	return cantidad_total
+
+
 func getEspaciosVacios():
 	var espacios_vacios = 0
 	for i in inventario:
@@ -231,6 +239,10 @@ func getEspaciosVacios():
 
 func getJugador():
 	return get_tree().get_nodes_in_group("jugador")[0]
+
+
+func getInterfaz():
+	return get_tree().get_nodes_in_group("interfaz")[0]
 
 
 func getValor(id, campo):

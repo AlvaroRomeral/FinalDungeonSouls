@@ -18,9 +18,15 @@ func _on_btnCargar_botonPresionado():
 
 
 func _on_btnSalir_botonPresionado():
+	Datos.guardarPersistencia()
 	get_tree().quit()
 
 
 func _on_btnJugarTest_botonPresionado():
 	Datos.nuevosDatos()
 	get_tree().change_scene(Global.nivel)
+
+
+func _on_BtnPantallaCompleta_button_up():
+	Datos.ar_persistencia.pantalla_completa = !OS.window_fullscreen
+	Datos.cargarDatosPersistencia()

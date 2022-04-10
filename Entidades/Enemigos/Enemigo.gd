@@ -5,7 +5,7 @@ onready var dist_vision = $Position2D/DistVision
 onready var dist_ataque = $Position2D/DistAtaque
 
 const VELOCIDAD = 1000
-const res_item = preload("res://Entidades/Interact/Items/Item.tscn")
+const RES_ITEM = preload("res://Entidades/Interact/Items/Item.tscn")
 
 export var vida = 2
 export var id_drop = 1
@@ -57,9 +57,11 @@ func _physics_process(delta):
 					movimiento = dir * VELOCIDAD * delta
 					movimiento = move_and_slide(movimiento)
 				ATACANDO:
-					atacando=true
-					$Position2D/ComponenteArma.usar()
-					$Position2D/TimerAtaque.start()
+					anim_cuerpo.play("Idle")
+					if atacando == false:
+						atacando = true
+						$Position2D/ComponenteArma.usar()
+						$Position2D/TimerAtaque.start()
 
 
 func calcularEstado():
@@ -106,7 +108,7 @@ func revisarVida():
 		$CollisionShape2D.set_deferred("disabled",true)
 		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
 		estado=MUERTO
-		var drop: ResItem = res_item.instance()
+		var drop: ResItem = RES_ITEM.instance()
 		get_parent().call_deferred("add_child",drop)
 		drop.item_id = id_drop
 		drop.cantidad = cantidad_drop
@@ -115,11 +117,11 @@ func revisarVida():
 
 
 func _on_Hurtbox_damageRecivido(cantidad):
-	if estado!=MUERTO:
+	if estado != MUERTO:
 		enShock = true
 		vida -= 1
 		revisarVida()
 
 
 func _on_TimerAtaque_timeout():
-	atacando=false
+	atacando = false

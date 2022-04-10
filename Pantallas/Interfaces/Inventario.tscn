@@ -160,9 +160,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelPecho" type="Panel" parent="Panel"]
 margin_left = 8.0
@@ -188,9 +188,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelPiernas" type="Panel" parent="Panel"]
 margin_left = 8.0
@@ -216,9 +216,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelPies" type="Panel" parent="Panel"]
 margin_left = 8.0
@@ -244,9 +244,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelEspalda" type="Panel" parent="Panel"]
 margin_left = 48.0
@@ -275,9 +275,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelManos" type="Panel" parent="Panel"]
 margin_left = 48.0
@@ -306,9 +306,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelDedo_izq" type="Panel" parent="Panel"]
 margin_left = 48.0
@@ -334,9 +334,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [node name="PanelDedo_der" type="Panel" parent="Panel"]
 margin_left = 48.0
@@ -362,9 +362,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -18.0
 margin_right = 8.0
-margin_bottom = 0.0
+margin_bottom = -2.0
 
 [connection signal="draw" from="." to="." method="_on_Inventario_draw"]
 [connection signal="hide" from="." to="." method="_on_Inventario_hide"]
