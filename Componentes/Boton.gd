@@ -14,7 +14,6 @@ func _ready():
 func _on_Boton_mouse_entered():
 	if !disabled:
 		$Audio_Select.play()
-		grab_focus()
 
 
 func _on_Boton_button_up():

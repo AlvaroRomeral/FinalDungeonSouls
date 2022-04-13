@@ -4,7 +4,7 @@ signal datosActualizados
 signal inventarioActualizado
 
 # DATOS
-var vida = 3 setget setVida
+var vida = 3 
 var vida_max = 10 setget setvida_max
 var mana = 5 setget setMana
 var mana_max = 10

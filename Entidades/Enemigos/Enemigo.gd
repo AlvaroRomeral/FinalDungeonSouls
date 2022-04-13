@@ -4,7 +4,10 @@ onready var anim_cuerpo:AnimationPlayer = $Aspecto/AnimAspecto
 onready var dist_vision = $Position2D/DistVision
 onready var dist_ataque = $Position2D/DistAtaque
 
-const VELOCIDAD = 1000
+const ACELERACION = 200
+const VEL_NORMAL = 35
+const VEL_CORRER = 60
+const FRICCION = 500
 const RES_ITEM = preload("res://Entidades/Interact/Items/Item.tscn")
 
 export var vida = 2
@@ -13,7 +16,7 @@ export var cantidad_drop = 1
 export var enShock = false
 
 var path = []
-var movimiento = Vector2.ZERO
+var velocidad = Vector2.ZERO
 var jugador : KinematicBody2D
 var distancia = 1
 var nav: Navigation2D = null
@@ -54,8 +57,8 @@ func _physics_process(delta):
 					else:
 						$Aspecto.scale.x = 1
 					anim_cuerpo.play("Andar")
-					movimiento = dir * VELOCIDAD * delta
-					movimiento = move_and_slide(movimiento)
+					velocidad = velocidad.move_toward(dir * VEL_NORMAL, ACELERACION)
+					velocidad = move_and_slide(velocidad)
 				ATACANDO:
 					anim_cuerpo.play("Idle")
 					if atacando == false:
@@ -95,8 +98,8 @@ func navigate():	# Define the next position to go to
 			path.remove(0)
 		else:
 			var dir = global_position.direction_to(path[0])
-			movimiento = dir * VELOCIDAD
-			movimiento = move_and_slide(movimiento)
+			velocidad = dir * ACELERACION
+			velocidad = move_and_slide(velocidad)
 
 
 func generarPath(objetivo):

@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var anim_personaje = $Aspecto/AnimAspecto
 onready var anim_equipo = $Position2D/ComponenteArma/AnimArma
 
-const ACELERACION = 200
+const ACELERACION = 800
 const VEL_NORMAL = 35
 const VEL_CORRER = 60
 const FRICCION = 500

@@ -1,5 +1,15 @@
 extends Control
 
+export(float) var velocidad_montanas = 0.05
+export(float) var velocidad_arboles_fondo = 0.3
+export(float) var velocidad_arboles = 0.6
+
+func _process(delta):
+	$ParallaxBackground/ParallaxArbolesFondo.motion_offset.x -= velocidad_arboles_fondo
+	$ParallaxBackground/ParallaxMontanas.motion_offset.x -= velocidad_montanas
+	$ParallaxBackground/ParallaxArboles.motion_offset.x -= velocidad_arboles
+
+
 func _on_btnJugar_botonPresionado():
 	$btnJugarTest.disabled = true
 	$VBoxContainer/btnCargar.disabled = true

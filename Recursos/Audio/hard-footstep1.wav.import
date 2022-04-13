@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hard-footstep1.wav-2a2cfe491f6e04e71dd9fc7c9679f3ac.sample"
+
+[deps]
+
+source_file="res://Recursos/Audio/hard-footstep1.wav"
+dest_files=[ "res://.import/hard-footstep1.wav-2a2cfe491f6e04e71dd9fc7c9679f3ac.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

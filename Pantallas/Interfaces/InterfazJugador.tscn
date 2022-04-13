@@ -109,10 +109,12 @@ __meta__ = {
 }
 
 [node name="PanelMonedas" type="Panel" parent="."]
-margin_left = 208.0
-margin_top = 110.0
-margin_right = 256.0
-margin_bottom = 126.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -48.0
+margin_top = -16.0
 rect_min_size = Vector2( 48, 16 )
 custom_styles/panel = SubResource( 6 )
 __meta__ = {
@@ -148,8 +150,9 @@ visible = false
 visible = false
 
 [node name="Notificaiones" type="VBoxContainer" parent="."]
-margin_left = 192.0
-margin_right = 256.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -64.0
 margin_bottom = 64.0
 mouse_filter = 2
 
@@ -160,3 +163,11 @@ margin_right = 64.0
 margin_bottom = 0.0
 
 [node name="MenuPausa" parent="." instance=ExtResource( 10 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -60.0
+margin_right = 32.0
+margin_bottom = 60.0

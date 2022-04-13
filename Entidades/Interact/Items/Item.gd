@@ -7,6 +7,8 @@ export(int, 1, 999) var cantidad: = 1
 var interactuable = false
 
 func _ready():
+	connect("body_entered",self,"setInteractuable")
+	connect("body_exited",self,"removeInteractuable")
 	$Sprite.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"])
 
 
@@ -24,9 +26,9 @@ func itemRecogido():
 		cantidad = sobra
 
 
-func _on_FrascoVida_body_entered(body):
-	interactuable = true
+func removeInteractuable(body):
+	interactuable  = false
 
 
-func _on_Item_body_exited(body):
-	interactuable = false
+func setInteractuable(body):
+	interactuable  = true

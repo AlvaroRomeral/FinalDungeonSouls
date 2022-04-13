@@ -77,8 +77,7 @@ func cargarNivel():
 # PERSISTENCIA
 
 func guardarPersistencia():
-	print(ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia))
-	print(ResourceSaver.save("user://data.per", ResPersistencia.new()))
+	ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia)
 
 
 func cargarPersistencia():

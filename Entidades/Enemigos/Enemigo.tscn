@@ -284,9 +284,10 @@ wait_time = 3.0
 autostart = true
 
 [node name="ComponenteArma" parent="Position2D" instance=ExtResource( 3 )]
-position = Vector2( 13, 0 )
+position = Vector2( 18, 0 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -11 )
 collision_layer = 64
 
 [node name="Sound_Muerte" type="AudioStreamPlayer" parent="."]
