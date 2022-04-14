@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Recursos/Fonts/Normal.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Recursos/Fonts/Nivel.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Recursos/Fonts/Interfaz.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=3]
 [ext_resource path="res://Pantallas/Interfaces/HasMuerto.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Componentes/Notificaion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Pantallas/Interfaces/Inventario.tscn" type="PackedScene" id=7]
@@ -26,14 +25,6 @@ region_rect = Rect2( 36, 17, 76, 5 )
 texture = ExtResource( 9 )
 region_rect = Rect2( 36, 23, 76, 5 )
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 9 )
-region_rect = Rect2( 208, 0, 48, 16 )
-
 [sub_resource type="StreamTexture" id=7]
 load_path = "res://.import/Moneda.png-336abaa82975b37c2943e9f4f8789579.stex"
 
@@ -42,39 +33,33 @@ pause_mode = 2
 script = ExtResource( 8 )
 
 [node name="BarraVida" type="ProgressBar" parent="."]
-margin_left = 35.0
-margin_top = 14.0
-margin_right = 90.0
-margin_bottom = 18.0
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 16.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 step = 1.0
 value = 50.0
 percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BarraMana" type="ProgressBar" parent="."]
-margin_left = 35.0
-margin_top = 19.0
-margin_right = 90.0
-margin_bottom = 23.0
+margin_left = 56.0
+margin_top = 24.0
+margin_right = 192.0
+margin_bottom = 32.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
 percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BarraEstamina" type="ProgressBar" parent="."]
-margin_left = 35.0
-margin_top = 24.0
-margin_right = 90.0
-margin_bottom = 28.0
+margin_left = 56.0
+margin_top = 40.0
+margin_right = 192.0
+margin_bottom = 48.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 2 )
@@ -85,89 +70,72 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 3.0
-margin_top = 6.0
-margin_right = 34.0
-margin_bottom = 37.0
-custom_styles/panel = SubResource( 5 )
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 48.0
+margin_bottom = 48.0
+theme = ExtResource( 3 )
 
 [node name="Nivel" type="Label" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -6.0
-margin_top = -6.0
-margin_right = 6.0
-margin_bottom = 6.0
-custom_fonts/font = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 text = "00"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PanelMonedas" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = -16.0
+margin_left = -104.0
+margin_top = -40.0
+margin_right = -16.0
+margin_bottom = -16.0
 rect_min_size = Vector2( 48, 16 )
-custom_styles/panel = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 3 )
 
 [node name="Monedas" type="Label" parent="PanelMonedas"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -13.0
-margin_top = -4.0
-margin_right = 13.0
-margin_bottom = 4.0
-custom_fonts/font = ExtResource( 3 )
-text = "0"
+margin_left = -44.0
+margin_top = -12.0
+margin_right = 20.0
+margin_bottom = 12.0
+theme = ExtResource( 3 )
+text = "9999"
 align = 2
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="PanelMonedas"]
-position = Vector2( 9.99999, 8 )
-scale = Vector2( 0.703123, 0.703123 )
+position = Vector2( 76, 12 )
+scale = Vector2( 1.5, 1.5 )
 texture = SubResource( 7 )
 
 [node name="HasMuerto" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="Inventario" parent="." instance=ExtResource( 7 )]
-visible = false
-
-[node name="Notificaiones" type="VBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -64.0
-margin_bottom = 64.0
-mouse_filter = 2
-
-[node name="Notificaion" parent="Notificaiones" instance=ExtResource( 6 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 64.0
-margin_bottom = 0.0
-
-[node name="MenuPausa" parent="." instance=ExtResource( 10 )]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -60.0
-margin_right = 32.0
-margin_bottom = 60.0
+margin_left = -192.0
+margin_top = -116.0
+margin_right = 192.0
+margin_bottom = 76.0
+
+[node name="Notificaiones" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -128.0
+margin_bottom = 64.0
+mouse_filter = 2
+
+[node name="Notificaion" parent="Notificaiones" instance=ExtResource( 6 )]
+margin_right = 128.0
+
+[node name="MenuPausa" parent="." instance=ExtResource( 10 )]
+visible = false

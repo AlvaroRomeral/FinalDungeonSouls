@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Recursos/Fonts/Interfaz.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Interfaces/Inventario.gd" type="Script" id=2]
-[ext_resource path="res://Pantallas/Interfaces/PanelInventario.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=4]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=5]
+[ext_resource path="res://Pantallas/Interfaces/PanelEquipo.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.588235, 0.411765, 0.211765, 1 )
@@ -31,38 +31,23 @@ VScrollBar/styles/grabber_pressed = SubResource( 3 )
 VScrollBar/styles/scroll = SubResource( 4 )
 VScrollBar/styles/scroll_focus = SubResource( 4 )
 
-[node name="Inventario" type="Control"]
-pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -12.0
-margin_bottom = -12.0
+[node name="PanelInventario" type="Panel"]
+margin_right = 384.0
+margin_bottom = 192.0
+theme = ExtResource( 5 )
 script = ExtResource( 2 )
 
-[node name="Panel" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 4.0
-margin_bottom = 6.0
+[node name="PanelInventario" type="Panel" parent="."]
+margin_left = 248.0
+margin_top = 32.0
+margin_right = 368.0
+margin_bottom = 176.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
-[node name="PanelInventario" type="Panel" parent="Panel"]
-margin_left = 152.0
-margin_top = 8.0
-margin_right = 232.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="GridContainer" parent="Panel/PanelInventario"]
+[node name="GridContainer" type="GridContainer" parent="PanelInventario"]
 anchor_left = 0.0625
 anchor_right = 0.9375
 anchor_bottom = 1.0
@@ -74,34 +59,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelNombre" type="Panel" parent="Panel"]
-margin_left = 80.0
-margin_top = 8.0
-margin_right = 144.0
-margin_bottom = 24.0
+[node name="PanelNombre" type="Panel" parent="."]
+margin_left = 144.0
+margin_top = 32.0
+margin_right = 232.0
+margin_bottom = 48.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="TextoNombre" type="Label" parent="Panel/PanelNombre"]
+[node name="TextoNombre" type="Label" parent="PanelNombre"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 1 )
 align = 1
 valign = 1
 
-[node name="PanelDescripcion" type="Panel" parent="Panel"]
-margin_left = 80.0
-margin_top = 32.0
-margin_right = 144.0
-margin_bottom = 80.0
+[node name="PanelDescripcion" type="Panel" parent="."]
+margin_left = 144.0
+margin_top = 64.0
+margin_right = 232.0
+margin_bottom = 176.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/PanelDescripcion"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelDescripcion"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -114,257 +99,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelDescripcion/ScrollContainer"]
-margin_right = 60.0
-margin_bottom = 44.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelDescripcion/ScrollContainer"]
+margin_right = 84.0
+margin_bottom = 108.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextoDescripcion" type="Label" parent="Panel/PanelDescripcion/ScrollContainer/VBoxContainer"]
-margin_right = 60.0
-margin_bottom = 32.0
+[node name="TextoDescripcion" type="Label" parent="PanelDescripcion/ScrollContainer/VBoxContainer"]
+margin_right = 84.0
+margin_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 autowrap = true
 
-[node name="TextoEstadisticas" type="RichTextLabel" parent="Panel/PanelDescripcion/ScrollContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 60.0
-margin_bottom = 44.0
+[node name="TextoEstadisticas" type="RichTextLabel" parent="PanelDescripcion/ScrollContainer/VBoxContainer"]
+margin_top = 95.0
+margin_right = 84.0
+margin_bottom = 108.0
 theme = ExtResource( 5 )
 bbcode_enabled = true
 fit_content_height = true
 
-[node name="PanelCabeza" type="Panel" parent="Panel"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 32.0
-margin_bottom = 32.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelCabeza"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Cabeza"
-align = 1
-
-[node name="PanelInventario" parent="Panel/PanelCabeza" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelPecho" type="Panel" parent="Panel"]
-margin_left = 8.0
-margin_top = 40.0
-margin_right = 32.0
-margin_bottom = 64.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelPecho"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Pecho"
-align = 1
-
-[node name="PanelInventario" parent="Panel/PanelPecho" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelPiernas" type="Panel" parent="Panel"]
-margin_left = 8.0
-margin_top = 72.0
-margin_right = 32.0
-margin_bottom = 96.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelPiernas"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Piernas"
-align = 1
-
-[node name="PanelInventario" parent="Panel/PanelPiernas" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelPies" type="Panel" parent="Panel"]
-margin_left = 8.0
-margin_top = 104.0
-margin_right = 32.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelPies"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Pies"
-align = 1
-
-[node name="PanelInventario" parent="Panel/PanelPies" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelEspalda" type="Panel" parent="Panel"]
-margin_left = 48.0
-margin_top = 8.0
-margin_right = 72.0
-margin_bottom = 32.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelEspalda"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Espalda"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelInventario" parent="Panel/PanelEspalda" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelManos" type="Panel" parent="Panel"]
-margin_left = 48.0
-margin_top = 40.0
-margin_right = 72.0
-margin_bottom = 64.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelManos"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Manos"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelInventario" parent="Panel/PanelManos" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelDedo_izq" type="Panel" parent="Panel"]
-margin_left = 48.0
-margin_top = 72.0
-margin_right = 72.0
-margin_bottom = 96.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelDedo_izq"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Dedo Izq"
-align = 1
-
-[node name="PanelInventario" parent="Panel/PanelDedo_izq" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[node name="PanelDedo_der" type="Panel" parent="Panel"]
-margin_left = 48.0
-margin_top = 104.0
-margin_right = 72.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel/PanelDedo_der"]
-margin_right = 24.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 1 )
-text = "Dedo Der"
-align = 1
-
-[node name="PanelInventario" parent="Panel/PanelDedo_der" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -18.0
-margin_right = 8.0
-margin_bottom = -2.0
-
-[connection signal="draw" from="." to="." method="_on_Inventario_draw"]
-[connection signal="hide" from="." to="." method="_on_Inventario_hide"]
+[node name="PanelEquipo" parent="." instance=ExtResource( 6 )]

@@ -227,12 +227,13 @@ tipo = "Jugador"
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -12 )
-collision_layer = 32
+collision_layer = 64
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
 texture = ExtResource( 5 )
 texture_scale = 0.2
+range_height = 2048.0
 range_item_cull_mask = 3
 shadow_enabled = true
 

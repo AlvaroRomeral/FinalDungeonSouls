@@ -1,8 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Recursos/Fonts/Normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Interfaces/HasMuerto.gd" type="Script" id=2]
-
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -161,19 +160,11 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="Panel" parent="."]
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -12.5
-margin_right = 128.0
-margin_bottom = 12.5
 rect_min_size = Vector2( 0, 25 )
 rect_pivot_offset = Vector2( 128, 9.5 )
 custom_styles/panel = SubResource( 1 )

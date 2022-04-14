@@ -113,6 +113,7 @@ func setestamina_max(cantidad):
 # INVENTARIO
 
 func anadirItem(item_id: int, cantidad: int):
+	emit_signal("inventarioActualizado")
 	var sobra = cantidad
 	while sobra != 0:
 		var index_con_espacio = getSimilaresConEspacio(item_id)
@@ -136,6 +137,7 @@ func anadirItem(item_id: int, cantidad: int):
 
 
 func quitarItem(item_id: int, cantidad: int):
+	emit_signal("inventarioActualizado")
 	var cant_faltante = cantidad
 	if getSimilares(item_id) != -1:
 		if getCantidad(item_id) >= cant_faltante:
@@ -161,6 +163,7 @@ func quitarItem(item_id: int, cantidad: int):
 
 
 func usarItem(item_id: int):
+	emit_signal("inventarioActualizado")
 	match Datos.getItemTipo(item_id):
 		1: #Equipo
 			Datos.getEquipoInfo(item_id)
@@ -197,6 +200,7 @@ func usarItem(item_id: int):
 
 
 func equipar(item_id: int, posicion: int):
+	emit_signal("inventarioActualizado")
 	if array_equipo[posicion]["id"] == null:
 		array_equipo[posicion] = quitarItem(item_id, 1)
 	else:

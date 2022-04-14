@@ -10,6 +10,7 @@ func _ready():
 	connect("body_entered",self,"setInteractuable")
 	connect("body_exited",self,"removeInteractuable")
 	$Sprite.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"])
+	$Label.text = Datos.getItemInfo(item_id)["nombre"]
 
 
 func _input(event):

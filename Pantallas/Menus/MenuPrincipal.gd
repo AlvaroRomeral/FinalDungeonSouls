@@ -40,3 +40,7 @@ func _on_btnJugarTest_botonPresionado():
 func _on_BtnPantallaCompleta_button_up():
 	Datos.ar_persistencia.pantalla_completa = !OS.window_fullscreen
 	Datos.cargarDatosPersistencia()
+
+
+func _on_Boton2_botonPresionado():
+	get_tree().change_scene("res://Pantallas/Menus/MenuCreditos.tscn")

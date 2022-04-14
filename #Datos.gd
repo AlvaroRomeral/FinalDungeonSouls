@@ -61,6 +61,10 @@ func guardarDatos():
 
 func cargarDatos():
 	Jugador.vida = ar_guardado.ju_vida
+	Jugador.vida_max = ar_guardado.ju_vida
+	Jugador.mana = ar_guardado.ju_mana
+	Jugador.mana_max = ar_guardado.ju_mana_max
+	Jugador.estamina_max = ar_guardado.ju_estamina_max
 	Jugador.inventario = ar_guardado.inventario
 
 

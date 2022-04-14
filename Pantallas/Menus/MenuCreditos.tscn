@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=1]
+[ext_resource path="res://Pantallas/Menus/MenuCreditos.gd" type="Script" id=2]
+[ext_resource path="res://Componentes/Boton.tscn" type="PackedScene" id=3]
+
+[node name="Creditos" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+velocidad_creditos = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -192.0
+margin_top = -40.0
+margin_right = 192.0
+margin_bottom = 520.0
+theme = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center] 
+[u]Director[/u]
+Alvaro Romeral Pineda
+
+[u]Lead Designer[/u]
+Alvaro Romeral Pineda
+
+[u]Lead Writer[/u]
+Alvaro Romeral Pineda
+
+[u]Lead Developer[/u]
+Alvaro Romeral Pineda
+
+[u]Art Director[/u]
+Alvaro Romeral Pineda
+
+[u]Level Designer[/u]
+Alvaro Romeral Pineda
+
+[u]Concept Artist[/u]
+Alvaro Romeral Pineda
+
+[u]Lead Animator[/u]
+Alvaro Romeral Pineda
+
+[u]Lead Environmental Artist[/u]
+Alvaro Romeral Pineda
+
+[u]Q&A Lead[/u]
+Alvaro Romeral Pineda"
+text = " 
+Director
+Alvaro Romeral Pineda
+
+Lead Designer
+Alvaro Romeral Pineda
+
+Lead Writer
+Alvaro Romeral Pineda
+
+Lead Developer
+Alvaro Romeral Pineda
+
+Art Director
+Alvaro Romeral Pineda
+
+Level Designer
+Alvaro Romeral Pineda
+
+Concept Artist
+Alvaro Romeral Pineda
+
+Lead Animator
+Alvaro Romeral Pineda
+
+Lead Environmental Artist
+Alvaro Romeral Pineda
+
+Q&A Lead
+Alvaro Romeral Pineda"
+scroll_active = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Boton" parent="." instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -32.0
+margin_right = 131.0
+margin_bottom = -7.0
+text = "Menu Principal"
+
+[connection signal="botonPresionado" from="Boton" to="." method="_on_Boton_botonPresionado"]

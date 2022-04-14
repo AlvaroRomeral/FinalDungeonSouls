@@ -7,8 +7,8 @@ onready var com_popup = $MenuAcciones
 onready var com_cantidad = $Cantidad
 onready var com_icono = $Icono
 
-var item_id
-var item_cantidad
+var item_id = null
+var item_cantidad = 0
 var item_posicion
 var clickeado
 
@@ -73,9 +73,13 @@ func opcionSeleccionada(id):
 			emit_signal("actualizado")
 
 
-func _on_PanelInventario_gui_input(event):
-	if event is InputEventMouseButton:
-		pass
+func get_drag_data(position):
+	if item_id != null:
+		var imagen = Sprite.new()
+		imagen.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"])
+		var control = Control.new()
+		control.add_child(imagen)
+		set_drag_preview(control)
 
 
 func _on_PopupMenu_mouse_entered():

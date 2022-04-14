@@ -4,8 +4,8 @@ onready var anim_personaje = $Aspecto/AnimAspecto
 onready var anim_equipo = $Position2D/ComponenteArma/AnimArma
 
 const ACELERACION = 800
-const VEL_NORMAL = 35
-const VEL_CORRER = 60
+const VEL_NORMAL = 50
+const VEL_CORRER = 70
 const FRICCION = 500
 
 var interactuable: Area2D

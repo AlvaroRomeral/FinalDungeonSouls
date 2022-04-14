@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Recursos/Imagenes/Interfaz.png" type="Texture" id=1]
-[ext_resource path="res://Recursos/Fonts/Interfaz.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Pantallas/Interfaces/PanelInventario.gd" type="Script" id=3]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=4]
 
@@ -13,13 +12,11 @@ margin_right = 2.0
 margin_top = 2.0
 margin_bottom = 2.0
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 6, 6 )
-
 [node name="PanelInventario" type="Panel"]
-margin_right = 16.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 16, 16 )
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
 custom_styles/panel = SubResource( 5 )
 script = ExtResource( 3 )
 
@@ -33,19 +30,10 @@ margin_bottom = -2.0
 rect_min_size = Vector2( 12, 12 )
 expand = true
 
-[node name="Area2D" type="Area2D" parent="Icono"]
-position = Vector2( 6, 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icono/Area2D"]
-shape = SubResource( 6 )
-
 [node name="Cantidad" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 16, 16 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
 align = 2
 valign = 2
 __meta__ = {
@@ -59,7 +47,5 @@ margin_bottom = 4.0
 theme = ExtResource( 4 )
 align = 2
 
-[connection signal="gui_input" from="." to="." method="_on_PanelInventario_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_PanelSlot_mouse_entered"]
-[connection signal="input_event" from="Icono/Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="MenuAcciones" to="." method="_on_PopupMenu_mouse_entered"]

@@ -15,4 +15,4 @@ func empezarTimer():
 
 func terminaMensaje():
 	get_tree().paused=false
-	get_tree().change_scene("res://Pantallas/MenuPrincipal.tscn")
+	get_tree().change_scene("res://Pantallas/Menus/MenuPrincipal.tscn")
