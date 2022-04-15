@@ -44,8 +44,9 @@ func setValores(id: int, cantidad: int, posicion: int):
 
 
 func setAspecto():
-	var datos_item = Datos.getItemInfo(item_id)
-	$Icono.texture = load(Global.PATH_ICONOS + datos_item["icono"])
+	if item_id != null:
+		var datos_item = Datos.getItemInfo(item_id)
+		$Icono.texture = load(Global.PATH_ICONOS + datos_item["icono"])
 	if item_cantidad == 1:
 		$Cantidad.hide()
 	else:

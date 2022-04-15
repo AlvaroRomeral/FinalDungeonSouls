@@ -1,6 +1,6 @@
 extends Control
 
-export var velocidad_creditos = 2
+export(float) var velocidad_creditos = 2
 onready var texto = $RichTextLabel
 
 func _ready():
@@ -8,7 +8,8 @@ func _ready():
 
 
 func _process(delta):
-	$Tween.interpolate_property(texto, "rect_position:y",texto.rect_position.y, (texto.rect_position.y - velocidad_creditos), delta, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($RichTextLabel, "rect_position:y",texto.rect_position.y, (texto.rect_position.y - velocidad_creditos), delta, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
 
 
 func _on_Boton_botonPresionado():

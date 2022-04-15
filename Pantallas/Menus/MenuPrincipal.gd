@@ -12,9 +12,7 @@ func _process(delta):
 
 func _on_btnJugar_botonPresionado():
 	$btnJugarTest.disabled = true
-	$VBoxContainer/btnCargar.disabled = true
-	$VBoxContainer/btnJugar.disabled = true
-	$VBoxContainer/btnSalir.disabled = true
+	$ColorRect.mouse_filter =Control.MOUSE_FILTER_STOP
 	Datos.nuevosDatos()
 	$AnimationPlayer.play("Obscurecer")
 

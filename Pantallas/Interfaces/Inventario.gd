@@ -9,6 +9,7 @@ onready var txtEstadisticas = $PanelDescripcion/ScrollContainer/VBoxContainer/Te
 
 func _ready():
 	Jugador.connect("inventarioActualizado",self,"generarSlots")
+	generarSlots()
 
 
 func _on_Inventario_draw():

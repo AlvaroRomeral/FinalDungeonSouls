@@ -40,8 +40,8 @@ script = ExtResource( 2 )
 [node name="PanelInventario" type="Panel" parent="."]
 margin_left = 248.0
 margin_top = 32.0
-margin_right = 368.0
-margin_bottom = 176.0
+margin_right = 432.0
+margin_bottom = 240.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
