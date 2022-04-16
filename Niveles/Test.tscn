@@ -19,7 +19,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 polygon = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+points = PoolVector2Array( 32, 32, 0, 32, 0, 8, 32, 8 )
 
 [sub_resource type="NavigationPolygon" id=9]
 vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -105,7 +105,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 "shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-3/z_index = 0
+3/z_index = 1
 4/name = "ProjectUtumno_full.png 4"
 4/texture = ExtResource( 5 )
 4/tex_offset = Vector2( 0, 0 )

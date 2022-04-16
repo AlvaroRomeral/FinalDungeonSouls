@@ -1,49 +1,43 @@
-[gd_resource type="Theme" load_steps=17 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Recursos/Fonts/alagard.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Recursos/Imagenes/Interfaz.png" type="Texture" id=3]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/boton_nor.png" type="Texture" id=3]
 [ext_resource path="res://Recursos/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/boton_pre.png" type="Texture" id=5]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/panel_madera.png" type="Texture" id=6]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/boton_dis.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 3 )
-region_rect = Rect2( 160, 16, 48, 16 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 3 )
-region_rect = Rect2( 160, 0, 48, 16 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
+texture = ExtResource( 7 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 4.0
+margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )
-region_rect = Rect2( 112, 0, 48, 16 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 4.0
+margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 112, 16, 48, 16 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 4.0
+margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 0.321569, 0.262745, 0.211765, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.203922, 0.164706, 0.137255, 1 )
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 11.0
+margin_right = 11.0
+margin_top = 11.0
+margin_bottom = 11.0
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.476563, 0.476563, 0.476563, 1 )
@@ -72,12 +66,13 @@ font_data = ExtResource( 4 )
 
 [resource]
 default_font = ExtResource( 2 )
+Button/colors/font_color_hover = Color( 0.686275, 0.619608, 0.172549, 1 )
 Button/styles/disabled = SubResource( 5 )
-Button/styles/focus = SubResource( 6 )
-Button/styles/hover = SubResource( 6 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 3 )
-Panel/styles/panel = SubResource( 14 )
+Panel/styles/panel = SubResource( 16 )
 PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )

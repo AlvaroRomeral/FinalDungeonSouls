@@ -8,6 +8,7 @@ onready var txtDescripcion = $PanelDescripcion/ScrollContainer/VBoxContainer/Tex
 onready var txtEstadisticas = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoEstadisticas
 
 func _ready():
+	hide()
 	Jugador.connect("inventarioActualizado",self,"actualizarSlots")
 	generarSlots()
 
@@ -52,6 +53,10 @@ func mostrarInfo(id_item):
 			3:
 				var consumible_info = Datos.getConsumibleInfo(id_item)
 				txtEstadisticas.bbcode_text = "[center]Vida: [color=red]" + String(consumible_info["vida"]) + "[/color] \nMana: [color=blue]" + String(consumible_info["mana"])
+	else:
+		txtNombre.text = ""
+		txtDescripcion.text = ""
+		txtEstadisticas.bbcode_text = ""
 
 
 func _on_Inventario_hide():

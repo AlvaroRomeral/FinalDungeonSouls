@@ -46,6 +46,7 @@ func setValores(id, cantidad, posicion: int):
 func setAspecto():
 	if item_id != null:
 		var datos_item = Datos.getItemInfo(item_id)
+		$Icono.item_id = item_id
 		$Icono.visible = true
 		$Icono.texture = load(Global.PATH_ICONOS + datos_item["icono"])
 	else:
@@ -75,20 +76,9 @@ func opcionSeleccionada(id):
 			Jugador.quitarItemPos(1, item_posicion)
 
 
-func get_drag_data(position):
-	if item_id != null:
-		var imagen = Sprite.new()
-		imagen.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"])
-		var control = Control.new()
-		control.add_child(imagen)
-		set_drag_preview(control)
-
-
-func _on_PopupMenu_mouse_entered():
-	$MenuAcciones.disabled = false
+func _on_PanelInventario_mouse_entered():
 	emit_signal("devolverInfo",item_id)
 
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if Input.is_action_pressed("ATACAR"):
-		clickeado = true
+func _on_PanelInventario_mouse_exited():
+	emit_signal("devolverInfo",null)

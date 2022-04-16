@@ -10,7 +10,6 @@ margin_right = 53.0
 margin_bottom = 25.0
 mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
-custom_colors/font_color_hover = Color( 0.698039, 0.658824, 0, 1 )
 text = "Texto"
 script = ExtResource( 3 )
 

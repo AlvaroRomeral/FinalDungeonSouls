@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Recursos/Imagenes/Interfaz.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/slot.png" type="Texture" id=1]
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Pantallas/Interfaces/PanelInventario.gd" type="Script" id=3]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=4]
+[ext_resource path="res://Pantallas/Interfaces/Drageable.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 1 )
-region_rect = Rect2( 6, 35, 20, 25 )
 margin_left = 2.0
 margin_right = 2.0
 margin_top = 2.0
@@ -29,7 +29,9 @@ margin_top = 2.0
 margin_right = -2.0
 margin_bottom = -2.0
 rect_min_size = Vector2( 12, 12 )
+mouse_default_cursor_shape = 2
 expand = true
+script = ExtResource( 5 )
 
 [node name="Cantidad" type="Label" parent="."]
 anchor_right = 1.0
@@ -43,11 +45,13 @@ __meta__ = {
 }
 
 [node name="MenuAcciones" type="MenuButton" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 4.0
+mouse_filter = 1
 theme = ExtResource( 4 )
 align = 2
 
-[connection signal="mouse_entered" from="." to="." method="_on_PanelSlot_mouse_entered"]
-[connection signal="mouse_entered" from="MenuAcciones" to="." method="_on_PopupMenu_mouse_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_PanelInventario_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_PanelInventario_mouse_exited"]

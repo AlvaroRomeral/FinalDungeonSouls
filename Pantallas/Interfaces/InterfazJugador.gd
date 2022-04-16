@@ -8,11 +8,13 @@ onready var manaUI = $BarraMana
 onready var estaminaUI = $BarraEstamina
 # Pantallas
 onready var inventario = $Inventario
+onready var pausa = $MenuPausa
 onready var notificacion = preload("res://Componentes/Notificaion.tscn")
 onready var alerta = preload("res://Componentes/Alerta.tscn")
 
 
 func _ready():
+	get_tree().paused = false
 	Global.connect("notificacion_recibida",self,"addNotificacion")
 	Jugador.connect("datosActualizados",self,"actualizarUI")
 	actualizarUI()
@@ -34,8 +36,16 @@ func _input(event):
 	if event.is_action_released("INVENTARIO"):
 		if inventario.visible:
 			inventario.hide()
-		else:
+		elif !pausa.visible:
 			inventario.show()
+	if event.is_action_released("ui_cancel"):
+		if pausa.visible:
+			get_tree().paused = false
+			pausa.hide()
+		else:
+			get_tree().paused = true
+			inventario.hide()
+			pausa.show()
 
 
 func addNotificacion(text):

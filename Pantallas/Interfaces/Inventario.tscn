@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Interfaces/Inventario.gd" type="Script" id=2]
+[ext_resource path="res://Componentes/Boton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=4]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=5]
 [ext_resource path="res://Pantallas/Interfaces/PanelEquipo.tscn" type="PackedScene" id=6]
@@ -59,7 +60,7 @@ custom_constants/hseparation = 0
 columns = 5
 
 [node name="PanelNombre" type="Panel" parent="."]
-margin_left = 178.0
+margin_left = 176.0
 margin_top = 16.0
 margin_right = 280.0
 margin_bottom = 40.0
@@ -79,7 +80,7 @@ valign = 1
 margin_left = 176.0
 margin_top = 50.0
 margin_right = 280.0
-margin_bottom = 242.0
+margin_bottom = 240.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -100,22 +101,22 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelDescripcion/ScrollContainer"]
 margin_right = 100.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextoDescripcion" type="Label" parent="PanelDescripcion/ScrollContainer/VBoxContainer"]
 margin_right = 100.0
-margin_bottom = 171.0
+margin_bottom = 169.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 autowrap = true
 
 [node name="TextoEstadisticas" type="RichTextLabel" parent="PanelDescripcion/ScrollContainer/VBoxContainer"]
-margin_top = 175.0
+margin_top = 173.0
 margin_right = 100.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 theme = ExtResource( 5 )
 bbcode_enabled = true
 fit_content_height = true
@@ -167,3 +168,33 @@ margin_left = 72.0
 margin_top = 192.0
 margin_right = 112.0
 margin_bottom = 240.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 296.0
+margin_top = 136.0
+margin_right = 432.0
+margin_bottom = 236.0
+custom_constants/separation = 0
+
+[node name="Boton" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 136.0
+margin_bottom = 23.0
+text = "Usar"
+
+[node name="Boton2" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 23.0
+margin_right = 136.0
+margin_bottom = 46.0
+text = "Equipar"
+
+[node name="Boton3" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 46.0
+margin_right = 136.0
+margin_bottom = 69.0
+text = "Tirar"
+
+[node name="Boton4" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 69.0
+margin_right = 136.0
+margin_bottom = 92.0
+text = "Descartar"

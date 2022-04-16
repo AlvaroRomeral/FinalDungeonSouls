@@ -5,14 +5,6 @@ func _ready():
 	hide()
 
 
-func _input(event):
-	if event.is_action_released("ui_cancel"):
-		if visible:
-			hide()
-		else:
-			show()
-
-
 func _on_Continuar_botonPresionado():
 	hide()
 
