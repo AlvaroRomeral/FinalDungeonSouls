@@ -267,7 +267,7 @@ item_id = 2
 
 [node name="Item6" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 1136, 16 )
-item_id = 4
+item_id = 3
 
 [node name="Item7" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 1200, 118 )

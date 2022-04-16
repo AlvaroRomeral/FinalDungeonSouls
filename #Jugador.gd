@@ -113,7 +113,6 @@ func setestamina_max(cantidad):
 # INVENTARIO
 
 func anadirItem(item_id: int, cantidad: int):
-	emit_signal("inventarioActualizado")
 	var sobra = cantidad
 	while sobra != 0:
 		var index_con_espacio = getSimilaresConEspacio(item_id)
@@ -121,6 +120,7 @@ func anadirItem(item_id: int, cantidad: int):
 			var restante = item_cap_max - inventario[index_con_espacio]["cantidad"]
 			if restante > sobra:
 				inventario[index_con_espacio]["cantidad"] += sobra
+				emit_signal("inventarioActualizado")
 				return 0
 			else:
 				sobra = sobra - restante
@@ -131,13 +131,14 @@ func anadirItem(item_id: int, cantidad: int):
 					if inventario[x]["id"] == null:
 						inventario[x]["id"] = item_id
 						inventario[x]["cantidad"] = sobra
+						emit_signal("inventarioActualizado")
 						return 0
 			else:
+				emit_signal("inventarioActualizado")
 				return sobra
 
 
 func quitarItem(item_id: int, cantidad: int):
-	emit_signal("inventarioActualizado")
 	var cant_faltante = cantidad
 	if getSimilares(item_id) != -1:
 		if getCantidad(item_id) >= cant_faltante:
@@ -152,8 +153,10 @@ func quitarItem(item_id: int, cantidad: int):
 						else:
 							cant_item = cant_item - cant_faltante
 							inventario[x]["cantidad"] = cant_item
+							emit_signal("inventarioActualizado")
 							return
-			Global.mostrarAlerta("[color=#902323]" + Datos.getItemInfo(item_id)["nombre"] + " eliminado de la mochila")
+#			Global.mostrarAlerta("[color=#902323]" + Datos.getItemInfo(item_id)["nombre"] + " eliminado de la mochila")
+			emit_signal("inventarioActualizado")
 			return
 		else:
 			Global.Notificacion("Se pide mas " + Datos.getItemInfo(item_id)["nombre"] + " de lo que hay")
@@ -162,8 +165,14 @@ func quitarItem(item_id: int, cantidad: int):
 		Global.Notificacion("No se encontro " + Datos.getItemInfo(item_id)["nombre"])
 
 
-func usarItem(item_id: int):
+func quitarItemPos(cantidad:int, posicion:int):
+	Jugador.inventario[posicion]["cantidad"] -= cantidad
+	if Jugador.inventario[posicion]["cantidad"] == 0:
+		Jugador.inventario[posicion]["id"] = null
 	emit_signal("inventarioActualizado")
+
+
+func usarItem(item_id: int):
 	match Datos.getItemTipo(item_id):
 		1: #Equipo
 			Datos.getEquipoInfo(item_id)
@@ -184,14 +193,17 @@ func usarItem(item_id: int):
 #					equipar(item_id,6)
 #				"dedo_izq":
 #					equipar(item_id,7)
+			emit_signal("inventarioActualizado")
 			return
 		2: #Arma
 			Datos.getArmaInfo(item_id)
 #			emit_signal("inventarioActualizado")
+			emit_signal("inventarioActualizado")
 			return
 		3: #Consumible
 			Datos.getConsumibleInfo(item_id)
 			pass # al usar una puerta se le abre el inventario
+			emit_signal("inventarioActualizado")
 			return
 		0: #Nada
 			pass

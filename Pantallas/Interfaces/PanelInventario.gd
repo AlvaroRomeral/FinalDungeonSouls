@@ -1,7 +1,6 @@
 extends Panel
 
 signal devolverInfo(id)
-signal actualizado()
 
 onready var com_popup = $MenuAcciones
 onready var com_cantidad = $Cantidad
@@ -23,35 +22,40 @@ func _physics_process(delta):
 
 # INICIALIZACION
 
-func setValores(id: int, cantidad: int, posicion: int):
+func setValores(id, cantidad, posicion: int):
 	item_id = id
 	item_cantidad = cantidad
 	item_posicion = posicion
 	$MenuAcciones.get_popup().clear()
-	match Datos.getItemTipo(id):
-		0:
-			$MenuAcciones.get_popup().add_item("Usar",0)
-		1:
-			$MenuAcciones.get_popup().add_item("Equipar",0)
-		2:
-			$MenuAcciones.get_popup().add_item("Equipar",0)
-		3:
-			$MenuAcciones.get_popup().add_item("Consumir",0)
-	$MenuAcciones.get_popup().add_item("Soltar",1)
-	$MenuAcciones.get_popup().add_item("Descartar",2)
-	$MenuAcciones.get_popup().set_item_disabled(1,true)
+	if id != null:
+		match Datos.getItemTipo(id):
+			0:
+				$MenuAcciones.get_popup().add_item("Usar",0)
+			1:
+				$MenuAcciones.get_popup().add_item("Equipar",0)
+			2:
+				$MenuAcciones.get_popup().add_item("Equipar",0)
+			3:
+				$MenuAcciones.get_popup().add_item("Consumir",0)
+		$MenuAcciones.get_popup().add_item("Soltar",1)
+		$MenuAcciones.get_popup().add_item("Descartar",2)
+		$MenuAcciones.get_popup().set_item_disabled(1,true)
 	setAspecto()
 
 
 func setAspecto():
 	if item_id != null:
 		var datos_item = Datos.getItemInfo(item_id)
+		$Icono.visible = true
 		$Icono.texture = load(Global.PATH_ICONOS + datos_item["icono"])
-	if item_cantidad == 1:
-		$Cantidad.hide()
 	else:
-		$Cantidad.show()
-		$Cantidad.text = String(item_cantidad)
+		$Icono.visible = false
+	if item_cantidad != null:
+		if item_cantidad <= 1:
+			$Cantidad.hide()
+		else:
+			$Cantidad.show()
+			$Cantidad.text = String(item_cantidad)
 
 
 func limpiar():
@@ -65,13 +69,10 @@ func opcionSeleccionada(id):
 	match id:
 		0:
 			Jugador.usarItem(item_id)
-			emit_signal("actualizado")
 		1:
 			pass
-			emit_signal("actualizado")
 		2:
-			Jugador.quitarItem(item_id, 1)
-			emit_signal("actualizado")
+			Jugador.quitarItemPos(1, item_posicion)
 
 
 func get_drag_data(position):
