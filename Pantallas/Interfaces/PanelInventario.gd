@@ -3,7 +3,7 @@ extends Panel
 signal devolverInfo(id)
 
 onready var com_popup = $MenuAcciones
-onready var com_cantidad = $Cantidad
+onready var com_cantidad = $Icono/Cantidad
 onready var com_icono = $Icono
 
 var item_id = null
@@ -53,15 +53,15 @@ func setAspecto():
 		$Icono.visible = false
 	if item_cantidad != null:
 		if item_cantidad <= 1:
-			$Cantidad.hide()
+			$Icono/Cantidad.hide()
 		else:
-			$Cantidad.show()
-			$Cantidad.text = String(item_cantidad)
+			$Icono/Cantidad.show()
+			$Icono/Cantidad.text = String(item_cantidad)
 
 
 func limpiar():
 	$Icono.texture = null
-	$Cantidad.hide()
+	$Icono/Cantidad.hide()
 	item_id = null
 	item_cantidad = null
 

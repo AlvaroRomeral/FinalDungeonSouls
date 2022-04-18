@@ -96,38 +96,42 @@ func cargarDatosPersistencia():
 
 func getItemInfo(id_item): #devuelve "id_item", "nombre", "descripcion", "icono"
 	if fdsdb.query("SELECT * FROM items WHERE id_item =" + String(id_item) + ";"):
-		var resultado = fdsdb.query_result
-		return resultado[0]
+		var resultado = fdsdb.query_result[0]
+		return resultado
 	else: #Si ni encuentra el objeto por id que devuelva el primero de la tabla
 		fdsdb.query("SELECT * FROM items WHERE id_item = 0;")
-		var resultado = fdsdb.query_result
-		return resultado[0]
+		var resultado = fdsdb.query_result[0]
+		return resultado
 
 
 func getItemTipo(id_item): #devuelve el int de "id_tipo"
 	if fdsdb.query("SELECT id_tipo FROM items WHERE id_item =" + String(id_item) + ";"):
-		var resultado = fdsdb.query_result
-		var valor = resultado[0]["id_tipo"]
-		return valor
+		var resultado = fdsdb.query_result[0]["id_tipo"]
+		return resultado
 
 
 func getConsumibleInfo(id_item): #devuelve "vida" y "mana"
 	fdsdb.query("SELECT consumibles.vida, consumibles.mana FROM items INNER JOIN consumibles ON items.id_item=consumibles.id_item WHERE items.id_item ="+String(id_item) + ";")
-	var resultado = fdsdb.query_result
-	return resultado[0]
+	var resultado = fdsdb.query_result[0]
+	return resultado
 
 
 func getEquipoInfo(id_item): #devuelve "def_num" y "def_por"
 	fdsdb.query("SELECT equipos.def_num, equipos.def_por FROM items INNER JOIN equipos ON items.id_item=equipos.id_item WHERE items.id_item ="+String(id_item) + ";")
-	var resultado = fdsdb.query_result
-	return resultado[0]
+	var resultado = fdsdb.query_result[0]
+	return resultado
 
 
 func getArmaInfo(id_item): #devuelve "atc_num" y "atc_por"
 	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item WHERE items.id_item ="+String(id_item) + ";")
-	var resultado = fdsdb.query_result
-	return resultado[0]
+	var resultado = fdsdb.query_result[0]
+	return resultado
 
+
+func getDialogo(id:int):
+	fdsdb.query("SELECT texto FROM dialogos WHERE id =" + String(id))
+	var resultado = fdsdb.query_result[0]["texto"]
+	return resultado
 
 # ARCHIVOS
 

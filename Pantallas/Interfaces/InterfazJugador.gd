@@ -35,8 +35,10 @@ func actualizarUI():
 func _input(event):
 	if event.is_action_released("INVENTARIO"):
 		if inventario.visible:
+			get_tree().paused = false
 			inventario.hide()
 		elif !pausa.visible:
+			get_tree().paused = true
 			inventario.show()
 	if event.is_action_released("ui_cancel"):
 		if pausa.visible:

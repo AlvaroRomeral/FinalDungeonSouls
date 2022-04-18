@@ -4,6 +4,10 @@ export(float) var velocidad_montanas = 0.05
 export(float) var velocidad_arboles_fondo = 0.3
 export(float) var velocidad_arboles = 0.6
 
+func _ready():
+	get_tree().paused = false
+
+
 func _process(delta):
 	$ParallaxBackground/ParallaxArbolesFondo.motion_offset.x -= velocidad_arboles_fondo
 	$ParallaxBackground/ParallaxMontanas.motion_offset.x -= velocidad_montanas
@@ -42,3 +46,11 @@ func _on_BtnPantallaCompleta_button_up():
 
 func _on_Boton2_botonPresionado():
 	get_tree().change_scene("res://Pantallas/Menus/MenuCreditos.tscn")
+
+
+func _on_btnTestCreacionPersonaje_botonPresionado():
+	get_tree().change_scene("res://Pantallas/Interfaces/CreadorPersonajes.tscn")
+
+
+func _on_btnScoreboard_botonPresionado():
+	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")

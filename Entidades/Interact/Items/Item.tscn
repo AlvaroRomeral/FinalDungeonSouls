@@ -14,7 +14,6 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="TextureRect" parent="."]
-visible = false
 margin_left = -8.0
 margin_top = -8.0
 margin_right = 8.0
@@ -27,9 +26,11 @@ expand = true
 shape = SubResource( 1 )
 
 [node name="Sprite2" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -24.0
 margin_top = -24.0
 margin_right = 24.0

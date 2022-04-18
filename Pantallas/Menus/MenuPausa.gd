@@ -1,11 +1,11 @@
 extends Panel
 
-
 func _ready():
 	hide()
 
 
 func _on_Continuar_botonPresionado():
+	get_tree().paused = false
 	hide()
 
 

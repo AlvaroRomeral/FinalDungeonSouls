@@ -1,6 +1,9 @@
 extends TextureRect
 
+signal item_droped
+
 var item_id = null
+var cantidad = 0
 
 func _ready():
 	pass
