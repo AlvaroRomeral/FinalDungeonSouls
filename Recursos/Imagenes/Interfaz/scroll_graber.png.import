@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hobgoblin.png-80077821d0114d8f3061419d0b9242b3.stex"
+path="res://.import/scroll_graber.png-64513bd05fa9a2f08374652b913cef5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Recursos/Imagenes/Sprites/hobgoblin.png"
-dest_files=[ "res://.import/hobgoblin.png-80077821d0114d8f3061419d0b9242b3.stex" ]
+source_file="res://Recursos/Imagenes/Interfaz/scroll_graber.png"
+dest_files=[ "res://.import/scroll_graber.png-64513bd05fa9a2f08374652b913cef5f.stex" ]
 
 [params]
 

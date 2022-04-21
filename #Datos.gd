@@ -133,6 +133,30 @@ func getDialogo(id:int):
 	var resultado = fdsdb.query_result[0]["texto"]
 	return resultado
 
+
+func getCosmeticosCabeza():
+	fdsdb.query("SELECT * FROM cosmeticos WHERE parte = 'c'")
+	var resultado = fdsdb.query_result
+	return resultado
+
+
+func getCosmeticosTorso():
+	fdsdb.query("SELECT * FROM cosmeticos WHERE parte = 't'")
+	var resultado = fdsdb.query_result
+	return resultado
+
+
+func getCosmeticosPiernas():
+	fdsdb.query("SELECT * FROM cosmeticos WHERE parte = 'p'")
+	var resultado = fdsdb.query_result
+	return resultado
+
+
+func getCosmeticosPies():
+	fdsdb.query("SELECT * FROM cosmeticos WHERE parte = 'pi'")
+	var resultado = fdsdb.query_result
+	return resultado
+
 # ARCHIVOS
 
 func getArchivosDePath(path):

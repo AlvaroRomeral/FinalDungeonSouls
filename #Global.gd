@@ -1,6 +1,12 @@
 extends Node
 
 const PATH_ICONOS = "res://Recursos/Imagenes/Iconos/"
+const PATH_CASCOS = "res://Recursos/Imagenes/Sprites/Equipo/Cabeza/"
+const PATH_TORSOS = "res://Recursos/Imagenes/Sprites/Equipo/Pecho/"
+const PATH_PIERNAS = "res://Recursos/Imagenes/Sprites/Equipo/Piernas/"
+const PATH_PIES = "res://Recursos/Imagenes/Sprites/Equipo/Pies/"
+const PATH_CUERPOS = "res://Recursos/Imagenes/Sprites/Cuerpo/"
+
 const PATH_DATOS = "user://data/"
 const PATH_SAVES = "user://saves/"
 const PATH_DB = "res://Datos/"

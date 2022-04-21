@@ -25,7 +25,7 @@ var stats = {
 var monedas: int = 0 setget setMonedas
 var inventario: Array = []
 var inventario_cap: int = 20
-var item_cap_max = 999
+var item_cap_max = 1
 ## EQUIPAMIENTO
 var array_equipo = []
 # [0] cabeza

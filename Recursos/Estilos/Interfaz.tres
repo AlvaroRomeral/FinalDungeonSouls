@@ -7,6 +7,8 @@
 [ext_resource path="res://Recursos/Imagenes/Interfaz/boton_pre.png" type="Texture" id=5]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/panel_madera.png" type="Texture" id=6]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/boton_dis.png" type="Texture" id=7]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/scroll_background.png" type="Texture" id=8]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/scroll_graber.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 7 )
@@ -57,13 +59,17 @@ anti_aliasing = false
 [sub_resource type="DynamicFont" id=15]
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 8, 16 )
+margin_top = 5.0
+margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id=11]
-
-[sub_resource type="StyleBoxFlat" id=12]
-
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 8, 16 )
+margin_top = 5.0
+margin_bottom = 5.0
 
 [resource]
 default_font = ExtResource( 2 )
@@ -104,8 +110,11 @@ RichTextLabel/fonts/mono_font = ExtResource( 1 )
 RichTextLabel/fonts/normal_font = ExtResource( 1 )
 TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/top_margin = 24
-TabContainer/styles/panel = SubResource( 10 )
-TabContainer/styles/tab_bg = SubResource( 11 )
-TabContainer/styles/tab_disabled = SubResource( 12 )
-TabContainer/styles/tab_fg = SubResource( 13 )
+TabContainer/fonts/font = ExtResource( 1 )
+TabContainer/styles/panel = SubResource( 16 )
+TabContainer/styles/tab_bg = SubResource( 4 )
+TabContainer/styles/tab_disabled = SubResource( 5 )
+TabContainer/styles/tab_fg = SubResource( 4 )
 VBoxContainer/constants/separation = 4
+VScrollBar/styles/grabber = SubResource( 17 )
+VScrollBar/styles/scroll = SubResource( 18 )

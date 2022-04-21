@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Recursos/Imagenes/Interfaz/panel_madera.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Cabeza/black_horn.png" type="Texture" id=3]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Cuerpo/gnome_m.png" type="Texture" id=4]
+[ext_resource path="res://Pantallas/Interfaces/PanelArticuloCosmetico.gd" type="Script" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() {
+    COLOR = texture(TEXTURE, UV);
+    float avg = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
+    COLOR.rgb = vec3(avg);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="PanelArticuloCosmetico" type="TextureButton"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -576.0
+margin_bottom = -264.0
+rect_min_size = Vector2( 64, 96 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 5 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 64.0
+margin_bottom = 96.0
+texture = ExtResource( 1 )
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="lblNombre" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 56.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 2 )
+text = "nombre"
+align = 1
+valign = 1
+
+[node name="lblPrecio" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 56.0
+margin_bottom = 88.0
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="BaseManiqui" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 56.0
+margin_bottom = 56.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Cosmetico" type="TextureRect" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 56.0
+margin_bottom = 56.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -24.0
+margin_right = 44.0
+margin_bottom = -11.0
+rect_rotation = -45.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][color=red]COMPRADO"
+text = "COMPRADO"
+fit_content_height = true
+scroll_active = false

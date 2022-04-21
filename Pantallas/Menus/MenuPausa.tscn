@@ -27,13 +27,13 @@ __meta__ = {
 }
 
 [node name="Continuar" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 124.0
+margin_top = 128.0
 margin_right = 84.0
-margin_bottom = 149.0
+margin_bottom = 151.0
 text = "Continuar"
 
 [node name="Guardar" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 153.0
+margin_top = 155.0
 margin_right = 84.0
 margin_bottom = 178.0
 text = "Guardar"
@@ -41,13 +41,13 @@ text = "Guardar"
 [node name="Cargar" parent="VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 182.0
 margin_right = 84.0
-margin_bottom = 207.0
+margin_bottom = 205.0
 text = "Opciones"
 
 [node name="Salir" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 211.0
+margin_top = 209.0
 margin_right = 84.0
-margin_bottom = 236.0
+margin_bottom = 232.0
 group = SubResource( 8 )
 text = "Salir"
 
