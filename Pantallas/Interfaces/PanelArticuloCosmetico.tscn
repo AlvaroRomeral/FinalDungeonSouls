@@ -92,3 +92,5 @@ bbcode_text = "[center][color=red]COMPRADO"
 text = "COMPRADO"
 fit_content_height = true
 scroll_active = false
+
+[connection signal="button_up" from="." to="." method="_on_PanelArticuloCosmetico_button_up"]

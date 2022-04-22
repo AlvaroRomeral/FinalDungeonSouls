@@ -19,6 +19,9 @@ func _input(event):
 
 
 func itemRecogido():
+	if item_id == 2:
+		Jugador.monedas = cantidad
+		queue_free()
 	var sobra = Jugador.anadirItem(item_id, cantidad)
 	if sobra == 0:
 		Global.Notificacion("Recogido " + Datos.getItemInfo(item_id)["nombre"] + "(" + String(cantidad) + ")")

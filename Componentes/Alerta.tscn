@@ -65,7 +65,7 @@ margin_right = 88.0
 margin_bottom = 32.0
 bbcode_enabled = true
 bbcode_text = "[center] esto es un ejemplo"
-text = "[center] esto es un ejemplo"
+text = " esto es un ejemplo"
 
 [connection signal="button_up" from="Panel/BtnAceptar" to="." method="_on_BtnAceptar_button_up"]
 [connection signal="button_up" from="Panel/BtnCancelar" to="." method="_on_BtnCancelar_button_up"]

@@ -27,6 +27,7 @@ var inventario: Array = []
 var inventario_cap: int = 20
 var item_cap_max = 1
 ## EQUIPAMIENTO
+var cosmeticos: Array = [2,5,8]
 var array_equipo = []
 # [0] cabeza
 # [1] pecho

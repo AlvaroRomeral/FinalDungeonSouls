@@ -157,6 +157,18 @@ func getCosmeticosPies():
 	var resultado = fdsdb.query_result
 	return resultado
 
+
+func getCosmeticoParte(id):
+	fdsdb.query("SELECT parte FROM cosmeticos WHERE id = "+id)
+	var resultado = fdsdb.query_result[0]
+	return resultado
+
+
+func getCosmeticoIcono(id):
+	fdsdb.query("SELECT icono FROM cosmeticos WHERE id = "+id)
+	var resultado = fdsdb.query_result[0]
+	return resultado
+
 # ARCHIVOS
 
 func getArchivosDePath(path):
