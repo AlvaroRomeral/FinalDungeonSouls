@@ -5,7 +5,7 @@
 [ext_resource path="res://Componentes/Boton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=4]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=5]
-[ext_resource path="res://Pantallas/Interfaces/PanelEquipo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Pantallas/Interfaces/PanelInventario.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.588235, 0.411765, 0.211765, 1 )
@@ -121,54 +121,6 @@ theme = ExtResource( 5 )
 bbcode_enabled = true
 fit_content_height = true
 
-[node name="PanelEquipo" parent="." instance=ExtResource( 6 )]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 56.0
-margin_bottom = 64.0
-
-[node name="PanelEquipo2" parent="." instance=ExtResource( 6 )]
-margin_left = 72.0
-margin_top = 16.0
-margin_right = 112.0
-margin_bottom = 64.0
-
-[node name="PanelEquipo3" parent="." instance=ExtResource( 6 )]
-margin_left = 16.0
-margin_top = 72.0
-margin_right = 56.0
-margin_bottom = 120.0
-
-[node name="PanelEquipo4" parent="." instance=ExtResource( 6 )]
-margin_left = 72.0
-margin_top = 72.0
-margin_right = 112.0
-margin_bottom = 120.0
-
-[node name="PanelEquipo5" parent="." instance=ExtResource( 6 )]
-margin_left = 16.0
-margin_top = 136.0
-margin_right = 56.0
-margin_bottom = 184.0
-
-[node name="PanelEquipo6" parent="." instance=ExtResource( 6 )]
-margin_left = 72.0
-margin_top = 136.0
-margin_right = 112.0
-margin_bottom = 184.0
-
-[node name="PanelEquipo7" parent="." instance=ExtResource( 6 )]
-margin_left = 16.0
-margin_top = 192.0
-margin_right = 56.0
-margin_bottom = 240.0
-
-[node name="PanelEquipo8" parent="." instance=ExtResource( 6 )]
-margin_left = 72.0
-margin_top = 192.0
-margin_right = 112.0
-margin_bottom = 240.0
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 296.0
 margin_top = 136.0
@@ -198,3 +150,66 @@ margin_top = 69.0
 margin_right = 136.0
 margin_bottom = 92.0
 text = "Descartar"
+
+[node name="PanelInventario2" parent="." instance=ExtResource( 6 )]
+margin_left = 24.0
+margin_top = 104.0
+margin_right = 48.0
+margin_bottom = 128.0
+tipo = "arma"
+
+[node name="PanelInventario3" parent="." instance=ExtResource( 6 )]
+margin_left = 120.0
+margin_top = 56.0
+margin_right = 144.0
+margin_bottom = 80.0
+tipo = "cabeza"
+
+[node name="PanelInventario4" parent="." instance=ExtResource( 6 )]
+margin_left = 120.0
+margin_top = 88.0
+margin_right = 144.0
+margin_bottom = 112.0
+tipo = "torso"
+
+[node name="PanelInventario5" parent="." instance=ExtResource( 6 )]
+margin_left = 120.0
+margin_top = 120.0
+margin_right = 144.0
+margin_bottom = 144.0
+tipo = "piernas"
+
+[node name="PanelInventario6" parent="." instance=ExtResource( 6 )]
+margin_left = 120.0
+margin_top = 152.0
+margin_right = 144.0
+margin_bottom = 176.0
+tipo = "pies"
+
+[node name="PanelInventario7" parent="." instance=ExtResource( 6 )]
+margin_left = 24.0
+margin_top = 200.0
+margin_right = 48.0
+margin_bottom = 224.0
+tipo = "amuleto"
+
+[node name="PanelInventario8" parent="." instance=ExtResource( 6 )]
+margin_left = 56.0
+margin_top = 200.0
+margin_right = 80.0
+margin_bottom = 224.0
+tipo = "amuleto"
+
+[node name="PanelInventario9" parent="." instance=ExtResource( 6 )]
+margin_left = 88.0
+margin_top = 200.0
+margin_right = 112.0
+margin_bottom = 224.0
+tipo = "amuleto"
+
+[node name="PanelInventario10" parent="." instance=ExtResource( 6 )]
+margin_left = 120.0
+margin_top = 200.0
+margin_right = 144.0
+margin_bottom = 224.0
+tipo = "amuleto"

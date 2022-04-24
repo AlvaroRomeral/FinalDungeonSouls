@@ -46,14 +46,5 @@ custom_fonts/font = ExtResource( 2 )
 align = 2
 valign = 2
 
-[node name="MenuAcciones" type="MenuButton" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 4.0
-mouse_filter = 1
-theme = ExtResource( 4 )
-align = 2
-
 [connection signal="mouse_entered" from="." to="." method="_on_PanelInventario_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_PanelInventario_mouse_exited"]

@@ -19,7 +19,7 @@ func recargar():
 		if Jugador.cosmeticos.find(x["id"]) == -1:
 			nuevo_cosmetico.bloquear()
 		else:
-			nuevo_cosmetico.connect("ropa_seleccionada",)
+			nuevo_cosmetico.connect("ropa_seleccionada",self,"cambiarCosmetico")
 	
 	var cos_torso = Datos.getCosmeticosTorso()
 	for x in cos_cabeza:
@@ -28,6 +28,8 @@ func recargar():
 		nuevo_cosmetico.setAspecto(x["id"],x["nombre"],x["precio"],Global.PATH_TORSOS + x["icono"] + ".png")
 		if Jugador.cosmeticos.find(x["id"]) == -1:
 			nuevo_cosmetico.bloquear()
+		else:
+			nuevo_cosmetico.connect("ropa_seleccionada",self,"cambiarCosmetico")
 	
 	var cos_piernas = Datos.getCosmeticosPiernas()   
 	for x in cos_cabeza:
@@ -36,6 +38,8 @@ func recargar():
 		nuevo_cosmetico.setAspecto(x["id"],x["nombre"],x["precio"],Global.PATH_PIERNAS + x["icono"] + ".png")
 		if Jugador.cosmeticos.find(x["id"]) == -1:
 			nuevo_cosmetico.bloquear()
+		else:
+			nuevo_cosmetico.connect("ropa_seleccionada",self,"cambiarCosmetico")
 	
 	var cos_pies = Datos.getCosmeticosPies()
 	for x in cos_cabeza:
@@ -44,16 +48,19 @@ func recargar():
 		nuevo_cosmetico.setAspecto(x["id"],x["nombre"],x["precio"],Global.PATH_PIES + x["icono"] + ".png")
 		if Jugador.cosmeticos.find(x["id"]) == -1:
 			nuevo_cosmetico.bloquear()
+		else:
+			nuevo_cosmetico.connect("ropa_seleccionada",self,"cambiarCosmetico")
 
 
 func cambiarCosmetico(id):
-	match Datos.getCosmeticoParte(id):
+	var parte = Datos.getCosmeticoParte(id)
+	match parte:
 		"c":
-			$Panel/Panel/sprCabeza.texture = load(Datos.getCosmeticoIcono(id))
+			$Panel/Panel/sprCabeza.texture = load(Global.PATH_CASCOS + Datos.getCosmeticoIcono(id) + ".png")
 		"t":
-			$Panel/Panel/sprTorso.texture = load(Datos.getCosmeticoIcono(id))
+			$Panel/Panel/sprTorso.texture = load(Global.PATH_TORSOS + Datos.getCosmeticoIcono(id) + ".png")
 		"p":
-			$Panel/Panel/sprPiernas.texture = load(Datos.getCosmeticoIcono(id))
+			$Panel/Panel/sprPiernas.texture = load(Global.PATH_PIERNAS + Datos.getCosmeticoIcono(id) + ".png")
 		"pi":
-			$Panel/Panel/sprPies.texture = load(Datos.getCosmeticoIcono(id))
+			$Panel/Panel/sprPies.texture = load(Global.PATH_PIES + Datos.getCosmeticoIcono(id) + ".png")
 	

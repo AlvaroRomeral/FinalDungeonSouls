@@ -94,31 +94,27 @@ func cargarDatosPersistencia():
 
 # BASE DE DATOS
 
-func getItemInfo(id_item): #devuelve "id_item", "nombre", "descripcion", "icono"
-	if fdsdb.query("SELECT * FROM items WHERE id_item =" + String(id_item) + ";"):
-		var resultado = fdsdb.query_result[0]
-		return resultado
-	else: #Si ni encuentra el objeto por id que devuelva el primero de la tabla
-		fdsdb.query("SELECT * FROM items WHERE id_item = 0;")
+func getItemInfo(id_item): #devuelve "id", "nombre", "descripcion", "icono"
+	if fdsdb.query("SELECT * FROM items WHERE id = " + String(id_item)):
 		var resultado = fdsdb.query_result[0]
 		return resultado
 
 
-func getItemTipo(id_item): #devuelve el int de "id_tipo"
-	if fdsdb.query("SELECT id_tipo FROM items WHERE id_item =" + String(id_item) + ";"):
-		var resultado = fdsdb.query_result[0]["id_tipo"]
+func getItemTipo(id_item): #devuelve el "tipo"
+	if fdsdb.query("SELECT tipo FROM items WHERE id = " + String(id_item)):
+		var resultado = fdsdb.query_result[0]["tipo"]
 		return resultado
 
 
 func getConsumibleInfo(id_item): #devuelve "vida" y "mana"
-	fdsdb.query("SELECT consumibles.vida, consumibles.mana FROM items INNER JOIN consumibles ON items.id_item=consumibles.id_item WHERE items.id_item ="+String(id_item) + ";")
+	fdsdb.query("SELECT vida, mana FROM items WHERE id = " + String(id_item))
 	var resultado = fdsdb.query_result[0]
 	return resultado
 
 
 func getEquipoInfo(id_item): #devuelve "def_num" y "def_por"
-	fdsdb.query("SELECT equipos.def_num, equipos.def_por FROM items INNER JOIN equipos ON items.id_item=equipos.id_item WHERE items.id_item ="+String(id_item) + ";")
-	var resultado = fdsdb.query_result[0]
+	fdsdb.query("SELECT defensa FROM items WHERE id = " + String(id_item))
+	var resultado = fdsdb.query_result[0]["defensa"]
 	return resultado
 
 
@@ -159,14 +155,14 @@ func getCosmeticosPies():
 
 
 func getCosmeticoParte(id):
-	fdsdb.query("SELECT parte FROM cosmeticos WHERE id = "+id)
-	var resultado = fdsdb.query_result[0]
+	fdsdb.query("SELECT parte FROM cosmeticos WHERE id = "+String(id))
+	var resultado = fdsdb.query_result[0]["parte"]
 	return resultado
 
 
 func getCosmeticoIcono(id):
-	fdsdb.query("SELECT icono FROM cosmeticos WHERE id = "+id)
-	var resultado = fdsdb.query_result[0]
+	fdsdb.query("SELECT icono FROM cosmeticos WHERE id = "+String(id))
+	var resultado = fdsdb.query_result[0]["icono"]
 	return resultado
 
 # ARCHIVOS

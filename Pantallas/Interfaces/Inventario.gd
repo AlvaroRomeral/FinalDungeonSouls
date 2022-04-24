@@ -23,7 +23,7 @@ func generarSlots():
 #		i.queue_free()
 	for x in Jugador.inventario_cap:
 		var item_nuevo = slot.instance()
-		gridInventario.call_deferred("add_child",item_nuevo)
+		gridInventario.add_child(item_nuevo)
 #		if Jugador.inventario[x]["id"] != null:
 		item_nuevo.setValores(Jugador.inventario[x]["id"],Jugador.inventario[x]["cantidad"],x)
 		item_nuevo.connect("devolverInfo",self,"mostrarInfo")

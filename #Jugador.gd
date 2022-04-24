@@ -27,6 +27,16 @@ var inventario: Array = []
 var inventario_cap: int = 20
 var item_cap_max = 1
 ## EQUIPAMIENTO
+var equipamiento = {
+	"cabeza" : null,
+	"torso" : null,
+	"piernas" : null,
+	"pies" : null,
+	"amuleto1" : null,
+	"amuleto2" : null,
+	"amuleto3" : null,
+	"amuleto4" : null
+}
 var cosmeticos: Array = [2,5,8]
 var array_equipo = []
 # [0] cabeza
@@ -114,18 +124,19 @@ func setestamina_max(cantidad):
 # INVENTARIO
 
 func anadirItem(item_id: int, cantidad: int):
+	var item_max = Datos.getItemInfo(item_id)["max"]
 	var sobra = cantidad
 	while sobra != 0:
-		var index_con_espacio = getSimilaresConEspacio(item_id)
+		var index_con_espacio = getSimilaresConEspacio(item_id, item_max)
 		if index_con_espacio != -1:
-			var restante = item_cap_max - inventario[index_con_espacio]["cantidad"]
+			var restante = item_max - inventario[index_con_espacio]["cantidad"]
 			if restante > sobra:
 				inventario[index_con_espacio]["cantidad"] += sobra
 				emit_signal("inventarioActualizado")
 				return 0
 			else:
 				sobra = sobra - restante
-				inventario[index_con_espacio]["cantidad"] = item_cap_max
+				inventario[index_con_espacio]["cantidad"] = item_max
 		else:
 			if getEspaciosVacios() > 0: #Si recogo un item que contiene mas de la capacidad maxima no funcionaria
 				for x in inventario_cap:
@@ -222,9 +233,9 @@ func equipar(item_id: int, posicion: int):
 	setEstasEquipo()
 
 
-func getSimilaresConEspacio(item_id: int):
+func getSimilaresConEspacio(item_id: int, item_max):
 	for x in inventario_cap:
-		if inventario[x]["id"] == item_id and (inventario[x]["cantidad"] < item_cap_max):
+		if inventario[x]["id"] == item_id and (inventario[x]["cantidad"] < item_max):
 			return x
 	return -1
 
