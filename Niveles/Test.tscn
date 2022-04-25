@@ -40,6 +40,7 @@ format = 1
 tile_data = PoolIntArray( -262112, 10, 0, -262111, 10, 196609, -262110, 10, 196609, -262109, 15, 786433, -262108, 15, 786433, -262107, 15, 786433, -262106, 15, 786433, -262105, 15, 786433, -196576, 10, 65539, -196573, 15, 589824, -196572, 15, 589824, -196571, 15, 589826, -196570, 15, 589824, -196569, 15, 589824, -131040, 10, 65539, -131037, 15, 589824, -131036, 15, 589825, -131035, 15, 589824, -131034, 15, 589824, -131033, 15, 589824, -65504, 10, 65539, -65501, 13, 720896, -65500, 13, 196609, -65499, 13, 720897, -65498, 13, 196609, -65497, 13, 720898, 32, 10, 131072, 33, 10, 262146, 34, 10, 196609, 35, 14, 524288, 36, 14, 458753, 37, 14, 524289, 38, 14, 458753, 39, 14, 524290, 131103, 12, 327682, 196646, 12, 327684, 262187, 12, 327686, 393236, 0, 524290, 393237, 0, 262145, 393238, 0, 262145, 393239, 0, 262145, 393240, 0, 262145, 393241, 0, 262145, 393242, 0, 262145, 393243, 0, 262145, 393244, 0, 262145, 393245, 0, 524291, 458772, 0, 65536, 458781, 0, 65538, 524308, 0, 65536, 524317, 0, 65538, 589844, 0, 65536, 589853, 0, 65538, 655380, 0, 65536, 655383, 0, 65538, 655384, 7, 1, 655385, 7, 1, 655386, 7, 1, 655387, 7, 1, 655388, 7, 1, 655389, 7, 2, 720916, 7, 0, 720917, 7, 1, 720918, 7, 1, 720919, 7, 2, 720920, 7, 131073, 720921, 7, 131073, 720922, 7, 131073, 720923, 7, 131073, 720924, 7, 131073, 720925, 7, 131074, 786452, 7, 131072, 786453, 7, 131073, 786454, 7, 131073, 786455, 7, 131074 )
 
 [node name="Nivel 2" type="TileMap" parent="Navigation2D"]
+z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -57,7 +58,7 @@ range_item_cull_mask = 3
 shadow_enabled = true
 
 [node name="Jugador" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1424, 184 )
+position = Vector2( 1144, 88 )
 
 [node name="Enemigo" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 752, 56 )
@@ -69,52 +70,49 @@ position = Vector2( 762, 138 )
 position = Vector2( 592, 82 )
 
 [node name="Item" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1104, 48 )
-item_id = 5
+position = Vector2( 1040, 48 )
+item_id = 6
 
 [node name="Item2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1104, 118 )
-item_id = 1
-cantidad = 32
+position = Vector2( 1040, 112 )
+item_id = 8
 
 [node name="Item3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1170, 48 )
-item_id = 4
+position = Vector2( 1040, 96 )
+item_id = 7
 
 [node name="Item5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1136, 48 )
-item_id = 1
+position = Vector2( 1040, 80 )
+item_id = 5
 
 [node name="Item6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1104, 80 )
-item_id = 3
+position = Vector2( 1040, 64 )
+item_id = 4
+cantidad = 2
 
 [node name="Item7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1200, 118 )
-item_id = 1
-cantidad = 900
+position = Vector2( 1168, 128 )
+item_id = 2
+cantidad = 20
 
 [node name="Item8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1152, 118 )
-item_id = 1
-cantidad = 999
+position = Vector2( 1056, 64 )
+item_id = 11
 
 [node name="Item9" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1184, 118 )
-item_id = 1
-cantidad = 999
+position = Vector2( 1152, 128 )
+item_id = 2
+cantidad = 10
 
 [node name="Item10" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1136, 118 )
-item_id = 1
-cantidad = 999
+position = Vector2( 1056, 80 )
+item_id = 10
 
 [node name="Item11" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1168, 118 )
-item_id = 1
-cantidad = 999
+position = Vector2( 1168, 112 )
+item_id = 2
+cantidad = 60
 
 [node name="Item12" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1120, 118 )
-item_id = 1
-cantidad = 999
+position = Vector2( 1056, 112 )
+item_id = 9

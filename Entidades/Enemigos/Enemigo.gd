@@ -112,7 +112,7 @@ func revisarVida():
 		$CollisionShape2D.set_deferred("disabled",true)
 		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
 		estado=MUERTO
-		var drop: ResItem = RES_ITEM.instance()
+		var drop: FDS_Item = RES_ITEM.instance()
 		get_parent().call_deferred("add_child",drop)
 		drop.item_id = id_drop
 		drop.cantidad = cantidad_drop

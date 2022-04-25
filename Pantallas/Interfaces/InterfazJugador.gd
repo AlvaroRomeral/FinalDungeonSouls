@@ -26,10 +26,10 @@ func actualizarUI():
 	monedasUI.text = String(Jugador.monedas)
 	vidaUI.max_value = Jugador.vida_max
 	manaUI.max_value = Jugador.mana_max
-	estaminaUI.max_value = Jugador.estamina_max
+	estaminaUI.max_value = Jugador.esta_max
 	vidaUI.value = Jugador.vida
 	manaUI.value = Jugador.mana
-	estaminaUI.value = Jugador.estamina
+	estaminaUI.value = Jugador.esta
 
 
 func _input(event):

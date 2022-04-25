@@ -1,8 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Recursos/Imagenes/Iconos/Moneda.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_369.png" type="Texture" id=1]
 [ext_resource path="res://Entidades/Interact/Items/Moneda.gd" type="Script" id=2]
-
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.67653

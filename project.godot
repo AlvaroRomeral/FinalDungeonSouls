@@ -14,15 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Componentes/Alerta.gd"
 }, {
+"base": "Area2D",
+"class": "FDS_Item",
+"language": "GDScript",
+"path": "res://Entidades/Interact/Items/Item.gd"
+}, {
 "base": "Resource",
 "class": "ResGuardado",
 "language": "GDScript",
 "path": "res://ResGuardado.gd"
-}, {
-"base": "Area2D",
-"class": "ResItem",
-"language": "GDScript",
-"path": "res://Entidades/Interact/Items/Item.gd"
 }, {
 "base": "Resource",
 "class": "ResPersistencia",
@@ -31,8 +31,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Alerta": "",
+"FDS_Item": "",
 "ResGuardado": "",
-"ResItem": "",
 "ResPersistencia": ""
 }
 

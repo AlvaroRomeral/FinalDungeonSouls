@@ -29,7 +29,7 @@ func updateAspecto():
 		texture = null
 		$Cantidad.visible = false
 	else:
-		texture = load(Global.PATH_ICONOS + Datos.getItemInfo(datos["id"])["icono"])
+		texture = load(Global.PATH_ICONOS + Datos.getItemInfo(datos["id"])["icono"] + ".png")
 		if datos["cantidad"] > 1:
 			$Cantidad.visible = true
 
@@ -55,6 +55,8 @@ func can_drop_data(position, data):
 	var item_tipo = Datos.getItemTipo(data["id"])
 	match tipo:
 		"inv":
+#			if data["origen"].tipo != "inv" and datos["id"] != null:
+#				return false
 			return true
 		"arma":
 			if item_tipo != "arma":
@@ -76,7 +78,19 @@ func can_drop_data(position, data):
 			if item_tipo != "pies":
 				return false
 			return true
-		"amuleto":
+		"amuleto1":
+			if item_tipo != "amuleto":
+				return false
+			return true
+		"amuleto2":
+			if item_tipo != "amuleto":
+				return false
+			return true
+		"amuleto3":
+			if item_tipo != "amuleto":
+				return false
+			return true
+		"amuleto4":
 			if item_tipo != "amuleto":
 				return false
 			return true
@@ -84,30 +98,31 @@ func can_drop_data(position, data):
 
 
 func drop_data(position, data):
-	match data["origen"].tipo:
+	match data["origen"].tipo: #Lo que le pasa a la casilla de donde salio
 		"inv":
 			Jugador.inventario[data["index"]] = {
-				"id" : null,
-				"cantidad" : null
+				"id" : datos["id"],
+				"cantidad" : datos["cantidad"]
 			}
 		"arma":
-			Jugador.equipamiento["arma"] = null
+			Jugador.equipamiento["arma"] = datos["id"]
 		"cabeza":
-			Jugador.equipamiento["cabeza"] = null
-			pass
+			Jugador.equipamiento["cabeza"] = datos["id"]
 		"torso":
-			Jugador.equipamiento["torso"] = null
-			pass
+			Jugador.equipamiento["torso"] = datos["id"]
 		"piernas":
-			Jugador.equipamiento["piernas"] = null
-			pass
+			Jugador.equipamiento["piernas"] = datos["id"]
 		"pies":
-			Jugador.equipamiento["pies"] = null
-			pass
+			Jugador.equipamiento["pies"] = datos["id"]
 		"amuleto1":
-			Jugador.equipamiento["amuleto1"] = null
-			pass
-	match tipo:
+			Jugador.equipamiento["amuleto1"] = datos["id"]
+		"amuleto2":
+			Jugador.equipamiento["amuleto2"] = datos["id"]
+		"amuleto3":
+			Jugador.equipamiento["amuleto3"] = datos["id"]
+		"amuleto4":
+			Jugador.equipamiento["amuleto4"] = datos["id"]
+	match tipo: #Lo que le pasa a la casilla donde lo suelta
 		"inv":
 			Jugador.inventario[datos["index"]]["id"] = data["id"]
 			Jugador.inventario[datos["index"]]["cantidad"] = data["cantidad"]
@@ -123,4 +138,10 @@ func drop_data(position, data):
 			Jugador.equipamiento["pies"] = data["id"]
 		"amuleto1":
 			Jugador.equipamiento["amuleto1"] = data["id"]
+		"amuleto2":
+			Jugador.equipamiento["amuleto2"] = data["id"]
+		"amuleto3":
+			Jugador.equipamiento["amuleto3"] = data["id"]
+		"amuleto4":
+			Jugador.equipamiento["amuleto4"] = data["id"]
 	Jugador.emit_signal("inventarioActualizado")

@@ -7,7 +7,7 @@ func _ready():
 
 
 func itemRecogido():
-	DatosJugador.setMonedas(cantidad)
+	Jugador.setMonedas(cantidad)
 	queue_free()
 
 

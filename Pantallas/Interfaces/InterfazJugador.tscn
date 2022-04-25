@@ -10,6 +10,7 @@
 [ext_resource path="res://Pantallas/Interfaces/InterfazJugador.gd" type="Script" id=8]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/bar_stamina.png" type="Texture" id=9]
 [ext_resource path="res://Pantallas/Menus/MenuPausa.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_369.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -34,9 +35,6 @@ texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 16, 8 )
 margin_left = 3.0
 margin_right = 3.0
-
-[sub_resource type="StreamTexture" id=7]
-load_path = "res://.import/Moneda.png-336abaa82975b37c2943e9f4f8789579.stex"
 
 [node name="InterfazJugador" type="CanvasLayer" groups=["interfaz"]]
 pause_mode = 2
@@ -80,15 +78,19 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 48.0
-margin_bottom = 48.0
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 53.0
+margin_bottom = 52.0
 theme = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Nivel" type="Label" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 3.0
 text = "00"
 align = 1
 valign = 1
@@ -100,8 +102,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -104.0
 margin_top = -40.0
-margin_right = -16.0
-margin_bottom = -16.0
+margin_right = -8.0
+margin_bottom = -8.0
 rect_min_size = Vector2( 48, 16 )
 theme = ExtResource( 3 )
 
@@ -121,9 +123,8 @@ align = 2
 valign = 1
 
 [node name="Sprite" type="Sprite" parent="PanelMonedas"]
-position = Vector2( 76, 12 )
-scale = Vector2( 1.5, 1.5 )
-texture = SubResource( 7 )
+position = Vector2( 80, 16 )
+texture = ExtResource( 11 )
 
 [node name="HasMuerto" parent="." instance=ExtResource( 5 )]
 visible = false

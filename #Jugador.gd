@@ -4,12 +4,14 @@ signal datosActualizados
 signal inventarioActualizado
 
 # DATOS
-var vida = 3 
-var vida_max = 10 setget setvida_max
-var mana = 5 setget setMana
-var mana_max = 10
-var estamina = 10 setget setEstamina
-var estamina_max = 10
+var vida = 10 setget setVida
+var mana = 10 setget setMana
+var esta = 10 setget setEsta
+
+var vida_max = 10 setget setVidaMax
+var mana_max = 10 setget setManaMax
+var esta_max = 10 setget setEstaMax
+
 var defensa = 0
 # ESTADISTICAS
 var stats = {
@@ -21,12 +23,11 @@ var stats = {
 	"destreza" : 1
 }
 
-# INVENTARIO
+# INVENTARIO Y EQUIPAMIENTO
 var monedas: int = 0 setget setMonedas
 var inventario: Array = []
 var inventario_cap: int = 15
 var item_cap_max = 1
-## EQUIPAMIENTO
 var equipamiento = {
 	"arma" : null,
 	"cabeza" : null,
@@ -39,7 +40,6 @@ var equipamiento = {
 	"amuleto4" : null
 }
 var cosmeticos: Array = [2,5,8]
-
 
 func _ready():
 	for i in inventario_cap:
@@ -73,40 +73,40 @@ func setMana(cantidad):
 	emit_signal("datosActualizados")
 
 
-func setEstamina(cantidad):
-	estamina += cantidad
-	if estamina > estamina_max:
-		estamina = estamina_max
-	elif estamina < 0:
-		estamina = 0
+func setEsta(cantidad):
+	esta += cantidad
+	if esta > esta_max:
+		esta = esta_max
+	elif esta < 0:
+		esta = 0
 	emit_signal("datosActualizados")
 
 
-func setEstasEquipo():
+func setStatsEquipo():
 #	for i in array_equipo:
 #		if i["id"] != null:
 #			defensa = defensa + Datos.items_db[i["id"]]["defensa"]
 	pass
 
 
-func setvida_max(cantidad):
+func setVidaMax(cantidad):
 	vida_max = cantidad
 	if vida > vida_max:
 		vida = vida_max
 	emit_signal("datosActualizados")
 
 
-func setmana_max(cantidad):
+func setManaMax(cantidad):
 	mana_max = cantidad
 	if mana > mana_max:
 		mana = mana_max
 	emit_signal("datosActualizados")
 
 
-func setestamina_max(cantidad):
-	estamina_max = cantidad
-	if estamina > estamina_max:
-		estamina = estamina_max
+func setEstaMax(cantidad):
+	esta_max = cantidad
+	if esta > esta_max:
+		esta = esta_max
 	emit_signal("datosActualizados")
 
 # INVENTARIO
