@@ -9,7 +9,8 @@ var datos = {
 	"cantidad" : 0,
 	"index" : -1,
 	"icono" : texture,
-	"origen" :self
+	"origen" : self,
+	"tipo" : tipo
 }
 
 func _ready():
@@ -43,59 +44,83 @@ func get_drag_data(position):
 		control.add_child(imagen)
 		set_drag_preview(control)
 		
-		datos["id"] = null
-		datos["cantidad"] = 0
-		updateAspecto()
+#		datos["id"] = null
+#		datos["cantidad"] = 0
+#		updateAspecto()
 		
 		return datos_exportados
 
 
 func can_drop_data(position, data):
-	var item_data = Datos.getItemInfo(data["id"])
+	var item_tipo = Datos.getItemTipo(data["id"])
 	match tipo:
 		"inv":
-			Jugador.emit_signal("inventarioActualizado")
 			return true
 		"arma":
-			if item_data["tipo"] != "arma":
-				datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
+			if item_tipo != "arma":
 				return false
 			return true
 		"cabeza":
-			if item_data["tipo"] != "cabeza":
-				datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
+			if item_tipo != "cabeza":
 				return false
-			Jugador.equipamiento["cabeza"] = data["id"]
 			return true
 		"torso":
-			if item_data["tipo"] != "torso":
-				datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
+			if item_tipo != "torso":
 				return false
 			return true
 		"piernas":
-			if item_data["tipo"] != "piernas":
-				datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
+			if item_tipo != "piernas":
 				return false
 			return true
 		"pies":
-			if item_data["tipo"] != "pies":
-				datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
+			if item_tipo != "pies":
 				return false
 			return true
 		"amuleto":
-			if item_data["tipo"] != "amuleto":
-				datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
+			if item_tipo != "amuleto":
 				return false
 			return true
-	datos["origen"].setDatos(datos["id"],datos["cantidad"],datos["index"])
 	return false
 
 
 func drop_data(position, data):
-	texture = data["icono"]
-	Jugador.inventario[data["index"]] = {
-		"id" : data["id"],
-		"cantidad" : data["cantidad"]
-	}
-	datos["id"] = data["id"]
-	datos["cantidad"] = data["cantidad"]
+	match data["origen"].tipo:
+		"inv":
+			Jugador.inventario[data["index"]] = {
+				"id" : null,
+				"cantidad" : null
+			}
+		"arma":
+			Jugador.equipamiento["arma"] = null
+		"cabeza":
+			Jugador.equipamiento["cabeza"] = null
+			pass
+		"torso":
+			Jugador.equipamiento["torso"] = null
+			pass
+		"piernas":
+			Jugador.equipamiento["piernas"] = null
+			pass
+		"pies":
+			Jugador.equipamiento["pies"] = null
+			pass
+		"amuleto1":
+			Jugador.equipamiento["amuleto1"] = null
+			pass
+	match tipo:
+		"inv":
+			Jugador.inventario[datos["index"]]["id"] = data["id"]
+			Jugador.inventario[datos["index"]]["cantidad"] = data["cantidad"]
+		"arma":
+			Jugador.equipamiento["arma"] = data["id"]
+		"cabeza":
+			Jugador.equipamiento["cabeza"] = data["id"]
+		"torso":
+			Jugador.equipamiento["torso"] = data["id"]
+		"piernas":
+			Jugador.equipamiento["piernas"] = data["id"]
+		"pies":
+			Jugador.equipamiento["pies"] = data["id"]
+		"amuleto1":
+			Jugador.equipamiento["amuleto1"] = data["id"]
+	Jugador.emit_signal("inventarioActualizado")

@@ -6,6 +6,15 @@ onready var gridInventario = $PanelInventario/GridContainer
 onready var txtNombre = $PanelNombre/TextoNombre
 onready var txtDescripcion = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoDescripcion
 onready var txtEstadisticas = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoEstadisticas
+onready var slotarma = $SlotArma
+onready var slotcabeza = $SlotCabeza
+onready var slottorso = $SlotTorso
+onready var slotpiernas = $SlotPiernas
+onready var slotpies = $SlotPies
+onready var slotamuleto1 = $SlotAmuleto_1
+onready var slotamuleto2 = $SlotAmuleto_2
+onready var slotamuleto3 = $SlotAmuleto_3
+onready var slotamuleto4 = $SlotAmuleto_4
 
 func _ready():
 	hide()
@@ -32,7 +41,15 @@ func generarSlots():
 func actualizarSlots():
 	for x in gridInventario.get_children():
 		x.setValores(Jugador.inventario[x.item_posicion]["id"],Jugador.inventario[x.item_posicion]["cantidad"],x.item_posicion)
-
+	slotarma.setValores(Jugador.equipamiento["arma"],1,null)
+	slotcabeza.setValores(Jugador.equipamiento["cabeza"],1,null)
+	slottorso.setValores(Jugador.equipamiento["torso"],1,null)
+	slotpiernas.setValores(Jugador.equipamiento["piernas"],1,null)
+	slotpies.setValores(Jugador.equipamiento["pies"],1,null)
+	slotamuleto1.setValores(Jugador.equipamiento["amuleto1"],1,null)
+	slotamuleto2.setValores(Jugador.equipamiento["amuleto2"],1,null)
+	slotamuleto3.setValores(Jugador.equipamiento["amuleto3"],1,null)
+	slotamuleto4.setValores(Jugador.equipamiento["amuleto4"],1,null)
 
 func mostrarInfo(id_item):
 	if id_item != null:
@@ -41,7 +58,6 @@ func mostrarInfo(id_item):
 		txtNombre.text = datos_item["nombre"]
 		txtDescripcion.text = ""
 		txtDescripcion.text = datos_item["descripcion"]
-		
 		txtEstadisticas.bbcode_text = ""
 		match Datos.getItemTipo(id_item):
 			1:

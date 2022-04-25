@@ -1,28 +1,39 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/bar_mana.png" type="Texture" id=2]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=3]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/bar_vida.png" type="Texture" id=4]
 [ext_resource path="res://Pantallas/Interfaces/HasMuerto.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/bar_vacia.png" type="Texture" id=6]
 [ext_resource path="res://Pantallas/Interfaces/Inventario.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Pantallas/Interfaces/InterfazJugador.gd" type="Script" id=8]
-[ext_resource path="res://Recursos/Imagenes/Interfaz.png" type="Texture" id=9]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/bar_stamina.png" type="Texture" id=9]
 [ext_resource path="res://Pantallas/Menus/MenuPausa.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 9 )
-region_rect = Rect2( 32, 11, 80, 5 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 16, 8 )
+margin_left = 3.0
+margin_right = 3.0
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 9 )
-region_rect = Rect2( 36, 5, 76, 5 )
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 8 )
+margin_left = 3.0
+margin_right = 3.0
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 9 )
-region_rect = Rect2( 36, 17, 76, 5 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 8 )
+margin_left = 3.0
+margin_right = 3.0
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 9 )
-region_rect = Rect2( 36, 23, 76, 5 )
+region_rect = Rect2( 0, 0, 16, 8 )
+margin_left = 3.0
+margin_right = 3.0
 
 [sub_resource type="StreamTexture" id=7]
 load_path = "res://.import/Moneda.png-336abaa82975b37c2943e9f4f8789579.stex"

@@ -38,6 +38,7 @@ func _ready():
 		jugador = get_tree().get_nodes_in_group("jugador")[0]
 	if get_tree().has_group("navegacion"):
 		nav = get_tree().get_nodes_in_group("navegacion")[0]
+	revisarVida()
 
 
 func _physics_process(delta):

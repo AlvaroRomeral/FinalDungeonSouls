@@ -24,10 +24,11 @@ var stats = {
 # INVENTARIO
 var monedas: int = 0 setget setMonedas
 var inventario: Array = []
-var inventario_cap: int = 20
+var inventario_cap: int = 15
 var item_cap_max = 1
 ## EQUIPAMIENTO
 var equipamiento = {
+	"arma" : null,
 	"cabeza" : null,
 	"torso" : null,
 	"piernas" : null,
@@ -38,25 +39,11 @@ var equipamiento = {
 	"amuleto4" : null
 }
 var cosmeticos: Array = [2,5,8]
-var array_equipo = []
-# [0] cabeza
-# [1] pecho
-# [2] piernas
-# [3] pies
-# [4] espalda
-# [5] manos
-# [6] dedo_der
-# [7] dedo_izq
 
 
 func _ready():
 	for i in inventario_cap:
 		inventario.append({
-			"id": null,
-			"cantidad": null
-		})
-	for i in range(8):
-		array_equipo.append({
 			"id": null,
 			"cantidad": null
 		})
@@ -96,9 +83,10 @@ func setEstamina(cantidad):
 
 
 func setEstasEquipo():
-	for i in array_equipo:
-		if i["id"] != null:
-			defensa = defensa + Datos.items_db[i["id"]]["defensa"]
+#	for i in array_equipo:
+#		if i["id"] != null:
+#			defensa = defensa + Datos.items_db[i["id"]]["defensa"]
+	pass
 
 
 func setvida_max(cantidad):
@@ -223,14 +211,14 @@ func usarItem(item_id: int):
 	Global.Notificacion("No hay ningun objeto")
 
 
-func equipar(item_id: int, posicion: int):
-	emit_signal("inventarioActualizado")
-	if array_equipo[posicion]["id"] == null:
-		array_equipo[posicion] = quitarItem(item_id, 1)
-	else:
-		anadirItem(item_id, 1)
-		array_equipo[posicion] = quitarItem(item_id, 1)
-	setEstasEquipo()
+#func equipar(item_id: int, posicion: int):
+#	emit_signal("inventarioActualizado")
+#	if array_equipo[posicion]["id"] == null:
+#		array_equipo[posicion] = quitarItem(item_id, 1)
+#	else:
+#		anadirItem(item_id, 1)
+#		array_equipo[posicion] = quitarItem(item_id, 1)
+#	setEstasEquipo()
 
 
 func getSimilaresConEspacio(item_id: int, item_max):
