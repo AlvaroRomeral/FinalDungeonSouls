@@ -25,7 +25,7 @@ func _ready():
 	SilentWolf.configure({
 		"api_key": "JfoawfqtBo4511Wujjwba5ZgQdQ35YKG4xSMPywe",
 		"game_id": "FinalDungeonSouls",
-		"game_version": "0.1.0",
+		"game_version": "0.3",
 		"log_level": 1
 	})
 	SilentWolf.configure_scores({

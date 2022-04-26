@@ -3,14 +3,14 @@ extends Area2D
 onready var tiempoInvencible = $NoDamageTimer
 onready var damageIndiator = preload("res://Entidades/Efectos/NumerosDamage.tscn")
 
-signal damageRecivido(cantidad)
+signal damageRecivido(cantidad, atacante)
 
 var invencible = false
 
 
 func _on_AreaDamage_area_entered(area):
 	if !invencible:
-		emit_signal("damageRecivido",area.damage)
+		emit_signal("damageRecivido",area.damage,area.propietario)
 		var numerito = damageIndiator.instance()
 		numerito.damage = area.damage
 		call_deferred("add_child",numerito)

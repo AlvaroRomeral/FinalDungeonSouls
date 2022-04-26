@@ -197,7 +197,7 @@ shape = SubResource( 9 )
 
 [node name="ComponenteArma" parent="Position2D" instance=ExtResource( 2 )]
 position = Vector2( 18, 0 )
-tipo = "Jugador"
+propietario = "Jugador"
 
 [node name="Aspecto" type="Node2D" parent="."]
 
@@ -234,7 +234,6 @@ anims/RESET = SubResource( 12 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -12 )
-collision_layer = 64
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false

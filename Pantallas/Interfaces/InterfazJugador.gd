@@ -19,8 +19,12 @@ func _ready():
 	Jugador.connect("datosActualizados",self,"actualizarUI")
 	actualizarUI()
 
-#func _process(delta):
-#	pass
+
+func _process(delta):
+	$BarraVida/Label.text = str(Jugador.vida) + "/" + str(Jugador.vida_max)
+	$BarraMana/Label.text = str(Jugador.mana) + "/" + str(Jugador.mana_max)
+	$BarraEstamina/Label.text = str(Jugador.esta) + "/" + str(Jugador.esta_max)
+
 
 func actualizarUI():
 	monedasUI.text = String(Jugador.monedas)
@@ -30,6 +34,7 @@ func actualizarUI():
 	vidaUI.value = Jugador.vida
 	manaUI.value = Jugador.mana
 	estaminaUI.value = Jugador.esta
+	nivelUI.text = str(Jugador.nivel)
 
 
 func _input(event):

@@ -3,22 +3,23 @@ extends Control
 const slot = preload("res://Pantallas/Interfaces/PanelInventario.tscn")
 
 onready var gridInventario = $PanelInventario/GridContainer
-onready var txtNombre = $PanelNombre/TextoNombre
-onready var txtDescripcion = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoDescripcion
-onready var txtEstadisticas = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoEstadisticas
-onready var slotarma = $SlotArma
-onready var slotcabeza = $SlotCabeza
-onready var slottorso = $SlotTorso
-onready var slotpiernas = $SlotPiernas
-onready var slotpies = $SlotPies
-onready var slotamuleto1 = $SlotAmuleto_1
-onready var slotamuleto2 = $SlotAmuleto_2
-onready var slotamuleto3 = $SlotAmuleto_3
-onready var slotamuleto4 = $SlotAmuleto_4
+onready var txtnombre = $PanelNombre/TextoNombre
+onready var txtdescri = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoDescripcion
+onready var txtestats = $PanelDescripcion/ScrollContainer/VBoxContainer/TextoEstadisticas
+onready var slotarma = $PanelEquipo/SlotArma
+onready var slotcabeza = $PanelEquipo/SlotCabeza
+onready var slottorso = $PanelEquipo/SlotTorso
+onready var slotpiernas = $PanelEquipo/SlotPiernas
+onready var slotpies = $PanelEquipo/SlotPies
+onready var slotamuleto1 = $PanelEquipo/SlotAmuleto_1
+onready var slotamuleto2 = $PanelEquipo/SlotAmuleto_2
+onready var slotamuleto3 = $PanelEquipo/SlotAmuleto_3
+onready var slotamuleto4 = $PanelEquipo/SlotAmuleto_4
 
 func _ready():
 	hide()
 	Jugador.connect("inventarioActualizado",self,"actualizarSlots")
+	Jugador.connect("datosActualizados",self,"actualizarDatos")
 	generarSlots()
 
 
@@ -53,26 +54,43 @@ func actualizarSlots():
 
 func mostrarInfo(id_item):
 	if id_item != null:
-		var datos_item = Datos.getItemInfo(id_item)
-		txtNombre.text = ""
-		txtNombre.text = datos_item["nombre"]
-		txtDescripcion.text = ""
-		txtDescripcion.text = datos_item["descripcion"]
-		txtEstadisticas.bbcode_text = ""
+		var datos = Datos.getItemInfo(id_item)
+		txtnombre.text = ""
+		txtnombre.text = datos["nombre"]
+		txtdescri.text = ""
+		txtdescri.text = datos["descripcion"]
+		txtestats.bbcode_text = ""
 		match Datos.getItemTipo(id_item):
-			1:
-				var equipo_info = Datos.getEquipoInfo(id_item)
-				txtEstadisticas.bbcode_text = "[center]Defensa: " + String(equipo_info["def_num"]) + "\nPorcentaje: " + String(equipo_info["def_por"]) + "%"
-			2:
-				var arma_info = Datos.getArmaInfo(id_item)
-				txtEstadisticas.bbcode_text = "[center]Ataque: " + String(arma_info["atc_num"]) + "\nPorcentaje: " + String(arma_info["atc_por"]) + "%"
-			3:
-				var consumible_info = Datos.getConsumibleInfo(id_item)
-				txtEstadisticas.bbcode_text = "[center]Vida: [color=red]" + String(consumible_info["vida"]) + "[/color] \nMana: [color=blue]" + String(consumible_info["mana"])
+			"consumible":
+				if datos["vida"] != 0:
+					txtestats.bbcode_text = "[center]Vida: [color=red]" + str(datos["vida"])
+				else:
+					txtestats.bbcode_text = "[center]Mana: [color=blue]" + str(datos["mana"])
+			"arma":
+				txtestats.bbcode_text = "[center]Ataque: " + str(datos["ataque"])
+			"torso":
+				txtestats.bbcode_text = "[center]Defensa: " + str(datos["defensa"])
+			"cabeza":
+				txtestats.bbcode_text = "[center]Defensa: " + str(datos["defensa"])
+			"piernas":
+				txtestats.bbcode_text = "[center]Defensa: " + str(datos["defensa"])
+			"pies":
+				txtestats.bbcode_text = "[center]Defensa: " + str(datos["defensa"])
+			"amuleto":
+				match datos["efecto"]:
+					"vida":
+						txtestats.bbcode_text = "[center]Vida extra: [color=red]" + str(datos["porcen"]*100) + "%"
 	else:
-		txtNombre.text = ""
-		txtDescripcion.text = ""
-		txtEstadisticas.bbcode_text = ""
+		txtnombre.text = ""
+		txtdescri.text = ""
+		txtestats.bbcode_text = ""
+
+
+func actualizarDatos():
+	$PanelEquipo/LblAtaque.text = "Atq: " + str(Jugador.ataque)
+	$PanelEquipo/LblDefensa.text = "Def: " + str(Jugador.defensa)
+	$PanelEquipo/LblVida.text = "Vid: " + str(Jugador.vida)
+	$PanelEquipo/LblMana.text = "Man: " + str(Jugador.mana)
 
 
 func _on_Inventario_hide():

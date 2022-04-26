@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Interfaces/Inventario.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Recursos/Imagenes/16bitSpriteSheet.png" type="Texture" id=4]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=5]
 [ext_resource path="res://Pantallas/Interfaces/PanelInventario.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/FondoHumano.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 4 )
@@ -141,65 +142,107 @@ margin_right = 176.0
 margin_bottom = 92.0
 text = "Descartar"
 
-[node name="SlotArma" parent="." instance=ExtResource( 6 )]
+[node name="PanelEquipo" type="Panel" parent="."]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 144.0
+margin_bottom = 232.0
+
+[node name="FondoHumano" type="Sprite" parent="PanelEquipo"]
+position = Vector2( 68, 72 )
+texture = ExtResource( 7 )
+
+[node name="SlotArma" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 52.0
+margin_top = 132.0
+margin_right = 84.0
+margin_bottom = 164.0
+tipo = "arma"
+
+[node name="SlotCabeza" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 96.0
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 40.0
+tipo = "cabeza"
+
+[node name="SlotTorso" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 96.0
+margin_top = 40.0
+margin_right = 128.0
+margin_bottom = 72.0
+tipo = "torso"
+
+[node name="SlotPiernas" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 96.0
+margin_top = 72.0
+margin_right = 128.0
+margin_bottom = 104.0
+tipo = "piernas"
+
+[node name="SlotPies" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 96.0
+margin_top = 104.0
+margin_right = 128.0
+margin_bottom = 136.0
+tipo = "pies"
+
+[node name="SlotAmuleto_1" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 40.0
+tipo = "amuleto1"
+
+[node name="SlotAmuleto_2" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 40.0
+margin_bottom = 72.0
+tipo = "amuleto2"
+
+[node name="SlotAmuleto_3" parent="PanelEquipo" instance=ExtResource( 6 )]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 40.0
+margin_bottom = 104.0
+tipo = "amuleto3"
+
+[node name="SlotAmuleto_4" parent="PanelEquipo" instance=ExtResource( 6 )]
 margin_left = 8.0
 margin_top = 104.0
 margin_right = 40.0
 margin_bottom = 136.0
-tipo = "arma"
-
-[node name="SlotCabeza" parent="." instance=ExtResource( 6 )]
-margin_left = 112.0
-margin_top = 56.0
-margin_right = 144.0
-margin_bottom = 88.0
-tipo = "cabeza"
-
-[node name="SlotTorso" parent="." instance=ExtResource( 6 )]
-margin_left = 112.0
-margin_top = 88.0
-margin_right = 144.0
-margin_bottom = 120.0
-tipo = "torso"
-
-[node name="SlotPiernas" parent="." instance=ExtResource( 6 )]
-margin_left = 112.0
-margin_top = 128.0
-margin_right = 144.0
-margin_bottom = 160.0
-tipo = "piernas"
-
-[node name="SlotPies" parent="." instance=ExtResource( 6 )]
-margin_left = 112.0
-margin_top = 160.0
-margin_right = 144.0
-margin_bottom = 192.0
-tipo = "pies"
-
-[node name="SlotAmuleto_1" parent="." instance=ExtResource( 6 )]
-margin_left = 8.0
-margin_top = 200.0
-margin_right = 40.0
-margin_bottom = 232.0
-tipo = "amuleto1"
-
-[node name="SlotAmuleto_2" parent="." instance=ExtResource( 6 )]
-margin_left = 40.0
-margin_top = 200.0
-margin_right = 72.0
-margin_bottom = 232.0
-tipo = "amuleto2"
-
-[node name="SlotAmuleto_3" parent="." instance=ExtResource( 6 )]
-margin_left = 80.0
-margin_top = 200.0
-margin_right = 112.0
-margin_bottom = 232.0
-tipo = "amuleto3"
-
-[node name="SlotAmuleto_4" parent="." instance=ExtResource( 6 )]
-margin_left = 112.0
-margin_top = 200.0
-margin_right = 144.0
-margin_bottom = 232.0
 tipo = "amuleto4"
+
+[node name="LblAtaque" type="Label" parent="PanelEquipo"]
+margin_left = 8.0
+margin_top = 172.0
+margin_right = 52.0
+margin_bottom = 188.0
+text = "Atq: 0"
+valign = 1
+
+[node name="LblDefensa" type="Label" parent="PanelEquipo"]
+margin_left = 8.0
+margin_top = 192.0
+margin_right = 52.0
+margin_bottom = 208.0
+text = "Def: 0"
+valign = 1
+
+[node name="LblVida" type="Label" parent="PanelEquipo"]
+margin_left = 76.0
+margin_top = 172.0
+margin_right = 120.0
+margin_bottom = 188.0
+text = "Def: 0"
+valign = 1
+
+[node name="LblMana" type="Label" parent="PanelEquipo"]
+margin_left = 76.0
+margin_top = 188.0
+margin_right = 120.0
+margin_bottom = 204.0
+text = "Def: 0"
+valign = 1

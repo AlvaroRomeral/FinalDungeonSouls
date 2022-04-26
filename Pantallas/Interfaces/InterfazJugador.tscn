@@ -45,6 +45,7 @@ margin_left = 56.0
 margin_top = 8.0
 margin_right = 192.0
 margin_bottom = 16.0
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
@@ -52,22 +53,40 @@ step = 1.0
 value = 50.0
 percent_visible = false
 
+[node name="Label" type="Label" parent="BarraVida"]
+margin_left = 144.0
+margin_top = -8.0
+margin_right = 208.0
+margin_bottom = 14.0
+text = "1"
+valign = 1
+
 [node name="BarraMana" type="ProgressBar" parent="."]
 margin_left = 56.0
 margin_top = 24.0
 margin_right = 192.0
 margin_bottom = 32.0
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
 percent_visible = false
 
+[node name="Label" type="Label" parent="BarraMana"]
+margin_left = 144.0
+margin_top = -8.0
+margin_right = 208.0
+margin_bottom = 16.0
+text = "1"
+valign = 1
+
 [node name="BarraEstamina" type="ProgressBar" parent="."]
 margin_left = 56.0
 margin_top = 40.0
 margin_right = 192.0
 margin_bottom = 48.0
+theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 2 )
@@ -76,6 +95,14 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="BarraEstamina"]
+margin_left = 144.0
+margin_top = -8.0
+margin_right = 208.0
+margin_bottom = 16.0
+text = "1"
+valign = 1
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 5.0

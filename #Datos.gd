@@ -38,7 +38,7 @@ func _ready():
 	fdsdb.path = Global.PATH_FSDDB
 	fdsdb.open_db()
 
-# ARCHIVO GUARDADO
+# ARCHIVO GUARDADO =================================================================================
 
 func guardarPartida():
 	guardarDatos()
@@ -48,7 +48,7 @@ func guardarPartida():
 func cargarPartida():
 	ar_guardado = load(Global.PATH_SAVES + nombre_guardado + Global.EXTE_SAVES)
 
-# DATOS GUARDADO
+# DATOS GUARDADO ===================================================================================
 
 func nuevosDatos():
 	ar_guardado = res_guardado.new()
@@ -78,7 +78,7 @@ func cargarNivel():
 	var nivel = load(Global.PATH_SAVES + "nivelGuardado.tscn")
 	get_tree().change_scene(Global.PATH_SAVES + "nivelGuardado.tscn")
 
-# PERSISTENCIA
+# PERSISTENCIA =====================================================================================
 
 func guardarPersistencia():
 	ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia)
@@ -92,43 +92,63 @@ func cargarDatosPersistencia():
 	OS.window_fullscreen = ar_persistencia.pantalla_completa
 	OS.window_size = ar_persistencia.resolucion
 
-# BASE DE DATOS
+# BBDD ITEMS =======================================================================================
 
-func getItemInfo(id_item): #devuelve "id", "nombre", "descripcion", "icono"
-	if fdsdb.query("SELECT * FROM items WHERE id = " + String(id_item)):
+func getItemInfo(id): #devuelve "id", "nombre", "descripcion", "icono"
+	if fdsdb.query("SELECT * FROM items WHERE id = " + str(id)):
 		var resultado = fdsdb.query_result[0]
 		return resultado
 
 
-func getItemTipo(id_item): #devuelve el "tipo"
-	if fdsdb.query("SELECT tipo FROM items WHERE id = " + String(id_item)):
+func getItemVida(id):
+	if fdsdb.query("SELECT vida FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["vida"]
+		return resultado
+
+
+func getItemMana(id):
+	if fdsdb.query("SELECT mana FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["mana"]
+		return resultado
+
+
+func getItemTipo(id): #devuelve el "tipo"
+	if fdsdb.query("SELECT tipo FROM items WHERE id = " + str(id)):
 		var resultado = fdsdb.query_result[0]["tipo"]
 		return resultado
 
 
-func getConsumibleInfo(id_item): #devuelve "vida" y "mana"
-	fdsdb.query("SELECT vida, mana FROM items WHERE id = " + String(id_item))
-	var resultado = fdsdb.query_result[0]
-	return resultado
+func getItemDefensa(id):
+	if fdsdb.query("SELECT defensa FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["defensa"]
+		return resultado
 
 
-func getEquipoInfo(id_item): #devuelve "def_num" y "def_por"
-	fdsdb.query("SELECT defensa FROM items WHERE id = " + String(id_item))
-	var resultado = fdsdb.query_result[0]["defensa"]
-	return resultado
+func getItemAtaque(id):
+	if fdsdb.query("SELECT ataque FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["ataque"]
+		return resultado
 
 
-func getArmaInfo(id_item): #devuelve "atc_num" y "atc_por"
-	fdsdb.query("SELECT armas.atc_num, armas.atc_por FROM items INNER JOIN armas ON items.id_item=armas.id_item WHERE items.id_item ="+String(id_item) + ";")
-	var resultado = fdsdb.query_result[0]
-	return resultado
+func getItemPorcentaje(id):
+	if fdsdb.query("SELECT porcen FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["porcen"]
+		return resultado
 
+
+func getItemEfecto(id):
+	if fdsdb.query("SELECT efecto FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["efecto"]
+		return resultado
+
+# BBDD DIALOGO =====================================================================================
 
 func getDialogo(id:int):
-	fdsdb.query("SELECT texto FROM dialogos WHERE id =" + String(id))
+	fdsdb.query("SELECT texto FROM dialogos WHERE id =" + str(id))
 	var resultado = fdsdb.query_result[0]["texto"]
 	return resultado
 
+# BBDD COSMETICOS ==================================================================================
 
 func getCosmeticosCabeza():
 	fdsdb.query("SELECT * FROM cosmeticos WHERE parte = 'c'")
@@ -155,31 +175,47 @@ func getCosmeticosPies():
 
 
 func getCosmeticoParte(id):
-	fdsdb.query("SELECT parte FROM cosmeticos WHERE id = "+String(id))
+	fdsdb.query("SELECT parte FROM cosmeticos WHERE id = " + str(id))
 	var resultado = fdsdb.query_result[0]["parte"]
 	return resultado
 
 
 func getCosmeticoIcono(id):
-	fdsdb.query("SELECT icono FROM cosmeticos WHERE id = "+String(id))
+	fdsdb.query("SELECT icono FROM cosmeticos WHERE id = " + str(id))
 	var resultado = fdsdb.query_result[0]["icono"]
 	return resultado
 
-# ARCHIVOS
+# BBDD NIVELES =====================================================================================
+
+func getNivelesVida():
+	fdsdb.query("SELECT vida FROM niveles WHERE id = " + str(Jugador.nivel))
+	var resultado = fdsdb.query_result[0]["vida"]
+	return resultado
+
+
+func getNivelesMana():
+	fdsdb.query("SELECT mana FROM niveles WHERE id = " + str(Jugador.nivel))
+	var resultado = fdsdb.query_result[0]["mana"]
+	return resultado
+
+
+func getNivelesEsta():
+	fdsdb.query("SELECT esta FROM niveles WHERE id = " + str(Jugador.nivel))
+	var resultado = fdsdb.query_result[0]["esta"]
+	return resultado
+
+# ARCHIVOS =========================================================================================
 
 func getArchivosDePath(path):
 	var files = []
 	var dir = Directory.new()
 	dir.open(path)
 	dir.list_dir_begin(true)
-
 	while true:
 		var file = dir.get_next()
 		if file == "":
 			break
 		elif !file.ends_with(".import"):
 			files.append(file)
-
 	dir.list_dir_end()
-
 	return files

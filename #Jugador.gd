@@ -4,24 +4,16 @@ signal datosActualizados
 signal inventarioActualizado
 
 # DATOS
-var vida = 10 setget setVida
-var mana = 10 setget setMana
-var esta = 10 setget setEsta
+var vida: int = 10 setget setVida
+var mana: int = 10 setget setMana
+var esta: int = 10 setget setEsta
 
-var vida_max = 10 setget setVidaMax
-var mana_max = 10 setget setManaMax
-var esta_max = 10 setget setEstaMax
-
-var defensa = 0
-# ESTADISTICAS
-var stats = {
-	"vigor" : 1,
-	"inteligencia" : 1,
-	"aguante" : 1,
-	"fuerza" : 1,
-	"sabiduria" : 1,
-	"destreza" : 1
-}
+var defensa: int = 0
+var ataque: int = 0
+var vida_max: int = 0
+var mana_max: int = 0
+var esta_max: int = 0
+var nivel = 1
 
 # INVENTARIO Y EQUIPAMIENTO
 var monedas: int = 0 setget setMonedas
@@ -82,32 +74,39 @@ func setEsta(cantidad):
 	emit_signal("datosActualizados")
 
 
-func setStatsEquipo():
-#	for i in array_equipo:
-#		if i["id"] != null:
-#			defensa = defensa + Datos.items_db[i["id"]]["defensa"]
-	pass
-
-
-func setVidaMax(cantidad):
-	vida_max = cantidad
-	if vida > vida_max:
-		vida = vida_max
+func actualizarStats():
+	var defensa_final = 0
+	var ataque_final = 0
+	if equipamiento["cabeza"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento["cabeza"])
+	if equipamiento["torso"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento["torso"])
+	if equipamiento["piernas"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento["piernas"])
+	if equipamiento["pies"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento["pies"])
+	if equipamiento["arma"] != null:
+		ataque_final += Datos.getItemAtaque(equipamiento["arma"])
+	calculateAmuletos()
+	defensa = defensa_final
+	ataque = ataque_final
+	vida_max 
 	emit_signal("datosActualizados")
 
 
-func setManaMax(cantidad):
-	mana_max = cantidad
-	if mana > mana_max:
-		mana = mana_max
-	emit_signal("datosActualizados")
-
-
-func setEstaMax(cantidad):
-	esta_max = cantidad
-	if esta > esta_max:
-		esta = esta_max
-	emit_signal("datosActualizados")
+func calculateAmuletos():
+	var amuletos = [equipamiento["amuleto1"],equipamiento["amuleto2"],equipamiento["amuleto3"],equipamiento["amuleto4"]]
+	var vida_final = 0
+	var mana_final = 0
+	var esta_final = 0
+	for x in amuletos:
+		if x != null:
+			match Datos.getItemEfecto(x):
+				"vida":
+					vida_final = vida_max * Datos.getItemPorcentaje(x)
+	vida_max = Datos.getNivelesVida() + vida_final
+	mana_max = Datos.getNivelesMana() + mana_final
+	esta_max = Datos.getNivelesEsta() + esta_final
 
 # INVENTARIO
 
@@ -209,16 +208,6 @@ func usarItem(item_id: int):
 			pass
 			return
 	Global.Notificacion("No hay ningun objeto")
-
-
-#func equipar(item_id: int, posicion: int):
-#	emit_signal("inventarioActualizado")
-#	if array_equipo[posicion]["id"] == null:
-#		array_equipo[posicion] = quitarItem(item_id, 1)
-#	else:
-#		anadirItem(item_id, 1)
-#		array_equipo[posicion] = quitarItem(item_id, 1)
-#	setEstasEquipo()
 
 
 func getSimilaresConEspacio(item_id: int, item_max):

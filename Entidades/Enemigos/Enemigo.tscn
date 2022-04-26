@@ -240,8 +240,6 @@ tracks/2/keys = {
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 2 )
-id_drop = 2
-cantidad_drop = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -4 )
@@ -288,7 +286,6 @@ position = Vector2( 18, 0 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -11 )
-collision_layer = 64
 
 [node name="Sound_Muerte" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

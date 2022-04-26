@@ -3,6 +3,9 @@ extends Area2D
 export var damage = 1
 export var activo = true
 
+var propietario = null
+var tipo
+
 var empuje = Vector2.ZERO
 
 func _physics_process(delta):

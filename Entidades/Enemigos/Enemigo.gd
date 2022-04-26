@@ -3,18 +3,20 @@ extends KinematicBody2D
 onready var anim_cuerpo:AnimationPlayer = $Aspecto/AnimAspecto
 onready var dist_vision = $Position2D/DistVision
 onready var dist_ataque = $Position2D/DistAtaque
+onready var com_ataque = $Position2D/ComponenteArma
 
 const ACELERACION = 200
-const VEL_NORMAL = 35
-const VEL_CORRER = 60
 const FRICCION = 500
 const RES_ITEM = preload("res://Entidades/Interact/Items/Item.tscn")
 
 export var vida = 2
-export var id_drop = 1
-export var cantidad_drop = 1
-export var enShock = false
+export var ataque = 1
+export var movimiento_normal = 35
+export var mov_correr = 60
+export var id_drop = 2
+export var cantidad_drop = 5
 
+var enShock = false
 var path = []
 var velocidad = Vector2.ZERO
 var jugador : KinematicBody2D
@@ -58,13 +60,14 @@ func _physics_process(delta):
 					else:
 						$Aspecto.scale.x = 1
 					anim_cuerpo.play("Andar")
-					velocidad = velocidad.move_toward(dir * VEL_NORMAL, ACELERACION)
+					velocidad = velocidad.move_toward(dir * movimiento_normal, ACELERACION)
 					velocidad = move_and_slide(velocidad)
 				ATACANDO:
 					anim_cuerpo.play("Idle")
 					if atacando == false:
 						atacando = true
-						$Position2D/ComponenteArma.usar()
+						com_ataque.damage_arma = ataque
+						com_ataque.usar()
 						$Position2D/TimerAtaque.start()
 
 
@@ -109,8 +112,6 @@ func generarPath(objetivo):
 
 func revisarVida():
 	if vida <= 0:
-		$CollisionShape2D.set_deferred("disabled",true)
-		$Hurtbox/CollisionShape2D.set_deferred("disabled",true)
 		estado=MUERTO
 		var drop: FDS_Item = RES_ITEM.instance()
 		get_parent().call_deferred("add_child",drop)
@@ -120,11 +121,12 @@ func revisarVida():
 		anim_cuerpo.play("Muerte")
 
 
-func _on_Hurtbox_damageRecivido(cantidad):
+func _on_Hurtbox_damageRecivido(cantidad, atacante):
 	if estado != MUERTO:
-		enShock = true
-		vida -= 1
-		revisarVida()
+		if cantidad > 0 and atacante != "Enemigo":
+			enShock = true
+			vida -= cantidad
+			revisarVida()
 
 
 func _on_TimerAtaque_timeout():

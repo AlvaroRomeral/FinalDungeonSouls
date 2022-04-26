@@ -16,6 +16,7 @@ var angulo_controlador = Vector2.ZERO
 var controlador = false
 
 func _ready():
+	Jugador.actualizarStats()
 	anim_personaje.play("Idle")
 
 # MOVIMIENTO
@@ -53,10 +54,11 @@ func _physics_process(delta):
 		if Jugador.esta > 0:
 			rapidez = VEL_CORRER
 			if direccion != Vector2.ZERO:
-				Jugador.setEsta(-2 * delta)
+				Jugador.setEsta(-1 * delta)
 	else:
 		Jugador.setEsta(1 * delta)
 	
+	direccion = direccion.normalized()
 	if direccion != Vector2.ZERO:
 		if rapidez == VEL_NORMAL:
 			anim_personaje.play("Andar")
@@ -66,7 +68,6 @@ func _physics_process(delta):
 	else:
 		anim_personaje.play("Idle")
 		velocidad = velocidad.move_toward(Vector2.ZERO, FRICCION * delta)
-	direccion = direccion.normalized()
 	
 	velocidad = move_and_slide(velocidad)
 
@@ -76,6 +77,7 @@ func _input(event):
 	if event.is_action_pressed("ATACAR"):
 		if Jugador.esta >= 1:
 			Jugador.setEsta(-1)
+			com_arma.damage_arma = Jugador.ataque
 			com_arma.usar()
 	if event.is_action_released("LINTERNA"):
 		if $Light2D.visible:
@@ -103,10 +105,10 @@ func checkVida():
 		get_tree().paused = true
 
 
-func _on_Hurtbox_damageRecivido(cantidad):
+func _on_Hurtbox_damageRecivido(cantidad, atacante):
 	var cantidadFinal = cantidad
 	cantidadFinal = cantidadFinal - Jugador.defensa
-	if cantidadFinal > 0:
+	if cantidadFinal > 0 or atacante != "Jugador":
 		Jugador.setVida(-cantidadFinal)
 		checkVida()
 

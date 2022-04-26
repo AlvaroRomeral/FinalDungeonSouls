@@ -17,11 +17,6 @@ func _ready():
 		lbl_ident.text = lbl_ident.text + " (" + String(cantidad) + ")"
 
 
-func _physics_process(delta):
-	if lbl_ident.visible:
-		lbl_ident.set_global_position(get_global_mouse_position())
-
-
 func _input(event):
 	if event.is_action_released("INTERACTUAR") and interactuable:
 		itemRecogido()
@@ -29,7 +24,7 @@ func _input(event):
 
 func itemRecogido():
 	if item_id == 2:
-		Jugador.monedas = cantidad
+		Jugador.setMonedas(cantidad)
 		queue_free()
 		return
 	var sobra = Jugador.anadirItem(item_id, cantidad)
@@ -50,6 +45,7 @@ func setInteractuable(body):
 
 func _on_Item_mouse_entered():
 	lbl_ident.visible = true
+	lbl_ident.set_global_position(get_global_mouse_position())
 
 
 func _on_Item_mouse_exited():

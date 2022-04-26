@@ -106,42 +106,60 @@ func drop_data(position, data):
 			}
 		"arma":
 			Jugador.equipamiento["arma"] = datos["id"]
+			Jugador.actualizarStats()
 		"cabeza":
 			Jugador.equipamiento["cabeza"] = datos["id"]
+			Jugador.actualizarStats()
 		"torso":
 			Jugador.equipamiento["torso"] = datos["id"]
+			Jugador.actualizarStats()
 		"piernas":
 			Jugador.equipamiento["piernas"] = datos["id"]
+			Jugador.actualizarStats()
 		"pies":
 			Jugador.equipamiento["pies"] = datos["id"]
+			Jugador.actualizarStats()
 		"amuleto1":
 			Jugador.equipamiento["amuleto1"] = datos["id"]
+			Jugador.actualizarStats()
 		"amuleto2":
 			Jugador.equipamiento["amuleto2"] = datos["id"]
+			Jugador.actualizarStats()
 		"amuleto3":
 			Jugador.equipamiento["amuleto3"] = datos["id"]
+			Jugador.actualizarStats()
 		"amuleto4":
 			Jugador.equipamiento["amuleto4"] = datos["id"]
+			Jugador.actualizarStats()
 	match tipo: #Lo que le pasa a la casilla donde lo suelta
 		"inv":
 			Jugador.inventario[datos["index"]]["id"] = data["id"]
 			Jugador.inventario[datos["index"]]["cantidad"] = data["cantidad"]
 		"arma":
 			Jugador.equipamiento["arma"] = data["id"]
+			Jugador.actualizarStats()
 		"cabeza":
 			Jugador.equipamiento["cabeza"] = data["id"]
+			Jugador.actualizarStats()
 		"torso":
 			Jugador.equipamiento["torso"] = data["id"]
+			Jugador.actualizarStats()
 		"piernas":
 			Jugador.equipamiento["piernas"] = data["id"]
+			Jugador.actualizarStats()
 		"pies":
 			Jugador.equipamiento["pies"] = data["id"]
+			Jugador.actualizarStats()
 		"amuleto1":
 			Jugador.equipamiento["amuleto1"] = data["id"]
+			Jugador.actualizarStats()
 		"amuleto2":
 			Jugador.equipamiento["amuleto2"] = data["id"]
+			Jugador.actualizarStats()
 		"amuleto3":
 			Jugador.equipamiento["amuleto3"] = data["id"]
+			Jugador.actualizarStats()
 		"amuleto4":
 			Jugador.equipamiento["amuleto4"] = data["id"]
+			Jugador.actualizarStats()
 	Jugador.emit_signal("inventarioActualizado")
