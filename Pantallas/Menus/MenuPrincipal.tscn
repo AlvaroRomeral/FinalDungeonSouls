@@ -159,7 +159,7 @@ margin_right = 50.0
 theme = ExtResource( 17 )
 alignment = 1
 
-[node name="btnJugar" parent="VBoxContainer" instance=ExtResource( 12 )]
+[node name="BtnNuevoJuego" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 112.0
 margin_right = 116.0
 margin_bottom = 136.0
@@ -167,7 +167,7 @@ group = SubResource( 2 )
 text = "Nuevo Juego"
 icon = ExtResource( 3 )
 
-[node name="btnCargar" parent="VBoxContainer" instance=ExtResource( 12 )]
+[node name="BtnCargar" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 140.0
 margin_right = 116.0
 margin_bottom = 164.0
@@ -175,21 +175,21 @@ group = SubResource( 2 )
 text = "Continuar"
 icon = ExtResource( 21 )
 
-[node name="Boton" parent="VBoxContainer" instance=ExtResource( 12 )]
+[node name="BtnOpciones" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 168.0
 margin_right = 116.0
 margin_bottom = 192.0
 text = "Opciones"
 icon = ExtResource( 18 )
 
-[node name="Boton2" parent="VBoxContainer" instance=ExtResource( 12 )]
+[node name="BtnCreditos" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 196.0
 margin_right = 116.0
 margin_bottom = 220.0
 text = "Creditos"
 icon = ExtResource( 22 )
 
-[node name="btnSalir" parent="VBoxContainer" instance=ExtResource( 12 )]
+[node name="BtnSalir" parent="VBoxContainer" instance=ExtResource( 12 )]
 margin_top = 224.0
 margin_right = 116.0
 margin_bottom = 248.0
@@ -300,10 +300,11 @@ custom_fonts/font = ExtResource( 11 )
 text = "Final dungeon Souls v 0.3"
 align = 2
 
-[connection signal="botonPresionado" from="VBoxContainer/btnJugar" to="." method="_on_btnJugar_botonPresionado"]
-[connection signal="botonPresionado" from="VBoxContainer/btnCargar" to="." method="_on_btnCargar_botonPresionado"]
-[connection signal="botonPresionado" from="VBoxContainer/Boton2" to="." method="_on_Boton2_botonPresionado"]
-[connection signal="botonPresionado" from="VBoxContainer/btnSalir" to="." method="_on_btnSalir_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/BtnNuevoJuego" to="." method="_on_BtnNuevoJuego_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/BtnCargar" to="." method="_on_BtnCargar_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/BtnOpciones" to="." method="_on_BtnOpciones_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/BtnCreditos" to="." method="_on_BtnCreditos_botonPresionado"]
+[connection signal="botonPresionado" from="VBoxContainer/BtnSalir" to="." method="_on_BtnSalir_botonPresionado"]
 [connection signal="botonPresionado" from="btnJugarTest" to="." method="_on_btnJugarTest_botonPresionado"]
 [connection signal="botonPresionado" from="btnTestCreacionPersonaje" to="." method="_on_btnTestCreacionPersonaje_botonPresionado"]
 [connection signal="botonPresionado" from="btnScoreboard" to="." method="_on_btnScoreboard_botonPresionado"]

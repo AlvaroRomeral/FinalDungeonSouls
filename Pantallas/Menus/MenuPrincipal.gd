@@ -14,38 +14,45 @@ func _process(delta):
 	$ParallaxBackground/ParallaxArboles.motion_offset.x -= velocidad_arboles
 
 
-func _on_btnJugar_botonPresionado():
-	$btnJugarTest.disabled = true
+func cargarNivel():
+	get_tree().change_scene(Global.nivel)
+
+# BOTONES PRINCIPALES ==============================================================================
+
+func _on_BtnNuevoJuego_botonPresionado():
 	$ColorRect.mouse_filter =Control.MOUSE_FILTER_STOP
 	Datos.nuevosDatos()
+	Datos.cargarDatos()
 	$AnimationPlayer.play("Obscurecer")
 
 
-func cargarNivel():
-	Global.cambiarNivel(Global.nivel)
+func _on_BtnCargar_botonPresionado():
+	pass # Replace with function body.
 
 
-func _on_btnCargar_botonPresionado():
-	pass #pantalla de cargar
+func _on_BtnOpciones_botonPresionado():
+	pass # Replace with function body.
 
 
-func _on_btnSalir_botonPresionado():
+func _on_BtnCreditos_botonPresionado():
+	get_tree().change_scene("res://Pantallas/Menus/MenuCreditos.tscn")
+
+
+func _on_BtnSalir_botonPresionado():
 	Datos.guardarPersistencia()
 	get_tree().quit()
 
+# OTROS BOTONES ====================================================================================
 
 func _on_btnJugarTest_botonPresionado():
 	Datos.nuevosDatos()
+	Datos.cargarDatos()
 	get_tree().change_scene(Global.nivel)
 
 
 func _on_BtnPantallaCompleta_button_up():
 	Datos.ar_persistencia.pantalla_completa = !OS.window_fullscreen
 	Datos.cargarDatosPersistencia()
-
-
-func _on_Boton2_botonPresionado():
-	get_tree().change_scene("res://Pantallas/Menus/MenuCreditos.tscn")
 
 
 func _on_btnTestCreacionPersonaje_botonPresionado():

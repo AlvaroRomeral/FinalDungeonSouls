@@ -1,5 +1,8 @@
 extends Node
 
+signal datos_cargados
+signal datos_guardados
+
 const res_guardado = preload("res://ResGuardado.gd")
 const res_persistencia = preload("res://ResPersistencia.gd")
 const sqlite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
@@ -7,7 +10,6 @@ const sqlite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var ar_guardado : ResGuardado
 var ar_persistencia : ResPersistencia
 var nombre_guardado = "auto_save"
-#var items_db: Dictionary
 var fdsdb: sqlite
 
 func _ready():
@@ -38,7 +40,7 @@ func _ready():
 	fdsdb.path = Global.PATH_FSDDB
 	fdsdb.open_db()
 
-# ARCHIVO GUARDADO =================================================================================
+# MANEJO DE ARCHIVO ================================================================================
 
 func guardarPartida():
 	guardarDatos()
@@ -48,24 +50,40 @@ func guardarPartida():
 func cargarPartida():
 	ar_guardado = load(Global.PATH_SAVES + nombre_guardado + Global.EXTE_SAVES)
 
-# DATOS GUARDADO ===================================================================================
+
+func guardarPersistencia():
+	ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia)
+
+
+func cargarPersistencia():
+	ar_persistencia = load(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA)
+
+# MANEJO DE DATOS ==================================================================================
 
 func nuevosDatos():
 	ar_guardado = res_guardado.new()
 
 
 func guardarDatos():
-	ar_guardado.ju_vida = Jugador.vida
+	ar_guardado.vida = Jugador.vida 
+	ar_guardado.mana = Jugador.mana
+	ar_guardado.esta = Jugador.esta
+	ar_guardado.nivel = Jugador.nivel
+	ar_guardado.monedas = Jugador.monedas
+	ar_guardado.equipamiento = Jugador.equipamiento
 	ar_guardado.inventario = Jugador.inventario
+	emit_signal("datos_guardados")
 
 
 func cargarDatos():
-	Jugador.vida = ar_guardado.ju_vida
-	Jugador.vida_max = ar_guardado.ju_vida
-	Jugador.mana = ar_guardado.ju_mana
-	Jugador.mana_max = ar_guardado.ju_mana_max
-	Jugador.estamina_max = ar_guardado.ju_estamina_max
+	Jugador.vida = ar_guardado.vida
+	Jugador.mana = ar_guardado.mana
+	Jugador.esta = ar_guardado.esta
+	Jugador.nivel = ar_guardado.nivel
+	Jugador.monedas = ar_guardado.monedas
+	Jugador.equipamiento = ar_guardado.equipamiento
 	Jugador.inventario = ar_guardado.inventario
+	emit_signal("datos_cargados")
 
 
 func guardarNivel():
@@ -77,15 +95,6 @@ func guardarNivel():
 func cargarNivel():
 	var nivel = load(Global.PATH_SAVES + "nivelGuardado.tscn")
 	get_tree().change_scene(Global.PATH_SAVES + "nivelGuardado.tscn")
-
-# PERSISTENCIA =====================================================================================
-
-func guardarPersistencia():
-	ResourceSaver.save(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA, ar_persistencia)
-
-
-func cargarPersistencia():
-	ar_persistencia = load(Global.PATH_DATOS + "per" + Global.EXTE_PERSISTENCIA)
 
 
 func cargarDatosPersistencia():

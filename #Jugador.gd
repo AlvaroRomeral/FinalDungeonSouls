@@ -34,13 +34,9 @@ var equipamiento = {
 var cosmeticos: Array = [2,5,8]
 
 func _ready():
-	for i in inventario_cap:
-		inventario.append({
-			"id": null,
-			"cantidad": null
-		})
+	Datos.connect("datos_cargados",self,"generarInventario")
 
-# SETTERS
+# SETTERS ==========================================================================================
 
 func setMonedas(cantidad):
 	monedas += cantidad
@@ -73,6 +69,7 @@ func setEsta(cantidad):
 		esta = 0
 	emit_signal("datosActualizados")
 
+# CALCULAR ESTATS ==================================================================================
 
 func actualizarStats():
 	var defensa_final = 0
@@ -109,7 +106,23 @@ func calculateAmuletos():
 	mana_max = Datos.getNivelesMana() + mana_final
 	esta_max = Datos.getNivelesEsta() + esta_final
 
-# INVENTARIO
+
+func generarInventario():
+	if inventario.size() == 0:
+		for i in inventario_cap:
+			inventario.append({
+				"id": null,
+				"cantidad": null
+			})
+	elif inventario.size() < inventario_cap:
+		var cant_faltante = inventario_cap - inventario.size()
+		for x in cant_faltante:
+			inventario.append({
+				"id": null,
+				"cantidad": null
+			})
+
+# INVENTARIO =======================================================================================
 
 func anadirItem(item_id: int, cantidad: int):
 	var item_max = Datos.getItemInfo(item_id)["max"]
@@ -240,8 +253,7 @@ func getEspaciosVacios():
 			espacios_vacios =+ 1
 	return espacios_vacios
 
-
-# GETTERS
+# GETTERS ==========================================================================================
 
 func getJugador():
 	return get_tree().get_nodes_in_group("jugador")[0]
