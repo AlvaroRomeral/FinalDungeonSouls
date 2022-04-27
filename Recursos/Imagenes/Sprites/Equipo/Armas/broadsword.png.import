@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arwen.png-42194662db1c53a433cbdbd1d2fc977f.stex"
+path="res://.import/broadsword.png-56511b65b4efb2edca6e0a19c795ccef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Recursos/Imagenes/Sprites/Equipo/arwen.png"
-dest_files=[ "res://.import/arwen.png-42194662db1c53a433cbdbd1d2fc977f.stex" ]
+source_file="res://Recursos/Imagenes/Sprites/Equipo/Armas/broadsword.png"
+dest_files=[ "res://.import/broadsword.png-56511b65b4efb2edca6e0a19c795ccef.stex" ]
 
 [params]
 

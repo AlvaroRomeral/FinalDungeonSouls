@@ -141,6 +141,12 @@ func getItemEfecto(id):
 		var resultado = fdsdb.query_result[0]["efecto"]
 		return resultado
 
+
+func getItemTextura(id):
+	if fdsdb.query("SELECT textura FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["textura"]
+		return resultado
+
 # BBDD DIALOGO =====================================================================================
 
 func getDialogo(id:int):

@@ -88,6 +88,7 @@ func actualizarStats():
 	if equipamiento["arma"] != null:
 		ataque_final += Datos.getItemAtaque(equipamiento["arma"])
 	calculateAmuletos()
+	getJugador().actualizarRopa()
 	defensa = defensa_final
 	ataque = ataque_final
 	vida_max 
@@ -103,7 +104,7 @@ func calculateAmuletos():
 		if x != null:
 			match Datos.getItemEfecto(x):
 				"vida":
-					vida_final = vida_max * Datos.getItemPorcentaje(x)
+					vida_final = Datos.getNivelesVida() * Datos.getItemPorcentaje(x)
 	vida_max = Datos.getNivelesVida() + vida_final
 	mana_max = Datos.getNivelesMana() + mana_final
 	esta_max = Datos.getNivelesEsta() + esta_final

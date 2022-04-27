@@ -232,17 +232,17 @@ text = "Def: 0"
 valign = 1
 
 [node name="LblVida" type="Label" parent="PanelEquipo"]
-margin_left = 76.0
+margin_left = 72.0
 margin_top = 172.0
-margin_right = 120.0
+margin_right = 116.0
 margin_bottom = 188.0
-text = "Def: 0"
+text = "Vid 0"
 valign = 1
 
 [node name="LblMana" type="Label" parent="PanelEquipo"]
-margin_left = 76.0
-margin_top = 188.0
-margin_right = 120.0
-margin_bottom = 204.0
-text = "Def: 0"
+margin_left = 72.0
+margin_top = 192.0
+margin_right = 116.0
+margin_bottom = 208.0
+text = "Man: 0"
 valign = 1

@@ -61,6 +61,8 @@ margin_bottom = 14.0
 text = "1"
 valign = 1
 
+[node name="TweenVida" type="Tween" parent="BarraVida"]
+
 [node name="BarraMana" type="ProgressBar" parent="."]
 margin_left = 56.0
 margin_top = 24.0
@@ -80,6 +82,8 @@ margin_right = 208.0
 margin_bottom = 16.0
 text = "1"
 valign = 1
+
+[node name="TweenMana" type="Tween" parent="BarraMana"]
 
 [node name="BarraEstamina" type="ProgressBar" parent="."]
 margin_left = 56.0
@@ -103,6 +107,8 @@ margin_right = 208.0
 margin_bottom = 16.0
 text = "1"
 valign = 1
+
+[node name="TweenStamina" type="Tween" parent="BarraEstamina"]
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 5.0
@@ -152,6 +158,8 @@ valign = 1
 [node name="Sprite" type="Sprite" parent="PanelMonedas"]
 position = Vector2( 80, 16 )
 texture = ExtResource( 11 )
+
+[node name="TweenMonedas" type="Tween" parent="PanelMonedas"]
 
 [node name="HasMuerto" parent="." instance=ExtResource( 5 )]
 visible = false

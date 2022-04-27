@@ -2,6 +2,11 @@ extends CanvasLayer
 
 onready var monedasUI = $PanelMonedas/Monedas
 onready var nivelUI = $Panel/Nivel
+# Tween
+onready var tween_vida = $BarraVida/TweenVida
+onready var tween_mana = $BarraMana/TweenMana
+onready var tween_estamina = $BarraEstamina/TweenStamina
+onready var tween_monedas = $PanelMonedas/TweenMonedas
 # Barras
 onready var vidaUI = $BarraVida
 onready var manaUI = $BarraMana
@@ -12,6 +17,7 @@ onready var pausa = $MenuPausa
 onready var notificacion = preload("res://Componentes/Notificaion.tscn")
 onready var alerta = preload("res://Componentes/Alerta.tscn")
 
+var monedas:int = 0
 
 func _ready():
 	get_tree().paused = false
@@ -24,17 +30,56 @@ func _process(delta):
 	$BarraVida/Label.text = str(Jugador.vida) + "/" + str(Jugador.vida_max)
 	$BarraMana/Label.text = str(Jugador.mana) + "/" + str(Jugador.mana_max)
 	$BarraEstamina/Label.text = str(Jugador.esta) + "/" + str(Jugador.esta_max)
+	monedasUI.text = str(monedas)
 
 
 func actualizarUI():
-	monedasUI.text = String(Jugador.monedas)
 	vidaUI.max_value = Jugador.vida_max
 	manaUI.max_value = Jugador.mana_max
 	estaminaUI.max_value = Jugador.esta_max
-	vidaUI.value = Jugador.vida
-	manaUI.value = Jugador.mana
-	estaminaUI.value = Jugador.esta
+	tween_vida.interpolate_property(
+		vidaUI,
+		"value",
+		vidaUI.value,
+		Jugador.vida,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	tween_mana.interpolate_property(
+		manaUI,
+		"value",
+		manaUI.value,
+		Jugador.mana,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	tween_estamina.interpolate_property(
+		estaminaUI,
+		"value",
+		estaminaUI.value,
+		Jugador.esta,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	tween_monedas.interpolate_property(
+		self,
+		"monedas",
+		monedas,
+		Jugador.monedas,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+#	manaUI.value = Jugador.mana
+#	estaminaUI.value = Jugador.esta
 	nivelUI.text = str(Jugador.nivel)
+	tween_vida.start()
+	tween_mana.start()
+	tween_estamina.start()
+	tween_monedas.start()
 
 
 func _input(event):
