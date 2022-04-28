@@ -21,20 +21,13 @@ func _ready():
 	Jugador.connect("inventarioActualizado",self,"actualizarSlots")
 	Jugador.connect("datosActualizados",self,"actualizarDatos")
 	generarSlots()
-
-
-func _on_Inventario_draw():
-	get_tree().paused = true
-	generarSlots()
+	actualizarSlots()
 
 
 func generarSlots():
-#	for i in gridInventario.get_children():
-#		i.queue_free()
 	for x in Jugador.inventario_cap:
 		var item_nuevo = slot.instance()
 		gridInventario.add_child(item_nuevo)
-#		if Jugador.inventario[x]["id"] != null:
 		item_nuevo.setValores(Jugador.inventario[x]["id"],Jugador.inventario[x]["cantidad"],x)
 		item_nuevo.connect("devolverInfo",self,"mostrarInfo")
 
@@ -42,15 +35,15 @@ func generarSlots():
 func actualizarSlots():
 	for x in gridInventario.get_children():
 		x.setValores(Jugador.inventario[x.item_posicion]["id"],Jugador.inventario[x.item_posicion]["cantidad"],x.item_posicion)
-	slotarma.setValores(Jugador.equipamiento["arma"],1,null)
-	slotcabeza.setValores(Jugador.equipamiento["cabeza"],1,null)
-	slottorso.setValores(Jugador.equipamiento["torso"],1,null)
-	slotpiernas.setValores(Jugador.equipamiento["piernas"],1,null)
-	slotpies.setValores(Jugador.equipamiento["pies"],1,null)
-	slotamuleto1.setValores(Jugador.equipamiento["amuleto1"],1,null)
-	slotamuleto2.setValores(Jugador.equipamiento["amuleto2"],1,null)
-	slotamuleto3.setValores(Jugador.equipamiento["amuleto3"],1,null)
-	slotamuleto4.setValores(Jugador.equipamiento["amuleto4"],1,null)
+	slotarma.setValores(Jugador.equipamiento[0]["arma"],1,null)
+	slotcabeza.setValores(Jugador.equipamiento[0]["cabeza"],1,null)
+	slottorso.setValores(Jugador.equipamiento[0]["torso"],1,null)
+	slotpiernas.setValores(Jugador.equipamiento[0]["piernas"],1,null)
+	slotpies.setValores(Jugador.equipamiento[0]["pies"],1,null)
+	slotamuleto1.setValores(Jugador.equipamiento[0]["amuleto1"],1,null)
+	slotamuleto2.setValores(Jugador.equipamiento[0]["amuleto2"],1,null)
+	slotamuleto3.setValores(Jugador.equipamiento[0]["amuleto3"],1,null)
+	slotamuleto4.setValores(Jugador.equipamiento[0]["amuleto4"],1,null)
 
 func mostrarInfo(id_item):
 	if id_item != null:
@@ -91,7 +84,3 @@ func actualizarDatos():
 	$PanelEquipo/LblDefensa.text = "Def: " + str(Jugador.defensa)
 	$PanelEquipo/LblVida.text = "Vid: " + str(Jugador.vida)
 	$PanelEquipo/LblMana.text = "Man: " + str(Jugador.mana)
-
-
-func _on_Inventario_hide():
-	get_tree().paused = false

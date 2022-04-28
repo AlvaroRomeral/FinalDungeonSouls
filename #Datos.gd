@@ -37,6 +37,7 @@ func _ready():
 #	items_db = itemDataJson.result
 	#Cargar base de datos
 	fdsdb = sqlite.new()
+	fdsdb.read_only = true
 	fdsdb.path = Global.PATH_FSDDB
 	fdsdb.open_db()
 
@@ -69,6 +70,7 @@ func guardarDatos():
 	ar_guardado.mana = Jugador.mana
 	ar_guardado.esta = Jugador.esta
 	ar_guardado.nivel = Jugador.nivel
+	ar_guardado.experiencia = Jugador.experiencia
 	ar_guardado.monedas = Jugador.monedas
 	ar_guardado.equipamiento = Jugador.equipamiento
 	ar_guardado.inventario = Jugador.inventario
@@ -80,8 +82,11 @@ func cargarDatos():
 	Jugador.mana = ar_guardado.mana
 	Jugador.esta = ar_guardado.esta
 	Jugador.nivel = ar_guardado.nivel
+	Jugador.experiencia = ar_guardado.experiencia
 	Jugador.monedas = ar_guardado.monedas
-	Jugador.equipamiento = ar_guardado.equipamiento
+	Jugador.equipamiento.clear()
+	Jugador.equipamiento.append(ar_guardado.equipamiento[0])
+	Jugador.inventario.clear()
 	Jugador.inventario = ar_guardado.inventario
 	emit_signal("datos_cargados")
 
@@ -217,6 +222,12 @@ func getNivelesMana():
 func getNivelesEsta():
 	fdsdb.query("SELECT esta FROM niveles WHERE id = " + str(Jugador.nivel))
 	var resultado = fdsdb.query_result[0]["esta"]
+	return resultado
+
+
+func getNivelesExpReq():
+	fdsdb.query("SELECT exp_req FROM niveles WHERE id = " + str(Jugador.nivel))
+	var resultado = fdsdb.query_result[0]["exp_req"]
 	return resultado
 
 # ARCHIVOS =========================================================================================

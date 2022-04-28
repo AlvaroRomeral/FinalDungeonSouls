@@ -42,8 +42,9 @@ config/name="FinalDungeonSouls"
 run/main_scene="res://Pantallas/Menus/MenuPrincipal.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="FinalDungeonSouls"
-config/icon="res://icon.png"
-config/windows_native_icon="res://Icon.ico"
+boot_splash/image="res://Recursos/Imagenes/Parallax/parallax-mountain-bg.png"
+config/icon="res://FDS_icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 

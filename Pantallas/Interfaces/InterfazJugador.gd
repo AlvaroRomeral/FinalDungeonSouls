@@ -2,6 +2,8 @@ extends CanvasLayer
 
 onready var monedasUI = $PanelMonedas/Monedas
 onready var nivelUI = $Panel/Nivel
+onready var expbarUI = $Panel/BarraExperiencia
+onready var tween_expbar = $Panel/TweenBarraExperiencia
 # Tween
 onready var tween_vida = $BarraVida/TweenVida
 onready var tween_mana = $BarraMana/TweenMana
@@ -38,48 +40,56 @@ func actualizarUI():
 	manaUI.max_value = Jugador.mana_max
 	estaminaUI.max_value = Jugador.esta_max
 	tween_vida.interpolate_property(
-		vidaUI,
-		"value",
-		vidaUI.value,
-		Jugador.vida,
-		0.5,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
+		vidaUI, #objeto
+		"value", #propiedad
+		vidaUI.value, #valor inicial
+		Jugador.vida, #valor final
+		1, #duracion
+		Tween.TRANS_LINEAR, #tipo de transicion
+		Tween.EASE_IN_OUT #modo de transiccion (Ej: EASE_IN = mas rapido al principio)
 	)
 	tween_mana.interpolate_property(
 		manaUI,
 		"value",
 		manaUI.value,
 		Jugador.mana,
-		0.5,
+		1,
 		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
+		Tween.EASE_IN_OUT
 	)
 	tween_estamina.interpolate_property(
 		estaminaUI,
 		"value",
 		estaminaUI.value,
 		Jugador.esta,
-		0.5,
+		1,
 		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
+		Tween.EASE_IN_OUT
 	)
 	tween_monedas.interpolate_property(
 		self,
 		"monedas",
 		monedas,
 		Jugador.monedas,
-		0.5,
+		1,
 		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
+		Tween.EASE_IN_OUT
 	)
-#	manaUI.value = Jugador.mana
-#	estaminaUI.value = Jugador.esta
+	tween_expbar.interpolate_property(
+		expbarUI,
+		"value",
+		expbarUI.value,
+		Jugador.experiencia,
+		1,
+		Tween.TRANS_LINEAR
+	)
 	nivelUI.text = str(Jugador.nivel)
 	tween_vida.start()
 	tween_mana.start()
 	tween_estamina.start()
 	tween_monedas.start()
+	tween_expbar.start()
+	expbarUI.max_value = Datos.getNivelesExpReq()
 
 
 func _input(event):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/bar_mana.png" type="Texture" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Recursos/Imagenes/Interfaz/bar_stamina.png" type="Texture" id=9]
 [ext_resource path="res://Pantallas/Menus/MenuPausa.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Recursos/Imagenes/Iconos/icon_369.png" type="Texture" id=11]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/exp1.png" type="Texture" id=12]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/exp4.png" type="Texture" id=13]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/exp3.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -36,6 +39,12 @@ region_rect = Rect2( 0, 0, 16, 8 )
 margin_left = 3.0
 margin_right = 3.0
 
+[sub_resource type="AnimatedTexture" id=5]
+frames = 2
+frame_0/texture = ExtResource( 14 )
+frame_1/texture = ExtResource( 13 )
+frame_1/delay_sec = 0.0
+
 [node name="InterfazJugador" type="CanvasLayer" groups=["interfaz"]]
 pause_mode = 2
 script = ExtResource( 8 )
@@ -49,7 +58,6 @@ theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-step = 1.0
 value = 50.0
 percent_visible = false
 
@@ -120,6 +128,19 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="BarraExperiencia" type="TextureProgress" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+texture_under = ExtResource( 12 )
+texture_progress = SubResource( 5 )
+fill_mode = 4
+
 [node name="Nivel" type="Label" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -127,6 +148,8 @@ margin_top = 3.0
 text = "00"
 align = 1
 valign = 1
+
+[node name="TweenBarraExperiencia" type="Tween" parent="Panel"]
 
 [node name="PanelMonedas" type="Panel" parent="."]
 anchor_left = 1.0

@@ -121,6 +121,7 @@ cantidad_drop = 5
 [node name="Enemigo2" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 688, 120 )
 cantidad_drop = 5
+exp_drop = 1000
 
 [node name="Enemigo3" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 680, 64 )

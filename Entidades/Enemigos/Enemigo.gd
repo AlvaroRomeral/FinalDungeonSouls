@@ -15,6 +15,7 @@ export var movimiento_normal = 35
 export var mov_correr = 60
 export var id_drop = 2
 export var cantidad_drop = 5
+export var exp_drop = 100
 
 var enShock = false
 var path = []
@@ -112,18 +113,19 @@ func generarPath(objetivo):
 
 func revisarVida():
 	if vida <= 0:
-		estado=MUERTO
+		estado = MUERTO
 		var drop: FDS_Item = RES_ITEM.instance()
 		get_parent().call_deferred("add_child",drop)
 		drop.item_id = id_drop
 		drop.cantidad = cantidad_drop
 		drop.global_position = global_position
 		anim_cuerpo.play("Muerte")
+		Jugador.setExp(exp_drop)
 
 
 func _on_Hurtbox_damageRecivido(cantidad, atacante):
 	if estado != MUERTO:
-		if cantidad > 0 and atacante != "Enemigo":
+		if cantidad > 0 or atacante != "Enemigo":
 			enShock = true
 			vida -= cantidad
 			revisarVida()

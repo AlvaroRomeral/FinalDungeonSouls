@@ -4,23 +4,25 @@ signal datosActualizados
 signal inventarioActualizado
 
 # DATOS
-var vida: int = 10 setget setVida
-var mana: int = 10 setget setMana
-var esta: int = 10 setget setEsta
+var vida: int = 1
+var mana: int = 0
+var esta: int = 1
 
 var defensa: int = 0
 var ataque: int = 0
 var vida_max: int = 0
 var mana_max: int = 0
 var esta_max: int = 0
+
 var nivel = 1
+var experiencia = 0
 
 # INVENTARIO Y EQUIPAMIENTO
-var monedas: int = 0 setget setMonedas
+var monedas: int = 0
 var inventario: Array = []
 var inventario_cap: int = 15
 var item_cap_max = 1
-var equipamiento = {
+var equipamiento: Array = [{
 	"arma" : null,
 	"cabeza" : null,
 	"torso" : null,
@@ -30,11 +32,11 @@ var equipamiento = {
 	"amuleto2" : null,
 	"amuleto3" : null,
 	"amuleto4" : null
-}
+}]
 var cosmeticos: Array = [2,5,8]
 
 func _ready():
-	Datos.connect("datos_cargados",self,"generarInventario")
+	Datos.connect("datos_cargados",self,"cargarDatos")
 
 # SETTERS ==========================================================================================
 
@@ -69,22 +71,32 @@ func setEsta(cantidad):
 		esta = 0
 	emit_signal("datosActualizados")
 
+
+func setExp(cantidad):
+	experiencia += cantidad
+	var faltante = Datos.getNivelesExpReq() - experiencia
+	if faltante < 0:
+		subidaNivel()
+		setExp(abs(faltante))
+	elif experiencia == Datos.getNivelesExpReq():
+		subidaNivel()
+
 # CALCULAR ESTATS ==================================================================================
 
 func actualizarStats():
 	var defensa_final = 0
 	var ataque_final = 0
-	if equipamiento["cabeza"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento["cabeza"])
-	if equipamiento["torso"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento["torso"])
-	if equipamiento["piernas"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento["piernas"])
-	if equipamiento["pies"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento["pies"])
-	if equipamiento["arma"] != null:
-		ataque_final += Datos.getItemAtaque(equipamiento["arma"])
-	calculateAmuletos()
+	if equipamiento[0]["cabeza"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento[0]["cabeza"])
+	if equipamiento[0]["torso"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento[0]["torso"])
+	if equipamiento[0]["piernas"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento[0]["piernas"])
+	if equipamiento[0]["pies"] != null:
+		defensa_final += Datos.getItemDefensa(equipamiento[0]["pies"])
+	if equipamiento[0]["arma"] != null:
+		ataque_final += Datos.getItemAtaque(equipamiento[0]["arma"])
+	calcularBonuses()
 	getJugador().actualizarRopa()
 	defensa = defensa_final
 	ataque = ataque_final
@@ -92,8 +104,8 @@ func actualizarStats():
 	emit_signal("datosActualizados")
 
 
-func calculateAmuletos():
-	var amuletos = [equipamiento["amuleto1"],equipamiento["amuleto2"],equipamiento["amuleto3"],equipamiento["amuleto4"]]
+func calcularBonuses():
+	var amuletos = [equipamiento[0]["amuleto1"],equipamiento[0]["amuleto2"],equipamiento[0]["amuleto3"],equipamiento[0]["amuleto4"]]
 	var vida_final = 0
 	var mana_final = 0
 	var esta_final = 0
@@ -105,6 +117,12 @@ func calculateAmuletos():
 	vida_max = Datos.getNivelesVida() + vida_final
 	mana_max = Datos.getNivelesMana() + mana_final
 	esta_max = Datos.getNivelesEsta() + esta_final
+
+
+func cargarDatos():
+	inventario = Datos.ar_guardado.inventario
+	equipamiento = Datos.ar_guardado.equipamiento
+	generarInventario()
 
 
 func generarInventario():
@@ -121,6 +139,12 @@ func generarInventario():
 				"id": null,
 				"cantidad": null
 			})
+
+
+func subidaNivel():
+	experiencia = 0
+	nivel += 1
+	actualizarStats()
 
 # INVENTARIO =======================================================================================
 

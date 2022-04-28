@@ -109,16 +109,16 @@ func _on_Hurtbox_damageRecivido(cantidad, atacante):
 # ASPECTO ==========================================================================================
 
 func actualizarRopa():
-	if Jugador.equipamiento["cabeza"] != null:
-		$Aspecto/Cabeza.texture = load(Global.PATH_CASCOS + Datos.getItemTextura(Jugador.equipamiento["cabeza"]) + ".png")
-	if Jugador.equipamiento["torso"] != null:
-		$Aspecto/Torso.texture = load(Global.PATH_TORSOS + Datos.getItemTextura(Jugador.equipamiento["torso"]) + ".png")
-	if Jugador.equipamiento["piernas"] != null:
-		$Aspecto/Piernas.texture = load(Global.PATH_PIERNAS + Datos.getItemTextura(Jugador.equipamiento["piernas"]) + ".png")
-	if Jugador.equipamiento["pies"] != null:
-		$Aspecto/Pies.texture = load(Global.PATH_PIES + Datos.getItemTextura(Jugador.equipamiento["pies"]) + ".png")
-	if Jugador.equipamiento["arma"] != null:
-		$Aspecto/Arma.texture = load(Global.PATH_EQUIPO + Datos.getItemTextura(Jugador.equipamiento["arma"]) + ".png")
+	if Jugador.equipamiento[0]["cabeza"] != null:
+		$Aspecto/Cabeza.texture = load(Global.PATH_CASCOS + Datos.getItemTextura(Jugador.equipamiento[0]["cabeza"]) + ".png")
+	if Jugador.equipamiento[0]["torso"] != null:
+		$Aspecto/Torso.texture = load(Global.PATH_TORSOS + Datos.getItemTextura(Jugador.equipamiento[0]["torso"]) + ".png")
+	if Jugador.equipamiento[0]["piernas"] != null:
+		$Aspecto/Piernas.texture = load(Global.PATH_PIERNAS + Datos.getItemTextura(Jugador.equipamiento[0]["piernas"]) + ".png")
+	if Jugador.equipamiento[0]["pies"] != null:
+		$Aspecto/Pies.texture = load(Global.PATH_PIES + Datos.getItemTextura(Jugador.equipamiento[0]["pies"]) + ".png")
+	if Jugador.equipamiento[0]["arma"] != null:
+		$Aspecto/Arma.texture = load(Global.PATH_EQUIPO + Datos.getItemTextura(Jugador.equipamiento[0]["arma"]) + ".png")
 
 # INTERACCION ======================================================================================
 
@@ -132,7 +132,7 @@ func _on_AreaInteractuar_area_exited(area):
 
 
 func _on_ContadorSegundos_timeout():
-	if rapidez == VEL_NORMAL:
+	if rapidez != VEL_CORRER:
 		Jugador.setEsta(1)
 		Jugador.setVida(1)
 	else:
