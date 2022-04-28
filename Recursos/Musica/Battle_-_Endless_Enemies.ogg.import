@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Battle_-_Endless_Enemies.ogg-147d0066e85f668abbc620cc6481b8ec.oggstr"
+
+[deps]
+
+source_file="res://Recursos/Musica/Battle_-_Endless_Enemies.ogg"
+dest_files=[ "res://.import/Battle_-_Endless_Enemies.ogg-147d0066e85f668abbc620cc6481b8ec.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

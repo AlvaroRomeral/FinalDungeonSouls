@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Recursos/Audio/click_001.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Recursos/Sonido/click_001.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=2]
 [ext_resource path="res://Componentes/Boton.gd" type="Script" id=3]
-[ext_resource path="res://Recursos/Audio/glitch_004.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Recursos/Sonido/glitch_004.ogg" type="AudioStream" id=4]
 
 [node name="Boton" type="Button"]
 margin_right = 53.0

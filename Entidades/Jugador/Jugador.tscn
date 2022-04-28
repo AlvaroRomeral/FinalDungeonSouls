@@ -6,9 +6,9 @@
 [ext_resource path="res://Recursos/Imagenes/Sprites/Cuerpo/human_m.png" type="Texture" id=4]
 [ext_resource path="res://Recursos/Imagenes/luz.png" type="Texture" id=5]
 [ext_resource path="res://Entidades/Jugador/Jugador.gd" type="Script" id=7]
-[ext_resource path="res://Recursos/Audio/glitch_001.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Recursos/Audio/hard-footstep1.wav" type="AudioStream" id=12]
-[ext_resource path="res://Recursos/Audio/hard-footstep2.wav" type="AudioStream" id=13]
+[ext_resource path="res://Recursos/Sonido/glitch_001.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Recursos/Sonido/hard-footstep1.wav" type="AudioStream" id=12]
+[ext_resource path="res://Recursos/Sonido/hard-footstep2.wav" type="AudioStream" id=13]
 [ext_resource path="res://Recursos/Imagenes/Iconos/icon_03.png" type="Texture" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]

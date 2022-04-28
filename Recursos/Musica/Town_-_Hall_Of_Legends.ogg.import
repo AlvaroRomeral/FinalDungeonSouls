@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Town_-_Hall_Of_Legends.ogg-446c55446f1ad37ef2254a4863c9f00f.oggstr"
+
+[deps]
+
+source_file="res://Recursos/Musica/Town_-_Hall_Of_Legends.ogg"
+dest_files=[ "res://.import/Town_-_Hall_Of_Legends.ogg-446c55446f1ad37ef2254a4863c9f00f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

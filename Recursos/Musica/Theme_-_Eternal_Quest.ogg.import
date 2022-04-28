@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Theme_-_Eternal_Quest.ogg-43f792478a9366c0140b1436292fbf95.oggstr"
+
+[deps]
+
+source_file="res://Recursos/Musica/Theme_-_Eternal_Quest.ogg"
+dest_files=[ "res://.import/Theme_-_Eternal_Quest.ogg-43f792478a9366c0140b1436292fbf95.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

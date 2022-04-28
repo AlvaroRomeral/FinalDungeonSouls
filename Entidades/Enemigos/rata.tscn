@@ -4,7 +4,8 @@
 [ext_resource path="res://Entidades/Enemigos/Enemigo.gd" type="Script" id=2]
 [ext_resource path="res://Componentes/ComponenteArma.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Componentes/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Recursos/Audio/kill2.wav.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Recursos/Sonido/kill2.wav.mp3" type="AudioStream" id=5]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
