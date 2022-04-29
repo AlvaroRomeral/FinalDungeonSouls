@@ -81,21 +81,74 @@ func setExp(cantidad):
 	elif experiencia == Datos.getNivelesExpReq():
 		subidaNivel()
 
+
+func setEquipamiento(nombre, valor):
+	match nombre:
+		"arma":
+			equipamiento[0]["arma"] = valor
+		"cabeza":
+			equipamiento[0]["cabeza"] = valor
+		"torso":
+			equipamiento[0]["torso"] = valor
+		"piernas":
+			equipamiento[0]["piernas"] = valor
+		"pies":
+			equipamiento[0]["pies"] = valor
+		"amuleto1":
+			equipamiento[0]["amuleto1"] = valor
+		"amuleto2":
+			equipamiento[0]["amuleto2"] = valor
+		"amuleto3":
+			equipamiento[0]["amuleto3"] = valor
+		"amuleto4":
+			equipamiento[0]["amuleto4"] = valor
+
+# GETTERS ==========================================================================================
+
+func getEquipamiento(nombre):
+	match nombre:
+		"arma":
+			return equipamiento[0]["arma"]
+		"cabeza":
+			return equipamiento[0]["cabeza"]
+		"torso":
+			return equipamiento[0]["torso"]
+		"piernas":
+			return equipamiento[0]["piernas"]
+		"pies":
+			return equipamiento[0]["pies"]
+		"amuleto1":
+			return equipamiento[0]["amuleto1"]
+		"amuleto2":
+			return equipamiento[0]["amuleto2"]
+		"amuleto3":
+			return equipamiento[0]["amuleto3"]
+		"amuleto4":
+			return equipamiento[0]["amuleto4"]
+
+
+func getJugador():
+	return get_tree().get_nodes_in_group("jugador")[0]
+
+
+func getInterfaz():
+	return get_tree().get_nodes_in_group("interfaz")[0]
+
 # CALCULAR ESTATS ==================================================================================
 
 func actualizarStats():
 	var defensa_final = 0
 	var ataque_final = 0
-	if equipamiento[0]["cabeza"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento[0]["cabeza"])
-	if equipamiento[0]["torso"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento[0]["torso"])
-	if equipamiento[0]["piernas"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento[0]["piernas"])
-	if equipamiento[0]["pies"] != null:
-		defensa_final += Datos.getItemDefensa(equipamiento[0]["pies"])
-	if equipamiento[0]["arma"] != null:
-		ataque_final += Datos.getItemAtaque(equipamiento[0]["arma"])
+	if getEquipamiento("cabeza") != null:
+		defensa_final += Datos.getItemDefensa(getEquipamiento("cabeza"))
+	if getEquipamiento("torso") != null:
+		defensa_final += Datos.getItemDefensa(getEquipamiento("torso"))
+	if getEquipamiento("piernas") != null:
+		defensa_final += Datos.getItemDefensa(getEquipamiento("piernas"))
+	if getEquipamiento("pies") != null:
+		defensa_final += Datos.getItemDefensa(getEquipamiento("pies"))
+	if getEquipamiento("arma") != null:
+		ataque_final += Datos.getItemAtaque(getEquipamiento("arma"))
 	calcularBonuses()
 	getJugador().actualizarRopa()
 	defensa = defensa_final
@@ -209,45 +262,6 @@ func quitarItemPos(cantidad:int, posicion:int):
 	emit_signal("inventarioActualizado")
 
 
-func usarItem(item_id: int):
-	match Datos.getItemTipo(item_id):
-		1: #Equipo
-			Datos.getEquipoInfo(item_id)
-#			match datos["tipo_equipo"]:
-#				"cabeza":
-#					equipar(item_id,0)
-#				"pecho":
-#					equipar(item_id,1)
-#				"piernas":
-#					equipar(item_id,2)
-#				"pies":
-#					equipar(item_id,3)
-#				"espalda":
-#					equipar(item_id,4)
-#				"manos":
-#					equipar(item_id,5)
-#				"dedo_der":
-#					equipar(item_id,6)
-#				"dedo_izq":
-#					equipar(item_id,7)
-			emit_signal("inventarioActualizado")
-			return
-		2: #Arma
-			Datos.getArmaInfo(item_id)
-#			emit_signal("inventarioActualizado")
-			emit_signal("inventarioActualizado")
-			return
-		3: #Consumible
-			Datos.getConsumibleInfo(item_id)
-			pass # al usar una puerta se le abre el inventario
-			emit_signal("inventarioActualizado")
-			return
-		0: #Nada
-			pass
-			return
-	Global.Notificacion("No hay ningun objeto")
-
-
 func getSimilaresConEspacio(item_id: int, item_max):
 	for x in inventario_cap:
 		if inventario[x]["id"] == item_id and (inventario[x]["cantidad"] < item_max):
@@ -277,15 +291,69 @@ func getEspaciosVacios():
 			espacios_vacios =+ 1
 	return espacios_vacios
 
-# GETTERS ==========================================================================================
 
-func getJugador():
-	return get_tree().get_nodes_in_group("jugador")[0]
-
-
-func getInterfaz():
-	return get_tree().get_nodes_in_group("interfaz")[0]
+func getEspacioVacio():
+	for i in inventario.size():
+		if inventario[i]["id"] == null:
+			return i
+	return -1
 
 
-func getValor(id, campo):
-	return Datos.items_db[id][campo]
+func usarItem(origen, item_id, posicion):
+	if origen == "inv":
+		match Datos.getItemTipo(item_id):
+			"misc":
+				emit_signal("inventarioActualizado")
+				return
+			"consumible":
+				setVida(Datos.getItemVida(item_id))
+				setMana(Datos.getItemMana(item_id))
+				quitarItemPos(1,posicion)
+				emit_signal("inventarioActualizado")
+				return
+			"arma":
+				var equipo_presente = getEquipamiento("arma")
+				if equipo_presente != null:
+					setEquipamiento("arma",item_id)
+					inventario[posicion] = {
+						"id" : item_id,
+						"cantidad" : 1
+					}
+				else:
+					setEquipamiento("arma",item_id)
+				emit_signal("inventarioActualizado")
+				return
+			"torso":
+				pass
+				return
+	else:
+		var espacio_dis = getEspacioVacio()
+		if espacio_dis != -1:
+			inventario[espacio_dis]["id"] = item_id
+			inventario[espacio_dis]["cantidad"] = 1
+	Global.Notificacion("No hay ningun objeto")
+
+
+func equiparEquipamiento(item_id, index_origen):
+	var tipo = Datos.getItemTipo(item_id)
+	if tipo != "amuleto":
+		var equipo_old = getEquipamiento(tipo)
+		if equipo_old != null:
+			inventario[index_origen] = {
+				"id" : equipo_old,
+				"cantidad" : 1
+			}
+		else:
+			inventario[index_origen] = {
+				"id" : equipo_old,
+				"cantidad" : 0
+			}
+		setEquipamiento(tipo,item_id)
+	else:
+		var amuletos = ["amuleto1","amuleto2","amuleto3","amuleto4"]
+		var amuleto_vacio = -1
+		for i in 4:
+			if equipamiento[amuletos]
+		setEquipamiento(tipo_slot,item_id)
+	inventario[index_origen]
+	emit_signal("inventarioActualizado")

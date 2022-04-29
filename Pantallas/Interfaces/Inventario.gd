@@ -35,15 +35,15 @@ func generarSlots():
 func actualizarSlots():
 	for x in gridInventario.get_children():
 		x.setValores(Jugador.inventario[x.item_posicion]["id"],Jugador.inventario[x.item_posicion]["cantidad"],x.item_posicion)
-	slotarma.setValores(Jugador.equipamiento[0]["arma"],1,null)
-	slotcabeza.setValores(Jugador.equipamiento[0]["cabeza"],1,null)
-	slottorso.setValores(Jugador.equipamiento[0]["torso"],1,null)
-	slotpiernas.setValores(Jugador.equipamiento[0]["piernas"],1,null)
-	slotpies.setValores(Jugador.equipamiento[0]["pies"],1,null)
-	slotamuleto1.setValores(Jugador.equipamiento[0]["amuleto1"],1,null)
-	slotamuleto2.setValores(Jugador.equipamiento[0]["amuleto2"],1,null)
-	slotamuleto3.setValores(Jugador.equipamiento[0]["amuleto3"],1,null)
-	slotamuleto4.setValores(Jugador.equipamiento[0]["amuleto4"],1,null)
+	slotarma.setValores(Jugador.getEquipamiento("arma"),1,null)
+	slotcabeza.setValores(Jugador.getEquipamiento("cabeza"),1,null)
+	slottorso.setValores(Jugador.getEquipamiento("torso"),1,null)
+	slotpiernas.setValores(Jugador.getEquipamiento("piernas"),1,null)
+	slotpies.setValores(Jugador.getEquipamiento("pies"),1,null)
+	slotamuleto1.setValores(Jugador.getEquipamiento("amuleto1"),1,null)
+	slotamuleto2.setValores(Jugador.getEquipamiento("amuleto2"),1,null)
+	slotamuleto3.setValores(Jugador.getEquipamiento("amuleto3"),1,null)
+	slotamuleto4.setValores(Jugador.getEquipamiento("amuleto4"),1,null)
 
 func mostrarInfo(id_item):
 	if id_item != null:

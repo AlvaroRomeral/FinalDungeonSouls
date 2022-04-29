@@ -1,7 +1,5 @@
 extends TextureRect
 
-signal item_dropeado(datos)
-
 var tipo
 
 var datos = {
@@ -97,61 +95,51 @@ func drop_data(position, data):
 				"cantidad" : datos["cantidad"]
 			}
 		"arma":
-			Jugador.equipamiento[0]["arma"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("arma",datos["id"])
 		"cabeza":
-			Jugador.equipamiento[0]["cabeza"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("cabeza",datos["id"])
 		"torso":
-			Jugador.equipamiento[0]["torso"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("torso",datos["id"])
 		"piernas":
-			Jugador.equipamiento[0]["piernas"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("piernas",datos["id"])
 		"pies":
-			Jugador.equipamiento[0]["pies"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("pies",datos["id"])
 		"amuleto1":
-			Jugador.equipamiento[0]["amuleto1"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto1",datos["id"])
 		"amuleto2":
-			Jugador.equipamiento[0]["amuleto2"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto2",datos["id"])
 		"amuleto3":
-			Jugador.equipamiento[0]["amuleto3"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto3",datos["id"])
 		"amuleto4":
-			Jugador.equipamiento[0]["amuleto4"] = datos["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto4",datos["id"])
 	match tipo: #Lo que le pasa a la casilla donde lo suelta
 		"inv":
 			Jugador.inventario[datos["index"]]["id"] = data["id"]
 			Jugador.inventario[datos["index"]]["cantidad"] = data["cantidad"]
 		"arma":
-			Jugador.equipamiento[0]["arma"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("arma",data["id"])
 		"cabeza":
-			Jugador.equipamiento[0]["cabeza"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("cabeza",data["id"])
 		"torso":
-			Jugador.equipamiento[0]["torso"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("torso",data["id"])
 		"piernas":
-			Jugador.equipamiento[0]["piernas"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("piernas",data["id"])
 		"pies":
-			Jugador.equipamiento[0]["pies"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("pies",data["id"])
 		"amuleto1":
-			Jugador.equipamiento[0]["amuleto1"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto1",data["id"])
 		"amuleto2":
-			Jugador.equipamiento[0]["amuleto2"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto2",data["id"])
 		"amuleto3":
-			Jugador.equipamiento[0]["amuleto3"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto3",data["id"])
 		"amuleto4":
-			Jugador.equipamiento[0]["amuleto4"] = data["id"]
-			Jugador.actualizarStats()
+			Jugador.setEquipamiento("amuleto4",data["id"])
+	Jugador.actualizarStats()
 	Jugador.emit_signal("inventarioActualizado")
+
+
+func _on_Icono_gui_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.is_doubleclick():
+			if datos["id"] != null:
+				Jugador.usarItem(datos["id"],datos["index"],tipo)

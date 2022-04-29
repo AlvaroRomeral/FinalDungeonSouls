@@ -40,3 +40,4 @@ valign = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_PanelInventario_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_PanelInventario_mouse_exited"]
+[connection signal="gui_input" from="Icono" to="Icono" method="_on_Icono_gui_input"]
