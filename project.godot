@@ -44,7 +44,7 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="FinalDungeonSouls"
 boot_splash/image="res://Recursos/Imagenes/Parallax/parallax-mountain-bg.png"
 config/icon="res://FDS_icon.png"
-config/windows_native_icon="res://icon.ico"
+config/windows_native_icon="res://FDS_icon.ico"
 
 [autoload]
 

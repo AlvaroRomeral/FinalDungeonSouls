@@ -72,7 +72,15 @@ func guardarDatos():
 	ar_guardado.nivel = Jugador.nivel
 	ar_guardado.experiencia = Jugador.experiencia
 	ar_guardado.monedas = Jugador.monedas
-	ar_guardado.equipamiento = Jugador.equipamiento
+	ar_guardado.equipamiento["arma"] = Jugador.getEquipamiento("arma")
+	ar_guardado.equipamiento["cabeza"] = Jugador.getEquipamiento("cabeza")
+	ar_guardado.equipamiento["torso"] = Jugador.getEquipamiento("torso")
+	ar_guardado.equipamiento["piernas"] = Jugador.getEquipamiento("piernas")
+	ar_guardado.equipamiento["pies"] = Jugador.getEquipamiento("pies")
+	ar_guardado.equipamiento["amuleto1"] = Jugador.getEquipamiento("amuleto1")
+	ar_guardado.equipamiento["amuleto2"] = Jugador.getEquipamiento("amuleto2")
+	ar_guardado.equipamiento["amuleto3"] = Jugador.getEquipamiento("amuleto3")
+	ar_guardado.equipamiento["amuleto4"] = Jugador.getEquipamiento("amuleto4")
 	ar_guardado.inventario = Jugador.inventario
 	emit_signal("datos_guardados")
 
@@ -84,8 +92,15 @@ func cargarDatos():
 	Jugador.nivel = ar_guardado.nivel
 	Jugador.experiencia = ar_guardado.experiencia
 	Jugador.monedas = ar_guardado.monedas
-	Jugador.equipamiento.clear()
-	Jugador.equipamiento.append(ar_guardado.equipamiento[0])
+	Jugador.setEquipamiento("arma",ar_guardado.equipamiento["arma"])
+	Jugador.setEquipamiento("cabeza",ar_guardado.equipamiento["cabeza"])
+	Jugador.setEquipamiento("torso",ar_guardado.equipamiento["torso"])
+	Jugador.setEquipamiento("piernas",ar_guardado.equipamiento["piernas"])
+	Jugador.setEquipamiento("pies",ar_guardado.equipamiento["pies"])
+	Jugador.setEquipamiento("amuleto1",ar_guardado.equipamiento["amuleto1"])
+	Jugador.setEquipamiento("amuleto2",ar_guardado.equipamiento["amuleto2"])
+	Jugador.setEquipamiento("amuleto3",ar_guardado.equipamiento["amuleto3"])
+	Jugador.setEquipamiento("amuleto4",ar_guardado.equipamiento["amuleto4"])
 	Jugador.inventario.clear()
 	Jugador.inventario = ar_guardado.inventario
 	emit_signal("datos_cargados")

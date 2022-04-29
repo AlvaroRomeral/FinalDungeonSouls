@@ -45,4 +45,3 @@ func Notificacion(texto: String):
 
 func mostrarAlerta(texto: String):
 	Jugador.getInterfaz().addAlerta(texto)
-	

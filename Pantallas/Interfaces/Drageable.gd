@@ -142,4 +142,5 @@ func _on_Icono_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.is_doubleclick():
 			if datos["id"] != null:
-				Jugador.usarItem(datos["id"],datos["index"],tipo)
+				Jugador.usarItem(tipo, datos["id"], datos["index"])
+				Jugador.actualizarStats()

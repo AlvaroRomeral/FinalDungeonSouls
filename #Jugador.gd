@@ -22,7 +22,7 @@ var monedas: int = 0
 var inventario: Array = []
 var inventario_cap: int = 15
 var item_cap_max = 1
-var equipamiento: Array = [{
+var equipamiento: Dictionary = {
 	"arma" : null,
 	"cabeza" : null,
 	"torso" : null,
@@ -32,7 +32,7 @@ var equipamiento: Array = [{
 	"amuleto2" : null,
 	"amuleto3" : null,
 	"amuleto4" : null
-}]
+}
 var cosmeticos: Array = [2,5,8]
 
 func _ready():
@@ -85,46 +85,46 @@ func setExp(cantidad):
 func setEquipamiento(nombre, valor):
 	match nombre:
 		"arma":
-			equipamiento[0]["arma"] = valor
+			equipamiento["arma"] = valor
 		"cabeza":
-			equipamiento[0]["cabeza"] = valor
+			equipamiento["cabeza"] = valor
 		"torso":
-			equipamiento[0]["torso"] = valor
+			equipamiento["torso"] = valor
 		"piernas":
-			equipamiento[0]["piernas"] = valor
+			equipamiento["piernas"] = valor
 		"pies":
-			equipamiento[0]["pies"] = valor
+			equipamiento["pies"] = valor
 		"amuleto1":
-			equipamiento[0]["amuleto1"] = valor
+			equipamiento["amuleto1"] = valor
 		"amuleto2":
-			equipamiento[0]["amuleto2"] = valor
+			equipamiento["amuleto2"] = valor
 		"amuleto3":
-			equipamiento[0]["amuleto3"] = valor
+			equipamiento["amuleto3"] = valor
 		"amuleto4":
-			equipamiento[0]["amuleto4"] = valor
+			equipamiento["amuleto4"] = valor
 
 # GETTERS ==========================================================================================
 
 func getEquipamiento(nombre):
 	match nombre:
 		"arma":
-			return equipamiento[0]["arma"]
+			return equipamiento["arma"]
 		"cabeza":
-			return equipamiento[0]["cabeza"]
+			return equipamiento["cabeza"]
 		"torso":
-			return equipamiento[0]["torso"]
+			return equipamiento["torso"]
 		"piernas":
-			return equipamiento[0]["piernas"]
+			return equipamiento["piernas"]
 		"pies":
-			return equipamiento[0]["pies"]
+			return equipamiento["pies"]
 		"amuleto1":
-			return equipamiento[0]["amuleto1"]
+			return equipamiento["amuleto1"]
 		"amuleto2":
-			return equipamiento[0]["amuleto2"]
+			return equipamiento["amuleto2"]
 		"amuleto3":
-			return equipamiento[0]["amuleto3"]
+			return equipamiento["amuleto3"]
 		"amuleto4":
-			return equipamiento[0]["amuleto4"]
+			return equipamiento["amuleto4"]
 
 
 func getJugador():
@@ -158,7 +158,7 @@ func actualizarStats():
 
 
 func calcularBonuses():
-	var amuletos = [equipamiento[0]["amuleto1"],equipamiento[0]["amuleto2"],equipamiento[0]["amuleto3"],equipamiento[0]["amuleto4"]]
+	var amuletos = [getEquipamiento("amuleto1"), getEquipamiento("amuleto2"), getEquipamiento("amuleto3"), getEquipamiento("amuleto4")]
 	var vida_final = 0
 	var mana_final = 0
 	var esta_final = 0
@@ -256,9 +256,9 @@ func quitarItem(item_id: int, cantidad: int):
 
 
 func quitarItemPos(cantidad:int, posicion:int):
-	Jugador.inventario[posicion]["cantidad"] -= cantidad
-	if Jugador.inventario[posicion]["cantidad"] == 0:
-		Jugador.inventario[posicion]["id"] = null
+	inventario[posicion]["cantidad"] -= cantidad
+	if inventario[posicion]["cantidad"] == 0:
+		inventario[posicion]["id"] = null
 	emit_signal("inventarioActualizado")
 
 
@@ -312,25 +312,31 @@ func usarItem(origen, item_id, posicion):
 				emit_signal("inventarioActualizado")
 				return
 			"arma":
-				var equipo_presente = getEquipamiento("arma")
-				if equipo_presente != null:
-					setEquipamiento("arma",item_id)
-					inventario[posicion] = {
-						"id" : item_id,
-						"cantidad" : 1
-					}
-				else:
-					setEquipamiento("arma",item_id)
-				emit_signal("inventarioActualizado")
+				equiparEquipamiento(item_id, posicion)
 				return
 			"torso":
-				pass
+				equiparEquipamiento(item_id, posicion)
+				return
+			"cabeza":
+				equiparEquipamiento(item_id, posicion)
+				return
+			"piernas":
+				equiparEquipamiento(item_id, posicion)
+				return
+			"pies":
+				equiparEquipamiento(item_id, posicion)
+				return
+			"amuleto":
+				equiparEquipamiento(item_id, posicion)
 				return
 	else:
 		var espacio_dis = getEspacioVacio()
 		if espacio_dis != -1:
 			inventario[espacio_dis]["id"] = item_id
 			inventario[espacio_dis]["cantidad"] = 1
+		setEquipamiento(origen,null)
+		emit_signal("inventarioActualizado")
+		return
 	Global.Notificacion("No hay ningun objeto")
 
 
@@ -352,8 +358,21 @@ func equiparEquipamiento(item_id, index_origen):
 	else:
 		var amuletos = ["amuleto1","amuleto2","amuleto3","amuleto4"]
 		var amuleto_vacio = -1
-		for i in 4:
-			if equipamiento[amuletos]
-		setEquipamiento(tipo_slot,item_id)
+		for i in range(4):
+			if equipamiento[amuletos[i]] == null:
+				setEquipamiento(amuletos[i],item_id)
+				inventario[index_origen] = {
+					"id" : null,
+					"cantidad" : 0
+				}
+				emit_signal("inventarioActualizado")
+				return
+		amuletos.shuffle()
+		var equipo_old = getEquipamiento(amuletos[0])
+		setEquipamiento(amuletos[0],item_id)
+		inventario[index_origen] = {
+			"id" : equipo_old,
+			"cantidad" : 1
+		}
 	inventario[index_origen]
 	emit_signal("inventarioActualizado")
