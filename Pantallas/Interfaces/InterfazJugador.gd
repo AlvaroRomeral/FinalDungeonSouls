@@ -81,7 +81,8 @@ func actualizarUI():
 		expbarUI.value,
 		Jugador.experiencia,
 		1,
-		Tween.TRANS_LINEAR
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN_OUT
 	)
 	nivelUI.text = str(Jugador.nivel)
 	tween_vida.start()

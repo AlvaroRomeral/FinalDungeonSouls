@@ -6,7 +6,7 @@ var Entidad
 var en_pantalla = false
 
 func spawnearEnemigo():
-	if Entidad == null or Entidad.vida <= 0:
+	if Entidad == null:
 		if en_pantalla == false:
 			Entidad = Enemy.instance()
 			Entidad.global_position = global_position

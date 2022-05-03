@@ -40,6 +40,7 @@ func _on_BtnCreditos_botonPresionado():
 
 func _on_BtnSalir_botonPresionado():
 	Datos.guardarPersistencia()
+	print_stray_nodes()
 	get_tree().quit()
 
 # OTROS BOTONES ====================================================================================

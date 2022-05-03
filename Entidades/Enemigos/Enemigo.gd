@@ -16,6 +16,7 @@ export var mov_correr = 60
 export var id_drop = 2
 export var cantidad_drop = 5
 export var exp_drop = 100
+export var puntuacion = 100
 
 var enShock = false
 var path = []
@@ -95,7 +96,7 @@ func isJugadorAlcanzable() -> bool:
 		return true
 	return false
 
-# Pathfinding ==================================================================
+# Pathfinding ======================================================================================
 
 func navigate():	# Define the next position to go to
 	if path.size() > 0:
@@ -121,6 +122,10 @@ func revisarVida():
 		drop.global_position = global_position
 		anim_cuerpo.play("Muerte")
 		Jugador.setExp(exp_drop)
+
+
+func borrarEntidad():
+	queue_free()
 
 
 func _on_Hurtbox_damageRecivido(cantidad, atacante):
