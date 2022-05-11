@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/bar_mana.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Recursos/Imagenes/Interfaz/exp1.png" type="Texture" id=12]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/exp4.png" type="Texture" id=13]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/exp3.png" type="Texture" id=14]
+[ext_resource path="res://Recursos/Sonido/lvlup.ogg" type="AudioStream" id=15]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -44,6 +45,52 @@ frames = 2
 frame_0/texture = ExtResource( 14 )
 frame_1/texture = ExtResource( 13 )
 frame_1/delay_sec = 0.0
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ControlAnunciador/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "mostrarRonda"
+length = 6.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ControlAnunciador/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
 
 [node name="InterfazJugador" type="CanvasLayer" groups=["interfaz"]]
 pause_mode = 2
@@ -117,6 +164,23 @@ text = "1"
 valign = 1
 
 [node name="TweenStamina" type="Tween" parent="BarraEstamina"]
+
+[node name="ControlAnunciador" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ControlAnunciador"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+text = "RONDA 1"
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 5.0
@@ -207,3 +271,10 @@ mouse_filter = 2
 
 [node name="MenuPausa" parent="." instance=ExtResource( 10 )]
 visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/mostrarRonda = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )

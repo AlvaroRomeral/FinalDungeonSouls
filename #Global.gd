@@ -1,5 +1,9 @@
 extends Node
 
+signal notificacion_recibida(texto)
+signal ronda_iniciada(ronda)
+signal ronda_finalizada
+
 const PATH_ICONOS = "res://Recursos/Imagenes/Iconos/"
 const PATH_CASCOS = "res://Recursos/Imagenes/Sprites/Equipo/Cabeza/"
 const PATH_TORSOS = "res://Recursos/Imagenes/Sprites/Equipo/Pecho/"
@@ -17,8 +21,6 @@ const EXTE_SAVES = ".res"
 const EXTE_PERSISTENCIA = ".res"
 
 const RES_ALERTA = preload("res://Componentes/Alerta.tscn")
-
-signal notificacion_recibida(texto)
 
 var nivel: String = "res://Niveles/Test.tscn"
 

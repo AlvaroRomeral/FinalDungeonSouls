@@ -25,6 +25,7 @@ func _ready():
 	get_tree().paused = false
 	Global.connect("notificacion_recibida",self,"addNotificacion")
 	Jugador.connect("datosActualizados",self,"actualizarUI")
+	Global.connect("ronda_iniciada",self,"mostrarRonda")
 	actualizarUI()
 
 
@@ -121,3 +122,8 @@ func addAlerta(texto):
 	var nueva_alerta: Alerta = alerta.instance()
 	nueva_alerta.texto = texto
 	call_deferred("add_child",nueva_alerta)
+
+
+func mostrarRonda(ronda):
+	$ControlAnunciador/Label.text = "Ronda " + str(ronda)
+	$AnimationPlayer.play("mostrarRonda")
