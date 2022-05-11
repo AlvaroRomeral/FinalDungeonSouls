@@ -82,5 +82,5 @@ func mostrarInfo(id_item):
 func actualizarDatos():
 	$PanelEquipo/LblAtaque.text = "Atq: " + str(Jugador.ataque)
 	$PanelEquipo/LblDefensa.text = "Def: " + str(Jugador.defensa)
-	$PanelEquipo/LblVida.text = "Vid: " + str(Jugador.vida)
-	$PanelEquipo/LblMana.text = "Man: " + str(Jugador.mana)
+	$PanelEquipo/LblVida.text = "Vid: " + str(Jugador.vida_max)
+	$PanelEquipo/LblMana.text = "Man: " + str(Jugador.mana_max)

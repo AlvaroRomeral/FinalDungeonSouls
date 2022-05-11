@@ -131,6 +131,11 @@ func getJugador():
 	return get_tree().get_nodes_in_group("jugador")[0]
 
 
+func getJugadorPosicion():
+	var jugador:KinematicBody2D = getJugador()
+	return jugador.get_global_transform().get_origin()
+
+
 func getInterfaz():
 	return get_tree().get_nodes_in_group("interfaz")[0]
 

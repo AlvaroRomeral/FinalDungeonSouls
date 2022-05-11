@@ -334,5 +334,9 @@ scale = Vector2( 1.45, 1 )
 process_parent = true
 physics_process_parent = true
 
+[node name="TimerOlvidar" type="Timer" parent="."]
+wait_time = 4.0
+
 [connection signal="timeout" from="Position2D/TimerAtaque" to="." method="_on_TimerAtaque_timeout"]
 [connection signal="damageRecivido" from="Hurtbox" to="." method="_on_Hurtbox_damageRecivido"]
+[connection signal="timeout" from="TimerOlvidar" to="." method="_on_TimerOlvidar_timeout"]
