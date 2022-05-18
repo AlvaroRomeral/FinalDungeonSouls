@@ -41,6 +41,7 @@ var atacando = false
 
 
 func _ready():
+	Global.enemigos_restantes -= 1
 	if get_tree().has_group("jugador"):
 		jugador = get_tree().get_nodes_in_group("jugador")[0]
 	if get_tree().has_group("navegacion"):
@@ -142,6 +143,7 @@ func morir():
 		drop.cantidad = cantidad_drop
 		drop.global_position = global_position
 		anim_cuerpo.play("Muerte")
+		Global.enemigoEliminado()
 		Jugador.setExp(exp_drop)
 
 

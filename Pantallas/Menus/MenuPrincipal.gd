@@ -21,6 +21,7 @@ func cargarNivel():
 
 func _on_BtnNuevoJuego_botonPresionado():
 	$ColorRect.mouse_filter =Control.MOUSE_FILTER_STOP
+	Global.nivel = "res://Niveles/Nivel_Temp.tscn"
 	Datos.nuevosDatos()
 	Datos.cargarDatos()
 	$AnimationPlayer.play("Obscurecer")

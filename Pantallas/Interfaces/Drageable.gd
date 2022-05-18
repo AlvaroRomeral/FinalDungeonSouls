@@ -29,6 +29,7 @@ func updateAspecto():
 	else:
 		texture = load(Global.PATH_ICONOS + Datos.getItemInfo(datos["id"])["icono"] + ".png")
 		if datos["cantidad"] > 1:
+			$Cantidad.text = str(datos["cantidad"])
 			$Cantidad.visible = true
 
 

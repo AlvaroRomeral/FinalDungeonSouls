@@ -3,6 +3,7 @@ extends Node
 signal notificacion_recibida(texto)
 signal ronda_iniciada(ronda)
 signal ronda_finalizada
+signal puntuacion_ganada(puntos)
 
 const PATH_ICONOS = "res://Recursos/Imagenes/Iconos/"
 const PATH_CASCOS = "res://Recursos/Imagenes/Sprites/Equipo/Cabeza/"
@@ -23,6 +24,8 @@ const EXTE_PERSISTENCIA = ".res"
 const RES_ALERTA = preload("res://Componentes/Alerta.tscn")
 
 var nivel: String = "res://Niveles/Test.tscn"
+var ronda_actual = 1
+var enemigos_restantes = 1
 
 func _ready():
 	SilentWolf.configure({
@@ -47,3 +50,20 @@ func Notificacion(texto: String):
 
 func mostrarAlerta(texto: String):
 	Jugador.getInterfaz().addAlerta(texto)
+
+# RONDAS ===========================================================================================
+
+func enemigoEliminado():
+	if enemigos_restantes <= 0 and isEnemigosVivos():
+		siguienteRonda()
+
+
+func isEnemigosVivos():
+	if get_tree().get_nodes_in_group("enemigos").size() > 0:
+		return true
+	return false
+
+
+func siguienteRonda():
+	ronda_actual += 1
+	emit_signal("ronda_finalizada")
