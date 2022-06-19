@@ -176,6 +176,12 @@ func getItemTextura(id):
 		var resultado = fdsdb.query_result[0]["textura"]
 		return resultado
 
+
+func getItemIcono(id):
+	if fdsdb.query("SELECT icono FROM items WHERE id = " + str(id)):
+		var resultado = fdsdb.query_result[0]["icono"]
+		return resultado
+
 # BBDD DIALOGO =====================================================================================
 
 func getDialogo(id:int):
@@ -243,6 +249,13 @@ func getNivelesEsta():
 func getNivelesExpReq():
 	fdsdb.query("SELECT exp_req FROM niveles WHERE id = " + str(Jugador.nivel))
 	var resultado = fdsdb.query_result[0]["exp_req"]
+	return resultado
+
+# BBDD OLEADAS =====================================================================================
+
+func getOleadaEnemigos(oleada):
+	fdsdb.query("SELECT enemigos_1,enemigos_2,enemigos_3 FROM oleadas WHERE id = " + str(oleada))
+	var resultado = fdsdb.query_result[0]
 	return resultado
 
 # ARCHIVOS =========================================================================================

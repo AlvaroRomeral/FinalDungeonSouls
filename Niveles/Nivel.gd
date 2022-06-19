@@ -1,15 +1,25 @@
 extends Node2D
 
-var puntuacion = 0
-var ronda = 0
-var spawners
-
 func _ready():
-	Global.emit_signal("ronda_iniciada",ronda)
-	Global.connect("puntuacion_ganada",self,"setPuntuacion")
-	get_tree().get_nodes_in_group("spawn")
+	Global.connect("oleadaTerminada",self,"timerOleadaSiguiente")
+	empezarModoOleada()
+
+# SISTEMA DE OLEADA ================================================================================
+
+func empezarModoOleada():
+	Jugador.puntuacion = 0
+	Global.oleada = 0
+	Global.emit_signal("oleadaTerminada")
 
 
-func setPuntuacion(puntos):
-	puntuacion += puntos
-	
+func timerOleadaSiguiente():
+	var timer = Timer.new()
+	timer.connect("timeout",self,"timerTerminado")
+	timer.wait_time = Global.tiempo_entre_rondas
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+
+
+func timerTerminado():
+	Global.siguienteOleada()

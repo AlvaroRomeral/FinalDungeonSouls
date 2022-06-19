@@ -16,6 +16,7 @@ onready var estaminaUI = $BarraEstamina
 # Pantallas
 onready var inventario = $Inventario
 onready var pausa = $MenuPausa
+onready var tienda = $Tienda
 onready var notificacion = preload("res://Componentes/Notificaion.tscn")
 onready var alerta = preload("res://Componentes/Alerta.tscn")
 
@@ -23,10 +24,11 @@ var monedas:int = 0
 
 func _ready():
 	get_tree().paused = false
-	Global.connect("notificacion_recibida",self,"addNotificacion")
+	Global.connect("notificacionRecibida",self,"addNotificacion")
 	Jugador.connect("datosActualizados",self,"actualizarUI")
-	Global.connect("ronda_iniciada",self,"mostrarRonda")
-	Global.connect("ronda_finalizada",self,"mostrarFinalizacionDeRonda")
+	Global.connect("puntuacionGanada",self,"actualizarPuntuacion")
+	Global.connect("oleadaIniciada",self,"iniciarOleada")
+	Global.connect("oleadaTerminada",self,"finalizarOleada")
 	actualizarUI()
 
 
@@ -73,9 +75,7 @@ func actualizarUI():
 		"monedas",
 		monedas,
 		Jugador.monedas,
-		1,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_IN_OUT
+		1
 	)
 	tween_expbar.interpolate_property(
 		expbarUI,
@@ -95,6 +95,10 @@ func actualizarUI():
 	expbarUI.max_value = Datos.getNivelesExpReq()
 
 
+func actualizarPuntuacion():
+	$Puntuacion.text = str(Jugador.puntuacion)
+
+
 func _input(event):
 	if event.is_action_released("INVENTARIO"):
 		if inventario.visible:
@@ -107,9 +111,14 @@ func _input(event):
 		if pausa.visible:
 			get_tree().paused = false
 			pausa.hide()
+		elif inventario.visible:
+			get_tree().paused = false
+			inventario.hide()
+		elif tienda.visible:
+			get_tree().paused = false
+			tienda.hide()
 		else:
 			get_tree().paused = true
-			inventario.hide()
 			pausa.show()
 
 
@@ -125,10 +134,23 @@ func addAlerta(texto):
 	call_deferred("add_child",nueva_alerta)
 
 
-func mostrarRonda(ronda):
-	$ControlAnunciador/Label.text = "Ronda " + str(ronda)
+func iniciarRonda(oleada):
+	$ControlAnunciador/Label.text = "Oleada " + str(oleada)
 	$AnimationPlayer.play("mostrarRonda")
 
 
-func mostrarFinalizacionDeRonda():
-	pass
+func iniciarOleada():
+	$ControlAnunciador/Label.text = "Oleada " + str(Global.oleada)
+	$AnimationPlayer.play("mostrarRonda")
+
+
+func finalizarOleada():
+	$ControlAnunciador/Label.text = "Oleada "+ str(Global.oleada) +" terminada"
+	$AnimationPlayer.play("mostrarRonda")
+	$Tienda.show()
+
+
+func finalizarRonda(oleada):
+	$ControlAnunciador/Label.text = "Oleada "+ str(oleada) +" terminada"
+	$AnimationPlayer.play("mostrarRonda")
+	$Tienda.show()

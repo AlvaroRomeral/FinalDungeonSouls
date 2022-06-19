@@ -1,25 +1,46 @@
 extends Node2D
 
-onready var Enemy = preload("res://Entidades/Enemigos/Enemigo.tscn")
+onready var enemigo_1 = preload("res://Entidades/Enemigos/Enemigo.tscn")
+onready var enemigo_2 = preload("res://Entidades/Enemigos/Enemigo_2.tscn")
+onready var enemigo_3 = preload("res://Entidades/Enemigos/Enemigo_3.tscn")
 
-var Entidad
-var en_pantalla = false
+var activo = false
+
+func _ready():
+	Global.connect("oleadaIniciada",self,"reactivar")
+
 
 func spawnearEnemigo():
-	if Entidad == null:
-		if en_pantalla == false:
-			Entidad = Enemy.instance()
-			Entidad.global_position = global_position
-			get_parent().call_deferred("add_child",Entidad)
+	if activo:
+		var enemigo
+		var tier = 0
+		if Global.enemigo_1_reserva > 0:
+			tier = 1
+		elif Global.enemigo_2_reserva > 0:
+			tier = 2
+		elif Global.enemigo_3_reserva > 0:
+			tier = 3
+		match tier:
+			0:
+				activo = false
+				return
+			1:
+				enemigo = enemigo_1.instance()
+				Global.enemigo_1_reserva -= 1
+			2:
+				enemigo = enemigo_2.instance()
+				Global.enemigo_2_reserva -= 1
+			3:
+				enemigo = enemigo_3.instance()
+				Global.enemigo_3_reserva -= 1
+		enemigo.global_position = global_position
+		get_parent().call_deferred("add_child",enemigo)
+		Global.emit_signal("enemigoSpawneado")
+
+
+func reactivar():
+	activo = true
 
 
 func _on_Timer_timeout():
 	spawnearEnemigo()
-
-
-func _on_VisibilityEnabler2D_screen_entered():
-	en_pantalla = true
-
-
-func _on_VisibilityEnabler2D_screen_exited():
-	en_pantalla = false

@@ -1,15 +1,10 @@
 extends Area2D
 
 export var damage = 1
-export var activo = true
+export var equipo = 1
 
-var propietario = null
-var tipo
-
-var empuje = Vector2.ZERO
-
-func _physics_process(delta):
+func setActico(activo:bool):
 	if activo:
-		$CollisionShape2D.disabled = false
+		$CollisionShape2D.set_deferred("disabled", false)
 	else:
-		$CollisionShape2D.disabled = true
+		$CollisionShape2D.set_deferred("disabled", true)

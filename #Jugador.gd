@@ -16,9 +16,10 @@ var esta_max: int = 0
 
 var nivel = 1
 var experiencia = 0
+var puntuacion = 0
 
 # INVENTARIO Y EQUIPAMIENTO
-var monedas: int = 0
+var monedas: int = 100
 var inventario: Array = []
 var inventario_cap: int = 15
 var item_cap_max = 1
@@ -82,6 +83,11 @@ func setExp(cantidad):
 		subidaNivel()
 
 
+func setPuntuacion(puntos):
+	puntuacion += puntos
+	Global.emit_signal("puntuacionGanada")
+
+
 func setEquipamiento(nombre, valor):
 	match nombre:
 		"arma":
@@ -143,7 +149,7 @@ func getInterfaz():
 
 func actualizarStats():
 	var defensa_final = 0
-	var ataque_final = 0
+	var ataque_final = 1
 	if getEquipamiento("cabeza") != null:
 		defensa_final += Datos.getItemDefensa(getEquipamiento("cabeza"))
 	if getEquipamiento("torso") != null:

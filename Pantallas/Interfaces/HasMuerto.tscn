@@ -2,6 +2,7 @@
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Pantallas/Interfaces/HasMuerto.gd" type="Script" id=2]
+[ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -12,6 +13,7 @@ border_blend = true
 
 [sub_resource type="Animation" id=2]
 resource_name = "Aparece"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/Label:modulate")
 tracks/0/interp = 1
@@ -19,10 +21,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ColorRect/Label:rect_scale")
@@ -43,65 +45,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
+tracks/3/type = "value"
+tracks/3/path = NodePath("Panel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "empezarTimer"
-} ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "Desaparecer"
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect/Label:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "terminaMensaje"
-} ]
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -142,23 +101,12 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Timer:autostart")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
 
 [node name="HasMuerto" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="Panel" parent="."]
@@ -193,11 +141,52 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Aparece = SubResource( 2 )
-anims/Desaparecer = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -52.0
+margin_right = 80.0
+margin_bottom = 84.0
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 144.0
+margin_bottom = 40.0
+max_length = 20
+placeholder_text = "Nombre"
+caret_blink = true
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 8.0
+margin_top = 48.0
+margin_right = 152.0
+margin_bottom = 70.0
+text = "Puntuacion: 000000"
+valign = 1
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 152.0
+margin_bottom = 95.0
+disabled = true
+text = "Subir Puntuacion"
+
+[node name="ButtonSalir" type="Button" parent="Panel"]
+margin_left = 8.0
+margin_top = 104.0
+margin_right = 152.0
+margin_bottom = 127.0
+text = "Salir"
 
 [connection signal="draw" from="." to="." method="_on_Control_draw"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="text_changed" from="Panel/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="draw" from="Panel/Label" to="." method="_on_Label_draw"]
+[connection signal="button_up" from="Panel/Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="Panel/ButtonSalir" to="." method="_on_ButtonSalir_button_up"]

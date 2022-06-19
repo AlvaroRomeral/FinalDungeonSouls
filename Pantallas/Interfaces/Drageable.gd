@@ -31,6 +31,9 @@ func updateAspecto():
 		if datos["cantidad"] > 1:
 			$Cantidad.text = str(datos["cantidad"])
 			$Cantidad.visible = true
+		else:
+			$Cantidad.text = str(datos["cantidad"])
+			$Cantidad.visible = false
 
 
 func get_drag_data(position):

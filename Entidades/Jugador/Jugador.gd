@@ -95,30 +95,33 @@ func detectarControlador(evento):
 func checkVida():
 	if Jugador.vida <= 0:
 		$InterfazJugador/HasMuerto.show()
+		Global.emit_signal("modoPelicula",true)
 		aspecto.hide()
 		get_tree().paused = true
-
-
-func _on_Hurtbox_damageRecivido(cantidad, atacante):
-	var cantidadFinal = cantidad
-	cantidadFinal = cantidadFinal - Jugador.defensa
-	if cantidadFinal > 0 or atacante != "Jugador":
-		Jugador.setVida(-cantidadFinal)
-		checkVida()
 
 # ASPECTO ==========================================================================================
 
 func actualizarRopa():
 	if Jugador.getEquipamiento("cabeza") != null:
 		$Aspecto/Cabeza.texture = load(Global.PATH_CASCOS + Datos.getItemTextura(Jugador.getEquipamiento("cabeza")) + ".png")
+	else:
+		$Aspecto/Cabeza.texture = null
 	if Jugador.getEquipamiento("torso") != null:
 		$Aspecto/Torso.texture = load(Global.PATH_TORSOS + Datos.getItemTextura(Jugador.getEquipamiento("torso")) + ".png")
+	else:
+		$Aspecto/Torso.texture = null
 	if Jugador.getEquipamiento("piernas") != null:
 		$Aspecto/Piernas.texture = load(Global.PATH_PIERNAS + Datos.getItemTextura(Jugador.getEquipamiento("piernas")) + ".png")
+	else:
+		$Aspecto/Piernas.texture = null
 	if Jugador.getEquipamiento("pies") != null:
 		$Aspecto/Pies.texture = load(Global.PATH_PIES + Datos.getItemTextura(Jugador.getEquipamiento("pies")) + ".png")
+	else:
+		$Aspecto/Pies.texture = null
 	if Jugador.getEquipamiento("arma") != null:
 		$Aspecto/Arma.texture = load(Global.PATH_EQUIPO + Datos.getItemTextura(Jugador.getEquipamiento("arma")) + ".png")
+	else:
+		$Aspecto/Arma.texture = null
 
 # INTERACCION ======================================================================================
 
@@ -136,3 +139,14 @@ func _on_ContadorSegundos_timeout():
 		Jugador.setEsta(1)
 	else:
 		Jugador.setEsta(-1)
+
+
+func _on_Hurtbox_recibeDamage(damage,posicion):
+	var cantidadFinal = damage
+	cantidadFinal = cantidadFinal - int(Jugador.defensa)
+	var empuje = global_position.direction_to(posicion)
+	velocidad = -empuje * 300
+	anim_personaje.play("Damaged")
+	if cantidadFinal > 0:
+		Jugador.setVida(-cantidadFinal)
+		checkVida()

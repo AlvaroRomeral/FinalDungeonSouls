@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/bar_mana.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Recursos/Imagenes/Interfaz/exp4.png" type="Texture" id=13]
 [ext_resource path="res://Recursos/Imagenes/Interfaz/exp3.png" type="Texture" id=14]
 [ext_resource path="res://Recursos/Sonido/lvlup.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Pantallas/Interfaces/ModoPelicula.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Pantallas/Interfaces/Tienda.tscn" type="PackedScene" id=17]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -172,15 +174,14 @@ mouse_filter = 2
 theme = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="ControlAnunciador"]
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -7.0
-margin_right = 20.0
-margin_bottom = 7.0
+margin_top = -7.5
+margin_bottom = 7.5
 text = "RONDA 1"
+align = 1
+valign = 1
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 5.0
@@ -248,8 +249,7 @@ texture = ExtResource( 11 )
 
 [node name="TweenMonedas" type="Tween" parent="PanelMonedas"]
 
-[node name="HasMuerto" parent="." instance=ExtResource( 5 )]
-visible = false
+[node name="Tienda" parent="." instance=ExtResource( 17 )]
 
 [node name="Inventario" parent="." instance=ExtResource( 7 )]
 visible = false
@@ -262,12 +262,18 @@ margin_top = -128.0
 margin_right = 224.0
 margin_bottom = 128.0
 
+[node name="ModoPelicula" parent="." instance=ExtResource( 16 )]
+mouse_filter = 2
+
 [node name="Notificaiones" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -128.0
 margin_bottom = 64.0
 mouse_filter = 2
+
+[node name="HasMuerto" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="MenuPausa" parent="." instance=ExtResource( 10 )]
 visible = false
@@ -278,3 +284,13 @@ anims/mostrarRonda = SubResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+
+[node name="Puntuacion" type="Label" parent="."]
+margin_left = 512.0
+margin_top = 8.0
+margin_right = 632.0
+margin_bottom = 32.0
+theme = ExtResource( 3 )
+text = "000"
+align = 2
+valign = 1

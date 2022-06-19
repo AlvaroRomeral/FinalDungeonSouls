@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Componentes/LineaPuntuacion.gd" type="Script" id=2]
+
+[node name="LineaPuntuacion" type="HBoxContainer"]
+margin_right = 248.0
+margin_bottom = 12.0
+script = ExtResource( 2 )
+
+[node name="Nombre" type="Label" parent="."]
+margin_right = 100.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "nombre"
+valign = 1
+
+[node name="Puntuacion" type="Label" parent="."]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Puntuacion"
+valign = 1

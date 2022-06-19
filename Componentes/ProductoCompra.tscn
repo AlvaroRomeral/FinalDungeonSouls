@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_342.png" type="Texture" id=2]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_369.png" type="Texture" id=3]
+[ext_resource path="res://Recursos/Estilos/Shader_BlancoNegro.tres" type="Material" id=4]
+[ext_resource path="res://Componentes/ProductoCompra.gd" type="Script" id=5]
+
+[node name="ProductoCompra" type="Panel"]
+material = ExtResource( 4 )
+margin_right = 48.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 48, 64 )
+script = ExtResource( 5 )
+
+[node name="Producto" type="TextureRect" parent="."]
+use_parent_material = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -16.0
+margin_top = 8.0
+margin_right = 16.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+use_parent_material = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -19.0
+margin_top = -24.0
+margin_right = 19.0
+margin_bottom = -8.0
+
+[node name="CosteIcono" type="TextureRect" parent="HBoxContainer"]
+use_parent_material = true
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 3 )
+
+[node name="CosteCantidad" type="Label" parent="HBoxContainer"]
+margin_left = 20.0
+margin_right = 38.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+custom_fonts/font = ExtResource( 1 )
+text = "500"
+align = 1
+valign = 1
+
+[node name="BotonProducto" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[connection signal="button_up" from="BotonProducto" to="." method="_on_BotonProducto_button_up"]

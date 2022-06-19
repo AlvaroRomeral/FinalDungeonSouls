@@ -9,6 +9,7 @@ export(int, 1, 999) var cantidad: = 1
 var interactuable = false
 
 func _ready():
+	$AnimationPlayer.play("Idle")
 	connect("body_entered",self,"setInteractuable")
 	connect("body_exited",self,"removeInteractuable")
 	$Sprite.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"] + ".png")

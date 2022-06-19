@@ -63,3 +63,7 @@ func _on_btnTestCreacionPersonaje_botonPresionado():
 
 func _on_btnScoreboard_botonPresionado():
 	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")
+
+
+func _on_BtnPuntuacion_botonPresionado():
+	get_tree().change_scene("res://Pantallas/Menus/PantallaPuntuacion.tscn")
