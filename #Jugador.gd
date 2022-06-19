@@ -21,7 +21,7 @@ var puntuacion = 0
 # INVENTARIO Y EQUIPAMIENTO
 var monedas: int = 100
 var inventario: Array = []
-var inventario_cap: int = 15
+var inventario_cap: int = 30
 var item_cap_max = 1
 var equipamiento: Dictionary = {
 	"arma" : null,

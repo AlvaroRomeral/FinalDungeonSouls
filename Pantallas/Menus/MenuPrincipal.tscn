@@ -23,7 +23,7 @@
 [ext_resource path="res://Recursos/Imagenes/Iconos/icon_88.png" type="Texture" id=21]
 [ext_resource path="res://Recursos/Imagenes/Iconos/icon_342.png" type="Texture" id=22]
 [ext_resource path="res://Recursos/Imagenes/Iconos/icon_36.png" type="Texture" id=23]
-[ext_resource path="res://Recursos/Musica/Theme_-_Eternal_Quest.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Recursos/Musica/Dungeon_-_Sacred_Sepulcher.ogg" type="AudioStream" id=24]
 
 [sub_resource type="ButtonGroup" id=2]
 
@@ -210,6 +210,7 @@ text = "Salir"
 icon = ExtResource( 19 )
 
 [node name="btnJugarTest" parent="." instance=ExtResource( 12 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

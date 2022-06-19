@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	randomize()
 	Global.connect("oleadaTerminada",self,"timerOleadaSiguiente")
 	empezarModoOleada()
 
