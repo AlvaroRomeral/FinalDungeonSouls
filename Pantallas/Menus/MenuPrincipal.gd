@@ -32,7 +32,7 @@ func _on_BtnCargar_botonPresionado():
 
 
 func _on_BtnOpciones_botonPresionado():
-	pass # Replace with function body.
+	$Opciones.show()
 
 
 func _on_BtnCreditos_botonPresionado():
@@ -67,3 +67,17 @@ func _on_btnScoreboard_botonPresionado():
 
 func _on_BtnPuntuacion_botonPresionado():
 	get_tree().change_scene("res://Pantallas/Menus/PantallaPuntuacion.tscn")
+
+
+func _on_HSlider_value_changed(value):
+	Datos.ar_persistencia.volumen_musica = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Musica"),value)
+
+
+func _on_SliderEfectos_value_changed(value):
+	Datos.ar_persistencia.volumen_efectos = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Efectos"),value)
+
+
+func _on_Button_button_up():
+	$Opciones.hide()

@@ -331,6 +331,55 @@ stream = ExtResource( 24 )
 autoplay = true
 bus = "Musica"
 
+[node name="Opciones" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -124.0
+margin_top = -112.0
+margin_right = 124.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="Opciones"]
+margin_left = 24.0
+margin_top = 64.0
+margin_right = 64.0
+margin_bottom = 79.0
+text = "Musica"
+
+[node name="SliderMusica" type="HSlider" parent="Opciones/Label"]
+margin_left = 64.0
+margin_right = 200.0
+margin_bottom = 16.0
+min_value = -30.0
+max_value = 30.0
+tick_count = 12
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="Opciones"]
+margin_left = 24.0
+margin_top = 96.0
+margin_right = 75.0
+margin_bottom = 111.0
+text = "Efectos"
+
+[node name="SliderEfectos" type="HSlider" parent="Opciones/Label2"]
+margin_left = 64.0
+margin_right = 200.0
+margin_bottom = 16.0
+min_value = -30.0
+max_value = 30.0
+tick_count = 12
+
+[node name="Button" type="Button" parent="Opciones"]
+margin_left = 12.0
+margin_top = 188.0
+margin_right = 84.0
+margin_bottom = 211.0
+text = "Cerrar"
+
 [connection signal="botonPresionado" from="VBoxContainer/BtnNuevoJuego" to="." method="_on_BtnNuevoJuego_botonPresionado"]
 [connection signal="botonPresionado" from="VBoxContainer/BtnCargar" to="." method="_on_BtnCargar_botonPresionado"]
 [connection signal="botonPresionado" from="VBoxContainer/BtnPuntuacion" to="." method="_on_BtnPuntuacion_botonPresionado"]
@@ -341,3 +390,7 @@ bus = "Musica"
 [connection signal="botonPresionado" from="btnTestCreacionPersonaje" to="." method="_on_btnTestCreacionPersonaje_botonPresionado"]
 [connection signal="botonPresionado" from="btnScoreboard" to="." method="_on_btnScoreboard_botonPresionado"]
 [connection signal="button_up" from="BtnPantallaCompleta" to="." method="_on_BtnPantallaCompleta_button_up"]
+[connection signal="value_changed" from="Opciones/Label/SliderMusica" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="Opciones/Label2/SliderEfectos" to="." method="_on_SliderEfectos_value_changed"]
+[connection signal="value_changed" from="Opciones/Label2/SliderEfectos" to="." method="_on_HSlider_value_changed"]
+[connection signal="button_up" from="Opciones/Button" to="." method="_on_Button_button_up"]

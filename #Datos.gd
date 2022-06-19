@@ -120,6 +120,8 @@ func cargarNivel():
 func cargarDatosPersistencia():
 	OS.window_fullscreen = ar_persistencia.pantalla_completa
 	OS.window_size = ar_persistencia.resolucion
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Musica"),ar_persistencia.volumen_musica)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Efectos"),ar_persistencia.volumen_efectos)
 
 # BBDD ITEMS =======================================================================================
 
