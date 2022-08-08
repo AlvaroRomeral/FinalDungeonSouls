@@ -39,7 +39,7 @@ var cosmeticos: Array = [2,5,8]
 func _ready():
 	Datos.connect("datos_cargados",self,"cargarDatos")
 
-# SETTERS ==========================================================================================
+# SETTERS ======================================================================
 
 func setMonedas(cantidad):
 	monedas += cantidad
@@ -109,7 +109,7 @@ func setEquipamiento(nombre, valor):
 		"amuleto4":
 			equipamiento["amuleto4"] = valor
 
-# GETTERS ==========================================================================================
+# GETTERS ======================================================================
 
 func getEquipamiento(nombre):
 	match nombre:
@@ -145,7 +145,7 @@ func getJugadorPosicion():
 func getInterfaz():
 	return get_tree().get_nodes_in_group("interfaz")[0]
 
-# CALCULAR ESTATS ==================================================================================
+# CALCULAR ESTATS ==============================================================
 
 func actualizarStats():
 	var defensa_final = 0
@@ -210,7 +210,7 @@ func subidaNivel():
 	nivel += 1
 	actualizarStats()
 
-# INVENTARIO =======================================================================================
+# INVENTARIO ===================================================================
 
 func anadirItem(item_id: int, cantidad: int):
 	var item_max = Datos.getItemInfo(item_id)["max"]

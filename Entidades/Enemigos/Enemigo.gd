@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var anim_cuerpo:AnimationPlayer = $Aspecto/AnimAspecto
 onready var lbl_estado = $LabelEstado
+onready var navegacion = $NavigationAgent2D
+onready var aspecto = $"%Aspecto"
 
 const FRICCION = 500
 const RES_ITEM = preload("res://Entidades/Interact/Items/Item.tscn")
@@ -9,7 +11,7 @@ const RES_ITEM = preload("res://Entidades/Interact/Items/Item.tscn")
 export var tier = 1
 export var vida = 5
 export var ataque = 2
-export var velocidad = 35
+export var velocidad = 2000
 export var id_drop = 2
 export var cantidad_drop = 5
 export var exp_drop = 100
@@ -21,7 +23,7 @@ var movimiento = Vector2.ZERO
 var jugador : KinematicBody2D
 var objetivo : Vector2
 var path:Array = []
-var nav: Navigation2D = null
+#var nav: NavigationAgent2D = null
 var posicion_incial: Vector2
 
 enum{
@@ -39,11 +41,10 @@ var atacando = false
 func _ready():
 	$Hitbox.damage = ataque
 	jugador = Jugador.getJugador()
-	if get_tree().has_group("navegacion"):
-		nav = get_tree().get_nodes_in_group("navegacion")[0]
-	revisarVida()
+	navegacion.avoidance_enabled = true
+	
 	posicion_incial = global_position
-	generarPath(jugador.global_position)
+#	generarPath(jugador.global_position)
 
 
 func _physics_process(delta):
@@ -54,22 +55,33 @@ func _physics_process(delta):
 			pass
 		PERSIGUIENDO:
 			lbl_estado.text = "PERSIGUIENDO"
-			if path.size() > 0:
-				if global_position.distance_to(path[0]) < 2:
-					path.remove(0)
+			
+			navegacion.set_target_location(jugador.global_position)
+			if navegacion.is_target_reachable():
+				var posicion_siguiente = navegacion.get_next_location()
+				var direccion = global_position.direction_to(posicion_siguiente)
+				movimiento = direccion * velocidad * delta
+				if posicion_siguiente.x > global_position.x:
+					aspecto.scale.x = -1
+				else:
+					aspecto.scale.x = 1
+			
+#			if path.size() > 0:
+#				if global_position.distance_to(path[0]) < 2:
+#					path.remove(0)
 #					generarPath(jugador.global_position)
-				else:
-					var direccion = global_position.direction_to(path[0])
-					movimiento = direccion * velocidad
-				if jugador.global_position.x > global_position.x:
-					$Aspecto.scale.x = -1
-				else:
-					$Aspecto.scale.x = 1
+#				else:
+#					var direccion = global_position.direction_to(path[0])
+#					movimiento = direccion * velocidad
+#				if jugador.global_position.x > global_position.x:
+#					$Aspecto.scale.x = -1
+#				else:
+#					$Aspecto.scale.x = 1
+			
 		SHOCK:
 			lbl_estado.text = "SHOCK"
 		MUERTO:
 			lbl_estado.text = "MUERTO"
-	
 	
 	movimiento = move_and_slide(movimiento)
 
@@ -90,8 +102,12 @@ func calcularEstado():
 
 
 func generarPath(objetivo):
-	if objetivo != Vector2.ZERO:
-		path = nav.get_simple_path(global_position, objetivo, false)
+#	print(objetivo)
+	navegacion.set_target_location(objetivo)
+	path = navegacion.get_nav_path()
+#	print(path)
+#	if objetivo != Vector2.ZERO:
+#		path = nav.get_simple_path(global_position, objetivo, false)
 
 # CALCULOS =========================================================================================
 

@@ -287,6 +287,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Aspecto" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Base" type="Sprite" parent="Aspecto"]
 light_mask = 2
@@ -314,10 +315,8 @@ equipo = 2
 stream = ExtResource( 5 )
 
 [node name="TimerActualizar" type="Timer" parent="."]
-autostart = true
 
 [node name="LabelEstado" type="Label" parent="."]
-visible = false
 margin_left = -44.0
 margin_top = -44.0
 margin_right = 44.0
@@ -326,6 +325,8 @@ theme = ExtResource( 6 )
 text = "Estado"
 align = 1
 valign = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="enShock" from="Hurtbox" to="." method="_on_Hurtbox_enShock"]
 [connection signal="noShock" from="Hurtbox" to="." method="_on_Hurtbox_noShock"]

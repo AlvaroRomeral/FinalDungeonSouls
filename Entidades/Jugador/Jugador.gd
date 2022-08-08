@@ -73,11 +73,6 @@ func _input(event):
 			Jugador.setEsta(-1)
 			com_arma.damage_arma = Jugador.ataque
 			com_arma.usar()
-	if event.is_action_released("LINTERNA"):
-		if $Light2D.visible:
-			$Light2D.hide()
-		else:
-			$Light2D.show()
 
 
 func detectarControlador(evento):
