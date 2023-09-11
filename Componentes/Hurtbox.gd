@@ -4,15 +4,15 @@ signal recibeDamage(damage,posicion)
 signal enShock()
 signal noShock()
 
-onready var tiempoInvencible = $NoDamageTimer
-onready var damageIndiator = preload("res://Entidades/Efectos/NumerosDamage.tscn")
+@onready var tiempoInvencible = $NoDamageTimer
+@onready var damageIndiator = preload("res://Entidades/Efectos/NumerosDamage.tscn")
 
 var invencible = false
 var ultimoDamage = 0
-export var equipo = 1 
+@export var equipo = 1 
 
 func mostrarDamageEfecto(damage):
-	var numerito = damageIndiator.instance()
+	var numerito = damageIndiator.instantiate()
 	numerito.damage = damage
 	call_deferred("add_child",numerito)
 

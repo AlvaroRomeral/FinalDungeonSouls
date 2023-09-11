@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Pantallas/Interfaces/PanelEquipo.gd" type="Script" id=1]
-[ext_resource path="res://Recursos/Imagenes/Interfaz/slot.png" type="Texture" id=2]
-[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Recursos/Imagenes/Interfaz/slot.png" type="Texture2D" id=2]
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="FontFile" id=3]
 [ext_resource path="res://Pantallas/Interfaces/PanelInventario.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -18,15 +18,15 @@ anti_aliasing = false
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 32, 32 )
-margin_left = 2.0
-margin_right = 2.0
-margin_top = 2.0
-margin_bottom = 2.0
+offset_left = 2.0
+offset_right = 2.0
+offset_top = 2.0
+offset_bottom = 2.0
 
 [node name="PanelEquipo" type="Panel"]
-margin_right = 40.0
-margin_bottom = 48.0
-custom_styles/panel = SubResource( 2 )
+offset_right = 40.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -35,11 +35,11 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -18.0
-margin_right = 18.0
-margin_bottom = 12.0
-rect_rotation = 0.0892327
-custom_fonts/font = ExtResource( 3 )
+offset_left = -18.0
+offset_right = 18.0
+offset_bottom = 12.0
+rotation = 0.0892327
+theme_override_fonts/font = ExtResource( 3 )
 text = "Cabeza"
 align = 1
 valign = 1
@@ -49,8 +49,8 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -12.0
-margin_top = -32.0
-margin_right = 12.0
-margin_bottom = -8.0
-custom_styles/panel = SubResource( 5 )
+offset_left = -12.0
+offset_top = -32.0
+offset_right = 12.0
+offset_bottom = -8.0
+theme_override_styles/panel = SubResource( 5 )

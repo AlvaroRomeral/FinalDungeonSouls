@@ -1,6 +1,6 @@
 extends Panel
 
-export var texto = ""
+@export var texto = ""
 
 func _ready():
 	$Texto.text = texto

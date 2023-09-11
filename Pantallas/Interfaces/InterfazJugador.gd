@@ -1,34 +1,34 @@
 extends CanvasLayer
 
-onready var monedasUI = $PanelMonedas/Monedas
-onready var nivelUI = $Panel/Nivel
-onready var expbarUI = $Panel/BarraExperiencia
-onready var tween_expbar = $Panel/TweenBarraExperiencia
+@onready var monedasUI = $PanelMonedas/Monedas
+@onready var nivelUI = $Panel/Nivel
+@onready var expbarUI = $Panel/BarraExperiencia
+@onready var tween_expbar = $Panel/TweenBarraExperiencia
 # Tween
-onready var tween_vida = $BarraVida/TweenVida
-onready var tween_mana = $BarraMana/TweenMana
-onready var tween_estamina = $BarraEstamina/TweenStamina
-onready var tween_monedas = $PanelMonedas/TweenMonedas
+@onready var tween_vida = $BarraVida/TweenVida
+@onready var tween_mana = $BarraMana/TweenMana
+@onready var tween_estamina = $BarraEstamina/TweenStamina
+@onready var tween_monedas = $PanelMonedas/TweenMonedas
 # Barras
-onready var vidaUI = $BarraVida
-onready var manaUI = $BarraMana
-onready var estaminaUI = $BarraEstamina
+@onready var vidaUI = $BarraVida
+@onready var manaUI = $BarraMana
+@onready var estaminaUI = $BarraEstamina
 # Pantallas
-onready var inventario = $Inventario
-onready var pausa = $MenuPausa
-onready var tienda = $Tienda
-onready var notificacion = preload("res://Componentes/Notificaion.tscn")
-onready var alerta = preload("res://Componentes/Alerta.tscn")
+@onready var inventario = $Inventario
+@onready var pausa = $MenuPausa
+@onready var tienda = $Tienda
+@onready var notificacion = preload("res://Componentes/Notificaion.tscn")
+@onready var alerta = preload("res://Componentes/Alerta.tscn")
 
 var monedas:int = 0
 
 func _ready():
 	get_tree().paused = false
-	Global.connect("notificacionRecibida",self,"addNotificacion")
-	Jugador.connect("datosActualizados",self,"actualizarUI")
-	Global.connect("puntuacionGanada",self,"actualizarPuntuacion")
-	Global.connect("oleadaIniciada",self,"iniciarOleada")
-	Global.connect("oleadaTerminada",self,"finalizarOleada")
+	Global.connect("notificacionRecibida", Callable(self, "addNotificacion"))
+	Jugador.connect("datosActualizados", Callable(self, "actualizarUI"))
+	Global.connect("puntuacionGanada", Callable(self, "actualizarPuntuacion"))
+	Global.connect("oleadaIniciada", Callable(self, "iniciarOleada"))
+	Global.connect("oleadaTerminada", Callable(self, "finalizarOleada"))
 	actualizarUI()
 
 
@@ -123,13 +123,13 @@ func _input(event):
 
 
 func addNotificacion(text):
-	var noti_nueva = notificacion.instance()
+	var noti_nueva = notificacion.instantiate()
 	$Notificaiones.call_deferred("add_child",noti_nueva)
 	noti_nueva.texto = text
 
 
 func addAlerta(texto):
-	var nueva_alerta: Alerta = alerta.instance()
+	var nueva_alerta: Alerta = alerta.instantiate()
 	nueva_alerta.texto = texto
 	call_deferred("add_child",nueva_alerta)
 

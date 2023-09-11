@@ -1,18 +1,18 @@
 extends Area2D
 class_name FDS_Item
 
-onready var lbl_ident = $Label
+@onready var lbl_ident = $Label
 
-export var item_id: int = 1
-export(int, 1, 999) var cantidad: = 1
+@export var item_id: int = 1
+@export var cantidad: = 1 # (int, 1, 999)
 
 var interactuable = false
 
 func _ready():
 	$AnimationPlayer.play("Idle")
-	connect("body_entered",self,"setInteractuable")
-	connect("body_exited",self,"removeInteractuable")
-	$Sprite.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"] + ".png")
+	connect("body_entered", Callable(self, "setInteractuable"))
+	connect("body_exited", Callable(self, "removeInteractuable"))
+	$Sprite2D.texture = load(Global.PATH_ICONOS + Datos.getItemInfo(item_id)["icono"] + ".png")
 	lbl_ident.text = Datos.getItemInfo(item_id)["nombre"]
 	if cantidad > 1:
 		lbl_ident.text = lbl_ident.text + " (" + String(cantidad) + ")"

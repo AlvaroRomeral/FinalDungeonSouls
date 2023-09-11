@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	randomize()
-	Global.connect("oleadaTerminada",self,"timerOleadaSiguiente")
+	Global.connect("oleadaTerminada", Callable(self, "timerOleadaSiguiente"))
 	empezarModoOleada()
 
 # SISTEMA DE OLEADA ================================================================================
@@ -15,7 +15,7 @@ func empezarModoOleada():
 
 func timerOleadaSiguiente():
 	var timer = Timer.new()
-	timer.connect("timeout",self,"timerTerminado")
+	timer.connect("timeout", Callable(self, "timerTerminado"))
 	timer.wait_time = Global.tiempo_entre_rondas
 	timer.one_shot = true
 	add_child(timer)

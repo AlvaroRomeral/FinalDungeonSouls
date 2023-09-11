@@ -49,18 +49,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -68.0
-margin_top = -100.0
-margin_right = 68.0
-margin_bottom = 100.0
+offset_left = -68.0
+offset_top = -100.0
+offset_right = 68.0
+offset_bottom = 100.0
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 120.0
-margin_bottom = 152.0
-custom_constants/vseparation = 8
-custom_constants/hseparation = 8
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = 152.0
+theme_override_constants/v_separation = 8
+theme_override_constants/h_separation = 8
 columns = 2
 
 [node name="ProductoCompra" parent="Panel/GridContainer" instance=ExtResource( 2 )]
@@ -68,26 +68,26 @@ material = SubResource( 2 )
 
 [node name="ProductoCompra2" parent="Panel/GridContainer" instance=ExtResource( 2 )]
 material = SubResource( 3 )
-margin_left = 56.0
-margin_right = 104.0
+offset_left = 56.0
+offset_right = 104.0
 
 [node name="ProductoCompra3" parent="Panel/GridContainer" instance=ExtResource( 2 )]
 material = SubResource( 4 )
-margin_top = 72.0
-margin_bottom = 136.0
+offset_top = 72.0
+offset_bottom = 136.0
 
 [node name="ProductoCompra4" parent="Panel/GridContainer" instance=ExtResource( 2 )]
 material = SubResource( 5 )
-margin_left = 56.0
-margin_top = 72.0
-margin_right = 104.0
-margin_bottom = 136.0
+offset_left = 56.0
+offset_top = 72.0
+offset_right = 104.0
+offset_bottom = 136.0
 
 [node name="ButtonSalir" type="Button" parent="Panel"]
-margin_left = 16.0
-margin_top = 168.0
-margin_right = 120.0
-margin_bottom = 191.0
+offset_left = 16.0
+offset_top = 168.0
+offset_right = 120.0
+offset_bottom = 191.0
 text = "Terminado"
 
 [connection signal="draw" from="." to="." method="_on_Tienda_draw"]

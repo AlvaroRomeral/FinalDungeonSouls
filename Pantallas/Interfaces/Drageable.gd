@@ -36,10 +36,10 @@ func updateAspecto():
 			$Cantidad.visible = false
 
 
-func get_drag_data(position):
+func _get_drag_data(position):
 	if datos["id"] != null:
 		var datos_exportados = datos.duplicate()
-		var imagen = Sprite.new()
+		var imagen = Sprite2D.new()
 		imagen.texture = texture
 		var control = Control.new()
 		control.add_child(imagen)
@@ -47,7 +47,7 @@ func get_drag_data(position):
 		return datos_exportados
 
 
-func can_drop_data(position, data):
+func _can_drop_data(position, data):
 	var item_tipo = Datos.getItemTipo(data["id"])
 	match tipo:
 		"inv":
@@ -91,7 +91,7 @@ func can_drop_data(position, data):
 	return false
 
 
-func drop_data(position, data):
+func _drop_data(position, data):
 	match data["origen"].tipo: #Lo que le pasa a la casilla de donde salio
 		"inv":
 			Jugador.inventario[data["index"]] = {
@@ -144,7 +144,7 @@ func drop_data(position, data):
 
 func _on_Icono_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
-		if event.is_doubleclick():
+		if event.is_double_click():
 			if datos["id"] != null:
 				Jugador.usarItem(tipo, datos["id"], datos["index"])
 				Jugador.actualizarStats()

@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var anim_personaje = $Aspecto/AnimAspecto
-onready var anim_equipo = $Position2D/ComponenteArma/AnimArma
-onready var aspecto = $Aspecto
-onready var com_arma = $Position2D/ComponenteArma
+@onready var anim_personaje = $Aspecto/AnimAspecto
+@onready var anim_equipo = $Marker2D/ComponenteArma/AnimArma
+@onready var aspecto = $Aspecto
+@onready var com_arma = $Marker2D/ComponenteArma
 
 const ACELERACION = 800
 const VEL_NORMAL = 50
@@ -28,13 +28,13 @@ func _physics_process(delta):
 			angulo_controlador.y = Input.get_joy_axis(0,JOY_AXIS_3)
 			angulo_controlador.x = Input.get_joy_axis(0,JOY_AXIS_2)
 			if angulo_controlador != Vector2.ZERO:
-				$Position2D.rotation = angulo_controlador.angle()
+				$Marker2D.rotation = angulo_controlador.angle()
 			if angulo_controlador.x < 0:
 				aspecto.scale.x = 1
 			elif angulo_controlador.x > 0:
 				aspecto.scale.x = -1
 		else:
-			$Position2D.look_at(get_global_mouse_position())
+			$Marker2D.look_at(get_global_mouse_position())
 			if get_global_mouse_position().x < global_position.x:
 				aspecto.scale.x = 1
 			elif get_global_mouse_position().x > global_position.x:
@@ -63,7 +63,9 @@ func _physics_process(delta):
 		velocidad = velocidad.move_toward(Vector2.ZERO, FRICCION * delta)
 		anim_personaje.play("Idle")
 	
-	velocidad = move_and_slide(velocidad)
+	set_velocity(velocidad)
+	move_and_slide()
+	velocidad = velocity
 
 
 func _input(event):

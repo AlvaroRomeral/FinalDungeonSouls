@@ -37,7 +37,7 @@ var equipamiento: Dictionary = {
 var cosmeticos: Array = [2,5,8]
 
 func _ready():
-	Datos.connect("datos_cargados",self,"cargarDatos")
+	Datos.connect("datos_cargados", Callable(self, "cargarDatos"))
 
 # SETTERS ======================================================================
 
@@ -138,7 +138,7 @@ func getJugador():
 
 
 func getJugadorPosicion():
-	var jugador:KinematicBody2D = getJugador()
+	var jugador:CharacterBody2D = getJugador()
 	return jugador.get_global_transform().get_origin()
 
 

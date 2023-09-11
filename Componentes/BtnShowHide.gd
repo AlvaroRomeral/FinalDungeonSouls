@@ -1,8 +1,8 @@
 extends TextureButton
 
-export(Texture) var icono_on = preload("res://Recursos/Imagenes/Iconos/icon_16.png")
-export(Texture) var icono_off = preload("res://Recursos/Imagenes/Iconos/icon_17.png")
-export(NodePath) var nodo_afectado
+@export var icono_on: Texture2D = preload("res://Recursos/Imagenes/Iconos/icon_16.png")
+@export var icono_off: Texture2D = preload("res://Recursos/Imagenes/Iconos/icon_17.png")
+@export var nodo_afectado: NodePath
 
 var nodo
 

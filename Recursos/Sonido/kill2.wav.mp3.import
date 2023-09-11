@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/kill2.wav.mp3-999733e2a72aa8d3f40a8a60f6eab936.mp3str"
+uid="uid://cywnud8l3u4"
+path="res://.godot/imported/kill2.wav.mp3-999733e2a72aa8d3f40a8a60f6eab936.mp3str"
 
 [deps]
 
 source_file="res://Recursos/Sonido/kill2.wav.mp3"
-dest_files=[ "res://.import/kill2.wav.mp3-999733e2a72aa8d3f40a8a60f6eab936.mp3str" ]
+dest_files=["res://.godot/imported/kill2.wav.mp3-999733e2a72aa8d3f40a8a60f6eab936.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

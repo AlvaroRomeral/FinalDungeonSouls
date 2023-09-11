@@ -22,4 +22,4 @@ func _on_Cargar_botonPresionado():
 
 
 func _on_Salir_botonPresionado():
-	get_tree().change_scene("res://Pantallas/Menus/MenuPrincipal.tscn")
+	get_tree().change_scene_to_file("res://Pantallas/Menus/MenuPrincipal.tscn")

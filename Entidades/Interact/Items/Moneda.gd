@@ -1,6 +1,6 @@
 extends Area2D
 
-export var cantidad = 1
+@export var cantidad = 1
 
 func _ready():
 	$AnimationPlayer.play("Idle")

@@ -1,15 +1,15 @@
 extends Control
 
-onready var anim = $AnimationPlayer
-onready var nombreInput = $Panel/LineEdit
-onready var botonSubir = $Panel/Button
+@onready var anim = $AnimationPlayer
+@onready var nombreInput = $Panel/LineEdit
+@onready var botonSubir = $Panel/Button
 
 func _on_Control_draw():
 	anim.play("Aparece")
 
 
 func volverMenuPrincipal():
-	get_tree().change_scene("res://Pantallas/Menus/MenuPrincipal.tscn")
+	get_tree().change_scene_to_file("res://Pantallas/Menus/MenuPrincipal.tscn")
 
 
 func _on_Label_draw():

@@ -58,7 +58,7 @@ func _ready():
 # print("Hola {nombre}, vete, no aceptamos viejos de {edad} años".format(DatosJugador.datosPersonales))
 
 func cambiarNivel(nivel):
-	get_tree().change_scene(nivel)
+	get_tree().change_scene_to_file(nivel)
 
 
 func Notificacion(texto: String):

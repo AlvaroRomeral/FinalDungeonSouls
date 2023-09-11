@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Componentes/EnemySpawner.gd" type="Script" id=1]
-[ext_resource path="res://Recursos/Imagenes/Sprites/invocador.png" type="Texture" id=2]
+[ext_resource path="res://Recursos/Imagenes/Sprites/invocador.png" type="Texture2D" id=2]
 
 [node name="EnemySpawner" type="Node2D" groups=["spawner"]]
 script = ExtResource( 1 )
@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 wait_time = 4.0
 autostart = true
 
-[node name="Node2D" type="Sprite" parent="."]
+[node name="Node2D" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

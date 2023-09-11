@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	Global.connect("modoPelicula",self,"modoPelicula")
+	Global.connect("modoPelicula", Callable(self, "modoPelicula"))
 
 
 func modoPelicula(modo):

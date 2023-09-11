@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfnlvk8vjoamc"]
+
+[ext_resource type="Script" path="res://scripts/components/comp_vida.gd" id="1_um77y"]
+
+[node name="CompVida" type="Node"]
+script = ExtResource("1_um77y")

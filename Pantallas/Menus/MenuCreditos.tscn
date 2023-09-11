@@ -20,12 +20,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -192.0
-margin_right = 192.0
-margin_bottom = 560.0
+offset_left = -192.0
+offset_right = 192.0
+offset_bottom = 560.0
 theme = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]
+text = "[center]
 [u]Director[/u]
 Alvaro Romeral Pineda
 
@@ -100,10 +100,10 @@ scroll_active = false
 [node name="Boton" parent="." instance=ExtResource( 3 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -32.0
-margin_right = 131.0
-margin_bottom = -7.0
+offset_left = 8.0
+offset_top = -32.0
+offset_right = 131.0
+offset_bottom = -7.0
 text = "Menu Principal"
 
 [connection signal="botonPresionado" from="Boton" to="." method="_on_Boton_botonPresionado"]

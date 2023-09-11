@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Dungeon_-_Sacred_Sepulcher.ogg-1af36b7df4336b24c0c78fb9afc2c0cf.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b6tldukhc5mfm"
+path="res://.godot/imported/Dungeon_-_Sacred_Sepulcher.ogg-1af36b7df4336b24c0c78fb9afc2c0cf.oggvorbisstr"
 
 [deps]
 
 source_file="res://Recursos/Musica/Dungeon_-_Sacred_Sepulcher.ogg"
-dest_files=[ "res://.import/Dungeon_-_Sacred_Sepulcher.ogg-1af36b7df4336b24c0c78fb9afc2c0cf.oggstr" ]
+dest_files=["res://.godot/imported/Dungeon_-_Sacred_Sepulcher.ogg-1af36b7df4336b24c0c78fb9afc2c0cf.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://Recursos/Imagenes/Tilesets/Slates v.2 [32x32px orthogonal tileset by Ivan Voirol].png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Imagenes/Tilesets/Slates v.2 [32x32px orthogonal tileset by Ivan Voirol].png" type="Texture2D" id=1]
 
 [resource]
 0/name = "Slates v.2 [32x32px orthogonal tileset by Ivan Voirol].png 0"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg0fnfjoyhkgt"]
+
+[ext_resource type="Script" path="res://scripts/interfaces/pantalla_menu_principal.gd" id="1_b3pfp"]
+
+[node name="PantallaMenuPrincipal" type="CanvasLayer" node_paths=PackedStringArray("boton_jugar", "boton_opciones", "boton_salir")]
+script = ExtResource("1_b3pfp")
+boton_jugar = NodePath("VBoxMenu/ButtonJugar")
+boton_opciones = NodePath("VBoxMenu/ButtonOpciones")
+boton_salir = NodePath("VBoxMenu/ButtonSalir")
+
+[node name="VBoxMenu" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -101.0
+offset_right = 35.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonJugar" type="Button" parent="VBoxMenu"]
+layout_mode = 2
+text = "Play"
+
+[node name="ButtonOpciones" type="Button" parent="VBoxMenu"]
+layout_mode = 2
+text = "Options"
+
+[node name="ButtonSalir" type="Button" parent="VBoxMenu"]
+layout_mode = 2
+text = "Exit"

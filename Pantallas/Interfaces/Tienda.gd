@@ -7,7 +7,7 @@ func _ready():
 
 func generarProductos():
 	for x in $Panel/GridContainer.get_children():
-		var id = int(rand_range(4,19))
+		var id = int(randf_range(4,19))
 		x.id_item = id
 		x.cantidad = 1
 		x.actualizar()

@@ -1,6 +1,6 @@
 extends Panel
 
-export(int) var slot_equipo = 0
+@export var slot_equipo: int = 0
 
 func _ready():
 	pass

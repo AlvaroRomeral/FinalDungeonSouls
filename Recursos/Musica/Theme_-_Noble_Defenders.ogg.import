@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Theme_-_Noble_Defenders.ogg-5985c8e0eadcdf38a55803bf50b9526a.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://biyt0eyijwmq2"
+path="res://.godot/imported/Theme_-_Noble_Defenders.ogg-5985c8e0eadcdf38a55803bf50b9526a.oggvorbisstr"
 
 [deps]
 
 source_file="res://Recursos/Musica/Theme_-_Noble_Defenders.ogg"
-dest_files=[ "res://.import/Theme_-_Noble_Defenders.ogg-5985c8e0eadcdf38a55803bf50b9526a.oggstr" ]
+dest_files=["res://.godot/imported/Theme_-_Noble_Defenders.ogg-5985c8e0eadcdf38a55803bf50b9526a.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

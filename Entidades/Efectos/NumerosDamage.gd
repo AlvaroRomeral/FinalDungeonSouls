@@ -1,7 +1,7 @@
 extends Control
 
 
-export var damage = 0
+@export var damage = 0
 
 
 func _ready():

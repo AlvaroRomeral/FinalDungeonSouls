@@ -2,11 +2,11 @@ extends TextureButton
 
 signal ropa_seleccionada(id_cosmetico)
 
-onready var pnl_fondo = $NinePatchRect
-onready var lbl_nombre = $lblNombre
-onready var lbl_precio = $lblPrecio
-onready var img_cosmetico = $Cosmetico
-onready var img_maniqui = $BaseManiqui
+@onready var pnl_fondo = $NinePatchRect
+@onready var lbl_nombre = $lblNombre
+@onready var lbl_precio = $lblPrecio
+@onready var img_cosmetico = $Cosmetico
+@onready var img_maniqui = $BaseManiqui
 
 var bloqueado = false
 var id = -1

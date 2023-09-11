@@ -10,8 +10,8 @@
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -48.0
-margin_right = 48.0
+offset_left = -48.0
+offset_right = 48.0
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 
@@ -19,35 +19,35 @@ script = ExtResource( 2 )
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -42.0
-margin_right = 42.0
+offset_left = -42.0
+offset_right = 42.0
 alignment = 1
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Continuar" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 128.0
-margin_right = 84.0
-margin_bottom = 151.0
+offset_top = 128.0
+offset_right = 84.0
+offset_bottom = 151.0
 text = "Continuar"
 
 [node name="Guardar" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 155.0
-margin_right = 84.0
-margin_bottom = 178.0
+offset_top = 155.0
+offset_right = 84.0
+offset_bottom = 178.0
 text = "Guardar"
 
 [node name="Cargar" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 182.0
-margin_right = 84.0
-margin_bottom = 205.0
+offset_top = 182.0
+offset_right = 84.0
+offset_bottom = 205.0
 text = "Opciones"
 
 [node name="Salir" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 209.0
-margin_right = 84.0
-margin_bottom = 232.0
+offset_top = 209.0
+offset_right = 84.0
+offset_bottom = 232.0
 group = SubResource( 8 )
 text = "Salir"
 

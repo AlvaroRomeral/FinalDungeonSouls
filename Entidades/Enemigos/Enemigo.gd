@@ -1,26 +1,26 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var anim_cuerpo:AnimationPlayer = $Aspecto/AnimAspecto
-onready var lbl_estado = $LabelEstado
-onready var navegacion = $NavigationAgent2D
-onready var aspecto = $"%Aspecto"
+@onready var anim_cuerpo:AnimationPlayer = $Aspecto/AnimAspecto
+@onready var lbl_estado = $LabelEstado
+@onready var navegacion = $NavigationAgent2D
+@onready var aspecto = $"%Aspecto"
 
 const FRICCION = 500
 const RES_ITEM = preload("res://Entidades/Interact/Items/Item.tscn")
 
-export var tier = 1
-export var vida = 5
-export var ataque = 2
-export var velocidad = 2000
-export var id_drop = 2
-export var cantidad_drop = 5
-export var exp_drop = 100
-export var puntuacion = 100
+@export var tier = 1
+@export var vida = 5
+@export var ataque = 2
+@export var velocidad = 2000
+@export var id_drop = 2
+@export var cantidad_drop = 5
+@export var exp_drop = 100
+@export var puntuacion = 100
 
 var enShock = false
 var movimiento = Vector2.ZERO
 
-var jugador : KinematicBody2D
+var jugador : CharacterBody2D
 var objetivo : Vector2
 var path:Array = []
 #var nav: NavigationAgent2D = null
@@ -56,9 +56,9 @@ func _physics_process(delta):
 		PERSIGUIENDO:
 			lbl_estado.text = "PERSIGUIENDO"
 			
-			navegacion.set_target_location(jugador.global_position)
+			navegacion.set_target_position(jugador.global_position)
 			if navegacion.is_target_reachable():
-				var posicion_siguiente = navegacion.get_next_location()
+				var posicion_siguiente = navegacion.get_next_path_position()
 				var direccion = global_position.direction_to(posicion_siguiente)
 				movimiento = direccion * velocidad * delta
 				if posicion_siguiente.x > global_position.x:
@@ -83,7 +83,9 @@ func _physics_process(delta):
 		MUERTO:
 			lbl_estado.text = "MUERTO"
 	
-	movimiento = move_and_slide(movimiento)
+	set_velocity(movimiento)
+	move_and_slide()
+	movimiento = velocity
 
 
 func calcularEstado():
@@ -103,8 +105,8 @@ func calcularEstado():
 
 func generarPath(objetivo):
 #	print(objetivo)
-	navegacion.set_target_location(objetivo)
-	path = navegacion.get_nav_path()
+	navegacion.set_target_position(objetivo)
+	path = navegacion.get_current_navigation_path()
 #	print(path)
 #	if objetivo != Vector2.ZERO:
 #		path = nav.get_simple_path(global_position, objetivo, false)
@@ -128,7 +130,7 @@ func morir():
 
 
 func dropItem():
-	var drop: FDS_Item = RES_ITEM.instance()
+	var drop: FDS_Item = RES_ITEM.instantiate()
 	drop.item_id = id_drop
 	drop.cantidad = cantidad_drop
 	drop.global_position = global_position

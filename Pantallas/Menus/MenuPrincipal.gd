@@ -1,8 +1,8 @@
 extends Control
 
-export(float) var velocidad_montanas = 0.05
-export(float) var velocidad_arboles_fondo = 0.3
-export(float) var velocidad_arboles = 0.6
+@export var velocidad_montanas: float = 0.05
+@export var velocidad_arboles_fondo: float = 0.3
+@export var velocidad_arboles: float = 0.6
 
 func _ready():
 	get_tree().paused = false
@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func cargarNivel():
-	get_tree().change_scene(Global.nivel)
+	get_tree().change_scene_to_file(Global.nivel)
 
 # BOTONES PRINCIPALES ==============================================================================
 
@@ -36,12 +36,12 @@ func _on_BtnOpciones_botonPresionado():
 
 
 func _on_BtnCreditos_botonPresionado():
-	get_tree().change_scene("res://Pantallas/Menus/MenuCreditos.tscn")
+	get_tree().change_scene_to_file("res://Pantallas/Menus/MenuCreditos.tscn")
 
 
 func _on_BtnSalir_botonPresionado():
 	Datos.guardarPersistencia()
-	print_stray_nodes()
+	print_orphan_nodes()
 	get_tree().quit()
 
 # OTROS BOTONES ====================================================================================
@@ -49,24 +49,24 @@ func _on_BtnSalir_botonPresionado():
 func _on_btnJugarTest_botonPresionado():
 	Datos.nuevosDatos()
 	Datos.cargarDatos()
-	get_tree().change_scene(Global.nivel)
+	get_tree().change_scene_to_file(Global.nivel)
 
 
 func _on_BtnPantallaCompleta_button_up():
-	Datos.ar_persistencia.pantalla_completa = !OS.window_fullscreen
+	Datos.ar_persistencia.pantalla_completa = !((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
 	Datos.cargarDatosPersistencia()
 
 
 func _on_btnTestCreacionPersonaje_botonPresionado():
-	get_tree().change_scene("res://Pantallas/Interfaces/CreadorPersonajes.tscn")
+	get_tree().change_scene_to_file("res://Pantallas/Interfaces/CreadorPersonajes.tscn")
 
 
 func _on_btnScoreboard_botonPresionado():
-	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")
+	get_tree().change_scene_to_file("res://addons/silent_wolf/Scores/Leaderboard.tscn")
 
 
 func _on_BtnPuntuacion_botonPresionado():
-	get_tree().change_scene("res://Pantallas/Menus/PantallaPuntuacion.tscn")
+	get_tree().change_scene_to_file("res://Pantallas/Menus/PantallaPuntuacion.tscn")
 
 
 func _on_HSlider_value_changed(value):

@@ -1,7 +1,7 @@
 extends Area2D
 
-export var damage = 1
-export var equipo = 1
+@export var damage = 1
+@export var equipo = 1
 
 func setActico(activo:bool):
 	if activo:

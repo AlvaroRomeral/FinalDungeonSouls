@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Cabeza/hood_gray.png" type="Texture" id=1]
-[ext_resource path="res://Recursos/Imagenes/Sprites/Cuerpo/halfling_m.png" type="Texture" id=2]
-[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Piernas/leg_armor04.png" type="Texture" id=3]
-[ext_resource path="res://Recursos/Imagenes/Iconos/icon_50.png" type="Texture" id=4]
-[ext_resource path="res://Recursos/Imagenes/Iconos/icon_51.png" type="Texture" id=5]
-[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Pecho/chainmail.png" type="Texture" id=6]
-[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Pies/middle_brown_3.png" type="Texture" id=7]
-[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Recursos/Imagenes/Iconos/icon_94.png" type="Texture" id=9]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Cabeza/hood_gray.png" type="Texture2D" id=1]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Cuerpo/halfling_m.png" type="Texture2D" id=2]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Piernas/leg_armor04.png" type="Texture2D" id=3]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_50.png" type="Texture2D" id=4]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_51.png" type="Texture2D" id=5]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Pecho/chainmail.png" type="Texture2D" id=6]
+[ext_resource path="res://Recursos/Imagenes/Sprites/Equipo/Pies/middle_brown_3.png" type="Texture2D" id=7]
+[ext_resource path="res://Recursos/Fonts/Kenney.tres" type="FontFile" id=8]
+[ext_resource path="res://Recursos/Imagenes/Iconos/icon_94.png" type="Texture2D" id=9]
 [ext_resource path="res://Pantallas/Interfaces/CreadorPersonajes.gd" type="Script" id=10]
 [ext_resource path="res://Componentes/BtnShowHide.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Recursos/Estilos/Interfaz.tres" type="Theme" id=12]
@@ -25,250 +25,250 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -96.0
-margin_right = 160.0
-margin_bottom = 96.0
+offset_left = -160.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = 96.0
 theme = ExtResource( 12 )
 
 [node name="Panel" type="Panel" parent="Panel"]
-margin_left = 128.0
-margin_top = 25.0
-margin_right = 192.0
-margin_bottom = 129.0
-custom_styles/panel = SubResource( 2 )
+offset_left = 128.0
+offset_top = 25.0
+offset_right = 192.0
+offset_bottom = 129.0
+theme_override_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Base" type="Sprite" parent="Panel/Panel"]
+[node name="Base" type="Sprite2D" parent="Panel/Panel"]
 position = Vector2( 32, 47 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
-[node name="Piernas" type="Sprite" parent="Panel/Panel"]
+[node name="Piernas" type="Sprite2D" parent="Panel/Panel"]
 position = Vector2( 32, 47 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
-[node name="Pies" type="Sprite" parent="Panel/Panel"]
+[node name="Pies" type="Sprite2D" parent="Panel/Panel"]
 position = Vector2( 32, 47 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 
-[node name="Pecho" type="Sprite" parent="Panel/Panel"]
+[node name="Pecho" type="Sprite2D" parent="Panel/Panel"]
 position = Vector2( 32, 47 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 
-[node name="Cabeza" type="Sprite" parent="Panel/Panel"]
+[node name="Cabeza" type="Sprite2D" parent="Panel/Panel"]
 position = Vector2( 32, 47 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
 [node name="ConCabeza" type="HBoxContainer" parent="Panel"]
-margin_left = 208.0
-margin_top = 25.0
-margin_right = 292.0
-margin_bottom = 41.0
-custom_constants/separation = 0
+offset_left = 208.0
+offset_top = 25.0
+offset_right = 292.0
+offset_bottom = 41.0
+theme_override_constants/separation = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BtnShowHide" parent="Panel/ConCabeza" instance=ExtResource( 11 )]
-margin_right = 16.0
-margin_bottom = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
 expand = false
 nodo_afectado = NodePath("../../Panel/Cabeza")
 
 [node name="BtnCabezaI" type="TextureButton" parent="Panel/ConCabeza"]
-margin_left = 16.0
-margin_right = 32.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 16.0
+offset_right = 32.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 5 )
 
 [node name="LblCabeza" type="Label" parent="Panel/ConCabeza"]
-margin_left = 32.0
-margin_top = 2.0
-margin_right = 68.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 24, 8 )
-custom_fonts/font = ExtResource( 8 )
+offset_left = 32.0
+offset_top = 2.0
+offset_right = 68.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 24, 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "Cabeza"
 align = 1
 valign = 1
 
 [node name="BtnCabezaD" type="TextureButton" parent="Panel/ConCabeza"]
-margin_left = 68.0
-margin_right = 84.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 68.0
+offset_right = 84.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 4 )
 
 [node name="ConPecho" type="HBoxContainer" parent="Panel"]
-margin_left = 208.0
-margin_top = 48.0
-margin_right = 286.0
-margin_bottom = 64.0
-custom_constants/separation = 0
+offset_left = 208.0
+offset_top = 48.0
+offset_right = 286.0
+offset_bottom = 64.0
+theme_override_constants/separation = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BtnShowHide" parent="Panel/ConPecho" instance=ExtResource( 11 )]
-margin_right = 16.0
-margin_bottom = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
 expand = false
 nodo_afectado = NodePath("../../Panel/Pecho")
 
 [node name="BtnPechoI" type="TextureButton" parent="Panel/ConPecho"]
-margin_left = 16.0
-margin_right = 32.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 16.0
+offset_right = 32.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 5 )
 
 [node name="LblPecho" type="Label" parent="Panel/ConPecho"]
-margin_left = 32.0
-margin_top = 2.0
-margin_right = 62.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 24, 8 )
-custom_fonts/font = ExtResource( 8 )
+offset_left = 32.0
+offset_top = 2.0
+offset_right = 62.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 24, 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "Pecho"
 align = 1
 valign = 1
 
 [node name="BtnPechoD" type="TextureButton" parent="Panel/ConPecho"]
-margin_left = 62.0
-margin_right = 78.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 62.0
+offset_right = 78.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 4 )
 
 [node name="ConPiernas" type="HBoxContainer" parent="Panel"]
-margin_left = 208.0
-margin_top = 72.0
-margin_right = 294.0
-margin_bottom = 88.0
-custom_constants/separation = 0
+offset_left = 208.0
+offset_top = 72.0
+offset_right = 294.0
+offset_bottom = 88.0
+theme_override_constants/separation = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BtnShowHide" parent="Panel/ConPiernas" instance=ExtResource( 11 )]
-margin_right = 16.0
-margin_bottom = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
 expand = false
 nodo_afectado = NodePath("../../Panel/Piernas")
 
 [node name="BtnPiernasI" type="TextureButton" parent="Panel/ConPiernas"]
-margin_left = 16.0
-margin_right = 32.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 16.0
+offset_right = 32.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 5 )
 
 [node name="LblPiernas" type="Label" parent="Panel/ConPiernas"]
-margin_left = 32.0
-margin_top = 2.0
-margin_right = 70.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 24, 8 )
-custom_fonts/font = ExtResource( 8 )
+offset_left = 32.0
+offset_top = 2.0
+offset_right = 70.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 24, 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "Piernas"
 align = 1
 valign = 1
 
 [node name="BtnPiernasD" type="TextureButton" parent="Panel/ConPiernas"]
-margin_left = 70.0
-margin_right = 86.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 70.0
+offset_right = 86.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 4 )
 
 [node name="ConPies" type="HBoxContainer" parent="Panel"]
-margin_left = 208.0
-margin_top = 96.0
-margin_right = 280.0
-margin_bottom = 112.0
-custom_constants/separation = 0
+offset_left = 208.0
+offset_top = 96.0
+offset_right = 280.0
+offset_bottom = 112.0
+theme_override_constants/separation = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BtnShowHide" parent="Panel/ConPies" instance=ExtResource( 11 )]
-margin_right = 16.0
-margin_bottom = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
 expand = false
 nodo_afectado = NodePath("../../Panel/Pies")
 
 [node name="BtnPiesI" type="TextureButton" parent="Panel/ConPies"]
-margin_left = 16.0
-margin_right = 32.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 16.0
+offset_right = 32.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 5 )
 
 [node name="LblPies" type="Label" parent="Panel/ConPies"]
-margin_left = 32.0
-margin_top = 2.0
-margin_right = 56.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 24, 8 )
-custom_fonts/font = ExtResource( 8 )
+offset_left = 32.0
+offset_top = 2.0
+offset_right = 56.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 24, 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "Pies"
 align = 1
 valign = 1
 
 [node name="BtnPiesD" type="TextureButton" parent="Panel/ConPies"]
-margin_left = 56.0
-margin_right = 72.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 56.0
+offset_right = 72.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 4 )
 
 [node name="ConCuerpo" type="HBoxContainer" parent="Panel"]
-margin_left = 128.0
-margin_top = 136.0
-margin_right = 196.0
-margin_bottom = 152.0
-custom_constants/separation = 0
+offset_left = 128.0
+offset_top = 136.0
+offset_right = 196.0
+offset_bottom = 152.0
+theme_override_constants/separation = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BtnCuerpoI" type="TextureButton" parent="Panel/ConCuerpo"]
-margin_right = 16.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_right = 16.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 5 )
 
 [node name="LblPiernas2" type="Label" parent="Panel/ConCuerpo"]
-margin_left = 16.0
-margin_top = 2.0
-margin_right = 52.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 32, 8 )
-custom_fonts/font = ExtResource( 8 )
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 52.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 32, 8 )
+theme_override_fonts/font = ExtResource( 8 )
 text = "Cuerpo"
 align = 1
 valign = 1
 
 [node name="BtnCuerpoD" type="TextureButton" parent="Panel/ConCuerpo"]
-margin_left = 52.0
-margin_right = 68.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 52.0
+offset_right = 68.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 4 )
 
 [node name="BtnCerrar" type="TextureButton" parent="Panel"]
-margin_left = 304.0
-margin_right = 320.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 8, 8 )
+offset_left = 304.0
+offset_right = 320.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 9 )
 
 [connection signal="button_up" from="Panel/ConCabeza/BtnCabezaI" to="." method="_on_BtnCabezaI_button_up"]

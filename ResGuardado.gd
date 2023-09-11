@@ -3,17 +3,17 @@ class_name ResGuardado
 
 # DATOS JUGADOR
 # DATOS
-export(int) var vida = 10
-export(int) var mana = 0
-export(int) var esta = 1
-export(int) var nivel = 1
-export(int) var experiencia = 0
-export(float) var tiempo_preparatoria = 10
+@export var vida: int = 10
+@export var mana: int = 0
+@export var esta: int = 1
+@export var nivel: int = 1
+@export var experiencia: int = 0
+@export var tiempo_preparatoria: float = 10
 
 # INVENTARIO Y EQUIPAMIENTO
-export(int) var monedas = 100
-export(Array) var inventario = []
-export(Dictionary) var equipamiento = {
+@export var monedas: int = 100
+@export var inventario: Array = []
+@export var equipamiento: Dictionary = {
 	"arma" : null,
 	"cabeza" : null,
 	"torso" : null,

@@ -2,10 +2,10 @@ extends Panel
 
 signal devolverInfo(id)
 
-export(String,"inv","arma","cabeza","torso","piernas","pies","amuleto1","amuleto2","amuleto3","amuleto4") var tipo = "inv"
+@export var tipo = "inv" # (String,"inv","arma","cabeza","torso","piernas","pies","amuleto1","amuleto2","amuleto3","amuleto4")
 
-onready var com_icono = $Icono
-onready var com_fondo = $Fondo
+@onready var com_icono = $Icono
+@onready var com_fondo = $Fondo
 
 var item_posicion
 

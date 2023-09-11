@@ -14,7 +14,7 @@ var fdsdb: sqlite
 
 func _ready():
 	#Comprobacion de directorios
-	var directorio = Directory.new()
+	var directorio = DirAccess.new()
 	if not directorio.file_exists(Global.PATH_SAVES):
 		directorio.make_dir_recursive(Global.PATH_SAVES)
 	if not directorio.file_exists(Global.PATH_DATOS):
@@ -114,12 +114,12 @@ func guardarNivel():
 
 func cargarNivel():
 	var nivel = load(Global.PATH_SAVES + "nivelGuardado.tscn")
-	get_tree().change_scene(Global.PATH_SAVES + "nivelGuardado.tscn")
+	get_tree().change_scene_to_file(Global.PATH_SAVES + "nivelGuardado.tscn")
 
 
 func cargarDatosPersistencia():
-	OS.window_fullscreen = ar_persistencia.pantalla_completa
-	OS.window_size = ar_persistencia.resolucion
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (ar_persistencia.pantalla_completa) else Window.MODE_WINDOWED
+	get_window().size = ar_persistencia.resolucion
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Musica"),ar_persistencia.volumen_musica)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Efectos"),ar_persistencia.volumen_efectos)
 
@@ -264,9 +264,9 @@ func getOleadaEnemigos(oleada):
 
 func getArchivosDePath(path):
 	var files = []
-	var dir = Directory.new()
+	var dir = DirAccess.new()
 	dir.open(path)
-	dir.list_dir_begin(true)
+	dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	while true:
 		var file = dir.get_next()
 		if file == "":
