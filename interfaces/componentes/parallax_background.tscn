@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b35bf51dfwqxe"]
+
+[ext_resource type="Script" path="res://scripts/interfaces/parallax_background.gd" id="1_cb8sv"]
+[ext_resource type="Texture2D" uid="uid://c6t5mnhw1lfe7" path="res://assets/imagenes/parallax/parallax-mountain-bg.png" id="2_y1xxq"]
+[ext_resource type="Texture2D" uid="uid://jcm2chijkq12" path="res://assets/imagenes/parallax/parallax-mountain-montain-far.png" id="3_3qvr7"]
+[ext_resource type="Texture2D" uid="uid://dp5go3jhhmxrd" path="res://assets/imagenes/parallax/parallax-mountain-mountains.png" id="4_dktae"]
+[ext_resource type="Texture2D" uid="uid://bodc1g6wqfehd" path="res://assets/imagenes/parallax/parallax-mountain-trees.png" id="5_fpxs4"]
+[ext_resource type="Texture2D" uid="uid://c2k5xqovwton6" path="res://assets/imagenes/parallax/parallax-mountain-foreground-trees.png" id="6_8i6n8"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+offset = Vector2(256, 222)
+transform = Transform2D(1, 0, 0, 1, 256, 222)
+script = ExtResource("1_cb8sv")
+
+[node name="Cielo" type="Sprite2D" parent="."]
+position = Vector2(64.0002, -42)
+scale = Vector2(2.35294, 2.25)
+texture = ExtResource("2_y1xxq")
+
+[node name="Montanna" type="Sprite2D" parent="."]
+position = Vector2(64, -42)
+scale = Vector2(2.35294, 2.25)
+texture = ExtResource("3_3qvr7")
+
+[node name="LayerFondo" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_offset = Vector2(200, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Montannas" type="Sprite2D" parent="LayerFondo"]
+position = Vector2(64.0001, 27)
+scale = Vector2(1.17647, 1.3875)
+texture = ExtResource("4_dktae")
+region_rect = Rect2(0, 70, 1087, 90)
+
+[node name="LayerMedio" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 0.8)
+motion_offset = Vector2(20, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="ArbolesLejanos" type="Sprite2D" parent="LayerMedio"]
+position = Vector2(64, 27)
+scale = Vector2(1.17647, 1.3875)
+texture = ExtResource("5_fpxs4")
+region_rect = Rect2(0, 0, 1094, 160)
+
+[node name="LayerFrente" type="ParallaxLayer" parent="."]
+motion_offset = Vector2(30, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="ArbolesCercanos" type="Sprite2D" parent="LayerFrente"]
+position = Vector2(64, 27)
+scale = Vector2(1.17647, 1.3875)
+texture = ExtResource("6_8i6n8")
+region_rect = Rect2(0, 0, 1096, 160)

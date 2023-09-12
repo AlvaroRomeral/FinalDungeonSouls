@@ -1,33 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg0fnfjoyhkgt"]
+[gd_scene load_steps=5 format=3 uid="uid://cg0fnfjoyhkgt"]
 
-[ext_resource type="Script" path="res://scripts/interfaces/pantalla_menu_principal.gd" id="1_b3pfp"]
+[ext_resource type="PackedScene" uid="uid://b35bf51dfwqxe" path="res://interfaces/componentes/parallax_background.tscn" id="1_4q0eh"]
+[ext_resource type="Script" path="res://scripts/interfaces/pantalla_menu_principal.gd" id="1_bi1wn"]
+[ext_resource type="Theme" uid="uid://baeijdvcae544" path="res://OLD/Recursos/Estilos/Interfaz.tres" id="1_bpjbi"]
+[ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="3_nj5ro"]
 
-[node name="PantallaMenuPrincipal" type="CanvasLayer" node_paths=PackedStringArray("boton_jugar", "boton_opciones", "boton_salir")]
-script = ExtResource("1_b3pfp")
-boton_jugar = NodePath("VBoxMenu/ButtonJugar")
-boton_opciones = NodePath("VBoxMenu/ButtonOpciones")
-boton_salir = NodePath("VBoxMenu/ButtonSalir")
+[node name="PantallaMenuPrincipal" type="CanvasLayer" node_paths=PackedStringArray("boton_nueva_partida", "boton_cargar_partida", "boton_opciones", "boton_puntuacion", "boton_salir")]
+script = ExtResource("1_bi1wn")
+boton_nueva_partida = NodePath("Control/VBoxContainer/ButtonNuevaPartida")
+boton_cargar_partida = NodePath("Control/VBoxContainer/ButtonCargarPartida")
+boton_opciones = NodePath("Control/VBoxContainer/ButtonOpciones")
+boton_puntuacion = NodePath("Control/VBoxContainer/ButtonPuntuaciones")
+boton_salir = NodePath("Control/VBoxContainer/ButtonSalir")
 
-[node name="VBoxMenu" type="VBoxContainer" parent="."]
-anchors_preset = 7
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_4q0eh")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_nj5ro")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -35.0
-offset_top = -101.0
-offset_right = 35.0
+anchor_bottom = 0.5
+offset_left = 231.0
+offset_top = 138.0
+offset_right = 369.0
+offset_bottom = 340.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme = ExtResource("1_bpjbi")
+alignment = 1
 
-[node name="ButtonJugar" type="Button" parent="VBoxMenu"]
+[node name="ButtonNuevaPartida" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "Play"
+text = "New Game"
+flat = true
 
-[node name="ButtonOpciones" type="Button" parent="VBoxMenu"]
+[node name="ButtonCargarPartida" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+flat = true
+
+[node name="ButtonOpciones" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Options"
+flat = true
 
-[node name="ButtonSalir" type="Button" parent="VBoxMenu"]
+[node name="ButtonPuntuaciones" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "ScoreBoard"
+flat = true
+
+[node name="ButtonSalir" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+flat = true

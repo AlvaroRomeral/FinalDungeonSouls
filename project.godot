@@ -11,16 +11,18 @@ config_version=5
 [application]
 
 config/name="FinalDungeonSouls"
-run/main_scene="res://Pantallas/Menus/MenuPrincipal.tscn"
+run/main_scene="res://scenes/menu_principal.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="FinalDungeonSouls"
 config/features=PackedStringArray("4.1")
-config/icon="res://FDS_icon.png"
-config/windows_native_icon="res://FDS_icon.ico"
+config/icon="res://icon.svg"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+Global="*res://scripts/Global.gd"
+Opciones="*res://scripts/Opciones.gd"
 
 [display]
 
@@ -209,6 +211,5 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_environment="res://default_env.tres"
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true

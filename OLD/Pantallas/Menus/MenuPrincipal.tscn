@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bar3rpb8mlda0"]
+
+[ext_resource type="PackedScene" uid="uid://cg0fnfjoyhkgt" path="res://interfaces/pantallas/pantalla_menu_principal.tscn" id="3_4bvkq"]
+[ext_resource type="PackedScene" uid="uid://b35bf51dfwqxe" path="res://interfaces/componentes/parallax_background.tscn" id="3_iykps"]
+[ext_resource type="Theme" uid="uid://baeijdvcae544" path="res://Recursos/Estilos/Interfaz.tres" id="17"]
+[ext_resource type="AudioStream" uid="uid://b6tldukhc5mfm" path="res://Recursos/Musica/Dungeon_-_Sacred_Sepulcher.ogg" id="24"]
+
+[node name="MenuPrincipal" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17")
+
+[node name="PantallaMenuPrincipal" parent="." instance=ExtResource("3_4bvkq")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_iykps")]
+
+[node name="MusicaMenuPrincipal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24")
+autoplay = true
+bus = &"Musica"

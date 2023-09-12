@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bsg3yay180jg2"]
+
+[node name="ControlGameplay" type="Node2D"]

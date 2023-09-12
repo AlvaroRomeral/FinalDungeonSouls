@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cd8rnaki8n5uv"]
+
+[ext_resource type="FontFile" uid="uid://mlyf1cnpjxl6" path="res://assets/fonts/alagard.ttf" id="1_ybdtd"]
+
+[resource]
+default_font = ExtResource("1_ybdtd")
+default_font_size = 16
+Button/styles/focus = null
