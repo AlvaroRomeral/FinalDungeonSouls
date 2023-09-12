@@ -1,10 +1,18 @@
 extends CharacterBody2D
 
+@export var animacion:AnimationPlayer
+@export var equipamiento_cabeza:Node2D
+@export var equipamiento_cuerpo:Node2D
+@export var equipamiento_brazos:Node2D
+@export var equipamiento_pies:Node2D
+@export var accion_cooldown:Timer
+
 @onready var anim_personaje = $Aspecto/AnimAspecto
 @onready var anim_equipo = $Marker2D/ComponenteArma/AnimArma
 @onready var aspecto = $Aspecto
 @onready var com_arma = $Marker2D/ComponenteArma
 
+const SPEED = 300.0
 const ACELERACION = 800
 const VEL_NORMAL = 50
 const VEL_CORRER = 70
@@ -20,52 +28,58 @@ func _ready():
 	Jugador.actualizarStats()
 	anim_personaje.play("Idle")
 
-# MOVIMIENTO =======================================================================================
 
 func _physics_process(delta):
-	if !anim_equipo.is_playing():
-		if controlador:
-			angulo_controlador.y = Input.get_joy_axis(0,JOY_AXIS_3)
-			angulo_controlador.x = Input.get_joy_axis(0,JOY_AXIS_2)
-			if angulo_controlador != Vector2.ZERO:
-				$Marker2D.rotation = angulo_controlador.angle()
-			if angulo_controlador.x < 0:
-				aspecto.scale.x = 1
-			elif angulo_controlador.x > 0:
-				aspecto.scale.x = -1
-		else:
-			$Marker2D.look_at(get_global_mouse_position())
-			if get_global_mouse_position().x < global_position.x:
-				aspecto.scale.x = 1
-			elif get_global_mouse_position().x > global_position.x:
-				aspecto.scale.x = -1
-				
-	var direccion = Vector2.ZERO
-	if Input.is_action_pressed("MOVER_ARRIBA"):
-		direccion.y -= 1
-	if Input.is_action_pressed("MOVER_ABAJO"):
-		direccion.y += 1
-	if Input.is_action_pressed("MOVER_IZQ"):
-		direccion.x -= 1
-	if Input.is_action_pressed("MOVER_DER"):
-		direccion.x += 1
-	direccion = direccion.normalized()
-	
-	if direccion != Vector2.ZERO:
-		if Input.is_action_pressed("ESPRINTAR") and direccion != Vector2.ZERO and Jugador.esta > 0:
-			rapidez = VEL_CORRER
-			anim_personaje.play("Correr")
-		else:
-			rapidez = VEL_NORMAL
-			anim_personaje.play("Andar")
-		velocidad = velocidad.move_toward(direccion * rapidez, ACELERACION * delta)
+	var direction = Vector2(Input.get_axis("MOVER_IZQ", "MOVER_DER"),Input.get_axis("MOVER_ARRIBA", "MOVER_ABAJO"))
+	if direction:
+		velocity = direction * SPEED * delta
 	else:
-		velocidad = velocidad.move_toward(Vector2.ZERO, FRICCION * delta)
-		anim_personaje.play("Idle")
-	
-	set_velocity(velocidad)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
 	move_and_slide()
-	velocidad = velocity
+	# if !anim_equipo.is_playing():
+	# 	if controlador:
+	# 		angulo_controlador.y = Input.get_joy_axis(0,JOY_AXIS_3)
+	# 		angulo_controlador.x = Input.get_joy_axis(0,JOY_AXIS_2)
+	# 		if angulo_controlador != Vector2.ZERO:
+	# 			$Marker2D.rotation = angulo_controlador.angle()
+	# 		if angulo_controlador.x < 0:
+	# 			aspecto.scale.x = 1
+	# 		elif angulo_controlador.x > 0:
+	# 			aspecto.scale.x = -1
+	# 	else:
+	# 		$Marker2D.look_at(get_global_mouse_position())
+	# 		if get_global_mouse_position().x < global_position.x:
+	# 			aspecto.scale.x = 1
+	# 		elif get_global_mouse_position().x > global_position.x:
+	# 			aspecto.scale.x = -1
+				
+	# var direccion = Vector2.ZERO
+	# if Input.is_action_pressed("MOVER_ARRIBA"):
+	# 	direccion.y -= 1
+	# if Input.is_action_pressed("MOVER_ABAJO"):
+	# 	direccion.y += 1
+	# if Input.is_action_pressed("MOVER_IZQ"):
+	# 	direccion.x -= 1
+	# if Input.is_action_pressed("MOVER_DER"):
+	# 	direccion.x += 1
+	# direccion = direccion.normalized()
+	
+	# if direccion != Vector2.ZERO:
+	# 	if Input.is_action_pressed("ESPRINTAR") and direccion != Vector2.ZERO and Jugador.esta > 0:
+	# 		rapidez = VEL_CORRER
+	# 		anim_personaje.play("Correr")
+	# 	else:
+	# 		rapidez = VEL_NORMAL
+	# 		anim_personaje.play("Andar")
+	# 	velocidad = velocidad.move_toward(direccion * rapidez, ACELERACION * delta)
+	# else:
+	# 	velocidad = velocidad.move_toward(Vector2.ZERO, FRICCION * delta)
+	# 	anim_personaje.play("Idle")
+	
+	# set_velocity(velocidad)
+	# move_and_slide()
+	# velocidad = velocity
 
 
 func _input(event):

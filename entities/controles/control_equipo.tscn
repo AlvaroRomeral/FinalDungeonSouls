@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b43hvyhd3tplf"]
+
+[node name="ControlEquipo" type="Node2D"]
+
+[node name="Cabeza" type="Node2D" parent="."]
+
+[node name="Cuerpo" type="Node2D" parent="."]
+
+[node name="Brazos" type="Node2D" parent="."]
+
+[node name="Piernas" type="Node2D" parent="."]
