@@ -21,7 +21,7 @@ func _ready():
 
 
 func nueva_partida():
-	get_tree().change_scene_to_file("res://scenes/Nivel_Temp.tscn")
+	get_tree().change_scene_to_file(Global.NIVEL_1)
 
 
 func cargar_partida():

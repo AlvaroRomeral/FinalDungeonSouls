@@ -13,43 +13,40 @@ transform = Transform2D(1, 0, 0, 1, 256, 222)
 script = ExtResource("1_cb8sv")
 
 [node name="Cielo" type="Sprite2D" parent="."]
-position = Vector2(64.0002, -42)
-scale = Vector2(2.35294, 2.25)
+position = Vector2(184, 26)
+scale = Vector2(3.23529, 3.1)
 texture = ExtResource("2_y1xxq")
-
-[node name="Montanna" type="Sprite2D" parent="."]
-position = Vector2(64, -42)
-scale = Vector2(2.35294, 2.25)
-texture = ExtResource("3_3qvr7")
 
 [node name="LayerFondo" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.5)
-motion_offset = Vector2(200, 0)
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(880, 0)
 
-[node name="Montannas" type="Sprite2D" parent="LayerFondo"]
-position = Vector2(64.0001, 27)
-scale = Vector2(1.17647, 1.3875)
-texture = ExtResource("4_dktae")
-region_rect = Rect2(0, 70, 1087, 90)
+[node name="Montanna" type="Sprite2D" parent="LayerFondo"]
+position = Vector2(184, 26)
+scale = Vector2(3.23529, 3.1)
+texture = ExtResource("3_3qvr7")
 
 [node name="LayerMedio" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.8, 0.8)
-motion_offset = Vector2(20, 0)
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(880, 0)
+
+[node name="Montannas" type="Sprite2D" parent="LayerMedio"]
+position = Vector2(184, 122)
+scale = Vector2(1.61765, 1.9)
+texture = ExtResource("4_dktae")
+region_rect = Rect2(0, 70, 1087, 90)
 
 [node name="ArbolesLejanos" type="Sprite2D" parent="LayerMedio"]
-position = Vector2(64, 27)
-scale = Vector2(1.17647, 1.3875)
+position = Vector2(184, 101.5)
+scale = Vector2(1.61765, 2.14375)
 texture = ExtResource("5_fpxs4")
 region_rect = Rect2(0, 0, 1094, 160)
 
 [node name="LayerFrente" type="ParallaxLayer" parent="."]
-motion_offset = Vector2(30, 0)
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(880, 0)
 
 [node name="ArbolesCercanos" type="Sprite2D" parent="LayerFrente"]
-position = Vector2(64, 27)
-scale = Vector2(1.17647, 1.3875)
+position = Vector2(186.4, 146)
+scale = Vector2(1.60882, 1.6)
 texture = ExtResource("6_8i6n8")
 region_rect = Rect2(0, 0, 1096, 160)
