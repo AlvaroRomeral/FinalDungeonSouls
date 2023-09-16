@@ -2,8 +2,9 @@ extends CharacterBody2D
 class_name Jugador
 
 @export var animacion:AnimationPlayer
-@export var accion_cooldown:Timer
+@export var cooldown_ataque:Timer
 @export var control_arma:ControlArma
+@export var control_estado:ControlEstado
 
 @export var velocidad = 200.0
 @export var friccion = 0.5
@@ -20,8 +21,10 @@ func _physics_process(_delta):
 		velocity = velocity.lerp(Vector2.ZERO, friccion)
 
 	move_and_slide()
-
+	
+	if Input.is_action_pressed("ATACAR") and cooldown_ataque.is_stopped():
+		cooldown_ataque.start()
+		control_arma.atacar()
 
 func _input(event):
-	if event.is_action("ATACAR"):
-		control_arma.atacar()
+	pass

@@ -1,0 +1,32 @@
+{
+    "0" : {
+        "nombre" : "fisico",
+        "resistente" : [],
+        "debil" : []
+    },
+    "1" : {
+        "nombre" : "fuego",
+        "resistente" : [],
+        "debil" : []
+    },
+    "2" : {
+        "nombre" : "hielo",
+        "resistente" : [],
+        "debil" : []
+    },
+    "3" : {
+        "nombre" : "veneno",
+        "resistente" : [],
+        "debil" : []
+    },
+    "4" : {
+        "nombre" : "electrico",
+        "resistente" : [],
+        "debil" : []
+    },
+    "5" : {
+        "nombre" : "necrotico",
+        "resistente" : [],
+        "debil" : []
+    }
+}

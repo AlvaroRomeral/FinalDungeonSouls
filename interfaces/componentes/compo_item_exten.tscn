@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ilad65unij0"]
+
+[ext_resource type="Texture2D" uid="uid://btbs064iajfje" path="res://assets/imagenes/icons/swords_09_t.png" id="1_on0mj"]
+
+[node name="CompoItemExten" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+texture = ExtResource("1_on0mj")
+expand_mode = 1
+
+[node name="LabelNombre" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 32.0
+text = "Nombre"
+vertical_alignment = 1
+
+[node name="LabelTipo" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 56.0
+text = "Tipo"
+vertical_alignment = 1

@@ -1,10 +1,16 @@
-[gd_scene format=3 uid="uid://b43hvyhd3tplf"]
+[gd_scene load_steps=2 format=3 uid="uid://b43hvyhd3tplf"]
+
+[ext_resource type="Texture2D" uid="uid://bfy1og4p4ox01" path="res://assets/imagenes/sprites/bplate_metal_1.png" id="1_304qj"]
 
 [node name="ControlEquipo" type="Node2D"]
 
 [node name="Cabeza" type="Node2D" parent="."]
 
 [node name="Cuerpo" type="Node2D" parent="."]
+
+[node name="Boromir" type="Sprite2D" parent="Cuerpo"]
+position = Vector2(0, -16)
+texture = ExtResource("1_304qj")
 
 [node name="Brazos" type="Node2D" parent="."]
 

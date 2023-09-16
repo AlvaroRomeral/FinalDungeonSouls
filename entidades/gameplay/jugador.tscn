@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.8125, 1.09375)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_krcvv"]
@@ -65,30 +65,33 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4gum"]
 radius = 7.07107
 
-[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "accion_cooldown", "control_arma")]
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "cooldown_ataque", "control_arma", "control_estado")]
 script = ExtResource("1_a8vep")
 animacion = NodePath("AnimationPlayer")
-accion_cooldown = NodePath("Timer")
+cooldown_ataque = NodePath("CooldownAtaque")
 control_arma = NodePath("ControlArma")
-
-[node name="ControlEstado" parent="." instance=ExtResource("2_bfic6")]
-
-[node name="ControlEquipo" parent="." instance=ExtResource("2_co52e")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.8125, 1.09375)
-texture = ExtResource("3_7hnia")
-offset = Vector2(0, -16)
+control_estado = NodePath("ControlEstado")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_d5n7r")
 }
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ControlEstado" parent="." instance=ExtResource("2_bfic6")]
+
+[node name="CooldownAtaque" type="Timer" parent="."]
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_b4gum")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_7hnia")
+offset = Vector2(0, -16)
+
+[node name="ControlEquipo" parent="Sprite2D" instance=ExtResource("2_co52e")]
+scale = Vector2(1.23077, 0.914286)
+
 [node name="ControlArma" parent="." instance=ExtResource("5_4yd3f")]
+position = Vector2(0, -16)
