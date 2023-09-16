@@ -1,0 +1,44 @@
+{
+    "normal" : {
+        "1" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "2" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "3" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "4" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "5" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "6" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "7" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "8" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "9" : {
+            "goblin" : 5,
+            "serpent" : 3
+        },
+        "10" : {
+            "goblin" : 5,
+            "serpent" : 3
+        }
+    }
+}

@@ -3,6 +3,7 @@ class_name Jugador
 
 @export var animacion:AnimationPlayer
 @export var accion_cooldown:Timer
+@export var control_arma:ControlArma
 
 @export var velocidad = 200.0
 @export var friccion = 0.5
@@ -19,3 +20,8 @@ func _physics_process(_delta):
 		velocity = velocity.lerp(Vector2.ZERO, friccion)
 
 	move_and_slide()
+
+
+func _input(event):
+	if event.is_action("ATACAR"):
+		control_arma.atacar()

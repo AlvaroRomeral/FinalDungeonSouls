@@ -1,0 +1,32 @@
+{
+    "espada_1" : {
+        "fuerza" : 10,
+        "velocidad" : 1,
+        "valor" : 20
+    },
+    "espada_2" : {
+        "fuerza" : 40,
+        "velocidad" : 0.7,
+        "valor" : 70
+    },
+    "espada_3" : {
+        "fuerza" : 100,
+        "velocidad" : 1.5,
+        "valor" : 200
+    },
+    "armadura_1" : {
+        "fuerza" : 100,
+        "velocidad" : 1.5,
+        "valor" : 200
+    },
+    "casco_1" : {
+        "fuerza" : 100,
+        "velocidad" : 1.5,
+        "valor" : 200
+    },
+    "botas_1" : {
+        "fuerza" : 100,
+        "velocidad" : 1.5,
+        "valor" : 200
+    }
+}
