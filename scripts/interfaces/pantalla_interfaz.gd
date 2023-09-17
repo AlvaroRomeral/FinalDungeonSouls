@@ -7,6 +7,7 @@ class_name PantallaInterfaz
 @export var bar_vida:ProgressBar
 @export var bar_estamina:ProgressBar
 @export var bar_mana:ProgressBar
+@export var panel_inventario:PanelInventario
 
 func _process(_delta):
 	if jugador:
@@ -18,3 +19,11 @@ func _process(_delta):
 		bar_estamina.value = status["estamina"]
 		bar_mana.max_value = status["mana_max"]
 		bar_mana.value = status["mana"]
+
+
+func _input(event):
+	if event.is_action_pressed("INVENTARIO"):
+		if panel_inventario.visible:
+			panel_inventario.hide()
+		else:
+			panel_inventario.show()

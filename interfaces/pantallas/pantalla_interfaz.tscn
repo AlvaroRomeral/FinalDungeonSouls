@@ -14,12 +14,13 @@ bg_color = Color(0.0352941, 0.329412, 0.529412, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxh6e"]
 bg_color = Color(0.164706, 0.6, 0.160784, 1)
 
-[node name="PantallaInterfaz" type="CanvasLayer" node_paths=PackedStringArray("label_cooldown_ataque", "bar_vida", "bar_estamina", "bar_mana")]
+[node name="PantallaInterfaz" type="CanvasLayer" node_paths=PackedStringArray("label_cooldown_ataque", "bar_vida", "bar_estamina", "bar_mana", "panel_inventario")]
 script = ExtResource("1_sau4y")
 label_cooldown_ataque = NodePath("Control/Label")
 bar_vida = NodePath("Control/BarVida")
 bar_estamina = NodePath("Control/BarStamina")
 bar_mana = NodePath("Control/BarMana")
+panel_inventario = NodePath("Control/PanelInventario")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

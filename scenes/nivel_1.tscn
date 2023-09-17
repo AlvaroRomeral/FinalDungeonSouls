@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu2iwqijgykot"]
+[gd_scene load_steps=13 format=3 uid="uid://bu2iwqijgykot"]
 
 [ext_resource type="PackedScene" uid="uid://bsg3yay180jg2" path="res://entidades/controles/control_gameplay.tscn" id="1_ggoht"]
 [ext_resource type="PackedScene" uid="uid://rtx5dl4efdg1" path="res://entidades/controles/control_oleadas.tscn" id="2_4nr5k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://nbmoscdu2nlh" path="res://assets/imagenes/tilemaps/tileset_natural_wall.png" id="5_36ttm"]
 [ext_resource type="PackedScene" uid="uid://ddxp61mw3oj4" path="res://entidades/gameplay/jugador.tscn" id="6_yd3vs"]
 [ext_resource type="PackedScene" uid="uid://b8wqb1v45a2jk" path="res://interfaces/pantallas/pantalla_interfaz.tscn" id="7_6ae0k"]
+[ext_resource type="PackedScene" uid="uid://xyy8tua36w67" path="res://entidades/gameplay/orco_rojo.tscn" id="8_whuqr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsb84"]
 texture = ExtResource("3_8irl5")
@@ -1435,12 +1436,18 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array()
 
-[node name="Jugador" parent="." instance=ExtResource("6_yd3vs")]
+[node name="PantallaInterfaz" parent="." node_paths=PackedStringArray("jugador") instance=ExtResource("7_6ae0k")]
+jugador = NodePath("../Entidades/Jugador")
+
+[node name="Entidades" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Jugador" parent="Entidades" instance=ExtResource("6_yd3vs")]
 position = Vector2(24, -26)
 
-[node name="Camera2D" type="Camera2D" parent="Jugador"]
+[node name="Camera2D" type="Camera2D" parent="Entidades/Jugador"]
 position = Vector2(0, -1)
 zoom = Vector2(1.5, 1.5)
 
-[node name="PantallaInterfaz" parent="." node_paths=PackedStringArray("jugador") instance=ExtResource("7_6ae0k")]
-jugador = NodePath("../Jugador")
+[node name="OrcoRojo" parent="Entidades" instance=ExtResource("8_whuqr")]
+position = Vector2(-45, -137)
