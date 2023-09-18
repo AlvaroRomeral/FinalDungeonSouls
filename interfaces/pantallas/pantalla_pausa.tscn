@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/interfaces/pantalla_pausa.gd" id="1_kh7pr"]
 [ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="2_uoloj"]
-[ext_resource type="Texture2D" uid="uid://du26dy7j3pus1" path="res://assets/imagenes/MenuRemaster.png" id="3_fmvky"]
+[ext_resource type="Texture2D" uid="uid://du26dy7j3pus1" path="res://assets/imagenes/interfaces/MenuRemaster.png" id="3_fmvky"]
 
 [node name="PantallaPausa" type="CanvasLayer" node_paths=PackedStringArray("boton_continuar", "boton_opciones", "boton_salir")]
 process_mode = 3

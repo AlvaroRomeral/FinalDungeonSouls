@@ -9,5 +9,5 @@ func _ready():
 
 
 func recogido(body):
-    # body llamar recogida de item
+	# body llamar recogida de item
 	queue_free()

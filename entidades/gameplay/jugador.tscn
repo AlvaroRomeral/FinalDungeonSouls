@@ -67,8 +67,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0lfs"]
-radius = 3.0
-height = 14.0
+radius = 7.0
+height = 20.0
 
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "cooldown_ataque", "control_arma", "control_estado")]
 collision_layer = 2
@@ -107,5 +107,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = -1.57079
+position = Vector2(0, -7)
+rotation = -3.14159
 shape = SubResource("CapsuleShape2D_c0lfs")

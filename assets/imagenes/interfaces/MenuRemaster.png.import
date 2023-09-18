@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fo6e13eqc6i"
-path="res://.godot/imported/tm_hierba.png-0623b619c510ef9b12111134de061568.ctex"
+uid="uid://du26dy7j3pus1"
+path="res://.godot/imported/MenuRemaster.png-15f093c85a0a4dad86ab30653160940a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imagenes/tilemaps/tm_hierba.png"
-dest_files=["res://.godot/imported/tm_hierba.png-0623b619c510ef9b12111134de061568.ctex"]
+source_file="res://assets/imagenes/interfaces/MenuRemaster.png"
+dest_files=["res://.godot/imported/MenuRemaster.png-15f093c85a0a4dad86ab30653160940a.ctex"]
 
 [params]
 
