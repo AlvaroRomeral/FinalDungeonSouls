@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bu2iwqijgykot"]
+[gd_scene load_steps=20 format=3 uid="uid://bu2iwqijgykot"]
 
 [ext_resource type="PackedScene" uid="uid://bsg3yay180jg2" path="res://entidades/controles/control_gameplay.tscn" id="1_ggoht"]
 [ext_resource type="PackedScene" uid="uid://rtx5dl4efdg1" path="res://entidades/controles/control_oleadas.tscn" id="2_4nr5k"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://psi1p5qxa2lu" path="res://interfaces/pantallas/pantalla_pausa.tscn" id="7_6fxx8"]
 [ext_resource type="PackedScene" uid="uid://xyy8tua36w67" path="res://entidades/gameplay/orco_rojo.tscn" id="8_whuqr"]
 [ext_resource type="PackedScene" uid="uid://civlheob3d3g2" path="res://entidades/gameplay/moneda.tscn" id="10_60aks"]
+[ext_resource type="Texture2D" uid="uid://egimmdhy05if" path="res://assets/imagenes/sprites/crumbled_column_2.png" id="12_c0tmy"]
+[ext_resource type="Texture2D" uid="uid://blyyc4i2ipji5" path="res://assets/imagenes/sprites/crumbled_column_1.png" id="13_cdudk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iean"]
 texture = ExtResource("3_x3u6s")
@@ -1528,3 +1530,13 @@ position = Vector2(-128, -856)
 
 [node name="Moneda4" parent="Entidades" instance=ExtResource("10_60aks")]
 position = Vector2(-144, -784)
+
+[node name="CrumbledColumn2" type="Sprite2D" parent="Entidades"]
+position = Vector2(-264, -864)
+texture = ExtResource("12_c0tmy")
+offset = Vector2(0, -16)
+
+[node name="CrumbledColumn1" type="Sprite2D" parent="Entidades"]
+position = Vector2(-208, -904)
+texture = ExtResource("13_cdudk")
+offset = Vector2(0, -16)
