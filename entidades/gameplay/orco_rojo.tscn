@@ -65,6 +65,21 @@ _data = {
 "walk": SubResource("Animation_wqsp8")
 }
 
+[sub_resource type="Animation" id="Animation_c7lvp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_73kld"]
 resource_name = "herido"
 length = 0.4
@@ -82,21 +97,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0.737255, 0, 0, 1), Color(1, 1, 1, 1), Color(0.737255, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_c7lvp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gnsxl"]
 _data = {
 "RESET": SubResource("Animation_c7lvp"),
@@ -108,6 +108,8 @@ radius = 3.0
 height = 14.0
 
 [node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "control_arma", "control_estado", "nav_agent", "sprite")]
+collision_layer = 4
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_igkrx")
 animacion = NodePath("AnimationPlayer")
@@ -128,8 +130,8 @@ estado_base = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
-radius = 20.0
+path_desired_distance = 2.0
+target_desired_distance = 32.0
 debug_enabled = true
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("control_estado", "control_arma_ignorado") instance=ExtResource("2_8tefa")]

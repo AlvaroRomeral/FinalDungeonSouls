@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	if jugador:
 		nav_agent.target_position = jugador.global_position
 		
-		if nav_agent.is_target_reachable():
+		if nav_agent.is_target_reachable() and global_position.distance_to(jugador.global_position) > 20:
 			if nav_agent.get_next_path_position().x > global_position.x:
 				sprite.flip_h = true
 			else:

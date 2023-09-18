@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://duuyjkfh3rg1c"]
 
 [ext_resource type="Script" path="res://scripts/interfaces/panel_inventario.gd" id="1_08jxx"]
-[ext_resource type="Texture2D" uid="uid://dumd5xanlylui" path="res://assets/imagenes/interfaces/slot.png" id="2_krvla"]
+[ext_resource type="Texture2D" uid="uid://dodnmkuj57phg" path="res://assets/imagenes/interfaces/slot.png" id="2_krvla"]
 
 [node name="PanelInventario" type="Control"]
 layout_mode = 3

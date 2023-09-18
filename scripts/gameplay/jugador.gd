@@ -28,4 +28,4 @@ func _physics_process(_delta):
 	
 	if Input.is_action_pressed("ATACAR") and cooldown_ataque.is_stopped():
 		cooldown_ataque.start()
-		control_arma.atacar()
+		control_arma.atacar(get_global_mouse_position())

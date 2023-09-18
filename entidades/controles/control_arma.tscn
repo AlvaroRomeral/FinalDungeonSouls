@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwmgleuwjqv6e"]
 
 [ext_resource type="Script" path="res://scripts/controles/control_arma.gd" id="1_jvetc"]
-[ext_resource type="Texture2D" uid="uid://bmb4hedrgagfv" path="res://assets/imagenes/sprites/ataque_melee.png" id="1_vcp18"]
+[ext_resource type="Texture2D" uid="uid://csbsftdqn44wx" path="res://assets/imagenes/sprites/ataque_melee.png" id="1_vcp18"]
 [ext_resource type="PackedScene" uid="uid://b4ivjov11eeho" path="res://entidades/componentes/hitbox.tscn" id="3_oqaqb"]
 [ext_resource type="Texture2D" uid="uid://mbxwbbbvfkk" path="res://assets/imagenes/sprites/broadsword.png" id="4_mc0ph"]
 

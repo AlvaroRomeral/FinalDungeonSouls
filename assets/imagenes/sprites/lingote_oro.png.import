@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dodnmkuj57phg"
-path="res://.godot/imported/slot.png-bbbe481a088410c98e3c004df0cfa944.ctex"
+uid="uid://hdelnueiwwk0"
+path="res://.godot/imported/lingote_oro.png-d920402b86fca18c5bf3294027a9ee92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imagenes/interfaces/slot.png"
-dest_files=["res://.godot/imported/slot.png-bbbe481a088410c98e3c004df0cfa944.ctex"]
+source_file="res://assets/imagenes/sprites/lingote_oro.png"
+dest_files=["res://.godot/imported/lingote_oro.png-d920402b86fca18c5bf3294027a9ee92.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu2iwqijgykot"]
+[gd_scene load_steps=16 format=3 uid="uid://bu2iwqijgykot"]
 
 [ext_resource type="PackedScene" uid="uid://bsg3yay180jg2" path="res://entidades/controles/control_gameplay.tscn" id="1_ggoht"]
 [ext_resource type="PackedScene" uid="uid://rtx5dl4efdg1" path="res://entidades/controles/control_oleadas.tscn" id="2_4nr5k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8wqb1v45a2jk" path="res://interfaces/pantallas/pantalla_interfaz.tscn" id="7_6ae0k"]
 [ext_resource type="PackedScene" uid="uid://psi1p5qxa2lu" path="res://interfaces/pantallas/pantalla_pausa.tscn" id="7_6fxx8"]
 [ext_resource type="PackedScene" uid="uid://xyy8tua36w67" path="res://entidades/gameplay/orco_rojo.tscn" id="8_whuqr"]
+[ext_resource type="PackedScene" uid="uid://civlheob3d3g2" path="res://entidades/gameplay/moneda.tscn" id="10_60aks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsb84"]
 texture = ExtResource("3_8irl5")
@@ -1481,3 +1482,15 @@ jugador = NodePath("../Jugador")
 [node name="OrcoRojo5" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
 position = Vector2(-664, -1008)
 jugador = NodePath("../Jugador")
+
+[node name="Moneda" parent="Entidades" instance=ExtResource("10_60aks")]
+position = Vector2(-176, -912)
+
+[node name="Moneda2" parent="Entidades" instance=ExtResource("10_60aks")]
+position = Vector2(-176, -872)
+
+[node name="Moneda3" parent="Entidades" instance=ExtResource("10_60aks")]
+position = Vector2(-128, -856)
+
+[node name="Moneda4" parent="Entidades" instance=ExtResource("10_60aks")]
+position = Vector2(-144, -784)

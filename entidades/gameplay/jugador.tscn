@@ -71,6 +71,7 @@ radius = 3.0
 height = 14.0
 
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "cooldown_ataque", "control_arma", "control_estado")]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_a8vep")
 animacion = NodePath("AnimationPlayer")

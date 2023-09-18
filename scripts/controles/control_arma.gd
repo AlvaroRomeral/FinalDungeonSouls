@@ -5,10 +5,6 @@ class_name ControlArma
 @export var hitbox:Hitbox
 @export var sprite:Sprite2D
 
-func atacar():
-	# if get_global_mouse_position().x < global_position.x:
-	# 	sprite.flip_h = true
-	# else:
-	# 	sprite.flip_h = false
-	sprite.look_at(get_global_mouse_position())
+func atacar(direccion:Vector2):
+	sprite.look_at(direccion)
 	animacion.play("ataque")

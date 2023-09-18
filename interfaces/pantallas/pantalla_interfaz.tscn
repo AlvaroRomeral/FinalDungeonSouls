@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="2_kajj3"]
 [ext_resource type="PackedScene" uid="uid://d1ilad65unij0" path="res://interfaces/componentes/compo_item_exten.tscn" id="3_k4q6q"]
 [ext_resource type="PackedScene" uid="uid://duuyjkfh3rg1c" path="res://interfaces/componentes/panel_inventario.tscn" id="4_mpgve"]
-[ext_resource type="Texture2D" uid="uid://dumd5xanlylui" path="res://assets/imagenes/interfaces/slot.png" id="5_dlhnx"]
+[ext_resource type="Texture2D" uid="uid://dodnmkuj57phg" path="res://assets/imagenes/interfaces/slot.png" id="5_dlhnx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8gmd"]
 bg_color = Color(0.737255, 0, 0, 1)
