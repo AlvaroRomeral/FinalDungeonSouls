@@ -3,6 +3,8 @@ class_name ControlEstado
 
 signal muerto()
 
+@export var animacion:AnimationPlayer
+
 @export var estado_base = {
 	"salud" : 10,
 	"salud_max" : 10,
@@ -11,18 +13,26 @@ signal muerto()
 	"mana" : 1,
 	"mana_max" : 10,
 }
+var estado_actual
 
 var estados = []
 
+func _ready():
+	estado_actual = estado_base.duplicate()
+
+
 func get_estado_final():
-	var estado_final = estado_base.duplicate()
 	for x in estados:
 		for y in x.keys():
-			estado_final[y] += x[y]
-	return estado_final
+			estado_actual[y] += x[y]
+	return estado_actual
 
 
 func recibir_damage(cantidad:float):
-	estado_base["salud"] -= cantidad
-	if estado_base["salud"] <= 0:
+	if animacion:
+		animacion.stop()
+		animacion.play("herido")
+
+	estado_actual["salud"] -= cantidad
+	if estado_actual["salud"] <= 0:
 		muerto.emit()

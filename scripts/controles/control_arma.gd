@@ -2,6 +2,7 @@ extends Node2D
 class_name ControlArma
 
 @export var animacion:AnimationPlayer
+@export var hitbox:Hitbox
 @export var sprite:Sprite2D
 
 func atacar():
@@ -9,5 +10,5 @@ func atacar():
 	# 	sprite.flip_h = true
 	# else:
 	# 	sprite.flip_h = false
-	look_at(get_global_mouse_position())
+	sprite.look_at(get_global_mouse_position())
 	animacion.play("ataque")

@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://xyy8tua36w67"]
+[gd_scene load_steps=15 format=3 uid="uid://xyy8tua36w67"]
 
 [ext_resource type="Texture2D" uid="uid://n6gfqyywgo17" path="res://assets/imagenes/sprites/hobgoblin.png" id="1_3f83u"]
 [ext_resource type="Script" path="res://scripts/gameplay/enemigo.gd" id="1_igkrx"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="1_qje0d"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="2_8tefa"]
+[ext_resource type="PackedScene" uid="uid://dwmgleuwjqv6e" path="res://entidades/controles/control_arma.tscn" id="5_ua6tq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2d512"]
-radius = 7.07107
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ehvf"]
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_1ekdx"]
 length = 0.001
@@ -64,11 +65,59 @@ _data = {
 "walk": SubResource("Animation_wqsp8")
 }
 
-[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("control_estado")]
-script = ExtResource("1_igkrx")
-control_estado = NodePath("ControlEstado")
+[sub_resource type="Animation" id="Animation_73kld"]
+resource_name = "herido"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.737255, 0, 0, 1), Color(1, 1, 1, 1), Color(0.737255, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
-[node name="ControlEstado" parent="." instance=ExtResource("1_qje0d")]
+[sub_resource type="Animation" id="Animation_c7lvp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnsxl"]
+_data = {
+"RESET": SubResource("Animation_c7lvp"),
+"herido": SubResource("Animation_73kld")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bs87"]
+radius = 3.0
+height = 14.0
+
+[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "control_arma", "control_estado", "nav_agent", "sprite")]
+motion_mode = 1
+script = ExtResource("1_igkrx")
+animacion = NodePath("AnimationPlayer")
+control_arma = NodePath("Sprite2D/ControlArma")
+control_estado = NodePath("ControlEstado")
+nav_agent = NodePath("NavigationAgent2D")
+sprite = NodePath("Sprite2D")
+
+[node name="ControlEstado" parent="." node_paths=PackedStringArray("animacion") instance=ExtResource("1_qje0d")]
+animacion = NodePath("../AnimationPlayerEfectos")
 estado_base = {
 "estamina": 1,
 "estamina_max": 1,
@@ -78,24 +127,35 @@ estado_base = {
 "salud_max": 5
 }
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("control_estado") instance=ExtResource("2_8tefa")]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 20.0
+debug_enabled = true
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("control_estado", "control_arma_ignorado") instance=ExtResource("2_8tefa")]
 control_estado = NodePath("../ControlEstado")
+control_arma_ignorado = NodePath("../Sprite2D/ControlArma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_2d512")
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_1ehvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3f83u")
 offset = Vector2(0, -16)
+
+[node name="ControlArma" parent="Sprite2D" instance=ExtResource("5_ua6tq")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_d5n7r")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_2d512")
+[node name="AnimationPlayerEfectos" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gnsxl")
+}
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_3bs87")
