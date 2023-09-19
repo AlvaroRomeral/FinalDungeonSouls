@@ -38,7 +38,11 @@ func _physics_process(_delta):
 		else:
 			animacion.play("idle")
 			velocity = velocity.lerp(Vector2.ZERO, friccion)
-	
+		
+		if global_position.distance_to(jugador.global_position) < 30 and cooldown_ataque.is_stopped():
+			cooldown_ataque.start()
+			control_arma.atacar(jugador.global_position)
+
 	move_and_slide()
 
 

@@ -3,6 +3,7 @@ class_name Hurtbox
 
 @export var control_estado:ControlEstado
 @export var control_arma_ignorado:ControlArma
+@export var equipo:String = "Neutral"
 
 func _ready():
 	area_entered.connect(damagear)

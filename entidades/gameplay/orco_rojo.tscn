@@ -107,12 +107,13 @@ _data = {
 radius = 3.0
 height = 14.0
 
-[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "control_arma", "control_estado", "nav_agent", "sprite")]
+[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "cooldown_ataque", "control_arma", "control_estado", "nav_agent", "sprite")]
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_igkrx")
 animacion = NodePath("AnimationPlayer")
+cooldown_ataque = NodePath("Timer")
 control_arma = NodePath("Sprite2D/ControlArma")
 control_estado = NodePath("ControlEstado")
 nav_agent = NodePath("NavigationAgent2D")
@@ -160,3 +161,7 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_3bs87")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

@@ -99,6 +99,7 @@ sprite = NodePath("AtaqueMelee")
 
 [node name="AtaqueMelee" type="Sprite2D" parent="."]
 visible = false
+z_index = -1
 position = Vector2(0, -16)
 texture = ExtResource("1_vcp18")
 hframes = 4
