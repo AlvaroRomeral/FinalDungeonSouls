@@ -3,17 +3,18 @@ class_name PantallaInterfaz
 
 @export var jugador:Jugador
 
+@export_category("Componentes (no tocar)")
 @export var label_cooldown_ataque:Label
 @export var panel_inventario:PanelInventario
-@export_category("Vida")
+@export_subgroup("barra vida")
 @export var bar_vida:ProgressBar
 @export var label_cantidad_vida:Label
 @export var label_max_vida:Label
-@export_category("Estamina")
+@export_subgroup("barra estamina")
 @export var bar_estamina:ProgressBar
 @export var label_cantidad_estamina:Label
 @export var label_max_estamina:Label
-@export_category("Mana")
+@export_subgroup("barra mana")
 @export var bar_mana:ProgressBar
 @export var label_cantidad_mana:Label
 @export var label_max_mana:Label

@@ -1,30 +1,54 @@
 {
     "espada_1" : {
+        "nombre" : "Espada hierro",
+        "rareza" : 1,
+        "descripcion" : "Espada comun",
+        "icon" : "",
         "fuerza" : 10,
         "velocidad" : 1,
         "valor" : 20
     },
     "espada_2" : {
+        "nombre" : "Espada acero",
+        "rareza" : 2,
+        "descripcion" : "Espada rara",
+        "icon" : "",
         "fuerza" : 40,
         "velocidad" : 0.7,
         "valor" : 70
     },
     "espada_3" : {
+        "nombre" : "Espada acero de dioses",
+        "rareza" : 3,
+        "descripcion" : "Espada epica",
+        "icon" : "",
         "fuerza" : 100,
         "velocidad" : 1.5,
         "valor" : 200
     },
     "armadura_1" : {
+        "nombre" : "",
+        "rareza" : 1,
+        "descripcion" : "",
+        "icon" : "",
         "fuerza" : 100,
         "velocidad" : 1.5,
         "valor" : 200
     },
     "casco_1" : {
+        "nombre" : "",
+        "rareza" : 1,
+        "descripcion" : "",
+        "icon" : "",
         "fuerza" : 100,
         "velocidad" : 1.5,
         "valor" : 200
     },
     "botas_1" : {
+        "nombre" : "",
+        "rareza" : 1,
+        "descripcion" : "",
+        "icon" : "",
         "fuerza" : 100,
         "velocidad" : 1.5,
         "valor" : 200

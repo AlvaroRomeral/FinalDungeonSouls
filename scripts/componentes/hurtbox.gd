@@ -9,5 +9,5 @@ func _ready():
 
 
 func damagear(area:Hitbox):
-	if !control_estado.estado_base["equipo"] == area.datos["atacante"].estado_base["equipo"]:
+	if !control_estado.equipo == area.datos["atacante"].equipo:
 		control_estado.recibir_damage(area.datos["damage"])

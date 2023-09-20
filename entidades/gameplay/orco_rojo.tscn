@@ -120,15 +120,7 @@ nav_agent = NodePath("NavigationAgent2D")
 sprite = NodePath("Sprite2D")
 
 [node name="ControlEstado" parent="." node_paths=PackedStringArray("animacion") instance=ExtResource("1_qje0d")]
-estado_base = {
-"equipo": 2,
-"estamina": 1,
-"estamina_max": 10,
-"mana": 1,
-"mana_max": 10,
-"salud": 5,
-"salud_max": 5
-}
+equipo = 2
 animacion = NodePath("../AnimationPlayerEfectos")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

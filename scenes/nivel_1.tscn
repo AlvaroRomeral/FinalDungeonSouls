@@ -1492,8 +1492,9 @@ visible = false
 [node name="Entidades" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Jugador" parent="Entidades" instance=ExtResource("6_yd3vs")]
+[node name="Jugador" parent="Entidades" node_paths=PackedStringArray("pantalla_interfaz") instance=ExtResource("6_yd3vs")]
 position = Vector2(-296, -912)
+pantalla_interfaz = NodePath("../../PantallaInterfaz")
 
 [node name="Camera2D" type="Camera2D" parent="Entidades/Jugador"]
 position = Vector2(0, -1)
