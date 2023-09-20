@@ -2,5 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/controles/control_estado.gd" id="1_rkdcq"]
 
-[node name="ControlEstado" type="Node"]
+[node name="ControlEstado" type="Node" node_paths=PackedStringArray("animacion", "estados")]
 script = ExtResource("1_rkdcq")
+animacion = NodePath("AnimationPlayer")
+estados = NodePath("Node")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

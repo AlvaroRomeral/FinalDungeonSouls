@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/gameplay/enemigo.gd" id="1_igkrx"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="1_qje0d"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="2_8tefa"]
-[ext_resource type="PackedScene" uid="uid://dwmgleuwjqv6e" path="res://entidades/controles/control_arma.tscn" id="5_ua6tq"]
+[ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="5_ddwe7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ehvf"]
 size = Vector2(16, 16)
@@ -107,20 +107,19 @@ _data = {
 radius = 3.0
 height = 14.0
 
-[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "cooldown_ataque", "control_arma", "control_estado", "nav_agent", "sprite")]
+[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_ataque", "animacion", "cooldown_ataque", "nav_agent", "sprite")]
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_igkrx")
+control_estado = NodePath("ControlEstado")
+control_ataque = NodePath("Sprite2D/ControlAtaque")
 animacion = NodePath("AnimationPlayer")
 cooldown_ataque = NodePath("Timer")
-control_arma = NodePath("Sprite2D/ControlArma")
-control_estado = NodePath("ControlEstado")
 nav_agent = NodePath("NavigationAgent2D")
 sprite = NodePath("Sprite2D")
 
 [node name="ControlEstado" parent="." node_paths=PackedStringArray("animacion") instance=ExtResource("1_qje0d")]
-animacion = NodePath("../AnimationPlayerEfectos")
 estado_base = {
 "estamina": 1,
 "estamina_max": 1,
@@ -129,6 +128,7 @@ estado_base = {
 "salud": 5,
 "salud_max": 5
 }
+animacion = NodePath("../AnimationPlayerEfectos")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0
@@ -136,7 +136,7 @@ target_desired_distance = 32.0
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("control_estado", "control_arma_ignorado") instance=ExtResource("2_8tefa")]
 control_estado = NodePath("../ControlEstado")
-control_arma_ignorado = NodePath("../Sprite2D/ControlArma")
+control_arma_ignorado = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -16)
@@ -146,7 +146,7 @@ shape = SubResource("RectangleShape2D_1ehvf")
 texture = ExtResource("1_3f83u")
 offset = Vector2(0, -16)
 
-[node name="ControlArma" parent="Sprite2D" instance=ExtResource("5_ua6tq")]
+[node name="ControlAtaque" parent="Sprite2D" instance=ExtResource("5_ddwe7")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,18 +1,18 @@
 extends CharacterBody2D
 class_name Enemigo
 
-@export var animacion:AnimationPlayer
-@export var cooldown_ataque:Timer
-@export var control_arma:ControlArma
-@export var control_estado:ControlEstado
-@export var nav_agent:NavigationAgent2D
-@export var sprite:Sprite2D
-
 @export var velocidad = 50.0
 @export var friccion = 0.5
 @export var aceleracion = 0.3
-
 @export var jugador:Jugador
+
+@export_category("no tocar")
+@export var control_estado:ControlEstado
+@export var control_ataque:ControlAtaque
+@export var animacion:AnimationPlayer
+@export var cooldown_ataque:Timer
+@export var nav_agent:NavigationAgent2D
+@export var sprite:Sprite2D
 
 func _ready():
 	control_estado.muerto.connect(morir)
@@ -41,7 +41,7 @@ func _physics_process(_delta):
 		
 		if global_position.distance_to(jugador.global_position) < 30 and cooldown_ataque.is_stopped():
 			cooldown_ataque.start()
-			control_arma.atacar(jugador.global_position)
+			control_ataque.atacar(jugador.global_position)
 
 	move_and_slide()
 

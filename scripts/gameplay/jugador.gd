@@ -1,15 +1,17 @@
 extends CharacterBody2D
 class_name Jugador
 
-@export var animacion:AnimationPlayer
-@export var cooldown_ataque:Timer
-@export var control_arma:ControlArma
-@export var control_estado:ControlEstado
-
 @export var velocidad = 150.0
 @export var friccion = 0.5
 @export var aceleracion = 0.3
+@export var pantalla_interfaz:PantallaInterfaz
 
+@export_category("Componentes (no tocar)")
+@export var control_estado:ControlEstado
+@export var control_equipo:ControlEquipo
+@export var control_ataque:ControlAtaque
+@export var animacion:AnimationPlayer
+@export var cooldown_ataque:Timer
 
 func _physics_process(_delta):
 	var direction = Input.get_vector("MOVER_IZQ", "MOVER_DER","MOVER_ARRIBA", "MOVER_ABAJO")
@@ -28,4 +30,4 @@ func _physics_process(_delta):
 	
 	if Input.is_action_pressed("ATACAR") and cooldown_ataque.is_stopped():
 		cooldown_ataque.start()
-		control_arma.atacar(get_global_mouse_position())
+		control_ataque.atacar(get_global_mouse_position())

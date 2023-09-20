@@ -8,6 +8,6 @@ func _ready():
 	animacion.play("idle")
 
 
-func recogido(body):
+func recogido(_body):
 	# body llamar recogida de item
 	queue_free()

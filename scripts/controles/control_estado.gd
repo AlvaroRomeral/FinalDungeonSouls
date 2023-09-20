@@ -3,8 +3,6 @@ class_name ControlEstado
 
 signal muerto()
 
-@export var animacion:AnimationPlayer
-
 @export var estado_base = {
 	"salud" : 10,
 	"salud_max" : 10,
@@ -13,18 +11,22 @@ signal muerto()
 	"mana" : 1,
 	"mana_max" : 10,
 }
+@export var jugador:Jugador
+@export_category("no tocar")
+@export var animacion:AnimationPlayer
+@export var estados:Node
+
 var estado_actual
 
-var estados = []
 
 func _ready():
 	estado_actual = estado_base.duplicate()
 
 
 func get_estado_final():
-	for x in estados:
-		for y in x.keys():
-			estado_actual[y] += x[y]
+	# for x in estados.get_children():
+	# 	for y in x.keys():
+	# 		estado_actual[y] += x[y]
 	return estado_actual
 
 

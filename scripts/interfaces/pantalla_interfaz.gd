@@ -21,22 +21,7 @@ class_name PantallaInterfaz
 
 func _process(_delta):
 	if jugador:
-		label_cooldown_ataque.text = str(roundf(jugador.cooldown_ataque.time_left))
-		var status = jugador.control_estado.get_estado_final()
-		bar_vida.max_value = status["salud_max"]
-		label_max_vida.text = str(status["salud_max"])
-		bar_vida.value = status["salud"]
-		label_cantidad_vida.text = str(status["salud"])
-		
-		bar_estamina.max_value = status["estamina_max"]
-		label_max_estamina.text = str(status["estamina_max"])
-		bar_estamina.value = status["estamina"]
-		label_cantidad_estamina.text = str(status["estamina"])
-		
-		bar_mana.max_value = status["mana_max"]
-		label_max_mana.text = str(status["mana_max"])
-		bar_mana.value = status["mana"]
-		label_cantidad_mana.text = str(status["mana"])
+		actualizar()
 
 
 func _input(event):
@@ -45,3 +30,33 @@ func _input(event):
 			panel_inventario.hide()
 		else:
 			panel_inventario.show()
+
+
+func actualizar():
+	actualizar_barras()
+	actualizar_efectos()
+
+
+func actualizar_barras():
+	# label_cooldown_ataque.text = str(roundf(jugador.cooldown_ataque.time_left))
+	
+	var status = jugador.control_estado.get_estado_final()
+	
+	bar_vida.max_value = status["salud_max"]
+	label_max_vida.text = str(status["salud_max"])
+	bar_vida.value = status["salud"]
+	label_cantidad_vida.text = str(status["salud"])
+	
+	bar_estamina.max_value = status["estamina_max"]
+	label_max_estamina.text = str(status["estamina_max"])
+	bar_estamina.value = status["estamina"]
+	label_cantidad_estamina.text = str(status["estamina"])
+	
+	bar_mana.max_value = status["mana_max"]
+	label_max_mana.text = str(status["mana_max"])
+	bar_mana.value = status["mana"]
+	label_cantidad_mana.text = str(status["mana"])
+
+
+func actualizar_efectos():
+	pass

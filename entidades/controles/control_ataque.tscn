@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwmgleuwjqv6e"]
+[gd_scene load_steps=7 format=3 uid="uid://deinv8te06y65"]
 
-[ext_resource type="Script" path="res://scripts/controles/control_arma.gd" id="1_jvetc"]
-[ext_resource type="Texture2D" uid="uid://csbsftdqn44wx" path="res://assets/imagenes/sprites/ataque_melee.png" id="1_vcp18"]
-[ext_resource type="PackedScene" uid="uid://b4ivjov11eeho" path="res://entidades/componentes/hitbox.tscn" id="3_oqaqb"]
+[ext_resource type="Script" path="res://scripts/controles/control_ataque.gd" id="1_itf5u"]
+[ext_resource type="Texture2D" uid="uid://csbsftdqn44wx" path="res://assets/imagenes/sprites/ataque_melee.png" id="2_tbi75"]
+[ext_resource type="PackedScene" uid="uid://b4ivjov11eeho" path="res://entidades/componentes/hitbox.tscn" id="3_3j0wo"]
 
 [sub_resource type="Animation" id="Animation_1wlko"]
 length = 0.001
@@ -90,8 +90,8 @@ _data = {
 "ataque": SubResource("Animation_0502j")
 }
 
-[node name="ControlArma" type="Node2D" node_paths=PackedStringArray("animacion", "hitbox", "sprite")]
-script = ExtResource("1_jvetc")
+[node name="ControlAtaque" type="Node2D" node_paths=PackedStringArray("animacion", "hitbox", "sprite")]
+script = ExtResource("1_itf5u")
 animacion = NodePath("AnimationPlayer")
 hitbox = NodePath("AtaqueMelee/Hitbox")
 sprite = NodePath("AtaqueMelee")
@@ -100,10 +100,10 @@ sprite = NodePath("AtaqueMelee")
 visible = false
 z_index = -1
 position = Vector2(0, -16)
-texture = ExtResource("1_vcp18")
+texture = ExtResource("2_tbi75")
 hframes = 4
 
-[node name="Hitbox" parent="AtaqueMelee" instance=ExtResource("3_oqaqb")]
+[node name="Hitbox" parent="AtaqueMelee" instance=ExtResource("3_3j0wo")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AtaqueMelee/Hitbox"]
 position = Vector2(0, 15)
