@@ -10,9 +10,9 @@ signal muerto()
 	"estamina_max" : 10,
 	"mana" : 1,
 	"mana_max" : 10,
+	"equipo" : 1,
 }
-@export var jugador:Jugador
-@export_category("no tocar")
+@export_category("componentes (no tocar)")
 @export var animacion:AnimationPlayer
 @export var estados:Node
 

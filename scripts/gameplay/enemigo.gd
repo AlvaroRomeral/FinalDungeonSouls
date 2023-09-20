@@ -6,7 +6,7 @@ class_name Enemigo
 @export var aceleracion = 0.3
 @export var jugador:Jugador
 
-@export_category("no tocar")
+@export_category("componentes (no tocar)")
 @export var control_estado:ControlEstado
 @export var control_ataque:ControlAtaque
 @export var animacion:AnimationPlayer
