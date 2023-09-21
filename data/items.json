@@ -3,7 +3,7 @@
         "nombre" : "Espada hierro",
         "rareza" : 1,
         "descripcion" : "Espada comun",
-        "icon" : "",
+        "icon" : "res://assets/imagenes/icons/swords_09_t.png",
         "fuerza" : 10,
         "velocidad" : 1,
         "valor" : 20
@@ -12,7 +12,7 @@
         "nombre" : "Espada acero",
         "rareza" : 2,
         "descripcion" : "Espada rara",
-        "icon" : "",
+        "icon" : "res://assets/imagenes/icons/swords_09_t.png",
         "fuerza" : 40,
         "velocidad" : 0.7,
         "valor" : 70
@@ -21,7 +21,7 @@
         "nombre" : "Espada acero de dioses",
         "rareza" : 3,
         "descripcion" : "Espada epica",
-        "icon" : "",
+        "icon" : "res://assets/imagenes/icons/swords_09_t.png",
         "fuerza" : 100,
         "velocidad" : 1.5,
         "valor" : 200
@@ -30,7 +30,7 @@
         "nombre" : "",
         "rareza" : 1,
         "descripcion" : "",
-        "icon" : "",
+        "icon" : "res://assets/imagenes/icons/plate_mail_1.png",
         "fuerza" : 100,
         "velocidad" : 1.5,
         "valor" : 200

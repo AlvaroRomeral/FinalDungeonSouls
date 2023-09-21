@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://6hku0rim6qw" path="res://assets/imagenes/sprites/glove_gray.png" id="4_kqo18"]
 [ext_resource type="Texture2D" uid="uid://mbxwbbbvfkk" path="res://assets/imagenes/sprites/broadsword.png" id="5_2ma5o"]
 
-[node name="ControlEquipo" type="Node2D"]
+[node name="ControlEquipo" type="Node2D" node_paths=PackedStringArray("equipamiento_cabeza", "equipamiento_cuerpo", "equipamiento_brazos", "equipamiento_pierna")]
 script = ExtResource("1_ybegl")
+equipamiento_cabeza = NodePath("Cabeza")
+equipamiento_cuerpo = NodePath("Cuerpo")
+equipamiento_brazos = NodePath("Brazos")
+equipamiento_pierna = NodePath("Piernas")
 
 [node name="Cuerpo" type="Node2D" parent="."]
 

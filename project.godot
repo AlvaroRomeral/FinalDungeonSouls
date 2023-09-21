@@ -23,12 +23,12 @@ config/windows_native_icon="res://icon.ico"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Global="*res://scripts/Global.gd"
 Opciones="*res://scripts/Opciones.gd"
+DatosManager="*res://scripts/DatosManager.gd"
 
 [display]
 
 window/size/viewport_width=880
 window/size/viewport_height=496
-window/size/mode=3
 window/size/window_width_override=1760
 window/size/window_height_override=992
 window/stretch/mode="canvas_items"

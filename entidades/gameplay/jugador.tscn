@@ -1,11 +1,82 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddxp61mw3oj4"]
+[gd_scene load_steps=28 format=3 uid="uid://ddxp61mw3oj4"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/jugador.gd" id="1_a8vep"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="2_bfic6"]
 [ext_resource type="PackedScene" uid="uid://b43hvyhd3tplf" path="res://entidades/controles/control_equipo.tscn" id="2_co52e"]
 [ext_resource type="Texture2D" uid="uid://c3qfp0r4vrjr6" path="res://assets/imagenes/sprites/human_m.png" id="3_7hnia"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="3_iil3i"]
+[ext_resource type="Script" path="res://scripts/slot.gd" id="5_68wvb"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="6_mv3ao"]
+
+[sub_resource type="Resource" id="Resource_3fdv8"]
+script = ExtResource("5_68wvb")
+id = "armadura_1"
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_1tity"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_df25h"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_c2a1b"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_sxd7h"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_7ge7e"]
+script = ExtResource("5_68wvb")
+id = "espada_2"
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_8a3qa"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_oeh6n"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_ekehc"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_llcne"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_u6i1q"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_emqs7"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_r3axw"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_p0tql"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3n4t"]
 size = Vector2(16, 16)
@@ -87,6 +158,11 @@ texture = ExtResource("3_7hnia")
 offset = Vector2(0, -16)
 
 [node name="ControlEquipo" parent="Sprite2D" instance=ExtResource("2_co52e")]
+inventario = Array[ExtResource("5_68wvb")]([SubResource("Resource_3fdv8"), SubResource("Resource_1tity"), SubResource("Resource_df25h"), SubResource("Resource_c2a1b"), SubResource("Resource_sxd7h"), SubResource("Resource_7ge7e"), SubResource("Resource_8a3qa"), SubResource("Resource_oeh6n"), SubResource("Resource_ekehc"), SubResource("Resource_llcne")])
+slot_cabeza = SubResource("Resource_u6i1q")
+slot_cuerpo = SubResource("Resource_emqs7")
+slot_brazos = SubResource("Resource_r3axw")
+slot_pierna = SubResource("Resource_p0tql")
 
 [node name="ControlAtaque" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("6_mv3ao")]
 control_estado = NodePath("../../ControlEstado")

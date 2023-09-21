@@ -31,6 +31,7 @@ func _input(event):
 			panel_inventario.hide()
 		else:
 			panel_inventario.show()
+			panel_inventario.generar()
 
 
 func actualizar():
