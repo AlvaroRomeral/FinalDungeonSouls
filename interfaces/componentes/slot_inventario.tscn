@@ -18,7 +18,6 @@ script = ExtResource("1_pew35")
 sprite = NodePath("TextureRectIcono")
 
 [node name="TextureRectIcono" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0

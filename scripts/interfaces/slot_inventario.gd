@@ -21,10 +21,13 @@ func _ready():
 
 
 func actualizar():
-	if slot_ref.id != null:
+	if slot_ref.id != "":
 		if DatosManager.get_item(slot_ref.id):
 			var datos_item = DatosManager.get_item(slot_ref.id)
+			print(datos_item.icon)
 			sprite.texture = load(datos_item.icon)
+		else:
+			print("imagen no")
 	else:
 		sprite.texture = null
 
