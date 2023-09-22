@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddxp61mw3oj4"]
+[gd_scene load_steps=44 format=3 uid="uid://ddxp61mw3oj4"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/jugador.gd" id="1_a8vep"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="2_bfic6"]
@@ -58,6 +58,81 @@ script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
 
+[sub_resource type="Resource" id="Resource_eccux"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_batas"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_4w480"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_qggyo"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_8m1ky"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_tfdy6"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_mjgjl"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_pstmm"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_d0lut"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_afons"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_5tw68"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_6613f"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_ucey4"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_c0x67"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_h4rl8"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
 [sub_resource type="Resource" id="Resource_u6i1q"]
 script = ExtResource("5_68wvb")
 id = ""
@@ -74,6 +149,11 @@ id = ""
 cantidad = 0
 
 [sub_resource type="Resource" id="Resource_p0tql"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_2u04n"]
 script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
@@ -141,7 +221,7 @@ _data = {
 radius = 7.0
 height = 20.0
 
-[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_equipo", "control_ataque", "animacion", "cooldown_ataque")]
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_equipo", "control_ataque", "animacion")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_a8vep")
@@ -149,7 +229,6 @@ control_estado = NodePath("ControlEstado")
 control_equipo = NodePath("Sprite2D/ControlEquipo")
 control_ataque = NodePath("Sprite2D/ControlAtaque")
 animacion = NodePath("AnimationPlayer")
-cooldown_ataque = NodePath("Sprite2D/ControlAtaque/CooldownAtaque")
 
 [node name="ControlEstado" parent="." instance=ExtResource("2_bfic6")]
 
@@ -158,18 +237,15 @@ texture = ExtResource("3_7hnia")
 offset = Vector2(0, -16)
 
 [node name="ControlEquipo" parent="Sprite2D" instance=ExtResource("2_co52e")]
-inventario = Array[ExtResource("5_68wvb")]([SubResource("Resource_3fdv8"), SubResource("Resource_1tity"), SubResource("Resource_df25h"), SubResource("Resource_c2a1b"), SubResource("Resource_sxd7h"), SubResource("Resource_7ge7e"), SubResource("Resource_8a3qa"), SubResource("Resource_oeh6n"), SubResource("Resource_ekehc"), SubResource("Resource_llcne")])
+inventario = Array[ExtResource("5_68wvb")]([SubResource("Resource_3fdv8"), SubResource("Resource_1tity"), SubResource("Resource_df25h"), SubResource("Resource_c2a1b"), SubResource("Resource_sxd7h"), SubResource("Resource_7ge7e"), SubResource("Resource_8a3qa"), SubResource("Resource_oeh6n"), SubResource("Resource_ekehc"), SubResource("Resource_llcne"), SubResource("Resource_eccux"), SubResource("Resource_batas"), SubResource("Resource_4w480"), SubResource("Resource_qggyo"), SubResource("Resource_8m1ky"), SubResource("Resource_tfdy6"), SubResource("Resource_mjgjl"), SubResource("Resource_pstmm"), SubResource("Resource_d0lut"), SubResource("Resource_afons"), SubResource("Resource_5tw68"), SubResource("Resource_6613f"), SubResource("Resource_ucey4"), SubResource("Resource_c0x67"), SubResource("Resource_h4rl8")])
 slot_cabeza = SubResource("Resource_u6i1q")
 slot_cuerpo = SubResource("Resource_emqs7")
 slot_brazos = SubResource("Resource_r3axw")
 slot_pierna = SubResource("Resource_p0tql")
+slot_item = SubResource("Resource_2u04n")
 
 [node name="ControlAtaque" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("6_mv3ao")]
 control_estado = NodePath("../../ControlEstado")
-
-[node name="CooldownAtaque" type="Timer" parent="Sprite2D/ControlAtaque"]
-wait_time = 0.5
-one_shot = true
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("control_estado") instance=ExtResource("3_iil3i")]
 control_estado = NodePath("../ControlEstado")

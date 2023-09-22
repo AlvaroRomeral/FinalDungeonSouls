@@ -90,11 +90,12 @@ _data = {
 "ataque": SubResource("Animation_0502j")
 }
 
-[node name="ControlAtaque" type="Node2D" node_paths=PackedStringArray("animacion", "hitbox", "sprite")]
+[node name="ControlAtaque" type="Node2D" node_paths=PackedStringArray("animacion", "hitbox", "sprite", "cooldown")]
 script = ExtResource("1_itf5u")
 animacion = NodePath("AnimationPlayer")
 hitbox = NodePath("AtaqueMelee/Hitbox")
 sprite = NodePath("AtaqueMelee")
+cooldown = NodePath("CooldownAtaque")
 
 [node name="AtaqueMelee" type="Sprite2D" parent="."]
 visible = false
@@ -113,3 +114,7 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_fawou")
 }
+
+[node name="CooldownAtaque" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

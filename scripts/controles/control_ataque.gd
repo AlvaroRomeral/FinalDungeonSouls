@@ -6,11 +6,14 @@ class_name ControlAtaque
 @export var animacion:AnimationPlayer
 @export var hitbox:Hitbox
 @export var sprite:Sprite2D
+@export var cooldown:Timer
 
 func _ready():
 	hitbox.datos["atacante"] = control_estado
 
 
 func atacar(direccion:Vector2):
-	sprite.look_at(direccion)
-	animacion.play("ataque")
+	if cooldown.is_stopped():
+		cooldown.start()
+		sprite.look_at(direccion)
+		animacion.play("ataque")

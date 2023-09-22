@@ -11,11 +11,12 @@ class_name Jugador
 @export var control_equipo:ControlEquipo
 @export var control_ataque:ControlAtaque
 @export var animacion:AnimationPlayer
-@export var cooldown_ataque:Timer
 
 func _ready():
-	control_equipo.equipo_modificado.connect(func(): pantalla_interfaz.actualizar())
-	control_estado.estado_modificado.connect(func(): pantalla_interfaz.actualizar())
+	control_equipo.equipo_modificado.connect(func(): pantalla_interfaz.actualizar_equipo())
+	control_estado.estado_modificado.connect(func(): pantalla_interfaz.actualizar_estado())
+	pantalla_interfaz.actualizar_equipo()
+	pantalla_interfaz.actualizar_estado()
 
 
 func _physics_process(_delta):
@@ -33,6 +34,5 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	
-	if Input.is_action_pressed("ATACAR") and cooldown_ataque.is_stopped() and !pantalla_interfaz.panel_inventario.visible:
-		cooldown_ataque.start()
+	if Input.is_action_pressed("ATACAR") and !pantalla_interfaz.panel_inventario.visible:
 		control_ataque.atacar(get_global_mouse_position())

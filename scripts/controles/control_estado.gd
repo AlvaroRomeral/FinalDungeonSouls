@@ -36,7 +36,6 @@ func _ready():
 	estado_actual["mana"] = mana
 	estado_actual["mana_max"] = mana_max
 	estado_actual["equipo"] = equipo
-	
 
 
 func get_estado_final():

@@ -5,12 +5,11 @@ class_name Enemigo
 @export var friccion = 0.5
 @export var aceleracion = 0.3
 @export var jugador:Jugador
-
+@export var efecto_muerte:PackedScene
 @export_category("componentes (no tocar)")
 @export var control_estado:ControlEstado
 @export var control_ataque:ControlAtaque
 @export var animacion:AnimationPlayer
-@export var cooldown_ataque:Timer
 @export var nav_agent:NavigationAgent2D
 @export var sprite:Sprite2D
 
@@ -39,12 +38,14 @@ func _physics_process(_delta):
 			animacion.play("idle")
 			velocity = velocity.lerp(Vector2.ZERO, friccion)
 		
-		if global_position.distance_to(jugador.global_position) < 30 and cooldown_ataque.is_stopped():
-			cooldown_ataque.start()
+		if global_position.distance_to(jugador.global_position) < 30:
 			control_ataque.atacar(jugador.global_position)
 
 	move_and_slide()
 
 
 func morir():
+	var particulas = efecto_muerte.instantiate()
+	particulas.position = global_position
+	get_parent().add_child(particulas)
 	queue_free()

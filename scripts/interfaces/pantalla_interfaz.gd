@@ -25,18 +25,22 @@ func _input(event):
 			panel_inventario.hide()
 		else:
 			panel_inventario.show()
-			panel_inventario.actualizar()
 
 
-func actualizar():
+func actualizar_todo():
 	actualizar_barras()
-	actualizar_efectos()
+	actualizar_equipo()
+
+
+func actualizar_equipo():
 	panel_inventario.actualizar()
 
 
+func actualizar_estado():
+	actualizar_barras()
+
+
 func actualizar_barras():
-	# label_cooldown_ataque.text = str(roundf(jugador.cooldown_ataque.time_left))
-	
 	var status = jugador.control_estado.get_estado_final()
 	
 	bar_vida.max_value = status["salud_max"]
@@ -53,7 +57,4 @@ func actualizar_barras():
 	label_max_mana.text = str(status["mana_max"])
 	bar_mana.value = status["mana"]
 	label_cantidad_mana.text = str(status["mana"])
-
-
-func actualizar_efectos():
-	pass
+	

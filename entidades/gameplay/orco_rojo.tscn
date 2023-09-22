@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://xyy8tua36w67"]
+[gd_scene load_steps=16 format=3 uid="uid://xyy8tua36w67"]
 
 [ext_resource type="Texture2D" uid="uid://n6gfqyywgo17" path="res://assets/imagenes/sprites/hobgoblin.png" id="1_3f83u"]
 [ext_resource type="Script" path="res://scripts/gameplay/enemigo.gd" id="1_igkrx"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="1_qje0d"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="2_8tefa"]
+[ext_resource type="PackedScene" uid="uid://dbq5uc4fcicln" path="res://entidades/gameplay/efecto_muerte.tscn" id="2_71wrd"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="5_ddwe7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ehvf"]
@@ -107,19 +108,20 @@ _data = {
 radius = 3.0
 height = 14.0
 
-[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_ataque", "animacion", "cooldown_ataque", "nav_agent", "sprite")]
+[node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_ataque", "animacion", "nav_agent", "sprite")]
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_igkrx")
+efecto_muerte = ExtResource("2_71wrd")
 control_estado = NodePath("ControlEstado")
 control_ataque = NodePath("Sprite2D/ControlAtaque")
 animacion = NodePath("AnimationPlayer")
-cooldown_ataque = NodePath("Timer")
 nav_agent = NodePath("NavigationAgent2D")
 sprite = NodePath("Sprite2D")
 
 [node name="ControlEstado" parent="." node_paths=PackedStringArray("animacion") instance=ExtResource("1_qje0d")]
+salud = 1
 equipo = 2
 animacion = NodePath("../AnimationPlayerEfectos")
 
@@ -155,7 +157,3 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_3bs87")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
