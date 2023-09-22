@@ -1,6 +1,7 @@
 extends Node
 class_name ControlEstado
 
+signal estado_modificado()
 signal muerto()
 
 @export_subgroup("stats base")
@@ -51,5 +52,7 @@ func recibir_damage(cantidad:float):
 		animacion.play("herido")
 
 	estado_actual["salud"] -= cantidad
+	estado_modificado.emit()
+
 	if estado_actual["salud"] <= 0:
 		muerto.emit()

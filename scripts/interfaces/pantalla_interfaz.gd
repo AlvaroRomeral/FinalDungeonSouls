@@ -19,24 +19,19 @@ class_name PantallaInterfaz
 @export var label_cantidad_mana:Label
 @export var label_max_mana:Label
 
-
-func _process(_delta):
-	if jugador:
-		actualizar()
-
-
 func _input(event):
 	if event.is_action_pressed("INVENTARIO"):
 		if panel_inventario.visible:
 			panel_inventario.hide()
 		else:
 			panel_inventario.show()
-			panel_inventario.generar()
+			panel_inventario.actualizar()
 
 
 func actualizar():
 	actualizar_barras()
 	actualizar_efectos()
+	panel_inventario.actualizar()
 
 
 func actualizar_barras():

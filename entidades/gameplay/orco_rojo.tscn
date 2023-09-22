@@ -126,6 +126,7 @@ animacion = NodePath("../AnimationPlayerEfectos")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0
 target_desired_distance = 32.0
+debug_enabled = true
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("control_estado") instance=ExtResource("2_8tefa")]
 control_estado = NodePath("../ControlEstado")

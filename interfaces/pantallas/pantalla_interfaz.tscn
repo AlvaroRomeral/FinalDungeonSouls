@@ -53,10 +53,10 @@ visible = false
 
 [node name="PanelInventario" parent="Control" node_paths=PackedStringArray("interfaz") instance=ExtResource("4_mpgve")]
 visible = false
-offset_left = 528.0
-offset_top = 80.0
-offset_right = 568.0
-offset_bottom = 120.0
+offset_left = 632.0
+offset_top = 168.0
+offset_right = 672.0
+offset_bottom = 208.0
 interfaz = NodePath("../..")
 
 [node name="BarVida" type="ProgressBar" parent="Control"]

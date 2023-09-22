@@ -1,27 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://duuyjkfh3rg1c"]
+[gd_scene load_steps=4 format=3 uid="uid://duuyjkfh3rg1c"]
 
 [ext_resource type="Script" path="res://scripts/interfaces/panel_inventario.gd" id="1_08jxx"]
+[ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="1_g3vxi"]
+[ext_resource type="Texture2D" uid="uid://48i2apesvm0k" path="res://assets/imagenes/icons/gold_pile.png" id="3_ykt1s"]
 
-[node name="PanelInventario" type="Control" node_paths=PackedStringArray("grid")]
+[node name="PanelInventario" type="Control" node_paths=PackedStringArray("grid", "label_dinero")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_g3vxi")
 script = ExtResource("1_08jxx")
-grid = NodePath("Panel/GridContainer")
+grid = NodePath("Panel/Panel/GridContainer")
+label_dinero = NodePath("Panel/Label")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 232.0
 offset_bottom = 256.0
 
-[node name="GridContainer" type="GridContainer" parent="Panel"]
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 240.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Panel"]
 layout_mode = 1
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 216.0
-offset_bottom = 240.0
+offset_bottom = 224.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
 metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 241.0
+offset_right = 208.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(0.945098, 0.764706, 0.301961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GoldPile" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 240.0
+offset_right = 232.0
+offset_bottom = 256.0
+texture = ExtResource("3_ykt1s")
+expand_mode = 1
+stretch_mode = 5
