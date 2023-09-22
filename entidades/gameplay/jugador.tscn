@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/gameplay/jugador.gd" id="1_a8vep"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="2_bfic6"]
 [ext_resource type="PackedScene" uid="uid://b43hvyhd3tplf" path="res://entidades/controles/control_equipo.tscn" id="2_co52e"]
-[ext_resource type="Texture2D" uid="uid://c3qfp0r4vrjr6" path="res://assets/imagenes/sprites/human_m.png" id="3_7hnia"]
+[ext_resource type="Texture2D" uid="uid://72nxc3q6eeor" path="res://assets/imagenes/sprites/gargoyle_male.png" id="3_2248r"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="3_iil3i"]
 [ext_resource type="Script" path="res://scripts/slot.gd" id="5_68wvb"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="6_mv3ao"]
@@ -153,7 +153,7 @@ script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
 
-[sub_resource type="Resource" id="Resource_2u04n"]
+[sub_resource type="Resource" id="Resource_8q4qy"]
 script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
@@ -218,13 +218,14 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0lfs"]
-radius = 7.0
-height = 20.0
+radius = 5.00002
+height = 22.0
 
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_equipo", "control_ataque", "animacion")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_a8vep")
+velocidad = 125.0
 control_estado = NodePath("ControlEstado")
 control_equipo = NodePath("Sprite2D/ControlEquipo")
 control_ataque = NodePath("Sprite2D/ControlAtaque")
@@ -233,7 +234,7 @@ animacion = NodePath("AnimationPlayer")
 [node name="ControlEstado" parent="." instance=ExtResource("2_bfic6")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_7hnia")
+texture = ExtResource("3_2248r")
 offset = Vector2(0, -16)
 
 [node name="ControlEquipo" parent="Sprite2D" instance=ExtResource("2_co52e")]
@@ -242,7 +243,7 @@ slot_cabeza = SubResource("Resource_u6i1q")
 slot_cuerpo = SubResource("Resource_emqs7")
 slot_brazos = SubResource("Resource_r3axw")
 slot_pierna = SubResource("Resource_p0tql")
-slot_item = SubResource("Resource_2u04n")
+slot_arma = SubResource("Resource_8q4qy")
 
 [node name="ControlAtaque" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("6_mv3ao")]
 control_estado = NodePath("../../ControlEstado")
@@ -260,6 +261,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-rotation = -3.14159
+position = Vector2(0, -3)
+rotation = -1.57079
 shape = SubResource("CapsuleShape2D_c0lfs")

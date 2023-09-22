@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://7qdivo174jgv"]
+
+[ext_resource type="Script" path="res://scripts/interfaces/panel_equipo.gd" id="1_l4glv"]
+[ext_resource type="PackedScene" uid="uid://dwdln4ulkos8p" path="res://interfaces/componentes/slot_inventario.tscn" id="1_vgxsy"]
+
+[node name="PanelEquipo" type="Control" node_paths=PackedStringArray("slot_cabeza", "slot_cuerpo", "slot_brazos", "slot_pierna", "slot_arma")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -688.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4glv")
+slot_cabeza = NodePath("Panel/Panel/SlotInventario")
+slot_cuerpo = NodePath("Panel/Panel/SlotInventario2")
+slot_brazos = NodePath("Panel/Panel/SlotInventario3")
+slot_pierna = NodePath("Panel/Panel/SlotInventario4")
+slot_arma = NodePath("Panel/Panel/SlotInventario5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 264.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 248.0
+
+[node name="SlotInventario" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 1
+grow_vertical = 1
+tipo = 1
+
+[node name="SlotInventario2" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 96.0
+grow_horizontal = 1
+grow_vertical = 1
+tipo = 2
+
+[node name="SlotInventario3" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 48.0
+offset_bottom = 144.0
+grow_horizontal = 1
+grow_vertical = 1
+tipo = 3
+
+[node name="SlotInventario4" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 48.0
+offset_bottom = 192.0
+grow_horizontal = 1
+grow_vertical = 1
+tipo = 4
+
+[node name="SlotInventario5" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 8.0
+offset_right = 175.36
+offset_bottom = 28.56
+tipo = 5

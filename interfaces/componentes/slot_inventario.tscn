@@ -1,21 +1,27 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwdln4ulkos8p"]
 
 [ext_resource type="Script" path="res://scripts/interfaces/slot_inventario.gd" id="1_pew35"]
-[ext_resource type="Texture2D" uid="uid://bpcatdakr5xvh" path="res://assets/imagenes/icons/scroll_11_t.png" id="1_phae5"]
+[ext_resource type="Texture2D" uid="uid://d126g7ngg0km4" path="res://assets/imagenes/interfaces/slot_fondo.png" id="2_0yckf"]
 [ext_resource type="Texture2D" uid="uid://dodnmkuj57phg" path="res://assets/imagenes/interfaces/slot.png" id="2_eaof6"]
 
-[node name="SlotInventario" type="Control" node_paths=PackedStringArray("sprite")]
+[node name="SlotInventario" type="Control" node_paths=PackedStringArray("sprite_icono", "sprite_fondo")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -840.0
-offset_bottom = -456.0
+anchor_right = 0.045
+anchor_bottom = 0.081
+offset_right = 0.399998
+offset_bottom = -0.175999
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pew35")
-sprite = NodePath("TextureRectIcono")
+sprite_icono = NodePath("TextureRectIcono")
+sprite_fondo = NodePath("TextureRectFondo")
+
+[node name="TextureRectFondo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0yckf")
 
 [node name="TextureRectIcono" type="TextureRect" parent="."]
 layout_mode = 0
@@ -23,7 +29,6 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 37.0
 offset_bottom = 37.0
-texture = ExtResource("1_phae5")
 expand_mode = 1
 
 [node name="TextureRectBorde" type="TextureRect" parent="."]

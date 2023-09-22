@@ -1,24 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b43hvyhd3tplf"]
+[gd_scene load_steps=7 format=3 uid="uid://b43hvyhd3tplf"]
 
-[ext_resource type="Texture2D" uid="uid://bfy1og4p4ox01" path="res://assets/imagenes/sprites/bplate_metal_1.png" id="1_304qj"]
 [ext_resource type="Script" path="res://scripts/controles/control_equipo.gd" id="1_ybegl"]
+[ext_resource type="Texture2D" uid="uid://du1f7r32xb5g1" path="res://assets/imagenes/sprites/plate_black.png" id="2_xq5jo"]
 [ext_resource type="Texture2D" uid="uid://jjokiac3xwt3" path="res://assets/imagenes/sprites/leg_armor_3.png" id="3_nhlmp"]
+[ext_resource type="Texture2D" uid="uid://dra2fbstdwswd" path="res://assets/imagenes/sprites/helm_plume.png" id="4_jf63t"]
 [ext_resource type="Texture2D" uid="uid://6hku0rim6qw" path="res://assets/imagenes/sprites/glove_gray.png" id="4_kqo18"]
 [ext_resource type="Texture2D" uid="uid://mbxwbbbvfkk" path="res://assets/imagenes/sprites/broadsword.png" id="5_2ma5o"]
 
-[node name="ControlEquipo" type="Node2D" node_paths=PackedStringArray("equipamiento_cabeza", "equipamiento_cuerpo", "equipamiento_brazos", "equipamiento_pierna", "equipamiento_item")]
+[node name="ControlEquipo" type="Node2D" node_paths=PackedStringArray("equipamiento_cabeza", "equipamiento_cuerpo", "equipamiento_brazos", "equipamiento_pierna")]
 script = ExtResource("1_ybegl")
 equipamiento_cabeza = NodePath("Cabeza")
 equipamiento_cuerpo = NodePath("Cuerpo")
 equipamiento_brazos = NodePath("Brazos")
 equipamiento_pierna = NodePath("Piernas")
-equipamiento_item = NodePath("Item")
-
-[node name="Cuerpo" type="Node2D" parent="."]
-
-[node name="Boromir" type="Sprite2D" parent="Cuerpo"]
-position = Vector2(0, -16)
-texture = ExtResource("1_304qj")
 
 [node name="Piernas" type="Node2D" parent="."]
 
@@ -26,13 +20,23 @@ texture = ExtResource("1_304qj")
 position = Vector2(0, -16)
 texture = ExtResource("3_nhlmp")
 
-[node name="Cabeza" type="Node2D" parent="."]
+[node name="Cuerpo" type="Node2D" parent="."]
+
+[node name="Boromir" type="Sprite2D" parent="Cuerpo"]
+position = Vector2(0, -16)
+texture = ExtResource("2_xq5jo")
 
 [node name="Brazos" type="Node2D" parent="."]
 
 [node name="GloveGray" type="Sprite2D" parent="Brazos"]
 position = Vector2(0, -16)
 texture = ExtResource("4_kqo18")
+
+[node name="Cabeza" type="Node2D" parent="."]
+
+[node name="Iron3" type="Sprite2D" parent="Cabeza"]
+position = Vector2(0, -16)
+texture = ExtResource("4_jf63t")
 
 [node name="Item" type="Node2D" parent="."]
 

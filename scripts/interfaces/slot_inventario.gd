@@ -7,26 +7,41 @@ enum tipos {
 	CUERPO,
 	BRAZOS,
 	PIERNA,
+	ARMA,
 }
 
 @export var tipo:tipos = tipos.NORMAL
 @export_category("Componentes (no tocar)")
-@export var sprite:TextureRect
+@export var sprite_icono:TextureRect
+@export var sprite_fondo:TextureRect
 
 var slot_ref:Slot
 
 func _ready():
 	if slot_ref:
 		actualizar()
+	match tipo:
+		0:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_normal.png")
+		1:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_cabeza.png")
+		2:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_cuerpo.png")
+		3:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_brazos.png")
+		4:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_pierna.png")
+		5:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_arma.png")
 
 
 func actualizar():
 	if slot_ref.id != "":
 		if DatosManager.get_item(slot_ref.id):
 			var datos_item = DatosManager.get_item(slot_ref.id)
-			sprite.texture = load(datos_item.icon)
+			sprite_icono.texture = load(datos_item.icon)
 	else:
-		sprite.texture = null
+		sprite_icono.texture = null
 
 
 func _get_drag_data(_at_position):
@@ -34,7 +49,7 @@ func _get_drag_data(_at_position):
 		var new_control = Control.new()
 		var new_icono = TextureRect.new()
 
-		new_icono.texture = sprite.texture
+		new_icono.texture = sprite_icono.texture
 		new_icono.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		new_icono.position = Vector2(-16,-16)
 		new_icono.size = Vector2(32,32)
@@ -46,9 +61,9 @@ func _get_drag_data(_at_position):
 
 
 func _can_drop_data(_at_position, data):
-	if slot_ref.id == "":
+	if slot_ref != data:
 		return true
-	elif slot_ref.id == data.id:
+	elif tipo == tipos.NORMAL:
 		return true
 	else:
 		return false
@@ -56,7 +71,3 @@ func _can_drop_data(_at_position, data):
 
 func _drop_data(_at_position, data):
 	slot_ref.mover_slot(data)
-	# slot_ref.id = data.id
-	# slot_ref.cantidad += data.cantidad
-	# data.id = ""
-	# data.cantidad = 0

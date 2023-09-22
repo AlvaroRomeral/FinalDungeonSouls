@@ -9,13 +9,13 @@ signal equipo_modificado()
 @export var slot_cuerpo:Slot
 @export var slot_brazos:Slot
 @export var slot_pierna:Slot
-@export var slot_item:Slot
+@export var slot_arma:Slot
 @export_category("Componentes (no tocar)")
 @export var equipamiento_cabeza:Node2D
 @export var equipamiento_cuerpo:Node2D
 @export var equipamiento_brazos:Node2D
 @export var equipamiento_pierna:Node2D
-@export var equipamiento_item:Node2D
+@export var equipamiento_arma:Node2D
 
 func _ready():
 	for x in inventario:
@@ -26,6 +26,7 @@ func _ready():
 	slot_cuerpo.slot_modificado.connect(func(): equipo_modificado.emit())
 	slot_brazos.slot_modificado.connect(func(): equipo_modificado.emit())
 	slot_pierna.slot_modificado.connect(func(): equipo_modificado.emit())
+	slot_arma.slot_modificado.connect(func(): equipo_modificado.emit())
 	
 
 func item_annadido(id:String, cantidad:int):

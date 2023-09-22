@@ -6,6 +6,7 @@ class_name PantallaInterfaz
 @export_category("Componentes (no tocar)")
 @export var label_cooldown_ataque:Label
 @export var panel_inventario:PanelInventario
+@export var panel_equipo:PanelEquipo
 @export_subgroup("barra vida")
 @export var bar_vida:ProgressBar
 @export var label_cantidad_vida:Label
@@ -34,6 +35,7 @@ func actualizar_todo():
 
 func actualizar_equipo():
 	panel_inventario.actualizar()
+	panel_equipo.actualizar()
 
 
 func actualizar_estado():
