@@ -18,7 +18,6 @@ signal muerto()
 
 var estado_actual:Dictionary
 
-
 func _ready():
 	# estado_actual = {
 	# 	"salud" : salud,
