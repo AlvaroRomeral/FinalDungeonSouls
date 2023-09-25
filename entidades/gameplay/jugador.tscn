@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ddxp61mw3oj4"]
+[gd_scene load_steps=46 format=3 uid="uid://ddxp61mw3oj4"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/jugador.gd" id="1_a8vep"]
 [ext_resource type="PackedScene" uid="uid://dbq5uc4fcicln" path="res://entidades/gameplay/efecto_muerte.tscn" id="2_6thkt"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="3_iil3i"]
 [ext_resource type="Script" path="res://scripts/slot.gd" id="5_68wvb"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="6_mv3ao"]
+
+[sub_resource type="Curve" id="Curve_5gwl3"]
+min_value = 1.0
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 70.3), 106.488, 106.488, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_3fdv8"]
 script = ExtResource("5_68wvb")
@@ -234,6 +241,7 @@ control_ataque = NodePath("Sprite2D/ControlAtaque")
 animacion = NodePath("AnimationPlayer")
 
 [node name="ControlEstado" parent="." instance=ExtResource("2_bfic6")]
+curva_exp = SubResource("Curve_5gwl3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_2248r")

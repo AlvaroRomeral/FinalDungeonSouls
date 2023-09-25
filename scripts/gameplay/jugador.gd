@@ -23,9 +23,12 @@ func _ready():
 
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
-	if control_estado.estado_actual.salud > 0:
+	if control_estado.salud > 0:
 		direction = Input.get_vector("MOVER_IZQ", "MOVER_DER","MOVER_ARRIBA", "MOVER_ABAJO")
-	
+		
+		if Input.is_action_pressed("ATACAR") and !pantalla_interfaz.panel_inventario.visible:
+			control_ataque.atacar(get_global_mouse_position())
+
 	if direction:
 		animacion.play("walk")
 		
@@ -38,8 +41,16 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	
-	if Input.is_action_pressed("ATACAR") and !pantalla_interfaz.panel_inventario.visible:
-		control_ataque.atacar(get_global_mouse_position())
+
+
+func _input(event):
+	if event.is_action_pressed("LINTERNA"):
+		control_estado.add_experiencia(10)
+		# print(control_estado.exp_necesaria(31))
+		# print(control_estado.exp_necesaria(50))
+		# print(control_estado.exp_necesaria(100))
+		# print(control_estado.exp_necesaria(195))
+		# print(control_estado.exp_necesaria(200))
 
 
 func muerte():
