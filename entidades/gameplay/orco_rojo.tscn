@@ -106,12 +106,13 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bs87"]
 radius = 3.0
-height = 14.0
+height = 6.0
 
 [node name="OrcoRojo" type="CharacterBody2D" node_paths=PackedStringArray("control_estado", "control_ataque", "animacion", "nav_agent", "sprite")]
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_igkrx")
 efecto_muerte = ExtResource("2_71wrd")
 control_estado = NodePath("ControlEstado")

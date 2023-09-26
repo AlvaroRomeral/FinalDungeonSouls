@@ -12,8 +12,8 @@
 [sub_resource type="Curve" id="Curve_5gwl3"]
 min_value = 1.0
 max_value = 100.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 70.3), 106.488, 106.488, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 100), 138.6, 0.0, 0, 0]
+point_count = 2
 metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_3fdv8"]

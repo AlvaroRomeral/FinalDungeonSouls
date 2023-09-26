@@ -40,7 +40,11 @@ func _physics_process(_delta):
 		
 		if global_position.distance_to(jugador.global_position) < 30 and jugador.control_estado.salud > 0:
 			control_ataque.atacar(jugador.global_position)
-
+	
+	else:
+		animacion.play("idle")
+		velocity = velocity.lerp(Vector2.ZERO, friccion)
+	
 	move_and_slide()
 
 

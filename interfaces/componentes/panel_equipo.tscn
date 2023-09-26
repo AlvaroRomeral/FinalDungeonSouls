@@ -21,12 +21,12 @@ slot_arma = NodePath("Panel/Panel/SlotInventario5")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 192.0
+offset_right = 256.0
 offset_bottom = 264.0
 
 [node name="Panel" type="Panel" parent="Panel"]
 layout_mode = 0
-offset_right = 192.0
+offset_right = 256.0
 offset_bottom = 248.0
 
 [node name="SlotInventario" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
@@ -83,8 +83,8 @@ tipo = 4
 
 [node name="SlotInventario5" parent="Panel/Panel" instance=ExtResource("1_vgxsy")]
 layout_mode = 1
-offset_left = 144.0
-offset_top = 8.0
-offset_right = 175.36
-offset_bottom = 28.56
+offset_left = 108.0
+offset_top = 200.0
+offset_right = 136.48
+offset_bottom = 219.912
 tipo = 5

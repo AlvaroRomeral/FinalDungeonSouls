@@ -6,9 +6,12 @@
         "icon" : "res://assets/imagenes/icons/greatsword_1_new.png",
         "textura" : "",
         "stakable" : false,
-        "fuerza" : 10,
-        "velocidad" : 1,
-        "valor" : 20
+        "tipo" : "arma",
+        "stats": {
+            "armadura" : 10,
+            "velocidad" : 1,
+            "valor" : 20
+        }
     },
     "espada_2" : {
         "nombre" : "Espada acero",
@@ -17,9 +20,12 @@
         "icon" : "res://assets/imagenes/icons/greatsword_1_old.png",
         "textura" : "",
         "stakable" : false,
-        "fuerza" : 40,
-        "velocidad" : 0.7,
-        "valor" : 70
+        "tipo" : "arma",
+        "stats": {
+            "armadura" : 40,
+            "velocidad" : 1.5,
+            "valor" : 70
+        }
     },
     "espada_3" : {
         "nombre" : "Espada acero de dioses",
@@ -28,9 +34,12 @@
         "icon" : "res://assets/imagenes/icons/greatsword_3_new.png",
         "textura" : "",
         "stakable" : false,
-        "fuerza" : 100,
-        "velocidad" : 1.5,
-        "valor" : 200
+        "tipo" : "arma",
+        "stats": {
+            "armadura" : 100,
+            "velocidad" : 1.5,
+            "valor" : 200
+        }
     },
     "armadura_1" : {
         "nombre" : "",
@@ -39,9 +48,12 @@
         "icon" : "res://assets/imagenes/icons/plate_mail_1.png",
         "textura" : "",
         "stakable" : false,
-        "armadura" : 100,
-        "velocidad" : 1.5,
-        "valor" : 200
+        "tipo" : "cuerpo",
+        "stats": {
+            "armadura" : 100,
+            "velocidad" : 1.5,
+            "valor" : 200
+        }
     },
     "casco_1" : {
         "nombre" : "",
@@ -50,9 +62,12 @@
         "icon" : "",
         "textura" : "",
         "stakable" : false,
-        "armadura" : 100,
-        "velocidad" : 1.5,
-        "valor" : 200
+        "tipo" : "cabeza",
+        "stats": {
+            "armadura" : 100,
+            "velocidad" : 1.5,
+            "valor" : 200
+        }
     },
     "botas_1" : {
         "nombre" : "",
@@ -61,8 +76,11 @@
         "icon" : "",
         "textura" : "",
         "stakable" : false,
-        "armadura" : 100,
-        "velocidad" : 1.5,
-        "valor" : 200
+        "tipo" : "pierna",
+        "stats": {
+            "armadura" : 100,
+            "velocidad" : 1.5,
+            "valor" : 200
+        }
     }
 }
