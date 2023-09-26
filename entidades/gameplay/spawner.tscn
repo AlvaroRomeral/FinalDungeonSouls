@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgkhen8r764jx"]
+[gd_scene load_steps=3 format=3 uid="uid://dgkhen8r764jx"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/spawner.gd" id="1_p0p84"]
+[ext_resource type="Texture2D" uid="uid://cm84hm6o5147o" path="res://assets/imagenes/sprites/trap_magical.png" id="2_40676"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_p0p84")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_40676")

@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://rtx5dl4efdg1"]
+[gd_scene load_steps=3 format=3 uid="uid://rtx5dl4efdg1"]
+
+[ext_resource type="Script" path="res://scripts/controles/control_oleadas.gd" id="1_s4st0"]
+[ext_resource type="PackedScene" uid="uid://xyy8tua36w67" path="res://entidades/gameplay/orco_rojo.tscn" id="2_1xf6t"]
 
 [node name="ControlOleadas" type="Node2D"]
+script = ExtResource("1_s4st0")
+enemigo_t1 = ExtResource("2_1xf6t")
+enemigo_t2 = ExtResource("2_1xf6t")
+enemigo_t3 = ExtResource("2_1xf6t")

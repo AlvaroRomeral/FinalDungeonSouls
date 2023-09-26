@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bu2iwqijgykot"]
+[gd_scene load_steps=21 format=3 uid="uid://bu2iwqijgykot"]
 
 [ext_resource type="PackedScene" uid="uid://bsg3yay180jg2" path="res://entidades/controles/control_gameplay.tscn" id="1_ggoht"]
 [ext_resource type="PackedScene" uid="uid://rtx5dl4efdg1" path="res://entidades/controles/control_oleadas.tscn" id="2_4nr5k"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://civlheob3d3g2" path="res://entidades/gameplay/moneda.tscn" id="10_60aks"]
 [ext_resource type="Texture2D" uid="uid://egimmdhy05if" path="res://assets/imagenes/sprites/crumbled_column_2.png" id="12_c0tmy"]
 [ext_resource type="Texture2D" uid="uid://blyyc4i2ipji5" path="res://assets/imagenes/sprites/crumbled_column_1.png" id="13_cdudk"]
+[ext_resource type="PackedScene" uid="uid://dgkhen8r764jx" path="res://entidades/gameplay/spawner.tscn" id="14_3yq2c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iean"]
 texture = ExtResource("3_x3u6s")
@@ -1450,7 +1451,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-88, -184, -136, -184, 
 
 [node name="ControlGameplay" parent="." instance=ExtResource("1_ggoht")]
 
-[node name="ControlOleadas" parent="." instance=ExtResource("2_4nr5k")]
+[node name="ControlOleadas" parent="." node_paths=PackedStringArray("spawners") instance=ExtResource("2_4nr5k")]
+spawners = [NodePath("../Entidades/Spawner"), NodePath("../Entidades/Spawner2"), NodePath("../Entidades/Spawner3")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_l41ca")
@@ -1543,82 +1545,11 @@ position = Vector2(-208, -904)
 texture = ExtResource("13_cdudk")
 offset = Vector2(0, -16)
 
-[node name="OrcoRojo6" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-712, -792)
-jugador = NodePath("../Jugador")
+[node name="Spawner" parent="Entidades" instance=ExtResource("14_3yq2c")]
+position = Vector2(-1152, -736)
 
-[node name="OrcoRojo7" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-648, -792)
-jugador = NodePath("../Jugador")
+[node name="Spawner2" parent="Entidades" instance=ExtResource("14_3yq2c")]
+position = Vector2(-1152, -1088)
 
-[node name="OrcoRojo8" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-712, -760)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo9" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-672, -760)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo10" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-624, -752)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo11" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-712, -840)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo12" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-672, -840)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo13" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-640, -840)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo14" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-712, -888)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo15" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-712, -936)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo16" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-656, -944)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo17" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-632, -888)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo18" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-608, -936)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo19" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-688, -984)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo20" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-720, -992)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo21" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-624, -992)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo22" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-704, -1024)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo23" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-616, -1040)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo24" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-656, -1048)
-jugador = NodePath("../Jugador")
-
-[node name="OrcoRojo25" parent="Entidades" node_paths=PackedStringArray("jugador") instance=ExtResource("8_whuqr")]
-position = Vector2(-688, -1072)
-jugador = NodePath("../Jugador")
+[node name="Spawner3" parent="Entidades" instance=ExtResource("14_3yq2c")]
+position = Vector2(-1056, -912)

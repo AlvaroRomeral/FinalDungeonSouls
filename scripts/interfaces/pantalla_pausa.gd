@@ -13,8 +13,11 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		show()
-		get_tree().paused = true
+		if visible:
+			continuar()
+		else:
+			show()
+			get_tree().paused = true
 
 
 func continuar():

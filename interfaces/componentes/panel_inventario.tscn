@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/interfaces/panel_inventario.gd" id="1_08jxx"]
 [ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="1_g3vxi"]
-[ext_resource type="Texture2D" uid="uid://48i2apesvm0k" path="res://assets/imagenes/icons/gold_pile.png" id="3_ykt1s"]
+[ext_resource type="Texture2D" uid="uid://dtjselypsrt7" path="res://assets/imagenes/sprites/gold_pile_8.png" id="3_ab0j1"]
 
 [node name="PanelInventario" type="Control" node_paths=PackedStringArray("grid", "label_dinero")]
 layout_mode = 3
@@ -52,6 +52,6 @@ offset_left = 208.0
 offset_top = 240.0
 offset_right = 232.0
 offset_bottom = 256.0
-texture = ExtResource("3_ykt1s")
+texture = ExtResource("3_ab0j1")
 expand_mode = 1
 stretch_mode = 5
