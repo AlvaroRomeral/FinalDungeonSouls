@@ -1451,7 +1451,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-88, -184, -136, -184, 
 
 [node name="ControlGameplay" parent="." instance=ExtResource("1_ggoht")]
 
-[node name="ControlOleadas" parent="." node_paths=PackedStringArray("spawners") instance=ExtResource("2_4nr5k")]
+[node name="ControlOleadas" parent="." node_paths=PackedStringArray("jugador", "spawners") instance=ExtResource("2_4nr5k")]
+jugador = NodePath("../Entidades/Jugador")
 spawners = [NodePath("../Entidades/Spawner"), NodePath("../Entidades/Spawner2"), NodePath("../Entidades/Spawner3")]
 
 [node name="TileMap" type="TileMap" parent="."]

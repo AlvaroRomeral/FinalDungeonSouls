@@ -76,6 +76,7 @@ func spawnear_enemigos():
 
 
 func enemigo_eliminado():
+	enemigos_restantes -= 1
 	if enemigos_restantes <= 0:
 		oleada_finalizada()
 
