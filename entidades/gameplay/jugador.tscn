@@ -18,23 +18,23 @@ metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_3fdv8"]
 script = ExtResource("5_68wvb")
-id = "armadura_1"
-cantidad = 0
+id = "casco_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_1tity"]
 script = ExtResource("5_68wvb")
-id = ""
-cantidad = 0
+id = "armadura_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_df25h"]
 script = ExtResource("5_68wvb")
-id = ""
-cantidad = 0
+id = "botas_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_c2a1b"]
 script = ExtResource("5_68wvb")
-id = ""
-cantidad = 0
+id = "guantes_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_sxd7h"]
 script = ExtResource("5_68wvb")

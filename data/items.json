@@ -56,7 +56,7 @@
 	"casco_1": {
 		"nombre": "Casco normal",
 		"descripcion": "",
-		"icon": "",
+		"icon": "res://assets/imagenes/icons/helmet_1.png",
 		"sprite": "",
 		"rareza": 1,
 		"stakable": false,
@@ -110,11 +110,11 @@
 	"guantes_1": {
 		"nombre": "Guanteletes",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/01.png",
+		"icon": "res://assets/imagenes/icons/glove_3_new.png",
 		"sprite": "",
 		"rareza": 1,
 		"stakable": false,
-		"tipo": "cabeza",
+		"tipo": "brazos",
 		"valor": 0,
 		"stats_bases": {
 			"vida": 0,
@@ -137,11 +137,11 @@
 	"botas_1": {
 		"nombre": "Botas de caballero",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/01.png",
+		"icon": "res://assets/imagenes/icons/boots_iron_2.png",
 		"sprite": "",
 		"rareza": 1,
 		"stakable": false,
-		"tipo": "cabeza",
+		"tipo": "piernas",
 		"valor": 0,
 		"stats_bases": {
 			"vida": 0,

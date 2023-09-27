@@ -2,15 +2,16 @@ extends Control
 class_name SlotInventario
 
 enum tipos {
-	NORMAL,
-	CABEZA,
-	CUERPO,
-	BRAZOS,
-	PIERNA,
-	ARMA,
+	INVENTARIO,
+	EQUIPO_CABEZA,
+	EQUIPO_CUERPO,
+	EQUIPO_BRAZOS,
+	EQUIPO_PIERNAS,
+	EQUIPO_ARMA,
+	EQUIPO_TRINKET,
 }
 
-@export var tipo:tipos = tipos.NORMAL
+@export var tipo:tipos = tipos.INVENTARIO
 @export_category("Componentes (no tocar)")
 @export var sprite_icono:TextureRect
 @export var sprite_fondo:TextureRect
@@ -33,6 +34,8 @@ func _ready():
 			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_pierna.png")
 		5:
 			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_arma.png")
+		6:
+			sprite_fondo.texture = load("res://assets/imagenes/interfaces/slot_fondo_trinkets.png")
 
 
 func actualizar():
@@ -61,11 +64,44 @@ func _get_drag_data(_at_position):
 
 
 func _can_drop_data(_at_position, data):
-	if slot_ref != data:
-		return true
-	elif tipo == tipos.NORMAL:
-		return true
+	if tipo == 0:
+		if slot_ref != data:
+			return true
+		else:
+			return false
 	else:
+		var datos = DatosManager.get_item(data.id)
+		match datos.tipo:
+			"arma":
+				if tipo == tipos.EQUIPO_ARMA:
+					return true
+				else:
+					return false
+			"cabeza":
+				if tipo == tipos.EQUIPO_CABEZA:
+					return true
+				else:
+					return false
+			"cuerpo":
+				if tipo == tipos.EQUIPO_CUERPO:
+					return true
+				else:
+					return false
+			"brazos":
+				if tipo == tipos.EQUIPO_BRAZOS:
+					return true
+				else:
+					return false
+			"piernas":
+				if tipo == tipos.EQUIPO_PIERNAS:
+					return true
+				else:
+					return false
+			"trinket":
+				if tipo == tipos.EQUIPO_TRINKET:
+					return true
+				else:
+					return false
 		return false
 
 
