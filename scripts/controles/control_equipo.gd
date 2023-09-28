@@ -31,6 +31,10 @@ func _ready():
 	slot_brazos.slot_modificado.connect(func(): equipo_modificado.emit())
 	slot_pierna.slot_modificado.connect(func(): equipo_modificado.emit())
 	slot_arma.slot_modificado.connect(func(): equipo_modificado.emit())
+	slot_trinket_1.slot_modificado.connect(func(): equipo_modificado.emit())
+	slot_trinket_2.slot_modificado.connect(func(): equipo_modificado.emit())
+	slot_trinket_3.slot_modificado.connect(func(): equipo_modificado.emit())
+	slot_trinket_4.slot_modificado.connect(func(): equipo_modificado.emit())
 	
 
 func item_annadido(id:String, cantidad:int):
