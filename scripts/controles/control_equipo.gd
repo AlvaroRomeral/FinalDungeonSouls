@@ -14,6 +14,7 @@ signal equipo_modificado()
 @export var slot_trinket_2:Slot
 @export var slot_trinket_3:Slot
 @export var slot_trinket_4:Slot
+@export var control_estado:ControlEstado
 @export_category("Componentes (no tocar)")
 @export var equipamiento_cabeza:Node2D
 @export var equipamiento_cuerpo:Node2D
@@ -26,15 +27,15 @@ func _ready():
 		if x != null:
 			x.slot_modificado.connect(func(): equipo_modificado.emit())
 
-	slot_cabeza.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_cuerpo.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_brazos.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_pierna.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_arma.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_trinket_1.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_trinket_2.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_trinket_3.slot_modificado.connect(func(): equipo_modificado.emit())
-	slot_trinket_4.slot_modificado.connect(func(): equipo_modificado.emit())
+	slot_cabeza.slot_modificado.connect(actualizar_equipo)
+	slot_cuerpo.slot_modificado.connect(actualizar_equipo)
+	slot_brazos.slot_modificado.connect(actualizar_equipo)
+	slot_pierna.slot_modificado.connect(actualizar_equipo)
+	slot_arma.slot_modificado.connect(actualizar_equipo)
+	slot_trinket_1.slot_modificado.connect(actualizar_equipo)
+	slot_trinket_2.slot_modificado.connect(actualizar_equipo)
+	slot_trinket_3.slot_modificado.connect(actualizar_equipo)
+	slot_trinket_4.slot_modificado.connect(actualizar_equipo)
 	
 
 func item_annadido(id:String, cantidad:int):
@@ -59,3 +60,7 @@ func item_annadido(id:String, cantidad:int):
 
 
 # func item_dropeado():
+
+
+func actualizar_equipo():
+	equipo_modificado.emit()

@@ -5,6 +5,7 @@ signal estado_modificado()
 signal muerto()
 
 @export var curva_exp:Curve
+@export var control_equipo:ControlEquipo
 @export_subgroup("stats base")
 @export var salud = 10
 @export var salud_max = 10
@@ -25,30 +26,52 @@ signal muerto()
 
 var estado_actual:Dictionary
 
-# func _ready():
-# 	# estado_actual = {
-# 	# 	"salud" : salud,
-# 	# 	"salud_max" : 10,
-# 	# 	"estamina" : 1,
-# 	# 	"estamina_max" : 10,
-# 	# 	"mana" : 1,
-# 	# 	"mana_max" : 10,
-# 	# 	"equipo" : 1,
-# 	# }
-# 	estado_actual["salud"] = salud
-# 	estado_actual["salud_max"] = salud_max
-# 	estado_actual["estamina"] = estamina
-# 	estado_actual["estamina_max"] = estamina_max
-# 	estado_actual["mana"] = mana
-# 	estado_actual["mana_max"] = mana_max
-# 	estado_actual["equipo"] = equipo
+func _ready():
+	estado_actual["salud"] = salud
+	estado_actual["salud_max"] = salud_max
+	estado_actual["estamina"] = estamina
+	estado_actual["estamina_max"] = estamina_max
+	estado_actual["mana"] = mana
+	estado_actual["mana_max"] = mana_max
+	estado_actual["equipo"] = equipo
+	estado_actual["nivel"] = nivel
+	estado_actual["experiencia"] = experiencia
 
 
-# func get_estado_final():
+func calcular_estado_actual():
+	estado_actual["salud"] = salud
+	estado_actual["salud_max"] = salud_max
+	estado_actual["estamina"] = estamina
+	estado_actual["estamina_max"] = estamina_max
+	estado_actual["mana"] = mana
+	estado_actual["mana_max"] = mana_max
+	estado_actual["equipo"] = equipo
+	estado_actual["nivel"] = nivel
+	estado_actual["experiencia"] = experiencia
+
+	if control_equipo:
+		if control_equipo.slot_cabeza.id != "":
+			sumar_stats_item(control_equipo.slot_cabeza.id)
+		if control_equipo.slot_cuerpo.id != "":
+			sumar_stats_item(control_equipo.slot_cuerpo.id)
+		if control_equipo.slot_brazos.id != "":
+			sumar_stats_item(control_equipo.slot_brazos.id)
+		if control_equipo.slot_pierna.id != "":
+			sumar_stats_item(control_equipo.slot_pierna.id)
+		if control_equipo.slot_arma.id != "":
+			sumar_stats_item(control_equipo.slot_arma.id)
+		if control_equipo.slot_trinket_1.id != "":
+			sumar_stats_item(control_equipo.slot_trinket_1.id)
+		if control_equipo.slot_trinket_2.id != "":
+			sumar_stats_item(control_equipo.slot_trinket_2.id)
+		if control_equipo.slot_trinket_3.id != "":
+			sumar_stats_item(control_equipo.slot_trinket_3.id)
+		if control_equipo.slot_trinket_4.id != "":
+			sumar_stats_item(control_equipo.slot_trinket_4.id)
+		
 	# for x in estados.get_children():
 	# 	for y in x.keys():
 	# 		estado_actual[y] += x[y]
-	# return estado_actual
 
 
 func recibir_damage(cantidad:float):
@@ -75,3 +98,13 @@ func add_experiencia(cantidad:float):
 		nivel += 1
 		estado_modificado.emit()
 	estado_modificado.emit()
+
+
+func sumar_stats_item(id:String):
+	var datos = DatosManager.get_item(id)
+	estado_actual["salud_max"] = datos.vida
+	estado_actual["mana_max"] = datos.mana
+	estado_actual["estamina_max"] = datos.estamina
+	estado_actual["estamina_max"] = datos.ataque
+	estado_actual["mana"] = datos.armadura
+	estado_actual["mana_max"] = datos.velocidad
