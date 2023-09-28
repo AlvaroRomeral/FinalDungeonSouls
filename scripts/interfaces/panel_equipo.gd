@@ -8,6 +8,10 @@ class_name PanelEquipo
 @export var slot_brazos:SlotInventario
 @export var slot_pierna:SlotInventario
 @export var slot_arma:SlotInventario
+@export var slot_trinket_1:SlotInventario
+@export var slot_trinket_2:SlotInventario
+@export var slot_trinket_3:SlotInventario
+@export var slot_trinket_4:SlotInventario
 
 func _ready():
 	slot_cabeza.slot_ref = interfaz.jugador.control_equipo.slot_cabeza
@@ -15,6 +19,10 @@ func _ready():
 	slot_brazos.slot_ref = interfaz.jugador.control_equipo.slot_brazos
 	slot_pierna.slot_ref = interfaz.jugador.control_equipo.slot_pierna
 	slot_arma.slot_ref = interfaz.jugador.control_equipo.slot_arma
+	slot_trinket_1.slot_ref = interfaz.jugador.control_equipo.slot_trinket_1
+	slot_trinket_2.slot_ref = interfaz.jugador.control_equipo.slot_trinket_2
+	slot_trinket_3.slot_ref = interfaz.jugador.control_equipo.slot_trinket_3
+	slot_trinket_4.slot_ref = interfaz.jugador.control_equipo.slot_trinket_4
 
 
 func actualizar():

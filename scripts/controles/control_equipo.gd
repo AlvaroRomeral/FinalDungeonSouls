@@ -10,6 +10,10 @@ signal equipo_modificado()
 @export var slot_brazos:Slot
 @export var slot_pierna:Slot
 @export var slot_arma:Slot
+@export var slot_trinket_1:Slot
+@export var slot_trinket_2:Slot
+@export var slot_trinket_3:Slot
+@export var slot_trinket_4:Slot
 @export_category("Componentes (no tocar)")
 @export var equipamiento_cabeza:Node2D
 @export var equipamiento_cuerpo:Node2D

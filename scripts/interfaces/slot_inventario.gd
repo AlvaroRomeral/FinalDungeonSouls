@@ -60,50 +60,130 @@ func _get_drag_data(_at_position):
 
 		set_drag_preview(new_control)
 
-		return slot_ref
+		return {
+			"ref": slot_ref,
+			"slot": self
+		}
 
 
 func _can_drop_data(_at_position, data):
-	if tipo == 0:
-		if slot_ref != data:
-			return true
-		else:
-			return false
-	else:
-		var datos = DatosManager.get_item(data.id)
-		match datos.tipo:
-			"arma":
-				if tipo == tipos.EQUIPO_ARMA:
-					return true
-				else:
-					return false
-			"cabeza":
-				if tipo == tipos.EQUIPO_CABEZA:
-					return true
-				else:
-					return false
-			"cuerpo":
-				if tipo == tipos.EQUIPO_CUERPO:
-					return true
-				else:
-					return false
-			"brazos":
-				if tipo == tipos.EQUIPO_BRAZOS:
-					return true
-				else:
-					return false
-			"piernas":
-				if tipo == tipos.EQUIPO_PIERNAS:
-					return true
-				else:
-					return false
-			"trinket":
-				if tipo == tipos.EQUIPO_TRINKET:
-					return true
-				else:
-					return false
+	if slot_ref == data.ref: #Si es el mismo slot
 		return false
+	
+	elif slot_ref.is_vacio(): #Si el slot esta vacio
+		if tipo == 0: #Si el destino es slot de inventario
+			return true
+		else: #Si el destino es slot de equipo
+			var datos = DatosManager.get_item(data.ref.id)
+			match datos.tipo:
+				"cabeza":
+					if tipo == tipos.EQUIPO_CABEZA:
+						return true
+					else:
+						return false
+				"cuerpo":
+					if tipo == tipos.EQUIPO_CUERPO:
+						return true
+					else:
+						return false
+				"brazos":
+						if tipo == tipos.EQUIPO_BRAZOS:
+							return true
+						else:
+							return false
+				"piernas":
+					if tipo == tipos.EQUIPO_PIERNAS:
+						return true
+					else:
+						return false
+				"arma":
+					if tipo == tipos.EQUIPO_ARMA:
+						return true
+					else:
+						return false
+				"trinket":
+					if tipo == tipos.EQUIPO_TRINKET:
+						return true
+					else:
+						return false
+			return false
+
+	else: #Si se va a sustituir
+		if tipo == 0: #Si el destino es slot de inventario
+			var datos = DatosManager.get_item(slot_ref.id)
+			match data.slot.tipo: #Dependiendo de el tipo de origen
+				0:
+					return true
+				1:
+					if datos.tipo == "cabeza":
+						return true
+					else:
+						return false
+				2:
+					if datos.tipo == "cuerpo":
+						return true
+					else:
+						return false
+				3:
+					if datos.tipo == "brazos":
+						return true
+					else:
+						return false
+				4:
+					if datos.tipo == "piernas":
+						return true
+					else:
+						return false
+				5:
+					if datos.tipo == "arma":
+						return true
+					else:
+						return false
+				6:
+					if datos.tipo == "trinket":
+						return true
+					else:
+						return false
+		else: #Si el destino es slot de equipo
+			var datos = DatosManager.get_item(data.ref.id)
+			match datos.tipo:
+				"cabeza":
+					if tipo == tipos.EQUIPO_CABEZA:
+						return true
+					else:
+						return false
+				"cuerpo":
+					if tipo == tipos.EQUIPO_CUERPO:
+						return true
+					else:
+						return false
+				"brazos":
+						if tipo == tipos.EQUIPO_BRAZOS:
+							return true
+						else:
+							return false
+				"piernas":
+					if tipo == tipos.EQUIPO_PIERNAS:
+						return true
+					else:
+						return false
+				"arma":
+					if tipo == tipos.EQUIPO_ARMA:
+						return true
+					else:
+						return false
+				"trinket":
+					if tipo == tipos.EQUIPO_TRINKET:
+						return true
+					else:
+						return false
+			return false
+	return false
 
 
 func _drop_data(_at_position, data):
-	slot_ref.mover_slot(data)
+	slot_ref.mover_slot(data.ref)
+
+
+# func posible_convinacion(origen, destino):
+# 	pass

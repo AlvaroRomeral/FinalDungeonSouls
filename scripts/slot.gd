@@ -21,3 +21,10 @@ func mover_slot(slot_origen:Slot):
 		id = new_id
 		cantidad += new_cantidad
 		slot_modificado.emit()
+
+
+func is_vacio():
+	if id == "" or cantidad <= 0:
+		return true
+	else:
+		return false

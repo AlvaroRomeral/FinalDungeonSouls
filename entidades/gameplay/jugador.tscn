@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ddxp61mw3oj4"]
+[gd_scene load_steps=50 format=3 uid="uid://ddxp61mw3oj4"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/jugador.gd" id="1_a8vep"]
 [ext_resource type="PackedScene" uid="uid://dbq5uc4fcicln" path="res://entidades/gameplay/efecto_muerte.tscn" id="2_6thkt"]
@@ -166,6 +166,26 @@ script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
 
+[sub_resource type="Resource" id="Resource_1kdmm"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_21kbq"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_biojt"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
+[sub_resource type="Resource" id="Resource_1cmio"]
+script = ExtResource("5_68wvb")
+id = ""
+cantidad = 0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3n4t"]
 size = Vector2(16, 16)
 
@@ -254,6 +274,10 @@ slot_cuerpo = SubResource("Resource_emqs7")
 slot_brazos = SubResource("Resource_r3axw")
 slot_pierna = SubResource("Resource_p0tql")
 slot_arma = SubResource("Resource_8q4qy")
+slot_trinket_1 = SubResource("Resource_1kdmm")
+slot_trinket_2 = SubResource("Resource_21kbq")
+slot_trinket_3 = SubResource("Resource_biojt")
+slot_trinket_4 = SubResource("Resource_1cmio")
 
 [node name="ControlAtaque" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("6_mv3ao")]
 control_estado = NodePath("../../ControlEstado")
