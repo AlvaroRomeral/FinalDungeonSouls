@@ -38,8 +38,8 @@ cantidad = 1
 
 [sub_resource type="Resource" id="Resource_sxd7h"]
 script = ExtResource("5_68wvb")
-id = ""
-cantidad = 0
+id = "espada_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_7ge7e"]
 script = ExtResource("5_68wvb")
@@ -260,14 +260,15 @@ control_equipo = NodePath("Sprite2D/ControlEquipo")
 control_ataque = NodePath("Sprite2D/ControlAtaque")
 animacion = NodePath("AnimationPlayer")
 
-[node name="ControlEstado" parent="." instance=ExtResource("2_bfic6")]
+[node name="ControlEstado" parent="." node_paths=PackedStringArray("control_equipo") instance=ExtResource("2_bfic6")]
 curva_exp = SubResource("Curve_5gwl3")
+control_equipo = NodePath("../Sprite2D/ControlEquipo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_2248r")
 offset = Vector2(0, -16)
 
-[node name="ControlEquipo" parent="Sprite2D" instance=ExtResource("2_co52e")]
+[node name="ControlEquipo" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("2_co52e")]
 inventario = Array[ExtResource("5_68wvb")]([SubResource("Resource_3fdv8"), SubResource("Resource_1tity"), SubResource("Resource_df25h"), SubResource("Resource_c2a1b"), SubResource("Resource_sxd7h"), SubResource("Resource_7ge7e"), SubResource("Resource_8a3qa"), SubResource("Resource_oeh6n"), SubResource("Resource_ekehc"), SubResource("Resource_llcne"), SubResource("Resource_eccux"), SubResource("Resource_batas"), SubResource("Resource_4w480"), SubResource("Resource_qggyo"), SubResource("Resource_8m1ky"), SubResource("Resource_tfdy6"), SubResource("Resource_mjgjl"), SubResource("Resource_pstmm"), SubResource("Resource_d0lut"), SubResource("Resource_afons"), SubResource("Resource_5tw68"), SubResource("Resource_6613f"), SubResource("Resource_ucey4"), SubResource("Resource_c0x67"), SubResource("Resource_h4rl8")])
 slot_cabeza = SubResource("Resource_u6i1q")
 slot_cuerpo = SubResource("Resource_emqs7")
@@ -278,6 +279,7 @@ slot_trinket_1 = SubResource("Resource_1kdmm")
 slot_trinket_2 = SubResource("Resource_21kbq")
 slot_trinket_3 = SubResource("Resource_biojt")
 slot_trinket_4 = SubResource("Resource_1cmio")
+control_estado = NodePath("../../ControlEstado")
 
 [node name="ControlAtaque" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("6_mv3ao")]
 control_estado = NodePath("../../ControlEstado")

@@ -67,7 +67,7 @@
 			"mana": 0,
 			"estamina": 0,
 			"ataque": 0,
-			"armadura": 2,
+			"armadura": 3,
 			"velocidad": 0
 		},
 		"stats_porcentajes": {
@@ -94,7 +94,7 @@
 			"mana": 0,
 			"estamina": 0,
 			"ataque": 0,
-			"armadura": 2,
+			"armadura": 5,
 			"velocidad": 0
 		},
 		"stats_porcentajes": {
@@ -121,7 +121,7 @@
 			"mana": 0,
 			"estamina": 0,
 			"ataque": 0,
-			"armadura": 2,
+			"armadura": 1,
 			"velocidad": 0
 		},
 		"stats_porcentajes": {
@@ -148,7 +148,7 @@
 			"mana": 0,
 			"estamina": 0,
 			"ataque": 0,
-			"armadura": 2,
+			"armadura": 1,
 			"velocidad": 0
 		},
 		"stats_porcentajes": {

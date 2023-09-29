@@ -18,12 +18,12 @@ func _ready():
 	control_estado.estado_modificado.connect(func(): pantalla_interfaz.actualizar_estado())
 	pantalla_interfaz.actualizar_equipo()
 	pantalla_interfaz.actualizar_estado()
-	control_estado.muerto.connect(muerte)
+	control_estado.just_muerto.connect(muerte)
 
 
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
-	if control_estado.salud > 0:
+	if !control_estado.is_muerto():
 		direction = Input.get_vector("MOVER_IZQ", "MOVER_DER","MOVER_ARRIBA", "MOVER_ABAJO")
 		
 		if Input.is_action_pressed("ATACAR") and !pantalla_interfaz.panel_inventario.visible:

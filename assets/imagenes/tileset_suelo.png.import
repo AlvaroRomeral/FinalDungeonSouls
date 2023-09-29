@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ne0kidtvus0n"
-path="res://.godot/imported/tileset_camino.png-41c3a06fa1c9c22c996d222b6c5d6c15.ctex"
+uid="uid://c5ge08pw4wc3i"
+path="res://.godot/imported/tileset_suelo.png-6703d440f8ea9538eb058a79ecf866bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imagenes/tilemaps/tileset_camino.png"
-dest_files=["res://.godot/imported/tileset_camino.png-41c3a06fa1c9c22c996d222b6c5d6c15.ctex"]
+source_file="res://assets/imagenes/tileset_suelo.png"
+dest_files=["res://.godot/imported/tileset_suelo.png-6703d440f8ea9538eb058a79ecf866bc.ctex"]
 
 [params]
 

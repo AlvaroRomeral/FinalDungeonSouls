@@ -33,13 +33,14 @@ func _input(event):
 
 
 func actualizar_todo():
-	actualizar_barras()
+	actualizar_estado()
 	actualizar_equipo()
 
 
 func actualizar_equipo():
 	panel_inventario.actualizar()
 	panel_equipo.actualizar()
+	actualizar_stadisticas()
 
 
 func actualizar_estado():
@@ -49,25 +50,31 @@ func actualizar_estado():
 func actualizar_barras():
 	var status = jugador.control_estado
 	
-	bar_vida.max_value = status.salud_max
-	label_max_vida.text = str(status.salud_max)
-	bar_vida.value = status.salud
-	label_cantidad_vida.text = str(status.salud)
+	bar_vida.max_value = status.estado_actual.salud_max
+	label_max_vida.text = str(status.estado_actual.salud_max)
+	bar_vida.value = status.estado_actual.salud
+	label_cantidad_vida.text = str(status.estado_actual.salud)
 	
-	bar_estamina.max_value = status.estamina_max
-	label_max_estamina.text = str(status.estamina_max)
-	bar_estamina.value = status.estamina
-	label_cantidad_estamina.text = str(status.estamina)
+	bar_estamina.max_value = status.estado_actual.estamina_max
+	label_max_estamina.text = str(status.estado_actual.estamina_max)
+	bar_estamina.value = status.estado_actual.estamina
+	label_cantidad_estamina.text = str(status.estado_actual.estamina)
 	
-	bar_mana.max_value = status.mana_max
-	label_max_mana.text = str(status.mana_max)
-	bar_mana.value = status.mana
-	label_cantidad_mana.text = str(status.mana)
+	bar_mana.max_value = status.estado_actual.mana_max
+	label_max_mana.text = str(status.estado_actual.mana_max)
+	bar_mana.value = status.estado_actual.mana
+	label_cantidad_mana.text = str(status.estado_actual.mana)
 		
-	bar_exp.max_value = status.exp_necesaria(status.nivel)
-	label_max_exp.text = str(status.exp_necesaria(status.nivel))
-	bar_exp.value = status.experiencia
-	label_cantidad_exp.text = str(status.experiencia)
+	bar_exp.max_value = status.exp_necesaria(status.estado_actual.nivel)
+	label_max_exp.text = str(status.exp_necesaria(status.estado_actual.nivel))
+	bar_exp.value = status.estado_actual.experiencia
+	label_cantidad_exp.text = str(status.estado_actual.experiencia)
 
-	label_nivel.text = str(status.nivel)
+	label_nivel.text = str(status.estado_actual.nivel)
 	
+
+func actualizar_stadisticas():
+	panel_equipo.label_nivel.text = str(jugador.control_estado.estado_actual["nivel"])
+	panel_equipo.label_vida.text = str(jugador.control_estado.estado_actual["salud_max"])
+	panel_equipo.label_ataque.text = str(jugador.control_estado.estado_actual["ataque"])
+	panel_equipo.label_armadura.text = str(jugador.control_estado.estado_actual["armadura"])

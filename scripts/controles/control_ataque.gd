@@ -15,5 +15,6 @@ func _ready():
 func atacar(direccion:Vector2):
 	if cooldown.is_stopped():
 		cooldown.start()
+		hitbox.datos["damage"] = control_estado.estado_actual["ataque"]
 		sprite.look_at(direccion)
 		animacion.play("ataque")

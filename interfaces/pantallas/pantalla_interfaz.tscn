@@ -60,7 +60,6 @@ interfaz = NodePath("../..")
 [node name="PanelEquipo" parent="Control/PanelInventario" node_paths=PackedStringArray("interfaz") instance=ExtResource("5_2hwas")]
 layout_mode = 1
 offset_left = -624.0
-offset_right = -624.0
 offset_bottom = -4.0
 interfaz = NodePath("../../..")
 

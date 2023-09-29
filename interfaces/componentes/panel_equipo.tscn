@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://7qdivo174jgv"]
+[gd_scene load_steps=4 format=3 uid="uid://7qdivo174jgv"]
 
 [ext_resource type="Script" path="res://scripts/interfaces/panel_equipo.gd" id="1_l4glv"]
+[ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="1_lafkw"]
 [ext_resource type="PackedScene" uid="uid://dwdln4ulkos8p" path="res://interfaces/componentes/slot_inventario.tscn" id="1_vgxsy"]
 
-[node name="PanelEquipo" type="Control" node_paths=PackedStringArray("slot_cabeza", "slot_cuerpo", "slot_brazos", "slot_pierna", "slot_arma", "slot_trinket_1", "slot_trinket_2", "slot_trinket_3", "slot_trinket_4")]
+[node name="PanelEquipo" type="Control" node_paths=PackedStringArray("slot_cabeza", "slot_cuerpo", "slot_brazos", "slot_pierna", "slot_arma", "slot_trinket_1", "slot_trinket_2", "slot_trinket_3", "slot_trinket_4", "label_nivel", "label_vida", "label_ataque", "label_armadura")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +13,7 @@ offset_right = -624.0
 offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lafkw")
 script = ExtResource("1_l4glv")
 slot_cabeza = NodePath("Panel/Panel/SlotInventario")
 slot_cuerpo = NodePath("Panel/Panel/SlotInventario2")
@@ -22,6 +24,10 @@ slot_trinket_1 = NodePath("Panel/Panel/SlotInventario6")
 slot_trinket_2 = NodePath("Panel/Panel/SlotInventario7")
 slot_trinket_3 = NodePath("Panel/Panel/SlotInventario8")
 slot_trinket_4 = NodePath("Panel/Panel/SlotInventario9")
+label_nivel = NodePath("Panel/Panel/LabelNivel/LabelNivelCantidad")
+label_vida = NodePath("Panel/Panel/LabelVida/LabelVidaCantidad")
+label_ataque = NodePath("Panel/Panel/LabelAtaque/LabelAtaqueCantidad")
+label_armadura = NodePath("Panel/Panel/LabelArmadura/LabelArmaduraCantidad")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -124,3 +130,76 @@ offset_top = 152.0
 offset_right = 236.48
 offset_bottom = 171.912
 tipo = 6
+
+[node name="LabelNivel" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 23.0
+text = "Clase"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelNivelCantidad" type="Label" parent="Panel/Panel/LabelNivel"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 31.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelVida" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 128.0
+offset_bottom = 63.0
+text = "Vida:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelVidaCantidad" type="Label" parent="Panel/Panel/LabelVida"]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 128.0
+offset_bottom = 15.0
+text = "0"
+vertical_alignment = 1
+
+[node name="LabelAtaque" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 143.0
+text = "Ataque:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelAtaqueCantidad" type="Label" parent="Panel/Panel/LabelAtaque"]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 128.0
+offset_bottom = 15.0
+text = "0"
+vertical_alignment = 1
+
+[node name="LabelArmadura" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 144.0
+offset_right = 128.0
+offset_bottom = 159.0
+text = "Armadura:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelArmaduraCantidad" type="Label" parent="Panel/Panel/LabelArmadura"]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 128.0
+offset_bottom = 15.0
+text = "0"
+vertical_alignment = 1

@@ -13,6 +13,11 @@ class_name PanelEquipo
 @export var slot_trinket_3:SlotInventario
 @export var slot_trinket_4:SlotInventario
 
+@export var label_nivel:Label
+@export var label_vida:Label
+@export var label_ataque:Label
+@export var label_armadura:Label
+
 func _ready():
 	slot_cabeza.slot_ref = interfaz.jugador.control_equipo.slot_cabeza
 	slot_cuerpo.slot_ref = interfaz.jugador.control_equipo.slot_cuerpo

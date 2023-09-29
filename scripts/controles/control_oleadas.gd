@@ -31,7 +31,7 @@ func spawnear_enemigos():
 	
 	if cantidad_t1:
 		var new = enemigo_t1.instantiate()
-		new.control_estado.muerto.connect(enemigo_eliminado)
+		new.control_estado.just_muerto.connect(enemigo_eliminado)
 		new.jugador = jugador
 
 		enemigos_restantes += 1
@@ -46,7 +46,7 @@ func spawnear_enemigos():
 	
 	elif cantidad_t2:
 		var new = enemigo_t2.instantiate()
-		new.control_estado.muerto.connect(enemigo_eliminado)
+		new.control_estado.just_muerto.connect(enemigo_eliminado)
 		new.jugador = jugador
 
 		enemigos_restantes += 1
@@ -61,7 +61,7 @@ func spawnear_enemigos():
 	
 	elif cantidad_t3:
 		var new = enemigo_t3.instantiate()
-		new.control_estado.muerto.connect(enemigo_eliminado)
+		new.control_estado.just_muerto.connect(enemigo_eliminado)
 		new.jugador = jugador
 
 		enemigos_restantes += 1
