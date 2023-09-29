@@ -71,10 +71,10 @@ func actualizar_barras():
 	label_cantidad_exp.text = str(status.estado_actual.experiencia)
 
 	label_nivel.text = str(status.estado_actual.nivel)
+	panel_equipo.label_nivel.text = str(jugador.control_estado.estado_actual["nivel"])
 	
 
 func actualizar_stadisticas():
-	panel_equipo.label_nivel.text = str(jugador.control_estado.estado_actual["nivel"])
 	panel_equipo.label_vida.text = str(jugador.control_estado.estado_actual["salud_max"])
 	panel_equipo.label_ataque.text = str(jugador.control_estado.estado_actual["ataque"])
 	panel_equipo.label_armadura.text = str(jugador.control_estado.estado_actual["armadura"])
