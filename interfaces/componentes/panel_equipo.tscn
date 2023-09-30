@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cd8rnaki8n5uv" path="res://default_theme.tres" id="1_lafkw"]
 [ext_resource type="PackedScene" uid="uid://dwdln4ulkos8p" path="res://interfaces/componentes/slot_inventario.tscn" id="1_vgxsy"]
 
-[node name="PanelEquipo" type="Control" node_paths=PackedStringArray("slot_cabeza", "slot_cuerpo", "slot_brazos", "slot_pierna", "slot_arma", "slot_trinket_1", "slot_trinket_2", "slot_trinket_3", "slot_trinket_4", "label_nivel", "label_vida", "label_ataque", "label_armadura")]
+[node name="PanelEquipo" type="Control" node_paths=PackedStringArray("slot_cabeza", "slot_cuerpo", "slot_brazos", "slot_piernas", "slot_arma", "slot_trinket_1", "slot_trinket_2", "slot_trinket_3", "slot_trinket_4", "label_nivel", "label_vida", "label_ataque", "label_armadura")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ script = ExtResource("1_l4glv")
 slot_cabeza = NodePath("Panel/Panel/SlotInventario")
 slot_cuerpo = NodePath("Panel/Panel/SlotInventario2")
 slot_brazos = NodePath("Panel/Panel/SlotInventario3")
-slot_pierna = NodePath("Panel/Panel/SlotInventario4")
+slot_piernas = NodePath("Panel/Panel/SlotInventario4")
 slot_arma = NodePath("Panel/Panel/SlotInventario5")
 slot_trinket_1 = NodePath("Panel/Panel/SlotInventario6")
 slot_trinket_2 = NodePath("Panel/Panel/SlotInventario7")

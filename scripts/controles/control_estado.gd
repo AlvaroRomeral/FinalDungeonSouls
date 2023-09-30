@@ -69,8 +69,8 @@ func aplicar_equipo():
 			sumar_stats_item(control_equipo.slot_cuerpo.id)
 		if control_equipo.slot_brazos.id != "":
 			sumar_stats_item(control_equipo.slot_brazos.id)
-		if control_equipo.slot_pierna.id != "":
-			sumar_stats_item(control_equipo.slot_pierna.id)
+		if control_equipo.slot_piernas.id != "":
+			sumar_stats_item(control_equipo.slot_piernas.id)
 		if control_equipo.slot_arma.id != "":
 			sumar_stats_item(control_equipo.slot_arma.id)
 		if control_equipo.slot_trinket_1.id != "":

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dbq5uc4fcicln" path="res://entidades/gameplay/efecto_muerte.tscn" id="2_6thkt"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="2_bfic6"]
 [ext_resource type="PackedScene" uid="uid://b43hvyhd3tplf" path="res://entidades/controles/control_equipo.tscn" id="2_co52e"]
-[ext_resource type="Texture2D" uid="uid://72nxc3q6eeor" path="res://assets/imagenes/sprites/gargoyle_male.png" id="3_2248r"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="3_iil3i"]
+[ext_resource type="Texture2D" uid="uid://c3qfp0r4vrjr6" path="res://assets/imagenes/sprites/human_m.png" id="4_ga6xj"]
 [ext_resource type="Script" path="res://scripts/slot.gd" id="5_68wvb"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="6_mv3ao"]
 
@@ -156,7 +156,7 @@ script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
 
-[sub_resource type="Resource" id="Resource_p0tql"]
+[sub_resource type="Resource" id="Resource_cakji"]
 script = ExtResource("5_68wvb")
 id = ""
 cantidad = 0
@@ -265,7 +265,7 @@ curva_exp = SubResource("Curve_5gwl3")
 control_equipo = NodePath("../Sprite2D/ControlEquipo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_2248r")
+texture = ExtResource("4_ga6xj")
 offset = Vector2(0, -16)
 
 [node name="ControlEquipo" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("2_co52e")]
@@ -273,7 +273,7 @@ inventario = Array[ExtResource("5_68wvb")]([SubResource("Resource_3fdv8"), SubRe
 slot_cabeza = SubResource("Resource_u6i1q")
 slot_cuerpo = SubResource("Resource_emqs7")
 slot_brazos = SubResource("Resource_r3axw")
-slot_pierna = SubResource("Resource_p0tql")
+slot_piernas = SubResource("Resource_cakji")
 slot_arma = SubResource("Resource_8q4qy")
 slot_trinket_1 = SubResource("Resource_1kdmm")
 slot_trinket_2 = SubResource("Resource_21kbq")
