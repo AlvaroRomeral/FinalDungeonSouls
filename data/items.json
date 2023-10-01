@@ -2,7 +2,7 @@
 	"default": {
 		"nombre": "",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/01.png",
+		"icon": "res://assets/imagenes/iconos/01.png",
 		"sprite": "",
 		"rareza": 1,
 		"stakable": false,
@@ -29,9 +29,36 @@
 	"espada_1": {
 		"nombre": "Espada hierro",
 		"descripcion": "Espada comun",
-		"icon": "res://assets/imagenes/icons/greatsword_1_new.png",
-		"sprite": "res://assets/imagenes/sprites/broadsword.png",
+		"icon": "res://assets/imagenes/iconos/greatsword_1_new.png",
+		"sprite": "res://assets/imagenes/sprites/armas/broadsword.png",
 		"rareza": 1,
+		"stakable": false,
+		"tipo": "arma",
+		"valor": 0,
+		"stats_bases": {
+			"vida": 0,
+			"mana": 0,
+			"estamina": 0,
+			"ataque": 5,
+			"armadura": 0,
+			"velocidad": 0.5
+		},
+		"stats_porcentajes": {
+			"vida": 0,
+			"mana": 0,
+			"estamina": 0,
+			"ataque": 0,
+			"armadura": 0,
+			"velocidad": 0
+		},
+		"buffos": []
+	},
+	"hacha_1": {
+		"nombre": "Hacha de guerra",
+		"descripcion": "Hacha de guerra",
+		"icon": "res://assets/imagenes/iconos/executioner_axe_4.png",
+		"sprite": "res://assets/imagenes/sprites/armas/battleaxe.png",
+		"rareza": 2,
 		"stakable": false,
 		"tipo": "arma",
 		"valor": 0,
@@ -53,11 +80,38 @@
 		},
 		"buffos": []
 	},
+	"lanza_1": {
+		"nombre": "Lanza",
+		"descripcion": "Lanza comun",
+		"icon": "res://assets/imagenes/iconos/spear.png",
+		"sprite": "res://assets/imagenes/sprites/armas/spear_2_old.png",
+		"rareza": 1,
+		"stakable": false,
+		"tipo": "arma",
+		"valor": 0,
+		"stats_bases": {
+			"vida": 0,
+			"mana": 0,
+			"estamina": 0,
+			"ataque": 5,
+			"armadura": 0,
+			"velocidad": 1
+		},
+		"stats_porcentajes": {
+			"vida": 0,
+			"mana": 0,
+			"estamina": 0,
+			"ataque": 0,
+			"armadura": 0,
+			"velocidad": 0
+		},
+		"buffos": []
+	},
 	"casco_1": {
 		"nombre": "Casco normal",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/helmet_1.png",
-		"sprite": "res://assets/imagenes/sprites/iron_1.png",
+		"icon": "res://assets/imagenes/iconos/helmet_1.png",
+		"sprite": "res://assets/imagenes/sprites/equipo/iron_1.png",
 		"rareza": 1,
 		"stakable": false,
 		"tipo": "cabeza",
@@ -83,9 +137,9 @@
 	"armadura_1": {
 		"nombre": "Armaduras de placas",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/plate_mail_1.png",
-		"sprite": "res://assets/imagenes/sprites/plate.png",
-		"rareza": 1,
+		"icon": "res://assets/imagenes/iconos/plate_mail_1.png",
+		"sprite": "res://assets/imagenes/sprites/equipo/plate.png",
+		"rareza": 2,
 		"stakable": false,
 		"tipo": "cuerpo",
 		"valor": 0,
@@ -110,9 +164,9 @@
 	"guantes_1": {
 		"nombre": "Guanteletes",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/glove_3_new.png",
-		"sprite": "res://assets/imagenes/sprites/glove_gray.png",
-		"rareza": 1,
+		"icon": "res://assets/imagenes/iconos/glove_3_new.png",
+		"sprite": "res://assets/imagenes/sprites/equipo/glove_gray.png",
+		"rareza": 3,
 		"stakable": false,
 		"tipo": "brazos",
 		"valor": 0,
@@ -137,8 +191,8 @@
 	"botas_1": {
 		"nombre": "Botas de caballero",
 		"descripcion": "",
-		"icon": "res://assets/imagenes/icons/boots_iron_2.png",
-		"sprite": "res://assets/imagenes/sprites/leg_armor_3.png",
+		"icon": "res://assets/imagenes/iconos/boots_iron_2.png",
+		"sprite": "res://assets/imagenes/sprites/equipo/leg_armor_3.png",
 		"rareza": 1,
 		"stakable": false,
 		"tipo": "piernas",

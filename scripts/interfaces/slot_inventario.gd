@@ -13,8 +13,9 @@ enum tipos {
 
 @export var tipo:tipos = tipos.INVENTARIO
 @export_category("Componentes (no tocar)")
-@export var sprite_icono:TextureRect
 @export var sprite_fondo:TextureRect
+@export var sprite_icono:TextureRect
+@export var sprite_borde:TextureRect
 
 var slot_ref:Slot
 
@@ -39,10 +40,19 @@ func _ready():
 
 
 func actualizar():
-	if slot_ref.id != "":
+	if slot_ref.id != "" and slot_ref.cantidad > 0:
 		if DatosManager.get_item(slot_ref.id):
 			var datos_item = DatosManager.get_item(slot_ref.id)
 			sprite_icono.texture = load(datos_item.icon)
+			match str(datos_item.rareza):
+				"1":
+					sprite_borde.texture = load("res://assets/imagenes/interfaces/slot_borde_comun.png")
+				"2":
+					sprite_borde.texture = load("res://assets/imagenes/interfaces/slot_borde_raro.png")
+				"3":
+					sprite_borde.texture = load("res://assets/imagenes/interfaces/slot_borde_epico.png")
+				"4":
+					sprite_borde.texture = load("res://assets/imagenes/interfaces/slot_borde_legendario.png")
 	else:
 		sprite_icono.texture = null
 

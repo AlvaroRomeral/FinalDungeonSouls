@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://civlheob3d3g2"]
+[gd_scene load_steps=12 format=3 uid="uid://bxjj55s08f6g6"]
 
-[ext_resource type="Script" path="res://scripts/gameplay/collectible.gd" id="1_hwk75"]
-[ext_resource type="Texture2D" uid="uid://b08312gk30isc" path="res://assets/imagenes/sprites/items/moneda.png" id="2_i37wv"]
+[ext_resource type="Script" path="res://scripts/gameplay/collectible.gd" id="1_02ybv"]
+[ext_resource type="Texture2D" uid="uid://hdelnueiwwk0" path="res://assets/imagenes/sprites/items/lingote_oro.png" id="2_oyuwv"]
 
 [sub_resource type="Animation" id="Animation_7ub4n"]
 length = 0.001
@@ -72,13 +72,13 @@ color_ramp = SubResource("GradientTexture1D_o6pvy")
 collision_layer = 0
 collision_mask = 2
 monitorable = false
-script = ExtResource("1_hwk75")
+script = ExtResource("1_02ybv")
 id = "dinero"
-cantidad = 1
+cantidad = 100
 animacion = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_i37wv")
+texture = ExtResource("2_oyuwv")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

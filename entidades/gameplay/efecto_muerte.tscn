@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbq5uc4fcicln"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/efecto_particula.gd" id="1_q3h1w"]
-[ext_resource type="Texture2D" uid="uid://bdtojnxxmqe2o" path="res://assets/imagenes/sprites/blood_puddle_red.png" id="2_gtgxb"]
+[ext_resource type="Texture2D" uid="uid://byo4vu5l5hlya" path="res://assets/imagenes/sprites/wall_blood_15_west.png" id="2_uk8hs"]
 
 [sub_resource type="Gradient" id="Gradient_ibq1k"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -46,4 +46,4 @@ autostart = true
 [node name="BloodRed5" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(0, -3)
-texture = ExtResource("2_gtgxb")
+texture = ExtResource("2_uk8hs")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxwm6c4tdmq3g"]
+
+[ext_resource type="Texture2D" uid="uid://iltvmge7b381" path="res://assets/imagenes/tileset_escenario_1.png" id="1_dhcwu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h48in"]
+atlas = ExtResource("1_dhcwu")
+region = Rect2(64, 0, 96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqt3i"]
+size = Vector2(88, 63)
+
+[node name="Edificio" type="StaticBody2D"]
+metadata/_edit_group_ = true
+
+[node name="TilesetEscenario1" type="Sprite2D" parent="."]
+position = Vector2(0, -42)
+texture = SubResource("AtlasTexture_h48in")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_uqt3i")

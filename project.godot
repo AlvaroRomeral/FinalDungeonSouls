@@ -34,7 +34,7 @@ window/size/window_width_override=1760
 window/size/window_height_override=992
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
-mouse_cursor/custom_image="res://assets/imagenes/icons/01.png"
+mouse_cursor/custom_image="res://assets/imagenes/iconos/01.png"
 
 [editor_plugins]
 

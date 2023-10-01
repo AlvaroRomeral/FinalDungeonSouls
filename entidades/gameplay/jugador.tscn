@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="2_bfic6"]
 [ext_resource type="PackedScene" uid="uid://b43hvyhd3tplf" path="res://entidades/controles/control_equipo.tscn" id="2_co52e"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="3_iil3i"]
-[ext_resource type="Texture2D" uid="uid://c3qfp0r4vrjr6" path="res://assets/imagenes/sprites/human_m.png" id="4_ga6xj"]
+[ext_resource type="Texture2D" uid="uid://c3qfp0r4vrjr6" path="res://assets/imagenes/sprites/criaturas/human_m.png" id="4_njd8x"]
 [ext_resource type="Script" path="res://scripts/slot.gd" id="5_68wvb"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="6_mv3ao"]
 
@@ -43,13 +43,13 @@ cantidad = 1
 
 [sub_resource type="Resource" id="Resource_7ge7e"]
 script = ExtResource("5_68wvb")
-id = "espada_2"
-cantidad = 0
+id = "hacha_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_8a3qa"]
 script = ExtResource("5_68wvb")
-id = ""
-cantidad = 0
+id = "lanza_1"
+cantidad = 1
 
 [sub_resource type="Resource" id="Resource_oeh6n"]
 script = ExtResource("5_68wvb")
@@ -265,7 +265,7 @@ curva_exp = SubResource("Curve_5gwl3")
 control_equipo = NodePath("../Sprite2D/ControlEquipo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_ga6xj")
+texture = ExtResource("4_njd8x")
 offset = Vector2(0, -16)
 
 [node name="ControlEquipo" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("2_co52e")]

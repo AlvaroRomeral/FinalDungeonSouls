@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://xyy8tua36w67"]
 
-[ext_resource type="Texture2D" uid="uid://n6gfqyywgo17" path="res://assets/imagenes/sprites/hobgoblin.png" id="1_3f83u"]
 [ext_resource type="Script" path="res://scripts/gameplay/enemigo.gd" id="1_igkrx"]
 [ext_resource type="PackedScene" uid="uid://bg40pq1xpx7le" path="res://entidades/controles/control_estado.tscn" id="1_qje0d"]
 [ext_resource type="PackedScene" uid="uid://dmomn1576xcou" path="res://entidades/componentes/hurtbox.tscn" id="2_8tefa"]
 [ext_resource type="PackedScene" uid="uid://dbq5uc4fcicln" path="res://entidades/gameplay/efecto_muerte.tscn" id="2_71wrd"]
+[ext_resource type="Texture2D" uid="uid://n6gfqyywgo17" path="res://assets/imagenes/sprites/criaturas/hobgoblin.png" id="5_4mphh"]
 [ext_resource type="PackedScene" uid="uid://deinv8te06y65" path="res://entidades/controles/control_ataque.tscn" id="5_ddwe7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ehvf"]
@@ -150,7 +150,7 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_1ehvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3f83u")
+texture = ExtResource("5_4mphh")
 offset = Vector2(0, -16)
 
 [node name="ControlAtaque" parent="Sprite2D" node_paths=PackedStringArray("control_estado") instance=ExtResource("5_ddwe7")]

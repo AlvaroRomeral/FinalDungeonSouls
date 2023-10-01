@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1ilad65unij0"]
 
-[ext_resource type="Texture2D" uid="uid://btbs064iajfje" path="res://assets/imagenes/icons/swords_09_t.png" id="1_on0mj"]
+[ext_resource type="Texture2D" uid="uid://btbs064iajfje" path="res://assets/imagenes/iconos/swords_09_t.png" id="1_on0mj"]
 
 [node name="CompoItemExten" type="Control"]
 layout_mode = 3

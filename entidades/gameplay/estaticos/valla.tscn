@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvgq3kdgmasn5"]
+
+[ext_resource type="Texture2D" uid="uid://iltvmge7b381" path="res://assets/imagenes/tileset_escenario_1.png" id="1_d4you"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce1e8"]
+atlas = ExtResource("1_d4you")
+region = Rect2(0, 32, 32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58q2y"]
+size = Vector2(26, 28)
+
+[node name="Valla" type="StaticBody2D"]
+
+[node name="TilesetEscenario1" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = SubResource("AtlasTexture_ce1e8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15.0001)
+shape = SubResource("RectangleShape2D_58q2y")

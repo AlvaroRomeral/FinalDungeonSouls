@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://s0000mf25dyv" path="res://assets/imagenes/interfaces/slot_fondo_normal.png" id="2_0yckf"]
 [ext_resource type="Texture2D" uid="uid://63s0y88uuf3y" path="res://assets/imagenes/interfaces/slot_borde.png" id="3_dvmko"]
 
-[node name="SlotInventario" type="Control" node_paths=PackedStringArray("sprite_icono", "sprite_fondo")]
+[node name="SlotInventario" type="Control" node_paths=PackedStringArray("sprite_fondo", "sprite_icono", "sprite_borde")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 3
 anchor_right = 0.045
@@ -14,8 +14,9 @@ offset_bottom = -0.175999
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pew35")
-sprite_icono = NodePath("TextureRectIcono")
 sprite_fondo = NodePath("TextureRectFondo")
+sprite_icono = NodePath("TextureRectIcono")
+sprite_borde = NodePath("TextureRectBorde")
 
 [node name="TextureRectFondo" type="TextureRect" parent="."]
 layout_mode = 0

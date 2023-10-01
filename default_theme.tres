@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cd8rnaki8n5uv"]
 
-[ext_resource type="FontFile" uid="uid://6kwo27k8v2ml" path="res://assets/fonts/Kenney Pixel.ttf" id="1_77owm"]
+[ext_resource type="FontFile" uid="uid://c3cr1mkul2j3c" path="res://assets/fonts/m5x7.ttf" id="1_dlwqm"]
 
 [resource]
-default_font = ExtResource("1_77owm")
+default_font = ExtResource("1_dlwqm")
 default_font_size = 16
 Button/styles/focus = null
