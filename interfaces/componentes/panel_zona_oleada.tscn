@@ -9,13 +9,14 @@ font = ExtResource("2_sml0e")
 outline_size = 5
 outline_color = Color(0.741176, 0.576471, 0, 1)
 
-[node name="PanelZonaOleada" type="Control"]
+[node name="PanelZonaOleada" type="Control" node_paths=PackedStringArray("boton_empezar_oleada")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 384.0
 offset_bottom = 320.0
 theme = ExtResource("1_v8pia")
 script = ExtResource("2_pjmpp")
+boton_empezar_oleada = NodePath("Panel/Button")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

@@ -15,8 +15,8 @@ var cantidad_t2 = 0
 var cantidad_t3 = 0
 var enemigos_restantes = 0
 
-func _ready():
-	comenzar_oleada()
+# func _ready():
+# 	comenzar_oleada()
 
 
 func comenzar_oleada():

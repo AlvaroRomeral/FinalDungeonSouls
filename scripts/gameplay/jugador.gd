@@ -56,5 +56,5 @@ func _input(event):
 func muerte():
 	var particulas = efecto_muerte.instantiate()
 	particulas.position = global_position
-	get_parent().add_child(particulas)
+	get_parent().call_deferred("add_child", particulas)
 	hide()

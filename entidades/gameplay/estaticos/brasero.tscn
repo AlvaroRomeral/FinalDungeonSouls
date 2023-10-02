@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=3 uid="uid://cqpmmmrcnsifu"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/brasero.gd" id="1_falg2"]
+[ext_resource type="Texture2D" uid="uid://iltvmge7b381" path="res://assets/imagenes/tileset_escenario_1.png" id="1_lj0n7"]
+[ext_resource type="Texture2D" uid="uid://42giy3hc8p2q" path="res://assets/imagenes/llama_normal.png" id="2_15tjt"]
+[ext_resource type="Texture2D" uid="uid://ckow3866mqt7d" path="res://assets/imagenes/llama_azul.png" id="4_qtavu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ul6m1"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfxdy"]
+atlas = ExtResource("1_lj0n7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q031t"]
+atlas = ExtResource("4_qtavu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3x0f"]
+atlas = ExtResource("4_qtavu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvfdr"]
+atlas = ExtResource("4_qtavu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f7q7"]
+atlas = ExtResource("4_qtavu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh2kb"]
+atlas = ExtResource("2_15tjt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak3j4"]
+atlas = ExtResource("2_15tjt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71opm"]
+atlas = ExtResource("2_15tjt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3jgv"]
+atlas = ExtResource("2_15tjt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hs1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q031t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3x0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvfdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f7q7")
+}],
+"loop": true,
+"name": &"llama_azul",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh2kb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak3j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71opm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3jgv")
+}],
+"loop": true,
+"name": &"llama_normal",
+"speed": 10.0
+}]
+
+[node name="Brasero" type="StaticBody2D" node_paths=PackedStringArray("llama")]
+script = ExtResource("1_falg2")
+llama = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_ul6m1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = SubResource("AtlasTexture_tfxdy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+sprite_frames = SubResource("SpriteFrames_4hs1d")
+animation = &"llama_azul"
+autoplay = "llama_normal"

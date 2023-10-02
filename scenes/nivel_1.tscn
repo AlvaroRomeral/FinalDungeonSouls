@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bu2iwqijgykot"]
+[gd_scene load_steps=25 format=3 uid="uid://bu2iwqijgykot"]
 
 [ext_resource type="PackedScene" uid="uid://bsg3yay180jg2" path="res://entidades/controles/control_gameplay.tscn" id="1_ggoht"]
 [ext_resource type="PackedScene" uid="uid://rtx5dl4efdg1" path="res://entidades/controles/control_oleadas.tscn" id="2_4nr5k"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cy4cdlpfqslqt" path="res://entidades/gameplay/estaticos/arbol.tscn" id="16_2ej22"]
 [ext_resource type="PackedScene" uid="uid://bvgq3kdgmasn5" path="res://entidades/gameplay/estaticos/valla.tscn" id="17_4hpdg"]
 [ext_resource type="PackedScene" uid="uid://bgfjd16gvrdeg" path="res://entidades/gameplay/estaticos/arbolito.tscn" id="17_a8f5i"]
+[ext_resource type="PackedScene" uid="uid://dg8tgnv1pskg6" path="res://entidades/gameplay/activador_oleadas.tscn" id="18_2d4lu"]
 [ext_resource type="PackedScene" uid="uid://bbpjwrkaynav8" path="res://entidades/gameplay/estaticos/valla_h.tscn" id="18_y2bcj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iean"]
@@ -1628,8 +1629,7 @@ position = Vector2(-496, 0)
 position = Vector2(-320, -928)
 
 [node name="Valla17" parent="Entidades" instance=ExtResource("17_4hpdg")]
-visible = false
-position = Vector2(-320, -896)
+position = Vector2(-352, -928)
 
 [node name="Valla7" parent="Entidades" instance=ExtResource("17_4hpdg")]
 position = Vector2(-320, -864)
@@ -1699,3 +1699,7 @@ position = Vector2(-264, -48)
 
 [node name="Arbolito14" parent="Entidades" instance=ExtResource("17_a8f5i")]
 position = Vector2(520, -32)
+
+[node name="ActivadorOleadas" parent="Entidades" node_paths=PackedStringArray("control_oleadas") instance=ExtResource("18_2d4lu")]
+position = Vector2(-480, -912)
+control_oleadas = NodePath("../../ControlOleadas")
