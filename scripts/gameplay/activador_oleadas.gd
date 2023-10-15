@@ -14,6 +14,7 @@ func _ready():
 
 
 func llamar_a_comienza_oleadas():
+	panel_zona_oleada.boton_empezar_oleada.disabled = true
 	control_oleadas.comenzar_oleada()
 	brasero.encender_llama()
 	brasero.cambiar_llama("azul")
