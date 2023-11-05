@@ -88,12 +88,15 @@ func recibir_damage(cantidad:float):
 		animacion.stop()
 		animacion.play("herido")
 
-	estado_actual.salud -= cantidad
-	estado_modificado.emit()
+	var damage_total = cantidad - estado_actual.armadura
+	if damage_total > 0:
+		estado_actual.salud -= cantidad
 
-	if estado_actual.salud <= 0:
-		estado_actual.muerto = true
-		just_muerto.emit()
+		estado_modificado.emit()
+
+		if estado_actual.salud <= 0:
+			estado_actual.muerto = true
+			just_muerto.emit()
 
 
 func is_muerto():
@@ -107,7 +110,7 @@ func exp_necesaria(valor:float):
 
 func add_experiencia(cantidad:float):
 	estado_actual.experiencia += cantidad
-	while estado_actual.experiencia > exp_necesaria(estado_actual.nivel):
+	while estado_actual.experiencia >= exp_necesaria(estado_actual.nivel):
 		estado_actual.experiencia -= exp_necesaria(estado_actual.nivel)
 		estado_actual.nivel += 1
 		estado_modificado.emit()

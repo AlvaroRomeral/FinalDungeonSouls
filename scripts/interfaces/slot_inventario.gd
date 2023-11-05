@@ -55,6 +55,7 @@ func actualizar():
 					sprite_borde.texture = load("res://assets/imagenes/interfaces/slot_borde_legendario.png")
 	else:
 		sprite_icono.texture = null
+		sprite_borde.texture = load("res://assets/imagenes/interfaces/slot_borde_comun.png")
 
 
 func _get_drag_data(_at_position):
